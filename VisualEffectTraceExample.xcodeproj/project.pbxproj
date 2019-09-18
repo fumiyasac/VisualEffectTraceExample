@@ -31,6 +31,10 @@
 		DE6FBB4823321BCF00C9E806 /* EssayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6FBB4623321BCF00C9E806 /* EssayCollectionViewCell.swift */; };
 		DE6FBB4923321BCF00C9E806 /* EssayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE6FBB4723321BCF00C9E806 /* EssayCollectionViewCell.xib */; };
 		DE6FBB4B23321D1C00C9E806 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6FBB4A23321D1C00C9E806 /* UIViewControllerExtension.swift */; };
+		DE6FBB502332205D00C9E806 /* MainCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6FBB4E2332205D00C9E806 /* MainCardCollectionViewCell.swift */; };
+		DE6FBB512332205D00C9E806 /* MainCardCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE6FBB4F2332205D00C9E806 /* MainCardCollectionViewCell.xib */; };
+		DE6FBB532332206D00C9E806 /* MainCardBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6FBB522332206D00C9E806 /* MainCardBaseView.swift */; };
+		DE6FBB552332207900C9E806 /* MainCardBaseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE6FBB542332207900C9E806 /* MainCardBaseView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +86,10 @@
 		DE6FBB4623321BCF00C9E806 /* EssayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssayCollectionViewCell.swift; sourceTree = "<group>"; };
 		DE6FBB4723321BCF00C9E806 /* EssayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EssayCollectionViewCell.xib; sourceTree = "<group>"; };
 		DE6FBB4A23321D1C00C9E806 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		DE6FBB4E2332205D00C9E806 /* MainCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardCollectionViewCell.swift; sourceTree = "<group>"; };
+		DE6FBB4F2332205D00C9E806 /* MainCardCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCardCollectionViewCell.xib; sourceTree = "<group>"; };
+		DE6FBB522332206D00C9E806 /* MainCardBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCardBaseView.swift; sourceTree = "<group>"; };
+		DE6FBB542332207900C9E806 /* MainCardBaseView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainCardBaseView.xib; sourceTree = "<group>"; };
 		F3E2757E64C95F9CFC1325DB /* Pods_VisualEffectTraceExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VisualEffectTraceExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -239,6 +247,8 @@
 			isa = PBXGroup;
 			children = (
 				DE6FBB4523321BB500C9E806 /* EssayCollectionViewCell */,
+				DE6FBB4C23321E5900C9E806 /* MainCardBaseView */,
+				DE6FBB4D23321E6700C9E806 /* MainCardCollectionViewCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -291,6 +301,24 @@
 				DE6FBB4723321BCF00C9E806 /* EssayCollectionViewCell.xib */,
 			);
 			path = EssayCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		DE6FBB4C23321E5900C9E806 /* MainCardBaseView */ = {
+			isa = PBXGroup;
+			children = (
+				DE6FBB522332206D00C9E806 /* MainCardBaseView.swift */,
+				DE6FBB542332207900C9E806 /* MainCardBaseView.xib */,
+			);
+			path = MainCardBaseView;
+			sourceTree = "<group>";
+		};
+		DE6FBB4D23321E6700C9E806 /* MainCardCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DE6FBB4E2332205D00C9E806 /* MainCardCollectionViewCell.swift */,
+				DE6FBB4F2332205D00C9E806 /* MainCardCollectionViewCell.xib */,
+			);
+			path = MainCardCollectionViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -401,6 +429,8 @@
 			files = (
 				DE6FBB2C2332173B00C9E806 /* Essay.storyboard in Resources */,
 				DE6FBB272332171200C9E806 /* TabBar.storyboard in Resources */,
+				DE6FBB552332207900C9E806 /* MainCardBaseView.xib in Resources */,
+				DE6FBB512332205D00C9E806 /* MainCardCollectionViewCell.xib in Resources */,
 				DE1DA5F6226B11F5008FD691 /* LaunchScreen.storyboard in Resources */,
 				DE1DA5F3226B11F5008FD691 /* Assets.xcassets in Resources */,
 				DE6FBB4923321BCF00C9E806 /* EssayCollectionViewCell.xib in Resources */,
@@ -473,7 +503,9 @@
 			files = (
 				DE1DA5EE226B11F3008FD691 /* MainViewController.swift in Sources */,
 				DE6FBB3A233219D000C9E806 /* NSObjectProtocolExtension.swift in Sources */,
+				DE6FBB502332205D00C9E806 /* MainCardCollectionViewCell.swift in Sources */,
 				DE6FBB4B23321D1C00C9E806 /* UIViewControllerExtension.swift in Sources */,
+				DE6FBB532332206D00C9E806 /* MainCardBaseView.swift in Sources */,
 				DE6FBB38233219A000C9E806 /* UIColorExtension.swift in Sources */,
 				DE6FBB4423321B5E00C9E806 /* EssayViewController.swift in Sources */,
 				DE6FBB312332178900C9E806 /* ExpandedFileBinderCollectionViewLayout.swift in Sources */,
