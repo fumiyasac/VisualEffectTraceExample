@@ -3,17 +3,34 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B56FA8B14A9C41C7DA3A65D /* Pods_VisualEffectTraceExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3E2757E64C95F9CFC1325DB /* Pods_VisualEffectTraceExample.framework */; };
 		DE1DA5EC226B11F3008FD691 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1DA5EB226B11F3008FD691 /* AppDelegate.swift */; };
-		DE1DA5EE226B11F3008FD691 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1DA5ED226B11F3008FD691 /* ViewController.swift */; };
+		DE1DA5EE226B11F3008FD691 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1DA5ED226B11F3008FD691 /* MainViewController.swift */; };
 		DE1DA5F1226B11F3008FD691 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE1DA5EF226B11F3008FD691 /* Main.storyboard */; };
 		DE1DA5F3226B11F5008FD691 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE1DA5F2226B11F5008FD691 /* Assets.xcassets */; };
 		DE1DA5F6226B11F5008FD691 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE1DA5F4226B11F5008FD691 /* LaunchScreen.storyboard */; };
 		DE1DA601226B11F5008FD691 /* VisualEffectTraceExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1DA600226B11F5008FD691 /* VisualEffectTraceExampleTests.swift */; };
 		DE1DA60C226B11F6008FD691 /* VisualEffectTraceExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1DA60B226B11F6008FD691 /* VisualEffectTraceExampleUITests.swift */; };
+		DE6FBB272332171200C9E806 /* TabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE6FBB252332171100C9E806 /* TabBar.storyboard */; };
+		DE6FBB2C2332173B00C9E806 /* Essay.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE6FBB2A2332173B00C9E806 /* Essay.storyboard */; };
+		DE6FBB2E2332175000C9E806 /* CustomViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6FBB2D2332175000C9E806 /* CustomViewBase.swift */; };
+		DE6FBB312332178900C9E806 /* ExpandedFileBinderCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6FBB302332178900C9E806 /* ExpandedFileBinderCollectionViewLayout.swift */; };
+		DE6FBB33233217C400C9E806 /* IndexFileBinderCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6FBB32233217C400C9E806 /* IndexFileBinderCollectionViewLayout.swift */; };
+		DE6FBB362332182A00C9E806 /* BouncesTabContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6FBB352332182A00C9E806 /* BouncesTabContentView.swift */; };
+		DE6FBB38233219A000C9E806 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6FBB37233219A000C9E806 /* UIColorExtension.swift */; };
+		DE6FBB3A233219D000C9E806 /* NSObjectProtocolExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6FBB39233219D000C9E806 /* NSObjectProtocolExtension.swift */; };
+		DE6FBB3C233219F200C9E806 /* UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6FBB3B233219F200C9E806 /* UICollectionViewExtension.swift */; };
+		DE6FBB3E23321A2A00C9E806 /* DispatchQueueExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6FBB3D23321A2A00C9E806 /* DispatchQueueExtension.swift */; };
+		DE6FBB4023321A5900C9E806 /* TabBarItemType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6FBB3F23321A5900C9E806 /* TabBarItemType.swift */; };
+		DE6FBB4223321AD500C9E806 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6FBB4123321AD500C9E806 /* TabBarController.swift */; };
+		DE6FBB4423321B5E00C9E806 /* EssayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6FBB4323321B5E00C9E806 /* EssayViewController.swift */; };
+		DE6FBB4823321BCF00C9E806 /* EssayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6FBB4623321BCF00C9E806 /* EssayCollectionViewCell.swift */; };
+		DE6FBB4923321BCF00C9E806 /* EssayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE6FBB4723321BCF00C9E806 /* EssayCollectionViewCell.xib */; };
+		DE6FBB4B23321D1C00C9E806 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6FBB4A23321D1C00C9E806 /* UIViewControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +51,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		66D4A4B86470FC1A536ABF82 /* Pods-VisualEffectTraceExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisualEffectTraceExample.debug.xcconfig"; path = "Target Support Files/Pods-VisualEffectTraceExample/Pods-VisualEffectTraceExample.debug.xcconfig"; sourceTree = "<group>"; };
+		BBEF508F017767CCD223EC17 /* Pods-VisualEffectTraceExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisualEffectTraceExample.release.xcconfig"; path = "Target Support Files/Pods-VisualEffectTraceExample/Pods-VisualEffectTraceExample.release.xcconfig"; sourceTree = "<group>"; };
 		DE1DA5E8226B11F3008FD691 /* VisualEffectTraceExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisualEffectTraceExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE1DA5EB226B11F3008FD691 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DE1DA5ED226B11F3008FD691 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DE1DA5ED226B11F3008FD691 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		DE1DA5F0226B11F3008FD691 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DE1DA5F2226B11F5008FD691 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE1DA5F5226B11F5008FD691 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +66,23 @@
 		DE1DA607226B11F6008FD691 /* VisualEffectTraceExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VisualEffectTraceExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE1DA60B226B11F6008FD691 /* VisualEffectTraceExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectTraceExampleUITests.swift; sourceTree = "<group>"; };
 		DE1DA60D226B11F6008FD691 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DE6FBB262332171200C9E806 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/TabBar.storyboard; sourceTree = "<group>"; };
+		DE6FBB2B2332173B00C9E806 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Essay.storyboard; sourceTree = "<group>"; };
+		DE6FBB2D2332175000C9E806 /* CustomViewBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewBase.swift; sourceTree = "<group>"; };
+		DE6FBB302332178900C9E806 /* ExpandedFileBinderCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedFileBinderCollectionViewLayout.swift; sourceTree = "<group>"; };
+		DE6FBB32233217C400C9E806 /* IndexFileBinderCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexFileBinderCollectionViewLayout.swift; sourceTree = "<group>"; };
+		DE6FBB352332182A00C9E806 /* BouncesTabContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BouncesTabContentView.swift; sourceTree = "<group>"; };
+		DE6FBB37233219A000C9E806 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		DE6FBB39233219D000C9E806 /* NSObjectProtocolExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectProtocolExtension.swift; sourceTree = "<group>"; };
+		DE6FBB3B233219F200C9E806 /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
+		DE6FBB3D23321A2A00C9E806 /* DispatchQueueExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueExtension.swift; sourceTree = "<group>"; };
+		DE6FBB3F23321A5900C9E806 /* TabBarItemType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarItemType.swift; sourceTree = "<group>"; };
+		DE6FBB4123321AD500C9E806 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		DE6FBB4323321B5E00C9E806 /* EssayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssayViewController.swift; sourceTree = "<group>"; };
+		DE6FBB4623321BCF00C9E806 /* EssayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssayCollectionViewCell.swift; sourceTree = "<group>"; };
+		DE6FBB4723321BCF00C9E806 /* EssayCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EssayCollectionViewCell.xib; sourceTree = "<group>"; };
+		DE6FBB4A23321D1C00C9E806 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		F3E2757E64C95F9CFC1325DB /* Pods_VisualEffectTraceExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VisualEffectTraceExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B56FA8B14A9C41C7DA3A65D /* Pods_VisualEffectTraceExample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,13 +111,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5FA6E0F88599076CB09DAD0F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				66D4A4B86470FC1A536ABF82 /* Pods-VisualEffectTraceExample.debug.xcconfig */,
+				BBEF508F017767CCD223EC17 /* Pods-VisualEffectTraceExample.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		976F9F4A2A00BAFA3219E8AC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F3E2757E64C95F9CFC1325DB /* Pods_VisualEffectTraceExample.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DE1DA5DF226B11F3008FD691 = {
 			isa = PBXGroup;
 			children = (
 				DE1DA5EA226B11F3008FD691 /* VisualEffectTraceExample */,
+				976F9F4A2A00BAFA3219E8AC /* Frameworks */,
+				5FA6E0F88599076CB09DAD0F /* Pods */,
+				DE1DA5E9226B11F3008FD691 /* Products */,
 				DE1DA5FF226B11F5008FD691 /* VisualEffectTraceExampleTests */,
 				DE1DA60A226B11F6008FD691 /* VisualEffectTraceExampleUITests */,
-				DE1DA5E9226B11F3008FD691 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,12 +153,15 @@
 		DE1DA5EA226B11F3008FD691 /* VisualEffectTraceExample */ = {
 			isa = PBXGroup;
 			children = (
-				DE1DA5EB226B11F3008FD691 /* AppDelegate.swift */,
-				DE1DA5ED226B11F3008FD691 /* ViewController.swift */,
-				DE1DA5EF226B11F3008FD691 /* Main.storyboard */,
-				DE1DA5F2226B11F5008FD691 /* Assets.xcassets */,
-				DE1DA5F4226B11F5008FD691 /* LaunchScreen.storyboard */,
 				DE1DA5F7226B11F5008FD691 /* Info.plist */,
+				DE1DA5EB226B11F3008FD691 /* AppDelegate.swift */,
+				DE1DA5F2226B11F5008FD691 /* Assets.xcassets */,
+				DE6FBB1B23320C0D00C9E806 /* Classes */,
+				DE6FBB1C23320C1600C9E806 /* Enum */,
+				DE6FBB1D23320C2500C9E806 /* Extension */,
+				DE6FBB1A23320C0500C9E806 /* Storyboard */,
+				DE6FBB1F23320CEF00C9E806 /* View */,
+				DE6FBB1E23320CE800C9E806 /* ViewController */,
 			);
 			path = VisualEffectTraceExample;
 			sourceTree = "<group>";
@@ -125,6 +184,115 @@
 			path = VisualEffectTraceExampleUITests;
 			sourceTree = "<group>";
 		};
+		DE6FBB1A23320C0500C9E806 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				DE6FBB2A2332173B00C9E806 /* Essay.storyboard */,
+				DE1DA5F4226B11F5008FD691 /* LaunchScreen.storyboard */,
+				DE1DA5EF226B11F3008FD691 /* Main.storyboard */,
+				DE6FBB252332171100C9E806 /* TabBar.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		DE6FBB1B23320C0D00C9E806 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				DE6FBB342332181200C9E806 /* TabBarIcon */,
+				DE6FBB2F2332177900C9E806 /* SafariCollectionViewLayout */,
+				DE6FBB2D2332175000C9E806 /* CustomViewBase.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		DE6FBB1C23320C1600C9E806 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				DE6FBB3F23321A5900C9E806 /* TabBarItemType.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		DE6FBB1D23320C2500C9E806 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				DE6FBB3D23321A2A00C9E806 /* DispatchQueueExtension.swift */,
+				DE6FBB39233219D000C9E806 /* NSObjectProtocolExtension.swift */,
+				DE6FBB3B233219F200C9E806 /* UICollectionViewExtension.swift */,
+				DE6FBB37233219A000C9E806 /* UIColorExtension.swift */,
+				DE6FBB4A23321D1C00C9E806 /* UIViewControllerExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		DE6FBB1E23320CE800C9E806 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DE6FBB2223320D1200C9E806 /* TabBar */,
+				DE6FBB2123320D0800C9E806 /* Essay */,
+				DE6FBB2023320D0100C9E806 /* Main */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		DE6FBB1F23320CEF00C9E806 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DE6FBB4523321BB500C9E806 /* EssayCollectionViewCell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DE6FBB2023320D0100C9E806 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				DE1DA5ED226B11F3008FD691 /* MainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		DE6FBB2123320D0800C9E806 /* Essay */ = {
+			isa = PBXGroup;
+			children = (
+				DE6FBB4323321B5E00C9E806 /* EssayViewController.swift */,
+			);
+			path = Essay;
+			sourceTree = "<group>";
+		};
+		DE6FBB2223320D1200C9E806 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				DE6FBB4123321AD500C9E806 /* TabBarController.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		DE6FBB2F2332177900C9E806 /* SafariCollectionViewLayout */ = {
+			isa = PBXGroup;
+			children = (
+				DE6FBB302332178900C9E806 /* ExpandedFileBinderCollectionViewLayout.swift */,
+				DE6FBB32233217C400C9E806 /* IndexFileBinderCollectionViewLayout.swift */,
+			);
+			path = SafariCollectionViewLayout;
+			sourceTree = "<group>";
+		};
+		DE6FBB342332181200C9E806 /* TabBarIcon */ = {
+			isa = PBXGroup;
+			children = (
+				DE6FBB352332182A00C9E806 /* BouncesTabContentView.swift */,
+			);
+			path = TabBarIcon;
+			sourceTree = "<group>";
+		};
+		DE6FBB4523321BB500C9E806 /* EssayCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DE6FBB4623321BCF00C9E806 /* EssayCollectionViewCell.swift */,
+				DE6FBB4723321BCF00C9E806 /* EssayCollectionViewCell.xib */,
+			);
+			path = EssayCollectionViewCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -132,9 +300,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DE1DA610226B11F6008FD691 /* Build configuration list for PBXNativeTarget "VisualEffectTraceExample" */;
 			buildPhases = (
+				4F403DEA8B9DA5CADB3505B0 /* [CP] Check Pods Manifest.lock */,
 				DE1DA5E4226B11F3008FD691 /* Sources */,
 				DE1DA5E5226B11F3008FD691 /* Frameworks */,
 				DE1DA5E6226B11F3008FD691 /* Resources */,
+				6147E839766903ACBEA0A624 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -229,8 +399,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE6FBB2C2332173B00C9E806 /* Essay.storyboard in Resources */,
+				DE6FBB272332171200C9E806 /* TabBar.storyboard in Resources */,
 				DE1DA5F6226B11F5008FD691 /* LaunchScreen.storyboard in Resources */,
 				DE1DA5F3226B11F5008FD691 /* Assets.xcassets in Resources */,
+				DE6FBB4923321BCF00C9E806 /* EssayCollectionViewCell.xib in Resources */,
 				DE1DA5F1226B11F3008FD691 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,12 +424,67 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4F403DEA8B9DA5CADB3505B0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VisualEffectTraceExample-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6147E839766903ACBEA0A624 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VisualEffectTraceExample/Pods-VisualEffectTraceExample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VisualEffectTraceExample/Pods-VisualEffectTraceExample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VisualEffectTraceExample/Pods-VisualEffectTraceExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DE1DA5E4226B11F3008FD691 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE1DA5EE226B11F3008FD691 /* ViewController.swift in Sources */,
+				DE1DA5EE226B11F3008FD691 /* MainViewController.swift in Sources */,
+				DE6FBB3A233219D000C9E806 /* NSObjectProtocolExtension.swift in Sources */,
+				DE6FBB4B23321D1C00C9E806 /* UIViewControllerExtension.swift in Sources */,
+				DE6FBB38233219A000C9E806 /* UIColorExtension.swift in Sources */,
+				DE6FBB4423321B5E00C9E806 /* EssayViewController.swift in Sources */,
+				DE6FBB312332178900C9E806 /* ExpandedFileBinderCollectionViewLayout.swift in Sources */,
+				DE6FBB3C233219F200C9E806 /* UICollectionViewExtension.swift in Sources */,
+				DE6FBB362332182A00C9E806 /* BouncesTabContentView.swift in Sources */,
+				DE6FBB2E2332175000C9E806 /* CustomViewBase.swift in Sources */,
+				DE6FBB4823321BCF00C9E806 /* EssayCollectionViewCell.swift in Sources */,
+				DE6FBB4023321A5900C9E806 /* TabBarItemType.swift in Sources */,
+				DE6FBB3E23321A2A00C9E806 /* DispatchQueueExtension.swift in Sources */,
+				DE6FBB4223321AD500C9E806 /* TabBarController.swift in Sources */,
+				DE6FBB33233217C400C9E806 /* IndexFileBinderCollectionViewLayout.swift in Sources */,
 				DE1DA5EC226B11F3008FD691 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,6 +535,22 @@
 				DE1DA5F5226B11F5008FD691 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		DE6FBB252332171100C9E806 /* TabBar.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE6FBB262332171200C9E806 /* Base */,
+			);
+			name = TabBar.storyboard;
+			sourceTree = "<group>";
+		};
+		DE6FBB2A2332173B00C9E806 /* Essay.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE6FBB2B2332173B00C9E806 /* Base */,
+			);
+			name = Essay.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -430,6 +674,7 @@
 		};
 		DE1DA611226B11F6008FD691 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 66D4A4B86470FC1A536ABF82 /* Pods-VisualEffectTraceExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -448,6 +693,7 @@
 		};
 		DE1DA612226B11F6008FD691 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BBEF508F017767CCD223EC17 /* Pods-VisualEffectTraceExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
