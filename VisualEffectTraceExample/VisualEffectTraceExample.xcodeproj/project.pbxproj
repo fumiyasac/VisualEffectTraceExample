@@ -9,12 +9,20 @@
 /* Begin PBXBuildFile section */
 		DEAA656923F3122F00C5232B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA656823F3122F00C5232B /* AppDelegate.swift */; };
 		DEAA656B23F3122F00C5232B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA656A23F3122F00C5232B /* SceneDelegate.swift */; };
-		DEAA656D23F3122F00C5232B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA656C23F3122F00C5232B /* ViewController.swift */; };
+		DEAA656D23F3122F00C5232B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA656C23F3122F00C5232B /* MainViewController.swift */; };
 		DEAA657023F3122F00C5232B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEAA656E23F3122F00C5232B /* Main.storyboard */; };
 		DEAA657223F3123100C5232B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DEAA657123F3123100C5232B /* Assets.xcassets */; };
 		DEAA657523F3123100C5232B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEAA657323F3123100C5232B /* LaunchScreen.storyboard */; };
 		DEAA658023F3123100C5232B /* VisualEffectTraceExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA657F23F3123100C5232B /* VisualEffectTraceExampleTests.swift */; };
 		DEAA658B23F3123100C5232B /* VisualEffectTraceExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA658A23F3123100C5232B /* VisualEffectTraceExampleUITests.swift */; };
+		DEAA65A323F70DEC00C5232B /* CustomViewBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA65A223F70DEC00C5232B /* CustomViewBase.swift */; };
+		DEAA65A523F70E2700C5232B /* NSObjectProtocolExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA65A423F70E2700C5232B /* NSObjectProtocolExtension.swift */; };
+		DEAA65A723F70E4600C5232B /* StoryboardInstantiatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA65A623F70E4600C5232B /* StoryboardInstantiatable.swift */; };
+		DEAA65A923F70E6900C5232B /* UILabelDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA65A823F70E6900C5232B /* UILabelDecorator.swift */; };
+		DEAA65AB23F70E9C00C5232B /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA65AA23F70E9C00C5232B /* UIColorExtension.swift */; };
+		DEAA65AD23F70EE900C5232B /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA65AC23F70EE900C5232B /* UIViewControllerExtension.swift */; };
+		DEAA65AF23F7288C00C5232B /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA65AE23F7288C00C5232B /* UITableViewExtension.swift */; };
+		DEAA65B123F7289A00C5232B /* UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA65B023F7289A00C5232B /* UICollectionViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +46,7 @@
 		DEAA656523F3122F00C5232B /* VisualEffectTraceExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisualEffectTraceExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEAA656823F3122F00C5232B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEAA656A23F3122F00C5232B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DEAA656C23F3122F00C5232B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DEAA656C23F3122F00C5232B /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		DEAA656F23F3122F00C5232B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DEAA657123F3123100C5232B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DEAA657423F3123100C5232B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +57,14 @@
 		DEAA658623F3123100C5232B /* VisualEffectTraceExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VisualEffectTraceExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEAA658A23F3123100C5232B /* VisualEffectTraceExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualEffectTraceExampleUITests.swift; sourceTree = "<group>"; };
 		DEAA658C23F3123100C5232B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DEAA65A223F70DEC00C5232B /* CustomViewBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewBase.swift; sourceTree = "<group>"; };
+		DEAA65A423F70E2700C5232B /* NSObjectProtocolExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectProtocolExtension.swift; sourceTree = "<group>"; };
+		DEAA65A623F70E4600C5232B /* StoryboardInstantiatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiatable.swift; sourceTree = "<group>"; };
+		DEAA65A823F70E6900C5232B /* UILabelDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelDecorator.swift; sourceTree = "<group>"; };
+		DEAA65AA23F70E9C00C5232B /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		DEAA65AC23F70EE900C5232B /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		DEAA65AE23F7288C00C5232B /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
+		DEAA65B023F7289A00C5232B /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +115,20 @@
 		DEAA656723F3122F00C5232B /* VisualEffectTraceExample */ = {
 			isa = PBXGroup;
 			children = (
+				DEAA657623F3123100C5232B /* Info.plist */,
 				DEAA656823F3122F00C5232B /* AppDelegate.swift */,
 				DEAA656A23F3122F00C5232B /* SceneDelegate.swift */,
-				DEAA656C23F3122F00C5232B /* ViewController.swift */,
-				DEAA656E23F3122F00C5232B /* Main.storyboard */,
 				DEAA657123F3123100C5232B /* Assets.xcassets */,
-				DEAA657323F3123100C5232B /* LaunchScreen.storyboard */,
-				DEAA657623F3123100C5232B /* Info.plist */,
+				DEAA65A023F70D1400C5232B /* Enum */,
+				DEAA659F23F70CF200C5232B /* Extension */,
+				DEAA659C23F70CD300C5232B /* Model */,
+				DEAA659D23F70CD900C5232B /* Modules */,
+				DEAA65A123F70D3D00C5232B /* RealmEntity */,
+				DEAA659A23F70C8200C5232B /* Redux */,
+				DEAA659923F70B8200C5232B /* Storyboard */,
+				DEAA659E23F70CE400C5232B /* View */,
+				DEAA659823F70B7700C5232B /* ViewController */,
+				DEAA659B23F70C8C00C5232B /* ViewModel */,
 			);
 			path = VisualEffectTraceExample;
 			sourceTree = "<group>";
@@ -126,6 +149,87 @@
 				DEAA658C23F3123100C5232B /* Info.plist */,
 			);
 			path = VisualEffectTraceExampleUITests;
+			sourceTree = "<group>";
+		};
+		DEAA659823F70B7700C5232B /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				DEAA656C23F3122F00C5232B /* MainViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		DEAA659923F70B8200C5232B /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				DEAA657323F3123100C5232B /* LaunchScreen.storyboard */,
+				DEAA656E23F3122F00C5232B /* Main.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		DEAA659A23F70C8200C5232B /* Redux */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Redux;
+			sourceTree = "<group>";
+		};
+		DEAA659B23F70C8C00C5232B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DEAA659C23F70CD300C5232B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DEAA659D23F70CD900C5232B /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				DEAA65A823F70E6900C5232B /* UILabelDecorator.swift */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		DEAA659E23F70CE400C5232B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DEAA65A223F70DEC00C5232B /* CustomViewBase.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DEAA659F23F70CF200C5232B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				DEAA65A423F70E2700C5232B /* NSObjectProtocolExtension.swift */,
+				DEAA65A623F70E4600C5232B /* StoryboardInstantiatable.swift */,
+				DEAA65B023F7289A00C5232B /* UICollectionViewExtension.swift */,
+				DEAA65AA23F70E9C00C5232B /* UIColorExtension.swift */,
+				DEAA65AE23F7288C00C5232B /* UITableViewExtension.swift */,
+				DEAA65AC23F70EE900C5232B /* UIViewControllerExtension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		DEAA65A023F70D1400C5232B /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		DEAA65A123F70D3D00C5232B /* RealmEntity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RealmEntity;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,9 +363,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DEAA656D23F3122F00C5232B /* ViewController.swift in Sources */,
+				DEAA65B123F7289A00C5232B /* UICollectionViewExtension.swift in Sources */,
+				DEAA65A923F70E6900C5232B /* UILabelDecorator.swift in Sources */,
+				DEAA65AF23F7288C00C5232B /* UITableViewExtension.swift in Sources */,
+				DEAA65A323F70DEC00C5232B /* CustomViewBase.swift in Sources */,
+				DEAA65AD23F70EE900C5232B /* UIViewControllerExtension.swift in Sources */,
+				DEAA656D23F3122F00C5232B /* MainViewController.swift in Sources */,
+				DEAA65AB23F70E9C00C5232B /* UIColorExtension.swift in Sources */,
 				DEAA656923F3122F00C5232B /* AppDelegate.swift in Sources */,
+				DEAA65A723F70E4600C5232B /* StoryboardInstantiatable.swift in Sources */,
 				DEAA656B23F3122F00C5232B /* SceneDelegate.swift in Sources */,
+				DEAA65A523F70E2700C5232B /* NSObjectProtocolExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
