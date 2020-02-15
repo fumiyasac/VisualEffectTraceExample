@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -134,6 +134,7 @@
 				DEAA656823F3122F00C5232B /* AppDelegate.swift */,
 				DEAA656A23F3122F00C5232B /* SceneDelegate.swift */,
 				DEAA657123F3123100C5232B /* Assets.xcassets */,
+				DEAA65B223F86E6800C5232B /* APIManager */,
 				DEAA65A023F70D1400C5232B /* Enum */,
 				DEAA659F23F70CF200C5232B /* Extension */,
 				DEAA659C23F70CD300C5232B /* Model */,
@@ -247,13 +248,19 @@
 			path = RealmEntity;
 			sourceTree = "<group>";
 		};
+		DEAA65B223F86E6800C5232B /* APIManager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = APIManager;
+			sourceTree = "<group>";
+		};
 		E8F66E6433453D282DEF22BE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				1C8C1B8206245010E05842E0 /* Pods-VisualEffectTraceExample.debug.xcconfig */,
 				3AFA8542E8A9AD89F4086318 /* Pods-VisualEffectTraceExample.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

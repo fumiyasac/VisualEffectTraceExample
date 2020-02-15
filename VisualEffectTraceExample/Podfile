@@ -23,6 +23,7 @@ target 'VisualEffectTraceExample' do
   pod 'Loaf'
   pod 'ParallaxHeader', '~> 3.0.0'
   pod 'NVActivityIndicatorView'
+  pod 'Nuke'
 
   # 3. デバッグに関するライブラリ
   pod 'XCGLogger', '~> 7.0.1'
