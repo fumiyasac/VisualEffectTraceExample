@@ -268,6 +268,7 @@
 				DEAA656123F3122F00C5232B /* Sources */,
 				DEAA656223F3122F00C5232B /* Frameworks */,
 				DEAA656323F3122F00C5232B /* Resources */,
+				12E50A3F9FE80170A28F0B28 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -385,6 +386,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		12E50A3F9FE80170A28F0B28 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VisualEffectTraceExample/Pods-VisualEffectTraceExample-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VisualEffectTraceExample/Pods-VisualEffectTraceExample-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VisualEffectTraceExample/Pods-VisualEffectTraceExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C13CF6088D8E4975EF53E1BA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
