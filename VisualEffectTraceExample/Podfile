@@ -2,18 +2,37 @@
 # platform :ios, '9.0'
 
 target 'VisualEffectTraceExample' do
-  # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
   # Pods for VisualEffectTraceExample
 
-  target 'VisualEffectTraceExampleTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
+  # 1. アーキテクチャに関するライブラリ
+#  pod 'RxSwift'
+#  pod 'ReSwift'
+#  pod 'RealmSwift'
+#  pod 'KeychainAccess'
+#  pod 'DifferenceKit'
+  
+  # 2. UI実装に関するライブラリ
+#  pod 'ESPullToRefresh'
+#  pod 'ESTabBarController-swift'
+#  pod 'PanModal'
+#  pod 'AirBar', '~> 2.0'
+#  pod 'YPImagePicker'
+#  pod 'ExpandingMenu', '~> 0.4'
+#  pod 'Loaf'
+#  pod 'ParallaxHeader', '~> 3.0.0'
+#  pod 'NVActivityIndicatorView'
 
-  target 'VisualEffectTraceExampleUITests' do
-    # Pods for testing
-  end
+  # 3. デバッグに関するライブラリ
+#  pod 'XCGLogger', '~> 7.0.1'
+#  pod 'ReSwiftMonitor', :configurations => ['Debug']
 
+#  ※ ユニットテスト時に利用する
+#  target 'VisualEffectTraceExampleTests' do
+#    inherit! :search_paths
+#  end
+#  ※ UIテスト時に利用する
+#  target 'VisualEffectTraceExampleUITests' do
+#  end
 end
