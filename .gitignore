@@ -1,2 +1,3 @@
 /VisualEffectTraceExample/Pods/*
+/Backend/docker/db/data/*
 /Frontend/visual_effect_example/node_modules/*
