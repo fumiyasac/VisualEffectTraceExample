@@ -1,13 +1,18 @@
 package net.just1factory.visual_effect_example.app.controller.api.v1
 
+import net.just1factory.visual_effect_example.domain.entity.AnnouncementEntity
+import net.just1factory.visual_effect_example.domain.service.AnnouncementService
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import org.springframework.web.bind.annotation.RequestMethod
 
 @RestController
-class AnnouncementController {
-    @RequestMapping("/announcement", method = [RequestMethod.GET])
-    fun index(): String {
-        return "お知らせ管理ページになります。"
+@RequestMapping("/api/v1")
+class AnnouncementController(private val announcementService: AnnouncementService) {
+
+    // MEMO: AnnouncementServiceを経由してAnnouncementEntityにマッピングされたデータを全件取得する
+    @GetMapping("/announcement")
+    fun findAll(): List<AnnouncementEntity> {
+        return announcementService.findAll()
     }
 }
