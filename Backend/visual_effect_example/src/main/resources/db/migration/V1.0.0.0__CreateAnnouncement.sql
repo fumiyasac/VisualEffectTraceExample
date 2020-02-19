@@ -8,6 +8,9 @@
 -- // 参考URL(2): すぐに始めるKotlinサーバサイド開発(Spring Boot + Swagger + Flyway + Mybatis)
 -- // https://gumiossan.hatenablog.com/entry/2018/12/01/224510
 
+-- // 参考URL(3): DBマイグレーションツール活用のすすめ 〜Flyway〜
+-- // https://qiita.com/osuo/items/3aa375f1a1d6dd3d2459
+
 CREATE TABLE `announcement` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(1000) NOT NULL DEFAULT '' COMMENT '運営からのお知らせ用タイトル',
