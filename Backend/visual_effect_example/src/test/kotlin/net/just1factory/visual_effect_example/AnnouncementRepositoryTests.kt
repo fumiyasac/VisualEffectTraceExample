@@ -1,5 +1,7 @@
 package net.just1factory.visual_effect_example
 
+// Test: JPAを利用したテーブル(announcement)からデータを全件取得する処理のテスト
+
 // MEMO: テスト対象のリポジトリファイルのインポート
 import net.just1factory.visual_effect_example.domain.entity.AnnouncementEntity
 import net.just1factory.visual_effect_example.domain.repository.AnnouncementRepository
