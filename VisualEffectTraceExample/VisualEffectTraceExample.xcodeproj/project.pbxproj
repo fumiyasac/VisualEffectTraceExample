@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		843036C4A231FCAC14A48314 /* Pods_VisualEffectTraceExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C93C463F55AF4FFC433D1E5 /* Pods_VisualEffectTraceExample.framework */; };
 		DE14134823FB02A10000D27C /* APIRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE14134723FB02A10000D27C /* APIRequestManager.swift */; };
+		DEA01C7F240107DC00346C1E /* AnnouncementEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA01C7E240107DC00346C1E /* AnnouncementEntity.swift */; };
 		DEAA656923F3122F00C5232B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA656823F3122F00C5232B /* AppDelegate.swift */; };
 		DEAA656B23F3122F00C5232B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA656A23F3122F00C5232B /* SceneDelegate.swift */; };
 		DEAA656D23F3122F00C5232B /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA656C23F3122F00C5232B /* MainViewController.swift */; };
@@ -49,6 +50,7 @@
 		2C93C463F55AF4FFC433D1E5 /* Pods_VisualEffectTraceExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VisualEffectTraceExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AFA8542E8A9AD89F4086318 /* Pods-VisualEffectTraceExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisualEffectTraceExample.release.xcconfig"; path = "Target Support Files/Pods-VisualEffectTraceExample/Pods-VisualEffectTraceExample.release.xcconfig"; sourceTree = "<group>"; };
 		DE14134723FB02A10000D27C /* APIRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestManager.swift; sourceTree = "<group>"; };
+		DEA01C7E240107DC00346C1E /* AnnouncementEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementEntity.swift; sourceTree = "<group>"; };
 		DEAA656523F3122F00C5232B /* VisualEffectTraceExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisualEffectTraceExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEAA656823F3122F00C5232B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DEAA656A23F3122F00C5232B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +132,30 @@
 			path = Stub;
 			sourceTree = "<group>";
 		};
+		DEA01C7A2400FE0E00346C1E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				DEA01C7D240103BA00346C1E /* Entity */,
+				DEA01C7C240103AC00346C1E /* Strategy */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		DEA01C7C240103AC00346C1E /* Strategy */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Strategy;
+			sourceTree = "<group>";
+		};
+		DEA01C7D240103BA00346C1E /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				DEA01C7E240107DC00346C1E /* AnnouncementEntity.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
 		DEAA655C23F3122F00C5232B = {
 			isa = PBXGroup;
 			children = (
@@ -160,9 +186,9 @@
 				DEAA656A23F3122F00C5232B /* SceneDelegate.swift */,
 				DEAA657123F3123100C5232B /* Assets.xcassets */,
 				DEAA65B223F86E6800C5232B /* APIManager */,
+				DEA01C7A2400FE0E00346C1E /* Model */,
 				DEAA65A023F70D1400C5232B /* Enum */,
 				DEAA659F23F70CF200C5232B /* Extension */,
-				DEAA659C23F70CD300C5232B /* Model */,
 				DEAA659D23F70CD900C5232B /* Modules */,
 				DEAA65A123F70D3D00C5232B /* RealmEntity */,
 				DEAA659A23F70C8200C5232B /* Redux */,
@@ -222,13 +248,6 @@
 			children = (
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		DEAA659C23F70CD300C5232B /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		DEAA659D23F70CD900C5232B /* Modules */ = {
@@ -467,6 +486,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE14134823FB02A10000D27C /* APIRequestManager.swift in Sources */,
+				DEA01C7F240107DC00346C1E /* AnnouncementEntity.swift in Sources */,
 				DEAA65B123F7289A00C5232B /* UICollectionViewExtension.swift in Sources */,
 				DEAA65A923F70E6900C5232B /* UILabelDecorator.swift in Sources */,
 				DEAA65AF23F7288C00C5232B /* UITableViewExtension.swift in Sources */,

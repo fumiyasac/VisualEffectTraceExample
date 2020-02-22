@@ -7,14 +7,29 @@
 //
 
 import UIKit
+import RxSwift
 
-class MainViewController: UIViewController {
+// 各種画面への遷移を振り分けるためのViewController
 
+final class MainViewController: UIViewController {
+
+    private let disposeBag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+        // Testing: APIリクエストの試験
+
+        let api = APIRequestManager.shared
+        let _ = api.getAnnoucements().subscribe(
+            onSuccess: { result in
+                print(result)
+            },
+            onError: { error in
+                print(error)
+            }
+        )
+        .disposed(by: disposeBag)
+
     }
-
-
 }
-

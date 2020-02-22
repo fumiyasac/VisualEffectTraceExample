@@ -32,6 +32,11 @@ PODS:
     - HandyJSON (~> 5.0.0)
     - ReSwift (~> 5.0.0)
     - Starscream (~> 3.1.0)
+  - RxCocoa (5.0.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.0.1):
+    - RxSwift (~> 5)
   - RxSwift (5.0.1)
   - Starscream (3.1.1)
   - SteviaLayout (4.7.3)
@@ -58,6 +63,7 @@ DEPENDENCIES:
   - RealmSwift
   - ReSwift
   - ReSwiftMonitor
+  - RxCocoa
   - RxSwift
   - XCGLogger (~> 7.0.1)
   - YPImagePicker
@@ -82,6 +88,8 @@ SPEC REPOS:
     - RealmSwift
     - ReSwift
     - ReSwiftMonitor
+    - RxCocoa
+    - RxRelay
     - RxSwift
     - Starscream
     - SteviaLayout
@@ -107,12 +115,14 @@ SPEC CHECKSUMS:
   RealmSwift: 9e2657b33764f80e4a4dffd6d440e24715782052
   ReSwift: 628f1a9b3ee52e3b3ca2a644435472fd77afafe1
   ReSwiftMonitor: 218f5470e5d671689f3052ab0c22774eb7913799
+  RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
+  RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
   RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
   SteviaLayout: c2ecdcff57d44e38fd2f65e54ad52aeae28ca0c4
   XCGLogger: 1943831ef907df55108b0b18657953f868de973b
   YPImagePicker: accf310f9526641a84372c0ecf943547d9b1e52c
 
-PODFILE CHECKSUM: ae12e7c8444ad62161c94b81bf5a2d1494b67e3f
+PODFILE CHECKSUM: 81cbdd192fa9f66408d2493d0beede4a5a722f44
 
 COCOAPODS: 1.8.4
