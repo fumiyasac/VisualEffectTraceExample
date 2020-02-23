@@ -4,9 +4,6 @@ import net.just1factory.visual_effect_example.domain.entity.AnnouncementEntity
 import net.just1factory.visual_effect_example.domain.repository.AnnouncementRepository
 import org.springframework.stereotype.Service
 
-// Javaクラスのインポート宣言
-import java.util.*
-
 @Service
 class AnnouncementService (private val announcementRepository: AnnouncementRepository) {
 
@@ -15,8 +12,12 @@ class AnnouncementService (private val announcementRepository: AnnouncementRepos
     // https://qiita.com/ozaki25/items/301d43dfcb1903ef995b
 
     // ライブラリ`JPA`を利用してAnnouncementEntityにマッピングされたデータを全件取得する
-    fun findAll(): List<AnnouncementEntity> = announcementRepository.findAll()
+    fun findAll(): List<AnnouncementEntity> {
+        return announcementRepository.findAll()
+    }
 
     // ライブラリ`JPA`を利用してAnnouncementEntityにマッピングされたデータのうち該当するIDに紐づくものを取得する
-    fun findBy(id: Int): AnnouncementEntity? = announcementRepository.findById(id).orElse(null)
+    fun findBy(id: Int): AnnouncementEntity? {
+        return announcementRepository.findById(id).orElse(null)
+    }
 }
