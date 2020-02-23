@@ -18,5 +18,5 @@ class AnnouncementService (private val announcementRepository: AnnouncementRepos
     fun findAll(): List<AnnouncementEntity> = announcementRepository.findAll()
 
     // ライブラリ`JPA`を利用してAnnouncementEntityにマッピングされたデータのうち該当するIDに紐づくものを取得する
-    fun findBy(id: Int): Optional<AnnouncementEntity> = announcementRepository.findById(id)
+    fun findBy(id: Int): AnnouncementEntity? = announcementRepository.findById(id).orElse(null)
 }
