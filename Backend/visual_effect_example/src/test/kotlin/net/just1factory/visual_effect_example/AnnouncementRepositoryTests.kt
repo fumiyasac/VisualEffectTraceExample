@@ -8,6 +8,7 @@ import net.just1factory.visual_effect_example.domain.repository.AnnouncementRepo
 
 // MEMO: JUnit5で提供されているアノテーション（JUnit4とは異なる点に注意）
 import org.junit.jupiter.api.BeforeEach
+import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
 
@@ -26,6 +27,9 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 // 参考: https://qiita.com/kazuki43zoo/items/4a9ead225a9a9897af4a
 import org.springframework.test.context.junit.jupiter.SpringExtension
 
+// Javaクラスのインポート宣言
+import java.util.*
+
 // MEMO: JUnit5からはSpringExtensionになる点に注意
 @ExtendWith(SpringExtension::class)
 
@@ -40,26 +44,41 @@ class AnnouncementRepositoryTests {
     @Autowired
     private lateinit var announcementRepository: AnnouncementRepository
 
-    // MEMO: AnnouncementRepositoryから取得したデータを格納する場所
-    private lateinit var announcements: List<AnnouncementEntity>
-
     // MEMO: 各種テストコードの実行前にする処理
     @BeforeEach
     fun beforeEach() {
-        println("----- 自動テストを開始します -----")
-
-        // テーブル(announcement)に格納されているデータを全件取得する
-        announcements = announcementRepository.findAll()
+        println("↓↓↓ 自動テストを開始します: ↓↓↓")
     }
 
-    // MEMO: 実行するテストコード（※ここでは初期値の内容が正しいかの検証をしている）
+    // MEMO: 各種テストコードの実行後にする処理
+    @AfterEach
+    fun afterEach() {
+        println("↑↑↑ 自動テストを終了します: ↑↑↑")
+    }
+
+    // MEMO: 実行するテストコード
+
+    // 全件取得に関するテスト
     @Test
     fun findAllTest() {
+        val announcements: List<AnnouncementEntity> = announcementRepository.findAll()
+        val randomIndex = (announcements.indices).shuffled().first()
 
-        // MEMO: 具体的にテストしたい内容を記載する
         assertThat(announcements.size).isEqualTo(3)
         assertThat(announcements.first().title).isEqualTo("新しいiOSアプリのUI実装サンプルを追加しました。")
-        val randomIndex = (announcements.indices).shuffled().first()
         assertThat(announcements[randomIndex].publishFlag).isEqualTo(0)
+    }
+
+    // IDに紐づく特定データ取得に関するテスト
+    @Test
+    fun findByIdTest() {
+        val announcementCorrect: Optional<AnnouncementEntity> = announcementRepository.findById(1)
+        val announcementWrong: Optional<AnnouncementEntity> = announcementRepository.findById(99999999)
+
+        assertThat(announcementCorrect.orElse(null).id).isEqualTo(1)
+        assertThat(announcementCorrect.orElse(null).title).isEqualTo("新しいiOSアプリのUI実装サンプルを追加しました。")
+        assertThat(announcementCorrect.orElse(null).publishFlag).isEqualTo(0)
+
+        assertThat(announcementWrong.orElse(null)).isEqualTo(null)
     }
 }

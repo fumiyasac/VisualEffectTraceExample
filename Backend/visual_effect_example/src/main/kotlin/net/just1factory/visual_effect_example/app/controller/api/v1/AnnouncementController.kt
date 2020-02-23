@@ -5,6 +5,10 @@ import net.just1factory.visual_effect_example.domain.service.AnnouncementService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.PathVariable
+
+// Javaクラスのインポート宣言
+import java.util.*
 
 @RestController
 @RequestMapping("/api/v1")
@@ -14,5 +18,11 @@ class AnnouncementController(private val announcementService: AnnouncementServic
     @GetMapping("/announcement")
     fun findAll(): List<AnnouncementEntity> {
         return announcementService.findAll()
+    }
+
+    // MEMO: AnnouncementServiceを経由して受け取ったIDに紐づくAnnouncementEntityにマッピングされたデータを1件取得する
+    @GetMapping("/announcement/{id}")
+    fun findBy(@PathVariable id: Int): Optional<AnnouncementEntity> {
+         return announcementService.findBy(id)
     }
 }
