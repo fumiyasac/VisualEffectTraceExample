@@ -16,7 +16,7 @@ protocol APIRequestManagerProtocol {
     // MEMO: 認証済みユーザーのAPIリクエスト
 
     // MEMO: 公開部分のAPIリクエスト
-    func getAnnoucements() -> Single<Array<AnnouncementEntity>>
+    func getAnnoucements() -> Single<AnnouncementListResponse>
 }
 
 class APIRequestManager {
@@ -58,15 +58,15 @@ extension APIRequestManager: APIRequestManagerProtocol {
 
     // MARK: - Function
 
-    func getAnnoucements() -> Single<Array<AnnouncementEntity>> {
+    func getAnnoucements() -> Single<AnnouncementListResponse> {
         let endpointUrl = EndPoint.announcements.getBaseUrl()
         let urlRequest = makeGetRequest(endpointUrl)
-        return handleDataTask(Array<AnnouncementEntity>.self, request: urlRequest)
+        return handleDataTask(AnnouncementListResponse.self, request: urlRequest)
     }
 
     // MARK: - Private Function
 
-    private func handleDataTask<T: Decodable & Hashable>(_ dataType: T.Type, request: URLRequest) -> Single<T> {
+    private func handleDataTask<T: Decodable>(_ dataType: T.Type, request: URLRequest) -> Single<T> {
 
         return Single<T>.create(subscribe: { singleEvent in
 
@@ -90,7 +90,7 @@ extension APIRequestManager: APIRequestManagerProtocol {
                     let hashableObjects = try JSONDecoder().decode(T.self, from: data)
                     singleEvent(.success(hashableObjects))
                 } catch {
-                    singleEvent(.error(APIError.error("Error: JSONからのぱマッピングに失敗しました。")))
+                    singleEvent(.error(APIError.error("Error: JSONからのマッピングに失敗しました。")))
                 }
             }
             task.resume()

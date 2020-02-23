@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		843036C4A231FCAC14A48314 /* Pods_VisualEffectTraceExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C93C463F55AF4FFC433D1E5 /* Pods_VisualEffectTraceExample.framework */; };
+		DE0424E52402AF50008DEF36 /* AnnouncementListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0424E42402AF50008DEF36 /* AnnouncementListResponse.swift */; };
 		DE14134823FB02A10000D27C /* APIRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE14134723FB02A10000D27C /* APIRequestManager.swift */; };
 		DEA01C7F240107DC00346C1E /* AnnouncementEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA01C7E240107DC00346C1E /* AnnouncementEntity.swift */; };
 		DEAA656923F3122F00C5232B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA656823F3122F00C5232B /* AppDelegate.swift */; };
@@ -49,6 +50,7 @@
 		1C8C1B8206245010E05842E0 /* Pods-VisualEffectTraceExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisualEffectTraceExample.debug.xcconfig"; path = "Target Support Files/Pods-VisualEffectTraceExample/Pods-VisualEffectTraceExample.debug.xcconfig"; sourceTree = "<group>"; };
 		2C93C463F55AF4FFC433D1E5 /* Pods_VisualEffectTraceExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VisualEffectTraceExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AFA8542E8A9AD89F4086318 /* Pods-VisualEffectTraceExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisualEffectTraceExample.release.xcconfig"; path = "Target Support Files/Pods-VisualEffectTraceExample/Pods-VisualEffectTraceExample.release.xcconfig"; sourceTree = "<group>"; };
+		DE0424E42402AF50008DEF36 /* AnnouncementListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementListResponse.swift; sourceTree = "<group>"; };
 		DE14134723FB02A10000D27C /* APIRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestManager.swift; sourceTree = "<group>"; };
 		DEA01C7E240107DC00346C1E /* AnnouncementEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementEntity.swift; sourceTree = "<group>"; };
 		DEAA656523F3122F00C5232B /* VisualEffectTraceExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisualEffectTraceExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +109,14 @@
 				2C93C463F55AF4FFC433D1E5 /* Pods_VisualEffectTraceExample.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DE0424E32402AF1D008DEF36 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				DE0424E42402AF50008DEF36 /* AnnouncementListResponse.swift */,
+			);
+			path = Response;
 			sourceTree = "<group>";
 		};
 		DE14134423FAF1840000D27C /* TestData */ = {
@@ -186,12 +196,13 @@
 				DEAA656A23F3122F00C5232B /* SceneDelegate.swift */,
 				DEAA657123F3123100C5232B /* Assets.xcassets */,
 				DEAA65B223F86E6800C5232B /* APIManager */,
-				DEA01C7A2400FE0E00346C1E /* Model */,
 				DEAA65A023F70D1400C5232B /* Enum */,
 				DEAA659F23F70CF200C5232B /* Extension */,
+				DEA01C7A2400FE0E00346C1E /* Model */,
 				DEAA659D23F70CD900C5232B /* Modules */,
 				DEAA65A123F70D3D00C5232B /* RealmEntity */,
 				DEAA659A23F70C8200C5232B /* Redux */,
+				DE0424E32402AF1D008DEF36 /* Response */,
 				DEAA659923F70B8200C5232B /* Storyboard */,
 				DE14134423FAF1840000D27C /* TestData */,
 				DEAA659E23F70CE400C5232B /* View */,
@@ -498,6 +509,7 @@
 				DEAA65A723F70E4600C5232B /* StoryboardInstantiatable.swift in Sources */,
 				DEAA656B23F3122F00C5232B /* SceneDelegate.swift in Sources */,
 				DEAA65A523F70E2700C5232B /* NSObjectProtocolExtension.swift in Sources */,
+				DE0424E52402AF50008DEF36 /* AnnouncementListResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

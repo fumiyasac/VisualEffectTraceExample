@@ -22,8 +22,8 @@ final class MainViewController: UIViewController {
 
         let api = APIRequestManager.shared
         let _ = api.getAnnoucements().subscribe(
-            onSuccess: { result in
-                print(result)
+            onSuccess: { data in
+                print(data.result)
             },
             onError: { error in
                 print(error)

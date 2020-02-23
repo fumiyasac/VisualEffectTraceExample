@@ -46,5 +46,3 @@ struct AnnouncementEntity: Hashable, Decodable {
         return lhs.id == rhs.id
     }
 }
-
-
