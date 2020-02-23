@@ -7,6 +7,10 @@ import net.just1factory.visual_effect_example.domain.service.AnnouncementService
 import net.just1factory.visual_effect_example.app.response.announcement.AnnouncementListResponse
 import net.just1factory.visual_effect_example.app.response.announcement.AnnouncementDetailResponse
 
+// コンテキスト層（Exception）
+import net.just1factory.visual_effect_example.context.exception.NotFoundException
+
+// Spring Frameworkのインポート宣言
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -26,7 +30,7 @@ class AnnouncementController(private val announcementService: AnnouncementServic
     // MEMO: AnnouncementServiceを経由して受け取ったIDに紐づくAnnouncementEntityにマッピングされたデータを1件取得する
     @GetMapping("/announcement/{id}")
     fun findBy(@PathVariable id: Int): AnnouncementDetailResponse {
-        val announcement = announcementService.findBy(id)
+        val announcement = announcementService.findBy(id) ?: throw NotFoundException("ID: " + id + "に合致するデータが見つかりませんでした。")
         return AnnouncementDetailResponse(announcement)
     }
 }
