@@ -72,15 +72,19 @@ extension APIRequestManager: APIRequestManagerProtocol {
 
             // MEMO: API通信結果のハンドリング処理では、成功または失敗かのいずれかのイベントを1度だけ流すことを保証する形にする
             let task = self.session.dataTask(with: request) { data, response, error in
-                // MEMO: レスポンス形式やステータスコードを元にしたエラーハンドリングをする
+                // MEMO: 通信状態等に起因するエラー発生時のエラーハンドリング
                 if let error = error {
                     singleEvent(.error(error))
                     return
                 }
+                // MEMO: Debug用にエラー発生時のJSONを出力する
+                //self.displayErrorForDebug(targetResponse: response, targetData: data)
+                // MEMO: ステータスコードの精査及びエラーハンドリング
                 guard let response = response as? HTTPURLResponse, case 200..<400 = response.statusCode else {
                     singleEvent(.error(APIError.error("Error: StatusCodeが200~399以外です。")))
                     return
                 }
+                // MEMO: 取得データの内容の精査及びエラーハンドリング
                 guard let data = data else {
                     singleEvent(.error(APIError.error("Error: レスポンスが空でした。")))
                     return
@@ -112,5 +116,16 @@ extension APIRequestManager: APIRequestManagerProtocol {
         urlRequest.httpMethod = "GET"
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         return urlRequest
+    }
+
+    // MEMO: デバッグ用にエラー時に出力されるJSONを表示する
+    private func displayErrorForDebug(targetResponse: URLResponse?, targetData: Data?) {
+        if let debugResponse = targetResponse as? HTTPURLResponse {
+            print("StatusCode:", debugResponse.statusCode)
+            if let debugData = targetData {
+                let debugJson = String(data: debugData, encoding: String.Encoding.utf8) ?? "No Response found."
+                print("ErrorResponse:", debugJson)
+            }
+        }
     }
 }
