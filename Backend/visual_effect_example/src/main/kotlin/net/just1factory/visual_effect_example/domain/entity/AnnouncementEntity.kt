@@ -19,7 +19,7 @@ data class AnnouncementEntity(
         @Column(name = "thumbnail_url", nullable = true)
         val thumbnailUrl: String? = null,
         @Column(name = "publish_flag", nullable = false)
-        val publishFlag: Int,
+        val publishFlag: Int = 0,
         @Column(name="created_at")
         val createdAt: Date,
         @Column(name="updated_at")
