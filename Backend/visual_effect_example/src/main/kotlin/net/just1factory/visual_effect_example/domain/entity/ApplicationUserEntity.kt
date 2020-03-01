@@ -15,7 +15,7 @@ data class ApplicationUserEntity(
 	@Column(name = "user_name", nullable = false)
 	val userName: String = "",
 	@Column(name = "mail_address", nullable = false)
-	val mainAddress: String = "",
+	val mailAddress: String = "",
 	@Column(name = "password", nullable = false)
 	val password: String = "",
 	@Column(name = "auth_token", nullable = true)

@@ -10,6 +10,5 @@ CREATE TABLE `user` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'ユーザー情報更新日',
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_name_UNIQUE` (`user_name`),
-  UNIQUE KEY `mail_address_UNIQUE` (`mail_address`),
-  UNIQUE KEY `password_UNIQUE` (`password`)
+  UNIQUE KEY `mail_address_UNIQUE` (`mail_address`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

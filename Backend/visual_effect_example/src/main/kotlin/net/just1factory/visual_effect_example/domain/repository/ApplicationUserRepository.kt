@@ -11,5 +11,9 @@ interface ApplicationUserRepository : JpaRepository<ApplicationUserEntity, Int> 
 	// 参考URL: Spring Boot/KotlinでCRUD操作のできるAPIを作成する方法
 	// https://qiita.com/akkino_D-En/items/574ccdc057849e0e22ce
 
-	fun findByUserNameAndPassword(userName: String, encodedPassword: String): ApplicationUserEntity?
+	// メールアドレスとユーザー名を元にデータを1件取得する
+	fun findByUserNameAndMailAddress(userName: String, mailAddress: String): ApplicationUserEntity?
+
+	// メールアドレスとパスワードを元にデータを1件取得する
+	fun findByMailAddressAndPassword(mailAddress: String, password: String): ApplicationUserEntity?
 }
