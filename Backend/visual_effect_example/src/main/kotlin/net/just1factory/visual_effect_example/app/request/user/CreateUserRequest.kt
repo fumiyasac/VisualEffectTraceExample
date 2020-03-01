@@ -3,10 +3,6 @@ package net.just1factory.visual_effect_example.app.request.user
 // MEMO: JSONのキーを変数名と対応するために利用するアノテーション
 import com.fasterxml.jackson.annotation.JsonProperty
 
-// MEMO: レスポンスのステータスコードを構築するためのアノテーション
-import org.springframework.web.bind.annotation.ResponseStatus
-import org.springframework.http.HttpStatus
-
 // MEMO: バリデーション用に利用するアノテーション
 import javax.validation.constraints.NotNull
 import javax.validation.constraints.Pattern
@@ -16,8 +12,6 @@ import javax.validation.constraints.Email
 // MEMO: Data Classにバリデーションを仕込む場合には「@field: アノテーション」としないと正常にバリデーションが実行されない点に注意
 // 参考: 【Kotlin】バリデーションの書き方の基礎【SpringBoot】
 // → https://qiita.com/wrongwrong/items/8120faeb9f7498f925c5
-
-@ResponseStatus(code = HttpStatus.CREATED)
 data class CreateUserRequest(
 	@JsonProperty("user_name")
 	@field: NotNull(message = "ユーザー名が送信されていません。")
