@@ -71,8 +71,8 @@ class ApplicationUserController {
 		println("rawPassword:" + loginUserRequest.rawPassword!!)
 	}
 
-	// MEMO: AnnouncementServiceを経由してAnnouncementEntityにマッピングされたデータを全件取得する
-	@GetMapping("/example")
+	// MEMO: デバッグ時に表示する情報を取得する
+	@GetMapping("/debug")
 	fun example(): String {
 		return "認証が通過したら閲覧可能です!"
 	}
