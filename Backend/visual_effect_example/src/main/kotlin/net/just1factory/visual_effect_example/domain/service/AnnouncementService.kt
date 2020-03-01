@@ -4,8 +4,7 @@ import net.just1factory.visual_effect_example.domain.entity.AnnouncementEntity
 import net.just1factory.visual_effect_example.domain.repository.AnnouncementRepository
 import org.springframework.stereotype.Service
 
-//
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired
 
 @Service
 class AnnouncementService {
