@@ -44,14 +44,14 @@ class ApplicationUserController {
 		)
 
 		// Debug.
-//		println("userName:" + createUserRequest.userName)
-//		println("mainAddress:" + createUserRequest.mainAddress)
-//		println("rawPassword:" + createUserRequest.rawPassword )
+		println("userName:" + createUserRequest.userName)
+		println("mainAddress:" + createUserRequest.mainAddress)
+		println("rawPassword:" + createUserRequest.rawPassword )
 		return UserSignupResponse("OK")
 	}
 
 	// MEMO: ログイン処理を実行する
-	@PostMapping("/siginin")
+	@PostMapping("/signin")
 	fun createUser(@RequestBody @Validated loginUserRequest: LoginUserRequest, bindingResult: BindingResult) {
 		// MEMO: 送信された会員情報のバリデーションを実施してエラーを検知した際はUnprocessableEntityExceptionを投げる
 		if (bindingResult.hasErrors()) {
@@ -67,9 +67,8 @@ class ApplicationUserController {
 		)
 
 		// Debug.
-//		println("userName:" + createUserRequest.userName)
-//		println("mainAddress:" + createUserRequest.mainAddress)
-//		println("rawPassword:" + createUserRequest.rawPassword )
+		println("mainAddress:" + loginUserRequest.mainAddress!!)
+		println("rawPassword:" + loginUserRequest.rawPassword!!)
 	}
 
 	// MEMO: AnnouncementServiceを経由してAnnouncementEntityにマッピングされたデータを全件取得する
