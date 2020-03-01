@@ -16,9 +16,15 @@ import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.bind.annotation.PathVariable
 
+//
+import org.springframework.beans.factory.annotation.Autowired
+
 @RestController
 @RequestMapping("/api/v1")
-class AnnouncementController(private val announcementService: AnnouncementService) {
+class AnnouncementController {
+
+    @Autowired
+    private lateinit var announcementService: AnnouncementService
 
     // MEMO: AnnouncementServiceを経由してAnnouncementEntityにマッピングされたデータを全件取得する
     @GetMapping("/announcement")

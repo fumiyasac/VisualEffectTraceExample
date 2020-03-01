@@ -4,8 +4,14 @@ import net.just1factory.visual_effect_example.domain.entity.AnnouncementEntity
 import net.just1factory.visual_effect_example.domain.repository.AnnouncementRepository
 import org.springframework.stereotype.Service
 
+//
+import org.springframework.beans.factory.annotation.Autowired;
+
 @Service
-class AnnouncementService (private val announcementRepository: AnnouncementRepository) {
+class AnnouncementService {
+
+    @Autowired
+    private lateinit var announcementRepository: AnnouncementRepository
 
     // MEMO: この記事を参考に実装しています。
     // 参考: Kotlin + SpringBoot + JPA + Thymeleafで簡単なCRUDを作る②～画面と機能作成まで～

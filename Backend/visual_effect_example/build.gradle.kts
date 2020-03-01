@@ -26,8 +26,8 @@ dependencies {
 	// MEMO: 自分で追加したプラグインは以下
 	implementation("mysql:mysql-connector-java")
 	implementation("org.flywaydb:flyway-core")
-	//implementation("org.springframework.boot:spring-boot-starter-security")
-	//implementation("io.jsonwebtoken:jjwt:0.9.1")
+	implementation("org.springframework.boot:spring-boot-starter-security")
+	implementation("io.jsonwebtoken:jjwt:0.9.1")
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
 	}

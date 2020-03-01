@@ -5,19 +5,19 @@ import java.util.Date
 
 @Entity
 @Table(name="user")
-data class UserEntity(
+data class ApplicationUserEntity(
 
 	// MEMO: カラムに対応する値を定義する（※テーブルとの対応が1:1の場合）
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
-	val id: Int,
+	val id: Int = 0,
 	@Column(name = "user_name", nullable = false)
-	val userName: String,
+	val userName: String = "",
 	@Column(name = "mail_address", nullable = false)
-	val mainAddress: String,
+	val mainAddress: String = "",
 	@Column(name = "password", nullable = false)
-	val password: String,
+	val password: String = "",
 	@Column(name = "auth_token", nullable = true)
 	val authToken: String? = null,
 	@Column(name = "device_token", nullable = true)
@@ -25,7 +25,7 @@ data class UserEntity(
 	@Column(name = "status_code", nullable = false)
 	val publishFlag: Int = 0,
 	@Column(name="created_at")
-	val createdAt: Date,
+	val createdAt: Date = Date(),
 	@Column(name="updated_at")
-	val updatedAt: Date
+	val updatedAt: Date = Date()
 )
