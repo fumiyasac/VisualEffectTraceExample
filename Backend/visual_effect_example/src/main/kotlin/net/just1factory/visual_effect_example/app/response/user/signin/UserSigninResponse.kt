@@ -12,5 +12,6 @@ import org.springframework.http.HttpStatus
 @ResponseStatus(code = HttpStatus.OK)
 @ResponseBody
 data class UserSigninResponse @JsonCreator constructor(
-	val result: String
+	val result: String,
+	val token: String
 )
