@@ -39,6 +39,9 @@ import org.springframework.web.bind.annotation.CrossOrigin
 // 補足3: Authentication e Authorization usando Springboot + Kotlin
 // https://medium.com/@jonssantana/authentication-e-authorization-usando-springboot-kotlin-382681024d08
 
+// 補足: 【図解】RESTful WebサービスにおけるHTTPステータスコード
+// https://www.agilegroup.co.jp/technote/rest-status-code.html
+
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/api/v1")
