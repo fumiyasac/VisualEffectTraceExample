@@ -18,8 +18,6 @@ data class ApplicationUserEntity(
 	val mailAddress: String = "",
 	@Column(name = "password", nullable = false)
 	val password: String = "",
-	@Column(name = "auth_token", nullable = true)
-	val authToken: String? = null,
 	@Column(name = "device_token", nullable = true)
 	val deviceToken: String? = null,
 	@Column(name = "status_code", nullable = false)

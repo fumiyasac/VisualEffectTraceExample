@@ -9,23 +9,32 @@ import net.just1factory.visual_effect_example.app.request.user.LoginUserRequest
 import net.just1factory.visual_effect_example.app.response.user.signup.UserSignupResponse
 import net.just1factory.visual_effect_example.app.response.user.signin.UserSigninResponse
 
-// コンテキスト層（Exception）
+// コンテキスト層（JWT・Exception）
+import net.just1factory.visual_effect_example.context.jwt.JWTGenerator
 import net.just1factory.visual_effect_example.context.exception.UnprocessableEntityException
 import net.just1factory.visual_effect_example.context.exception.ConflictException
 import net.just1factory.visual_effect_example.context.exception.UnauthorizedException
 
-// Spring Frameworkのインポート宣言
+// Spring FrameworkのValidationに関するインポート宣言
 import org.springframework.validation.annotation.Validated
 import org.springframework.validation.BindingResult
 
+// Spring FrameworkのAnnotationに関するインポート宣言
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.CrossOrigin
+
+// MEMO: RestAPIを開発する上で知っておくと良さそうな点
+
+// 補足: 【図解】RESTful WebサービスにおけるHTTPステータスコード
+// https://www.agilegroup.co.jp/technote/rest-status-code.html
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("/api/v1")
 class ApplicationUserController {
 
@@ -34,7 +43,7 @@ class ApplicationUserController {
 
 	// MEMO: 新規会員登録処理を実行する
 	@PostMapping("/signup")
-	fun createUser(@RequestBody @Validated createUserRequest: CreateUserRequest, bindingResult: BindingResult) : UserSignupResponse {
+	fun createApplicationUser(@RequestBody @Validated createUserRequest: CreateUserRequest, bindingResult: BindingResult) : UserSignupResponse {
 
 		// MEMO: 送信された会員情報のバリデーションを実施してエラーを検知した際はUnprocessableEntityExceptionを投げる
 		if (bindingResult.hasErrors()) {
@@ -46,10 +55,10 @@ class ApplicationUserController {
 		val mailAddress = createUserRequest.mainAddress!!
 		val rawPassword = createUserRequest.rawPassword!!
 
-		// MEMO: 同一ユーザーが存在する場合はConflictExceptionを投げる
-		val foundApplicationUser = applicationUserService.findByUserNameAndMailAddress(
-			userName = userName,
-			mailAddress = mailAddress
+		// MEMO: 同一ユーザーが存在するかを検証する（※ユーザー名は一意である点に注意）
+		// 例外: 同一ユーザーが存在する場合はConflictExceptionを投げる
+		val foundApplicationUser = applicationUserService.findByUserName(
+			userName = userName
 		)
 		if (foundApplicationUser != null) {
 			throw ConflictException("このユーザーは既に存在しています。")
@@ -63,16 +72,16 @@ class ApplicationUserController {
 		)
 
 		// Debug.
-		println("userName:" + userName)
-		println("mainAddress:" + mailAddress)
-		println("rawPassword:" + rawPassword)
+		//println("userName:" + userName)
+		//println("mainAddress:" + mailAddress)
+		//println("rawPassword:" + rawPassword)
 
-		return UserSignupResponse("OK")
+		return UserSignupResponse(result = "OK")
 	}
 
 	// MEMO: ログイン処理を実行する
 	@PostMapping("/signin")
-	fun createUser(@RequestBody @Validated loginUserRequest: LoginUserRequest, bindingResult: BindingResult) : UserSigninResponse {
+	fun loginApplicationUser(@RequestBody @Validated loginUserRequest: LoginUserRequest, bindingResult: BindingResult) : UserSigninResponse {
 
 		// MEMO: 送信された会員情報のバリデーションを実施してエラーを検知した際はUnprocessableEntityExceptionを投げる
 		if (bindingResult.hasErrors()) {
@@ -83,26 +92,33 @@ class ApplicationUserController {
 		val mailAddress = loginUserRequest.mainAddress!!
 		val rawPassword = loginUserRequest.rawPassword!!
 
-		// MEMO: 同一ユーザーが存在しない場合はUnauthorizedExceptionを投げる
-		val foundApplicationUser = applicationUserService.findByMailAddressAndPassword(
+		// MEMO: メールアドレスとパスワードを検証して正しい場合はユーザー名を取得する
+		// 例外: ユーザー名が取得できなかった場合はUnauthorizedExceptionを投げる
+		val loginSuccessUserName = applicationUserService.checkLoginAndGetUserName(
 			mailAddress = mailAddress,
 			rawPassword = rawPassword
+		) ?: throw UnauthorizedException("入力したパスワードまたはメールアドレスに誤りがあります。")
+
+		// 該当ユーザーのJWT(Json Web Token)を生成する
+		val userJwt = JWTGenerator().generateToken(
+			userName = loginSuccessUserName
 		)
-		if (foundApplicationUser != null) {
-			throw UnauthorizedException("入力したパスワードまたはメールアドレスに誤りがあります。")
-		}
 
 		// Debug.
-		println("mainAddress:" + mailAddress)
-		println("rawPassword:" + rawPassword)
+		//println("userName:" + loginSuccessUserName)
+		//println("mainAddress:" + mailAddress)
+		//println("rawPassword:" + rawPassword)
+		//println("userJwt:" + userJwt)
 
-		// TODO: 認証用のトークンについても一緒に返却するように変更する
-		return UserSigninResponse("OK")
+		return UserSigninResponse(
+			result = "OK",
+			token = userJwt
+		)
 	}
 
-	// MEMO: デバッグ時に表示する情報を取得する
+	// MEMO: JWTによる認可処理デバッグ時に表示する情報を取得する
 	@GetMapping("/debug")
 	fun example(): String {
-		return "認証が通過したら閲覧可能です!"
+		return "成功: 認証が通過したら閲覧可能です!"
 	}
 }

@@ -1,28 +1,47 @@
 package net.just1factory.visual_effect_example.context.security
 
+import net.just1factory.visual_effect_example.context.jwt.JWTAuthenticationFilter
+import net.just1factory.visual_effect_example.domain.service.ApplicationUserService
+
+//
+import org.springframework.beans.factory.annotation.Autowired
+
 // MEMO: 設定クラスで必要なアノテーション
 import org.springframework.context.annotation.Configuration
-
-// MEMO: 認証が必要なエンドポイントを定義する際に必要
-import org.springframework.http.HttpMethod
 
 // MEMO: Spring Securityが提供している機能を利用する
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
+import org.springframework.http.HttpMethod
 
 @Configuration
 @EnableWebSecurity
 class SecurityConfig: WebSecurityConfigurerAdapter() {
 
+	@Autowired
+	private lateinit var applicationUserService: ApplicationUserService
+
 	override fun configure(http: HttpSecurity) {
 
-		// MEMO: 認証が必要なエンドポイントやそうでない部分の設定を実施する
-		http.csrf().disable().authorizeRequests()
-			.antMatchers(HttpMethod.POST, SecurityConstant.SIGN_UP_URL).permitAll()
-			.antMatchers(HttpMethod.POST, SecurityConstant.SIGN_IN_URL).permitAll()
-			.antMatchers(HttpMethod.GET, SecurityConstant.ANNOUNCEMENT_LIST_URL).permitAll()
-			.antMatchers(HttpMethod.GET, SecurityConstant.ANNOUNCEMENT_DETAIL_URL).permitAll()
-			.anyRequest().authenticated()
+		// MEMO: 基本的には認証を前提としたAPIで処理する
+		// 補足: 除外したいエンドポイントについてはJWTAuthenticationFilterにも記載する
+
+		// 参考1: Spring Security 使い方メモ 基礎・仕組み
+		// https://qiita.com/opengl-8080/items/c105152c9ca48509bd0c
+		// 参考2: Spring Boot with Spring Security の Filter 設定とハマりポイント
+		// https://qiita.com/R-STYLE/items/61a3b6a678cb0ff00edf
+
+		http.csrf()
+			.disable()
+			.authorizeRequests()
+			.antMatchers(HttpMethod.GET,"/api/v1/announcement").permitAll()
+			.antMatchers(HttpMethod.GET,"/api/v1/announcement/{id}").permitAll()
+			.antMatchers(HttpMethod.POST,"/api/v1/signup").permitAll()
+			.antMatchers(HttpMethod.POST,"/api/v1/signin").permitAll()
+			.anyRequest()
+			.authenticated()
+			.and()
+			.addFilter(JWTAuthenticationFilter(authenticationManager(), applicationUserService))
 	}
 }
