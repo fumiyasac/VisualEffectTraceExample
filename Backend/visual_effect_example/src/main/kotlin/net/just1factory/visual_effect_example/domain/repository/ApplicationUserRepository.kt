@@ -17,6 +17,6 @@ interface ApplicationUserRepository : JpaRepository<ApplicationUserEntity, Int> 
 	// ユーザー名を元にデータを1件取得する
 	fun findByUserName(userName: String): ApplicationUserEntity?
 
-	// メールアドレスとパスワードを元にデータを1件取得する
+	// メールアドレスを元にデータを1件取得する
 	fun findByMailAddress(mailAddress: String): ApplicationUserEntity?
 }
