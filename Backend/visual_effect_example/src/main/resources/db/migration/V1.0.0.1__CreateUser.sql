@@ -11,3 +11,11 @@ CREATE TABLE `user` (
   UNIQUE KEY `user_name_UNIQUE` (`user_name`),
   UNIQUE KEY `mail_address_UNIQUE` (`mail_address`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+LOCK TABLES `user` WRITE;
+
+INSERT INTO `user` (`id`, `user_name`, `mail_address`, `password`, `device_token`, `status_code`, `created_at`, `updated_at`)
+VALUES
+	(1, 'fumiyasac', 'just1factory@gmail.com', '$2a$10$q0yZy5U8Ttz8vyakGgpZj.naWF0574p6i3.7lnkyN1DT06Fh/Jeq2', NULL, 0, '2020-03-08 00:00:00', '2020-03-08 00:00:00');
+
+UNLOCK TABLES;
