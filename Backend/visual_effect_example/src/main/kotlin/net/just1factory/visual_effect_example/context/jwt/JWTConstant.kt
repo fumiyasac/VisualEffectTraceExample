@@ -11,8 +11,8 @@ class JWTConstant {
 		const val TOKEN_PREFIX = "Bearer "
 		const val HEADER_STRING = "Authorization"
 
-		// MEMO: 10日間の有効期限
-		const val EXPIRATION_TIME: Long = 864_000_000
+		// MEMO: 1日間の有効期限
+		const val EXPIRATION_TIME: Long = 86400000
 	}
 }
 
