@@ -6,13 +6,13 @@ PODS:
   - DifferenceKit/Core (1.1.5)
   - DifferenceKit/UIKitExtension (1.1.5):
     - DifferenceKit/Core
-  - ESPullToRefresh (2.9.1)
+  - ESPullToRefresh (2.9.2)
   - ESTabBarController-swift (2.8.0)
   - ExpandingMenu (0.4.0)
   - HandyJSON (5.0.1)
   - KeychainAccess (4.1.0)
   - Loaf (0.5.0)
-  - Nuke (8.3.1)
+  - Nuke (8.4.0)
   - NVActivityIndicatorView (4.8.0):
     - NVActivityIndicatorView/Presenter (= 4.8.0)
   - NVActivityIndicatorView/Presenter (4.8.0)
@@ -22,22 +22,22 @@ PODS:
   - PanModal (1.2.5)
   - ParallaxHeader (3.0.0)
   - PryntTrimmerView (4.0.0)
-  - Realm (4.1.1):
-    - Realm/Headers (= 4.1.1)
-  - Realm/Headers (4.1.1)
-  - RealmSwift (4.1.1):
-    - Realm (= 4.1.1)
+  - Realm (4.3.2):
+    - Realm/Headers (= 4.3.2)
+  - Realm/Headers (4.3.2)
+  - RealmSwift (4.3.2):
+    - Realm (= 4.3.2)
   - ReSwift (5.0.0)
-  - ReSwiftMonitor (0.0.8):
-    - HandyJSON (~> 5.0.0)
+  - ReSwiftMonitor (0.0.10):
+    - HandyJSON (~> 5.0.1)
     - ReSwift (~> 5.0.0)
-    - Starscream (~> 3.1.0)
-  - RxCocoa (5.0.1):
+    - Starscream (= 3.1.1)
+  - RxCocoa (5.1.0):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
-  - RxRelay (5.0.1):
+  - RxRelay (5.1.0):
     - RxSwift (~> 5)
-  - RxSwift (5.0.1)
+  - RxSwift (5.1.0)
   - Starscream (3.1.1)
   - SteviaLayout (4.7.3)
   - XCGLogger (7.0.1):
@@ -99,25 +99,25 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   AirBar: 01bfd58778a6f08491dd0eb7574979075da3bd14
   DifferenceKit: 516f12e336ed65a3a0665847b5c3cb5cad4bd4ea
-  ESPullToRefresh: 8efd37e4cb400addfd28add6757aaf1a461483eb
+  ESPullToRefresh: efed00d52597065e9a84e1e52fa444fdb1a1dee0
   ESTabBarController-swift: 05593a6ad64700b03c0eb60ff625916370aa4136
   ExpandingMenu: 3187a4ed1aa1aea85418e444c213e4cd6063c122
   HandyJSON: d45b8415c501e3affc59ca9762c1197ff0feb646
   KeychainAccess: 445e28864fe6d3458b41fa211bcdc39890e8bd5a
   Loaf: 0800b444431366bc395d54267975d4ad4ad5c99c
-  Nuke: 85fb80f8df0cb26c28d2f4e0cb7fb93bcd6548d3
+  Nuke: fa6f784c4f7e1c0f9313668510186c68b7af2509
   NVActivityIndicatorView: d24b7ebcf80af5dcd994adb650e2b6c93379270f
   ObjcExceptionBridging: c30e00eb3700467e695faeea30e26e18bd445001
   PanModal: 7c5af3ad4fe22b91508040965bebffb89fb607ae
   ParallaxHeader: a343f55eb38f52a89c5820a77e14cf975b84e6aa
   PryntTrimmerView: 67e67573ffd4c073f1308effa66aefd0cfa667a0
-  Realm: 25f0a8244cbb1c2271c922963ea8666fc2d8104d
-  RealmSwift: 9e2657b33764f80e4a4dffd6d440e24715782052
+  Realm: 5e92902e2875dff4bb0fd02f67bb737c3d5db2bc
+  RealmSwift: 9a360fc7bae04fc2e308a34fbd899d5faa2d6b22
   ReSwift: 628f1a9b3ee52e3b3ca2a644435472fd77afafe1
-  ReSwiftMonitor: 218f5470e5d671689f3052ab0c22774eb7913799
-  RxCocoa: e741b9749968e8a143e2b787f1dfbff2b63d0a5c
-  RxRelay: 89d54507f4fd4d969e6ec1d4bd7f3673640b4640
-  RxSwift: e2dc62b366a3adf6a0be44ba9f405efd4c94e0c4
+  ReSwiftMonitor: b0d796cdd755820ea5b8e4ea51504a88155d7fb4
+  RxCocoa: 13d2a4d7546a34b8ececae8c281e4ea1dbb94f2b
+  RxRelay: a168bd6caf712d00c676ac344e9295afc93b418e
+  RxSwift: ad5874f24bb0dbffd1e9bb8443604e3578796c7a
   Starscream: 4bb2f9942274833f7b4d296a55504dcfc7edb7b0
   SteviaLayout: c2ecdcff57d44e38fd2f65e54ad52aeae28ca0c4
   XCGLogger: 1943831ef907df55108b0b18657953f868de973b
