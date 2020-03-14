@@ -14,12 +14,12 @@ import org.junit.jupiter.api.extension.ExtendWith
 import org.assertj.core.api.Assertions.assertThat
 
 // MEMO: Setter Injectionを利用するためのアノテーション
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Autowired
 
 // MEMO: EntityとRepositoryのテストを実施するにあたりAutoConfigurationを利用するためのアノテーション
 // 参考: https://qiita.com/fanfanta/items/05d7d0ac2b5a43935ee3
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
+import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase
 
 // MEMO: Spring TestContext Frameworkを利用可能にする
 // 参考: https://qiita.com/kazuki43zoo/items/4a9ead225a9a9897af4a

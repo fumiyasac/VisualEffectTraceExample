@@ -27,6 +27,7 @@
 		DEAA65AD23F70EE900C5232B /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA65AC23F70EE900C5232B /* UIViewControllerExtension.swift */; };
 		DEAA65AF23F7288C00C5232B /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA65AE23F7288C00C5232B /* UITableViewExtension.swift */; };
 		DEAA65B123F7289A00C5232B /* UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA65B023F7289A00C5232B /* UICollectionViewExtension.swift */; };
+		DEDCC875241CD82500BFA165 /* BlockSubScriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDCC874241CD82500BFA165 /* BlockSubScriber.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		DEAA65AC23F70EE900C5232B /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		DEAA65AE23F7288C00C5232B /* UITableViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		DEAA65B023F7289A00C5232B /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
+		DEDCC874241CD82500BFA165 /* BlockSubScriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockSubScriber.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +252,7 @@
 		DEAA659A23F70C8200C5232B /* Redux */ = {
 			isa = PBXGroup;
 			children = (
+				DEDCC876241CF1FE00BFA165 /* BlockSubscriber */,
 			);
 			path = Redux;
 			sourceTree = "<group>";
@@ -310,6 +313,14 @@
 				DE14134723FB02A10000D27C /* APIRequestManager.swift */,
 			);
 			path = APIManager;
+			sourceTree = "<group>";
+		};
+		DEDCC876241CF1FE00BFA165 /* BlockSubscriber */ = {
+			isa = PBXGroup;
+			children = (
+				DEDCC874241CD82500BFA165 /* BlockSubScriber.swift */,
+			);
+			path = BlockSubscriber;
 			sourceTree = "<group>";
 		};
 		E8F66E6433453D282DEF22BE /* Pods */ = {
@@ -508,6 +519,7 @@
 				DEAA656923F3122F00C5232B /* AppDelegate.swift in Sources */,
 				DEAA65A723F70E4600C5232B /* StoryboardInstantiatable.swift in Sources */,
 				DEAA656B23F3122F00C5232B /* SceneDelegate.swift in Sources */,
+				DEDCC875241CD82500BFA165 /* BlockSubScriber.swift in Sources */,
 				DEAA65A523F70E2700C5232B /* NSObjectProtocolExtension.swift in Sources */,
 				DE0424E52402AF50008DEF36 /* AnnouncementListResponse.swift in Sources */,
 			);
