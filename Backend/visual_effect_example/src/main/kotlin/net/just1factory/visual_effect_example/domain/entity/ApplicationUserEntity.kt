@@ -4,7 +4,7 @@ import javax.persistence.*
 import java.util.Date
 
 @Entity
-@Table(name="user")
+@Table(name="users")
 data class ApplicationUserEntity(
 
 	// MEMO: カラムに対応する値を定義する（※テーブルとの対応が1:1の場合）

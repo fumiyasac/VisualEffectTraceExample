@@ -4,7 +4,7 @@ import javax.persistence.*
 import java.util.Date
 
 @Entity
-@Table(name="announcement")
+@Table(name="announcements")
 data class AnnouncementEntity(
 
         // MEMO: カラムに対応する値を定義する（※テーブルとの対応が1:1の場合）

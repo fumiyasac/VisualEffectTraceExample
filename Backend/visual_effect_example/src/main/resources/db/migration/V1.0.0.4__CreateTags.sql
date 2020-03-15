@@ -1,4 +1,4 @@
-CREATE TABLE `tag` (
+CREATE TABLE `tags` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL COMMENT 'タグ名の表記',
   `publish_flag` int(1) NOT NULL DEFAULT '0' COMMENT 'タグ用公開フラグ（0:公開 1:非公開）',
@@ -7,9 +7,9 @@ CREATE TABLE `tag` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-LOCK TABLES `tag` WRITE;
+LOCK TABLES `tags` WRITE;
 
-INSERT INTO `tag` (`id`, `name`, `publish_flag`, `created_at`, `updated_at`)
+INSERT INTO `tags` (`id`, `name`, `publish_flag`, `created_at`, `updated_at`)
 VALUES
 	(1,'石川県',0,'2020-03-12 00:00:00','2020-03-12 00:00:00'),
 	(2,'富山県',0,'2020-03-12 00:00:00','2020-03-12 00:00:00'),

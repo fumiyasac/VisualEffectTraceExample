@@ -170,7 +170,8 @@
 		DEA01C7D240103BA00346C1E /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				DEA01C7E240107DC00346C1E /* AnnouncementEntity.swift */,
+				DEAA65A123F70D3D00C5232B /* RealmEntity */,
+				DEDCC88D241E2C3300BFA165 /* APIResponseEntity */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -209,7 +210,6 @@
 				DEAA659F23F70CF200C5232B /* Extension */,
 				DEA01C7A2400FE0E00346C1E /* Model */,
 				DEAA659D23F70CD900C5232B /* Modules */,
-				DEAA65A123F70D3D00C5232B /* RealmEntity */,
 				DEAA659A23F70C8200C5232B /* Redux */,
 				DEDCC886241DE23B00BFA165 /* Request */,
 				DE0424E32402AF1D008DEF36 /* Response */,
@@ -243,6 +243,8 @@
 		DEAA659823F70B7700C5232B /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				DEDCC88C241DF16200BFA165 /* Contents */,
+				DEDCC88B241DF15900BFA165 /* Tutorial */,
 				DEAA656C23F3122F00C5232B /* MainViewController.swift */,
 			);
 			path = ViewController;
@@ -359,6 +361,28 @@
 				DEDCC889241DE30500BFA165 /* AnnouncementAPIRequest.swift */,
 			);
 			path = Request;
+			sourceTree = "<group>";
+		};
+		DEDCC88B241DF15900BFA165 /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
+		DEDCC88C241DF16200BFA165 /* Contents */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Contents;
+			sourceTree = "<group>";
+		};
+		DEDCC88D241E2C3300BFA165 /* APIResponseEntity */ = {
+			isa = PBXGroup;
+			children = (
+				DEA01C7E240107DC00346C1E /* AnnouncementEntity.swift */,
+			);
+			path = APIResponseEntity;
 			sourceTree = "<group>";
 		};
 		E8F66E6433453D282DEF22BE /* Pods */ = {

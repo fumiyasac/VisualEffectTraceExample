@@ -1,4 +1,4 @@
-CREATE TABLE `category` (
+CREATE TABLE `categories` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL COMMENT 'カテゴリー名の表記',
   `caption` varchar(255) DEFAULT NULL COMMENT 'カテゴリーキャプションの表記',
@@ -8,9 +8,9 @@ CREATE TABLE `category` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-LOCK TABLES `category` WRITE;
+LOCK TABLES `categories` WRITE;
 
-INSERT INTO `category` (`id`, `name`, `caption`, `publish_flag`, `created_at`, `updated_at`)
+INSERT INTO `categories` (`id`, `name`, `caption`, `publish_flag`, `created_at`, `updated_at`)
 VALUES
 	(1,'グルメ・お食事',NULL,0,'2020-03-12 00:00:00','2020-03-12 00:00:00'),
 	(2,'観光・街めぐり',NULL,0,'2020-03-12 00:00:00','2020-03-12 00:00:00'),
