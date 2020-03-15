@@ -243,6 +243,7 @@
 		DEAA659823F70B7700C5232B /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				DEDCC88E241E794F00BFA165 /* Announcement */,
 				DEDCC88C241DF16200BFA165 /* Contents */,
 				DEDCC88B241DF15900BFA165 /* Tutorial */,
 				DEAA656C23F3122F00C5232B /* MainViewController.swift */,
@@ -383,6 +384,13 @@
 				DEA01C7E240107DC00346C1E /* AnnouncementEntity.swift */,
 			);
 			path = APIResponseEntity;
+			sourceTree = "<group>";
+		};
+		DEDCC88E241E794F00BFA165 /* Announcement */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Announcement;
 			sourceTree = "<group>";
 		};
 		E8F66E6433453D282DEF22BE /* Pods */ = {
