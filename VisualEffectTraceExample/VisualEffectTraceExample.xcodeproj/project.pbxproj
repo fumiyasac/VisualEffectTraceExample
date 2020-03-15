@@ -133,6 +133,7 @@
 		DE14134523FAF27A0000D27C /* Mock */ = {
 			isa = PBXGroup;
 			children = (
+				DEDCC87A241DCDE100BFA165 /* Announcement */,
 			);
 			path = Mock;
 			sourceTree = "<group>";
@@ -140,6 +141,7 @@
 		DE14134623FAF27F0000D27C /* Stub */ = {
 			isa = PBXGroup;
 			children = (
+				DEDCC879241DCD2700BFA165 /* Announcement */,
 			);
 			path = Stub;
 			sourceTree = "<group>";
@@ -148,16 +150,17 @@
 			isa = PBXGroup;
 			children = (
 				DEA01C7D240103BA00346C1E /* Entity */,
-				DEA01C7C240103AC00346C1E /* Strategy */,
+				DEA01C7C240103AC00346C1E /* Repository */,
+				DEDCC877241DCB8400BFA165 /* UseCase */,
 			);
 			path = Model;
 			sourceTree = "<group>";
 		};
-		DEA01C7C240103AC00346C1E /* Strategy */ = {
+		DEA01C7C240103AC00346C1E /* Repository */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Strategy;
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		DEA01C7D240103BA00346C1E /* Entity */ = {
@@ -321,6 +324,27 @@
 				DEDCC874241CD82500BFA165 /* BlockSubScriber.swift */,
 			);
 			path = BlockSubscriber;
+			sourceTree = "<group>";
+		};
+		DEDCC877241DCB8400BFA165 /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		DEDCC879241DCD2700BFA165 /* Announcement */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Announcement;
+			sourceTree = "<group>";
+		};
+		DEDCC87A241DCDE100BFA165 /* Announcement */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Announcement;
 			sourceTree = "<group>";
 		};
 		E8F66E6433453D282DEF22BE /* Pods */ = {
