@@ -7,7 +7,7 @@ CREATE TABLE `item_categories` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- // 外部キー制約の付与: item & category テーブルに対して外部キー制約を付与する
+-- // 外部キー制約の付与: items & item_categories / categories & item_categories テーブルに対して外部キー制約を付与する
 
 ALTER TABLE `item_categories` ADD FOREIGN KEY (`category_id`) REFERENCES categories (`id`) ON DELETE CASCADE;
 ALTER TABLE `item_categories` ADD FOREIGN KEY (`item_id`) REFERENCES items (`id`) ON DELETE CASCADE;
