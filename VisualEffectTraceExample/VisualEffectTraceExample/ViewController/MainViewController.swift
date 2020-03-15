@@ -20,16 +20,29 @@ final class MainViewController: UIViewController {
 
         // Testing: APIリクエストの試験
 
+        // 一覧表示用のリクエスト
         let api = APIRequestManager.shared
-        let _ = api.getAnnoucements().subscribe(
-            onSuccess: { data in
-                print(data.result)
-            },
-            onError: { error in
-                print(error)
-            }
-        )
-        .disposed(by: disposeBag)
+        let _ = api.getAnnoucements()
+            .subscribe(
+                onSuccess: { data in
+                    print(data.result)
+                },
+                onError: { error in
+                    print(error)
+                }
+            )
+            .disposed(by: disposeBag)
 
+        // 詳細表示用のリクエスト
+        let _ = api.getAnnoucementDetailBy(id: 1)
+            .subscribe(
+                onSuccess: { data in
+                    print(data.result)
+                },
+                onError: { error in
+                    print(error)
+                }
+            )
+            .disposed(by: disposeBag)
     }
 }

@@ -9,21 +9,26 @@
 import Foundation
 import RxSwift
 
-// MARK: - Protocol
+// MARK: - Enum
 
-protocol APIRequestManagerProtocol {
+// MEMO: APIリクエストに関するEnum定義
+enum HTTPMethod {
+    case GET
+    case POST
+    case PUT
+    case DELETE
+}
 
-    // MEMO: 認証済みユーザーのAPIリクエスト
-
-    // MEMO: 公開部分のAPIリクエスト
-    func getAnnoucements() -> Single<AnnouncementListResponse>
+// MEMO: APIエラーメッセージに関するEnum定義
+enum APIError: Error {
+    case error(String)
 }
 
 class APIRequestManager {
     
     // MEMO: API Mock ServerへのURLに関する情報
-    private static let host = "http://localhost:8080/api"
-    private static let version = "v1"
+    static let host = "http://localhost:8080/api"
+    static let version = "v1"
 
     private let session = URLSession.shared
 
@@ -33,35 +38,13 @@ class APIRequestManager {
 
     private init() {}
 
-    // MARK: - Enum
-
-    // MEMO: APIエラーメッセージに関するEnum定義
-    // ※ API Mock Serverで返却される以外のエラー発生時における考慮のための処理
-    private enum APIError: Error {
-        case error(String)
-    }
-
-    // MEMO: サンプルで利用するエンドポイント定義
-    private enum EndPoint: String {
-
-        case announcements = "announcement"
-
-        func getBaseUrl() -> String {
-            return [host, version, self.rawValue].joined(separator: "/")
-        }
-    }
-}
-
-// MARK: - APIRequestManagerProtocol
-
-extension APIRequestManager: APIRequestManagerProtocol {
-
     // MARK: - Function
 
-    func getAnnoucements() -> Single<AnnouncementListResponse> {
-        let endpointUrl = EndPoint.announcements.getBaseUrl()
+    func executeAPIRequest<T: Decodable>(endpointUrl: String, httpMethod: HTTPMethod = .GET, responseFormat: T.Type) -> Single<T> {
+
+        // TODO: GET/POST/PUT/DELETE時それぞれにおける条件分岐が必要
         let urlRequest = makeGetRequest(endpointUrl)
-        return handleDataTask(AnnouncementListResponse.self, request: urlRequest)
+        return handleDataTask(T.self, request: urlRequest)
     }
 
     // MARK: - Private Function

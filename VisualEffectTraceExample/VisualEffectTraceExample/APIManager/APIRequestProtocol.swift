@@ -1,0 +1,23 @@
+//
+//  APIRequestProtocol.swift
+//  VisualEffectTraceExample
+//
+//  Created by 酒井文也 on 2020/03/15.
+//  Copyright © 2020 酒井文也. All rights reserved.
+//
+
+import Foundation
+import RxSwift
+
+// MARK: - Protocol
+
+// ※ Mockに置き換えられるような形にしておくのがポイント
+
+protocol APIRequestManagerProtocol {
+
+    // MEMO: 認証済みユーザーのAPIリクエスト
+
+    // MEMO: 公開部分のAPIリクエスト
+    func getAnnoucements() -> Single<AnnouncementListResponse>
+    func getAnnoucementDetailBy(id: Int) -> Single<AnnouncementDetailResponse>
+}
