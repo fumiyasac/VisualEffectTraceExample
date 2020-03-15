@@ -12,12 +12,14 @@ struct AnnouncementEntity: Hashable, Decodable {
     let id: Int
     let title: String
     let statement: String
+    let thumbnailUrl: String
 
     // MARK: - Enum
     private enum Keys: String, CodingKey {
         case id
         case title
         case statement
+        case thumbnailUrl
     }
 
     // MARK: - Initializer
@@ -30,6 +32,7 @@ struct AnnouncementEntity: Hashable, Decodable {
         self.id = try container.decode(Int.self, forKey: .id)
         self.title = try container.decode(String.self, forKey: .title)
         self.statement = try container.decode(String.self, forKey: .statement)
+        self.thumbnailUrl = try container.decode(String.self, forKey: .thumbnailUrl)
     }
 
     // MARK: - Hashable
