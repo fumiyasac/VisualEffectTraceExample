@@ -15,6 +15,7 @@ struct AnnouncementEntity: Hashable, Decodable {
     let thumbnailUrl: String
 
     // MARK: - Enum
+
     private enum Keys: String, CodingKey {
         case id
         case title
@@ -23,6 +24,7 @@ struct AnnouncementEntity: Hashable, Decodable {
     }
 
     // MARK: - Initializer
+
     init(from decoder: Decoder) throws {
 
         // JSONの配列内の要素を取得する
@@ -37,6 +39,7 @@ struct AnnouncementEntity: Hashable, Decodable {
 
     // MARK: - Hashable
     // MEMO: Hashableプロトコルに適合させるための処理
+
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
     }

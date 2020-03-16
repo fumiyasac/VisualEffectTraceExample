@@ -150,14 +150,14 @@
 			path = Stub;
 			sourceTree = "<group>";
 		};
-		DEA01C7A2400FE0E00346C1E /* Model */ = {
+		DEA01C7A2400FE0E00346C1E /* Domain */ = {
 			isa = PBXGroup;
 			children = (
 				DEA01C7D240103BA00346C1E /* Entity */,
 				DEA01C7C240103AC00346C1E /* Repository */,
 				DEDCC877241DCB8400BFA165 /* UseCase */,
 			);
-			path = Model;
+			path = Domain;
 			sourceTree = "<group>";
 		};
 		DEA01C7C240103AC00346C1E /* Repository */ = {
@@ -205,10 +205,10 @@
 				DEAA656823F3122F00C5232B /* AppDelegate.swift */,
 				DEAA656A23F3122F00C5232B /* SceneDelegate.swift */,
 				DEAA657123F3123100C5232B /* Assets.xcassets */,
-				DEAA65B223F86E6800C5232B /* APIManager */,
 				DEAA65A023F70D1400C5232B /* Enum */,
 				DEAA659F23F70CF200C5232B /* Extension */,
-				DEA01C7A2400FE0E00346C1E /* Model */,
+				DEDCC88F242046E300BFA165 /* Infrastructure */,
+				DEA01C7A2400FE0E00346C1E /* Domain */,
 				DEAA659D23F70CD900C5232B /* Modules */,
 				DEAA659A23F70C8200C5232B /* Redux */,
 				DEDCC886241DE23B00BFA165 /* Request */,
@@ -391,6 +391,22 @@
 			children = (
 			);
 			path = Announcement;
+			sourceTree = "<group>";
+		};
+		DEDCC88F242046E300BFA165 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				DEDCC890242046F800BFA165 /* RealmManager */,
+				DEAA65B223F86E6800C5232B /* APIManager */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		DEDCC890242046F800BFA165 /* RealmManager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RealmManager;
 			sourceTree = "<group>";
 		};
 		E8F66E6433453D282DEF22BE /* Pods */ = {
