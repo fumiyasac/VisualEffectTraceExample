@@ -10,6 +10,10 @@
 		843036C4A231FCAC14A48314 /* Pods_VisualEffectTraceExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C93C463F55AF4FFC433D1E5 /* Pods_VisualEffectTraceExample.framework */; };
 		DE0424E52402AF50008DEF36 /* AnnouncementAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0424E42402AF50008DEF36 /* AnnouncementAPIResponse.swift */; };
 		DE14134823FB02A10000D27C /* APIRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE14134723FB02A10000D27C /* APIRequestManager.swift */; };
+		DE84873F2425B5D400A40975 /* KeychainAccessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE84873E2425B5D400A40975 /* KeychainAccessManager.swift */; };
+		DE8487412425E21D00A40975 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8487402425E21D00A40975 /* AppConstants.swift */; };
+		DE8487432425E81000A40975 /* RealmAccessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8487422425E81000A40975 /* RealmAccessManager.swift */; };
+		DE8487462425FACD00A40975 /* ApplicationUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8487452425FACD00A40975 /* ApplicationUserEntity.swift */; };
 		DEA01C7F240107DC00346C1E /* AnnouncementEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA01C7E240107DC00346C1E /* AnnouncementEntity.swift */; };
 		DEAA656923F3122F00C5232B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA656823F3122F00C5232B /* AppDelegate.swift */; };
 		DEAA656B23F3122F00C5232B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA656A23F3122F00C5232B /* SceneDelegate.swift */; };
@@ -55,6 +59,10 @@
 		3AFA8542E8A9AD89F4086318 /* Pods-VisualEffectTraceExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisualEffectTraceExample.release.xcconfig"; path = "Target Support Files/Pods-VisualEffectTraceExample/Pods-VisualEffectTraceExample.release.xcconfig"; sourceTree = "<group>"; };
 		DE0424E42402AF50008DEF36 /* AnnouncementAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementAPIResponse.swift; sourceTree = "<group>"; };
 		DE14134723FB02A10000D27C /* APIRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestManager.swift; sourceTree = "<group>"; };
+		DE84873E2425B5D400A40975 /* KeychainAccessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainAccessManager.swift; sourceTree = "<group>"; };
+		DE8487402425E21D00A40975 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		DE8487422425E81000A40975 /* RealmAccessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmAccessManager.swift; sourceTree = "<group>"; };
+		DE8487452425FACD00A40975 /* ApplicationUserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationUserEntity.swift; sourceTree = "<group>"; };
 		DEA01C7E240107DC00346C1E /* AnnouncementEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementEntity.swift; sourceTree = "<group>"; };
 		DEAA656523F3122F00C5232B /* VisualEffectTraceExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisualEffectTraceExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEAA656823F3122F00C5232B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -150,9 +158,27 @@
 			path = Stub;
 			sourceTree = "<group>";
 		};
+		DE84873D2425B32500A40975 /* KeychainManager */ = {
+			isa = PBXGroup;
+			children = (
+				DE84873E2425B5D400A40975 /* KeychainAccessManager.swift */,
+			);
+			path = KeychainManager;
+			sourceTree = "<group>";
+		};
+		DE8487442425E9E000A40975 /* DataTransfer */ = {
+			isa = PBXGroup;
+			children = (
+				DEDCC886241DE23B00BFA165 /* Request */,
+				DE0424E32402AF1D008DEF36 /* Response */,
+			);
+			path = DataTransfer;
+			sourceTree = "<group>";
+		};
 		DEA01C7A2400FE0E00346C1E /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				DE8487442425E9E000A40975 /* DataTransfer */,
 				DEA01C7D240103BA00346C1E /* Entity */,
 				DEA01C7C240103AC00346C1E /* Repository */,
 				DEDCC877241DCB8400BFA165 /* UseCase */,
@@ -203,6 +229,7 @@
 			children = (
 				DEAA657623F3123100C5232B /* Info.plist */,
 				DEAA656823F3122F00C5232B /* AppDelegate.swift */,
+				DE8487402425E21D00A40975 /* AppConstants.swift */,
 				DEAA656A23F3122F00C5232B /* SceneDelegate.swift */,
 				DEAA657123F3123100C5232B /* Assets.xcassets */,
 				DEAA65A023F70D1400C5232B /* Enum */,
@@ -211,8 +238,6 @@
 				DEA01C7A2400FE0E00346C1E /* Domain */,
 				DEAA659D23F70CD900C5232B /* Modules */,
 				DEAA659A23F70C8200C5232B /* Redux */,
-				DEDCC886241DE23B00BFA165 /* Request */,
-				DE0424E32402AF1D008DEF36 /* Response */,
 				DEAA659923F70B8200C5232B /* Storyboard */,
 				DE14134423FAF1840000D27C /* TestData */,
 				DEAA659E23F70CE400C5232B /* View */,
@@ -314,6 +339,7 @@
 		DEAA65A123F70D3D00C5232B /* RealmEntity */ = {
 			isa = PBXGroup;
 			children = (
+				DE8487452425FACD00A40975 /* ApplicationUserEntity.swift */,
 			);
 			path = RealmEntity;
 			sourceTree = "<group>";
@@ -396,6 +422,7 @@
 		DEDCC88F242046E300BFA165 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				DE84873D2425B32500A40975 /* KeychainManager */,
 				DEDCC890242046F800BFA165 /* RealmManager */,
 				DEAA65B223F86E6800C5232B /* APIManager */,
 			);
@@ -405,6 +432,7 @@
 		DEDCC890242046F800BFA165 /* RealmManager */ = {
 			isa = PBXGroup;
 			children = (
+				DE8487422425E81000A40975 /* RealmAccessManager.swift */,
 			);
 			path = RealmManager;
 			sourceTree = "<group>";
@@ -593,6 +621,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE8487412425E21D00A40975 /* AppConstants.swift in Sources */,
 				DEDCC88A241DE30500BFA165 /* AnnouncementAPIRequest.swift in Sources */,
 				DE14134823FB02A10000D27C /* APIRequestManager.swift in Sources */,
 				DEA01C7F240107DC00346C1E /* AnnouncementEntity.swift in Sources */,
@@ -606,8 +635,11 @@
 				DEAA65AB23F70E9C00C5232B /* UIColorExtension.swift in Sources */,
 				DEAA656923F3122F00C5232B /* AppDelegate.swift in Sources */,
 				DEAA65A723F70E4600C5232B /* StoryboardInstantiatable.swift in Sources */,
+				DE84873F2425B5D400A40975 /* KeychainAccessManager.swift in Sources */,
 				DEAA656B23F3122F00C5232B /* SceneDelegate.swift in Sources */,
 				DEDCC875241CD82500BFA165 /* BlockSubScriber.swift in Sources */,
+				DE8487432425E81000A40975 /* RealmAccessManager.swift in Sources */,
+				DE8487462425FACD00A40975 /* ApplicationUserEntity.swift in Sources */,
 				DEAA65A523F70E2700C5232B /* NSObjectProtocolExtension.swift in Sources */,
 				DE0424E52402AF50008DEF36 /* AnnouncementAPIResponse.swift in Sources */,
 			);

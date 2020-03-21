@@ -13,7 +13,7 @@ import RxSwift
 
 // ※ Mockに置き換えられるような形にしておくのがポイント
 
-protocol APIRequestManagerProtocol {
+protocol APIRequestProtocol {
 
     // MEMO: 認証済みユーザーのAPIリクエスト
 

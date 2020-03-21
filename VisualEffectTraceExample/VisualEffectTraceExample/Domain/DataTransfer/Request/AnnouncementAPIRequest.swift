@@ -11,7 +11,7 @@ import RxSwift
 
 // MARK: - APIRequestManagerProtocol
 
-extension APIRequestManager: APIRequestManagerProtocol {
+extension APIRequestManager: APIRequestProtocol {
 
     // MEMO: サンプルで利用するエンドポイント定義
     private enum EndPoint: String {

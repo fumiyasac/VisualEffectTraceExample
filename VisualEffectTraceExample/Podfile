@@ -22,8 +22,8 @@ target 'VisualEffectTraceExample' do
   pod 'YPImagePicker'
   pod 'ExpandingMenu', '~> 0.4'
   pod 'Loaf'
-  pod 'ParallaxHeader', '~> 3.0.0'
   pod 'NVActivityIndicatorView'
+  pod 'AnimatedCollectionViewLayout'
   pod 'Nuke'
 
   # 3. デバッグに関するライブラリ
