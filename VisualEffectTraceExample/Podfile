@@ -24,11 +24,7 @@ target 'VisualEffectTraceExample' do
   pod 'Loaf'
   pod 'NVActivityIndicatorView'
   pod 'AnimatedCollectionViewLayout'
-  pod 'Nuke'
-
-  # 3. デバッグに関するライブラリ
-  pod 'XCGLogger', '~> 7.0.1'
-  pod 'ReSwiftMonitor', :configurations => ['Debug']
+  pod 'Kingfisher'
 
 #  ※ ユニットテスト時に利用する
 #  target 'VisualEffectTraceExampleTests' do

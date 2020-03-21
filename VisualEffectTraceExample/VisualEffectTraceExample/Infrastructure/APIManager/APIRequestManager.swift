@@ -89,15 +89,17 @@ class APIRequestManager {
     }
 
     // API Mock ServerへのGETリクエストを作成する
-    private func makeGetRequest(_ urlString: String, shouldAuthorize: Bool = false) -> URLRequest {
+    private func makeGetRequest(_ urlString: String) -> URLRequest {
         guard let url = URL(string: urlString) else {
             fatalError()
         }
-
-        // TODO: 認可の有無についての設定処理が必要
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "GET"
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        let authraizationHeader = KeychainAccessManager.shared.getAuthenticationHeader()
+        if !authraizationHeader.isEmpty {
+            urlRequest.addValue(authraizationHeader , forHTTPHeaderField: "Authorization")
+        }
         return urlRequest
     }
 

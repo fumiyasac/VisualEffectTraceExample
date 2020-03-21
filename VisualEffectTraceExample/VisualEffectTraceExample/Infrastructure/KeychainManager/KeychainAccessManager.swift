@@ -32,6 +32,15 @@ class KeychainAccessManager: keychainAccessProtocol {
 
     // MARK: - Function
 
+    // API管理クラスで利用するJWT文字列を
+    func getAuthenticationHeader() -> String {
+        if existsJsonAccessToken() {
+            return AppConstants.jwtTokenPrefix + keychain[string: keyName]!
+        } else {
+            return ""
+        }
+    }
+
     func saveJsonAccessToken(_ token: String) {
         keychain[string: keyName] = token
     }

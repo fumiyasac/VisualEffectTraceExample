@@ -158,6 +158,13 @@
 			path = Stub;
 			sourceTree = "<group>";
 		};
+		DE3A9D25242636F60060FE30 /* InternalJsonEntity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = InternalJsonEntity;
+			sourceTree = "<group>";
+		};
 		DE84873D2425B32500A40975 /* KeychainManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -196,6 +203,7 @@
 		DEA01C7D240103BA00346C1E /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				DE3A9D25242636F60060FE30 /* InternalJsonEntity */,
 				DEAA65A123F70D3D00C5232B /* RealmEntity */,
 				DEDCC88D241E2C3300BFA165 /* APIResponseEntity */,
 			);

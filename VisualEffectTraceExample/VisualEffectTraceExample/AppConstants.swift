@@ -15,4 +15,7 @@ struct AppConstants {
 
     // keychainAccessのKey名
     static let keychainAccessKeyName = "jsonAccessToken"
+
+    // JWTのprefix名
+    static let jwtTokenPrefix = "Bearer "
 }

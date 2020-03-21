@@ -4,22 +4,6 @@
    <FileRef
       location = "group:VisualEffectTraceExample.xcodeproj">
    </FileRef>
-   <Group
-      location = "group:"
-      name = "Products">
-      <FileRef
-         location = "build:VisualEffectTraceExample.app"
-         assignedFileDataType = "com.apple.application-bundle">
-      </FileRef>
-      <FileRef
-         location = "build:VisualEffectTraceExampleTests.xctest"
-         assignedFileDataType = "com.apple.xcode.cfbundle">
-      </FileRef>
-      <FileRef
-         location = "build:VisualEffectTraceExampleUITests.xctest"
-         assignedFileDataType = "com.apple.xcode.cfbundle">
-      </FileRef>
-   </Group>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">
    </FileRef>
