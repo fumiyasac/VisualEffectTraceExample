@@ -15,6 +15,16 @@ final class MainViewController: UIViewController {
 
     private let disposeBag = DisposeBag()
     
+    @IBAction func test(_ sender: Any) {
+
+        // TODO: rootViewControllerを置き換える
+        let vc = TutorialViewController.instantiate()
+        if #available(iOS 13.0, *) {
+            vc.modalPresentationStyle = .fullScreen
+        }
+        present(vc, animated: true, completion: nil)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

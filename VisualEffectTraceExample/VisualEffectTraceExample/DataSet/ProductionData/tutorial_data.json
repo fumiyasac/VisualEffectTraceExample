@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "thumbnail": "tutorial1",
+        "title": "Life Style Diary 1",
+        "catchCopy": "Clothes colors reflect the season."
+    },
+    {
+        "id": 2,
+        "thumbnail": "tutorial2",
+        "title": "Life Style Diary 2",
+        "catchCopy": "The cafe reflects the colors of the usual meal."
+    },
+    {
+        "id": 3,
+        "thumbnail": "tutorial3",
+        "title": "Life Style Diary 3",
+        "catchCopy": "The cityscape embodies the traffic of people."
+    },
+    {
+        "id": 4,
+        "thumbnail": "tutorial4",
+        "title": "Life Style Diary 4",
+        "catchCopy": "Holidays create a void in your heart."
+    }
+]

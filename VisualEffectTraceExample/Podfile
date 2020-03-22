@@ -15,16 +15,15 @@ target 'VisualEffectTraceExample' do
   pod 'DifferenceKit'
   
   # 2. UI実装に関するライブラリ
-  pod 'ESPullToRefresh'
   pod 'ESTabBarController-swift'
   pod 'PanModal'
-  pod 'AirBar', '~> 2.0'
+  pod 'AirBar'
   pod 'YPImagePicker'
   pod 'ExpandingMenu', '~> 0.4'
   pod 'Loaf'
   pod 'NVActivityIndicatorView'
   pod 'AnimatedCollectionViewLayout'
-  pod 'Kingfisher'
+  pod 'Nuke'
 
 #  ※ ユニットテスト時に利用する
 #  target 'VisualEffectTraceExampleTests' do

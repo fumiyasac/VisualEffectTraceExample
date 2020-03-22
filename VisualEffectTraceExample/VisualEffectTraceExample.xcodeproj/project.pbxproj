@@ -10,6 +10,13 @@
 		843036C4A231FCAC14A48314 /* Pods_VisualEffectTraceExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C93C463F55AF4FFC433D1E5 /* Pods_VisualEffectTraceExample.framework */; };
 		DE0424E52402AF50008DEF36 /* AnnouncementAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0424E42402AF50008DEF36 /* AnnouncementAPIResponse.swift */; };
 		DE14134823FB02A10000D27C /* APIRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE14134723FB02A10000D27C /* APIRequestManager.swift */; };
+		DE2AB89A2427A57000335E4F /* tutorial_data.json in Resources */ = {isa = PBXBuildFile; fileRef = DE2AB8992427A57000335E4F /* tutorial_data.json */; };
+		DE84854224279D7D00766098 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE84854024279D7D00766098 /* Tutorial.storyboard */; };
+		DE84854524279DF800766098 /* TutorialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE84854324279DF800766098 /* TutorialCollectionViewCell.swift */; };
+		DE84854624279DF800766098 /* TutorialCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE84854424279DF800766098 /* TutorialCollectionViewCell.xib */; };
+		DE84854824279E2200766098 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE84854724279E2200766098 /* TutorialViewController.swift */; };
+		DE84854A2427A43C00766098 /* TutorialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8485492427A43C00766098 /* TutorialViewModel.swift */; };
+		DE84854C2427A48A00766098 /* TutorialEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE84854B2427A48A00766098 /* TutorialEntity.swift */; };
 		DE84873F2425B5D400A40975 /* KeychainAccessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE84873E2425B5D400A40975 /* KeychainAccessManager.swift */; };
 		DE8487412425E21D00A40975 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8487402425E21D00A40975 /* AppConstants.swift */; };
 		DE8487432425E81000A40975 /* RealmAccessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8487422425E81000A40975 /* RealmAccessManager.swift */; };
@@ -59,6 +66,13 @@
 		3AFA8542E8A9AD89F4086318 /* Pods-VisualEffectTraceExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisualEffectTraceExample.release.xcconfig"; path = "Target Support Files/Pods-VisualEffectTraceExample/Pods-VisualEffectTraceExample.release.xcconfig"; sourceTree = "<group>"; };
 		DE0424E42402AF50008DEF36 /* AnnouncementAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementAPIResponse.swift; sourceTree = "<group>"; };
 		DE14134723FB02A10000D27C /* APIRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestManager.swift; sourceTree = "<group>"; };
+		DE2AB8992427A57000335E4F /* tutorial_data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tutorial_data.json; sourceTree = "<group>"; };
+		DE84854124279D7D00766098 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Tutorial.storyboard; sourceTree = "<group>"; };
+		DE84854324279DF800766098 /* TutorialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialCollectionViewCell.swift; sourceTree = "<group>"; };
+		DE84854424279DF800766098 /* TutorialCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialCollectionViewCell.xib; sourceTree = "<group>"; };
+		DE84854724279E2200766098 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TutorialViewController.swift; path = VisualEffectTraceExample/View/TutorialViewController.swift; sourceTree = SOURCE_ROOT; };
+		DE8485492427A43C00766098 /* TutorialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TutorialViewModel.swift; path = VisualEffectTraceExample/View/TutorialViewModel.swift; sourceTree = SOURCE_ROOT; };
+		DE84854B2427A48A00766098 /* TutorialEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TutorialEntity.swift; path = VisualEffectTraceExample/View/TutorialEntity.swift; sourceTree = SOURCE_ROOT; };
 		DE84873E2425B5D400A40975 /* KeychainAccessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainAccessManager.swift; sourceTree = "<group>"; };
 		DE8487402425E21D00A40975 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		DE8487422425E81000A40975 /* RealmAccessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmAccessManager.swift; sourceTree = "<group>"; };
@@ -139,7 +153,8 @@
 				DE14134523FAF27A0000D27C /* Mock */,
 				DE14134623FAF27F0000D27C /* Stub */,
 			);
-			path = TestData;
+			name = TestData;
+			path = ../TestData;
 			sourceTree = "<group>";
 		};
 		DE14134523FAF27A0000D27C /* Mock */ = {
@@ -158,9 +173,36 @@
 			path = Stub;
 			sourceTree = "<group>";
 		};
+		DE2AB8972427A53C00335E4F /* DataSet */ = {
+			isa = PBXGroup;
+			children = (
+				DE2AB8982427A55F00335E4F /* ProductionData */,
+				DE14134423FAF1840000D27C /* TestData */,
+			);
+			path = DataSet;
+			sourceTree = "<group>";
+		};
+		DE2AB8982427A55F00335E4F /* ProductionData */ = {
+			isa = PBXGroup;
+			children = (
+				DE2AB8992427A57000335E4F /* tutorial_data.json */,
+			);
+			path = ProductionData;
+			sourceTree = "<group>";
+		};
+		DE2AB89B24282CCC00335E4F /* TutorialCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DE84854324279DF800766098 /* TutorialCollectionViewCell.swift */,
+				DE84854424279DF800766098 /* TutorialCollectionViewCell.xib */,
+			);
+			path = TutorialCollectionViewCell;
+			sourceTree = "<group>";
+		};
 		DE3A9D25242636F60060FE30 /* InternalJsonEntity */ = {
 			isa = PBXGroup;
 			children = (
+				DE84854B2427A48A00766098 /* TutorialEntity.swift */,
 			);
 			path = InternalJsonEntity;
 			sourceTree = "<group>";
@@ -236,18 +278,18 @@
 			isa = PBXGroup;
 			children = (
 				DEAA657623F3123100C5232B /* Info.plist */,
-				DEAA656823F3122F00C5232B /* AppDelegate.swift */,
 				DE8487402425E21D00A40975 /* AppConstants.swift */,
+				DEAA656823F3122F00C5232B /* AppDelegate.swift */,
 				DEAA656A23F3122F00C5232B /* SceneDelegate.swift */,
 				DEAA657123F3123100C5232B /* Assets.xcassets */,
+				DE2AB8972427A53C00335E4F /* DataSet */,
+				DEA01C7A2400FE0E00346C1E /* Domain */,
 				DEAA65A023F70D1400C5232B /* Enum */,
 				DEAA659F23F70CF200C5232B /* Extension */,
 				DEDCC88F242046E300BFA165 /* Infrastructure */,
-				DEA01C7A2400FE0E00346C1E /* Domain */,
 				DEAA659D23F70CD900C5232B /* Modules */,
 				DEAA659A23F70C8200C5232B /* Redux */,
 				DEAA659923F70B8200C5232B /* Storyboard */,
-				DE14134423FAF1840000D27C /* TestData */,
 				DEAA659E23F70CE400C5232B /* View */,
 				DEAA659823F70B7700C5232B /* ViewController */,
 				DEAA659B23F70C8C00C5232B /* ViewModel */,
@@ -276,10 +318,10 @@
 		DEAA659823F70B7700C5232B /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				DEAA656C23F3122F00C5232B /* MainViewController.swift */,
 				DEDCC88E241E794F00BFA165 /* Announcement */,
 				DEDCC88C241DF16200BFA165 /* Contents */,
 				DEDCC88B241DF15900BFA165 /* Tutorial */,
-				DEAA656C23F3122F00C5232B /* MainViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -289,6 +331,7 @@
 			children = (
 				DEAA657323F3123100C5232B /* LaunchScreen.storyboard */,
 				DEAA656E23F3122F00C5232B /* Main.storyboard */,
+				DE84854024279D7D00766098 /* Tutorial.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -304,6 +347,7 @@
 		DEAA659B23F70C8C00C5232B /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				DE8485492427A43C00766098 /* TutorialViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -320,6 +364,7 @@
 			isa = PBXGroup;
 			children = (
 				DEAA65A223F70DEC00C5232B /* CustomViewBase.swift */,
+				DE2AB89B24282CCC00335E4F /* TutorialCollectionViewCell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -401,6 +446,7 @@
 		DEDCC88B241DF15900BFA165 /* Tutorial */ = {
 			isa = PBXGroup;
 			children = (
+				DE84854724279E2200766098 /* TutorialViewController.swift */,
 			);
 			path = Tutorial;
 			sourceTree = "<group>";
@@ -562,7 +608,10 @@
 			files = (
 				DEAA657523F3123100C5232B /* LaunchScreen.storyboard in Resources */,
 				DEAA657223F3123100C5232B /* Assets.xcassets in Resources */,
+				DE84854224279D7D00766098 /* Tutorial.storyboard in Resources */,
+				DE2AB89A2427A57000335E4F /* tutorial_data.json in Resources */,
 				DEAA657023F3122F00C5232B /* Main.storyboard in Resources */,
+				DE84854624279DF800766098 /* TutorialCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -629,6 +678,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE84854524279DF800766098 /* TutorialCollectionViewCell.swift in Sources */,
 				DE8487412425E21D00A40975 /* AppConstants.swift in Sources */,
 				DEDCC88A241DE30500BFA165 /* AnnouncementAPIRequest.swift in Sources */,
 				DE14134823FB02A10000D27C /* APIRequestManager.swift in Sources */,
@@ -638,7 +688,9 @@
 				DEAA65AF23F7288C00C5232B /* UITableViewExtension.swift in Sources */,
 				DEAA65A323F70DEC00C5232B /* CustomViewBase.swift in Sources */,
 				DEAA65AD23F70EE900C5232B /* UIViewControllerExtension.swift in Sources */,
+				DE84854A2427A43C00766098 /* TutorialViewModel.swift in Sources */,
 				DEAA656D23F3122F00C5232B /* MainViewController.swift in Sources */,
+				DE84854824279E2200766098 /* TutorialViewController.swift in Sources */,
 				DEDCC888241DE26700BFA165 /* APIRequestProtocol.swift in Sources */,
 				DEAA65AB23F70E9C00C5232B /* UIColorExtension.swift in Sources */,
 				DEAA656923F3122F00C5232B /* AppDelegate.swift in Sources */,
@@ -649,6 +701,7 @@
 				DE8487432425E81000A40975 /* RealmAccessManager.swift in Sources */,
 				DE8487462425FACD00A40975 /* ApplicationUserEntity.swift in Sources */,
 				DEAA65A523F70E2700C5232B /* NSObjectProtocolExtension.swift in Sources */,
+				DE84854C2427A48A00766098 /* TutorialEntity.swift in Sources */,
 				DE0424E52402AF50008DEF36 /* AnnouncementAPIResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -685,6 +738,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		DE84854024279D7D00766098 /* Tutorial.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE84854124279D7D00766098 /* Base */,
+			);
+			name = Tutorial.storyboard;
+			sourceTree = "<group>";
+		};
 		DEAA656E23F3122F00C5232B /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
