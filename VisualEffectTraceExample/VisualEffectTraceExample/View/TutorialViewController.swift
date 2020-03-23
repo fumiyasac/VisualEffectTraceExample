@@ -16,7 +16,9 @@ final class TutorialViewController: UIViewController {
     private let disposeBag = DisposeBag()
 
     // MEMO: チュートリアル表示内容を取得するViewModel
-    private let viewModel = TutorialViewModel()
+    private let viewModel = TutorialViewModel(
+        useCase: GetTutorialDataUseCase(tutorialRepository: TutorialDataRepository())
+    )
 
     @IBOutlet private weak var nextContentsButton: UIButton!
     @IBOutlet private weak var tutorialCollectionView: UICollectionView!

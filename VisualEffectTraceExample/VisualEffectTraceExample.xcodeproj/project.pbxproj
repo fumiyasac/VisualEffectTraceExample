@@ -11,6 +11,8 @@
 		DE0424E52402AF50008DEF36 /* AnnouncementAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0424E42402AF50008DEF36 /* AnnouncementAPIResponse.swift */; };
 		DE14134823FB02A10000D27C /* APIRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE14134723FB02A10000D27C /* APIRequestManager.swift */; };
 		DE2AB89A2427A57000335E4F /* tutorial_data.json in Resources */ = {isa = PBXBuildFile; fileRef = DE2AB8992427A57000335E4F /* tutorial_data.json */; };
+		DE2AB89F242973A100335E4F /* GetTutorialDataUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB89E242973A100335E4F /* GetTutorialDataUseCase.swift */; };
+		DE2AB8A42429787B00335E4F /* TutorialDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB8A32429787B00335E4F /* TutorialDataRepository.swift */; };
 		DE84854224279D7D00766098 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE84854024279D7D00766098 /* Tutorial.storyboard */; };
 		DE84854524279DF800766098 /* TutorialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE84854324279DF800766098 /* TutorialCollectionViewCell.swift */; };
 		DE84854624279DF800766098 /* TutorialCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE84854424279DF800766098 /* TutorialCollectionViewCell.xib */; };
@@ -67,6 +69,8 @@
 		DE0424E42402AF50008DEF36 /* AnnouncementAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementAPIResponse.swift; sourceTree = "<group>"; };
 		DE14134723FB02A10000D27C /* APIRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestManager.swift; sourceTree = "<group>"; };
 		DE2AB8992427A57000335E4F /* tutorial_data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tutorial_data.json; sourceTree = "<group>"; };
+		DE2AB89E242973A100335E4F /* GetTutorialDataUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTutorialDataUseCase.swift; sourceTree = "<group>"; };
+		DE2AB8A32429787B00335E4F /* TutorialDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialDataRepository.swift; sourceTree = "<group>"; };
 		DE84854124279D7D00766098 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Tutorial.storyboard; sourceTree = "<group>"; };
 		DE84854324279DF800766098 /* TutorialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialCollectionViewCell.swift; sourceTree = "<group>"; };
 		DE84854424279DF800766098 /* TutorialCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -238,6 +242,7 @@
 		DEA01C7C240103AC00346C1E /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				DE2AB8A32429787B00335E4F /* TutorialDataRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -417,6 +422,7 @@
 		DEDCC877241DCB8400BFA165 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				DE2AB89E242973A100335E4F /* GetTutorialDataUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -682,6 +688,7 @@
 				DE8487412425E21D00A40975 /* AppConstants.swift in Sources */,
 				DEDCC88A241DE30500BFA165 /* AnnouncementAPIRequest.swift in Sources */,
 				DE14134823FB02A10000D27C /* APIRequestManager.swift in Sources */,
+				DE2AB89F242973A100335E4F /* GetTutorialDataUseCase.swift in Sources */,
 				DEA01C7F240107DC00346C1E /* AnnouncementEntity.swift in Sources */,
 				DEAA65B123F7289A00C5232B /* UICollectionViewExtension.swift in Sources */,
 				DEAA65A923F70E6900C5232B /* UILabelDecorator.swift in Sources */,
@@ -699,6 +706,7 @@
 				DEAA656B23F3122F00C5232B /* SceneDelegate.swift in Sources */,
 				DEDCC875241CD82500BFA165 /* BlockSubScriber.swift in Sources */,
 				DE8487432425E81000A40975 /* RealmAccessManager.swift in Sources */,
+				DE2AB8A42429787B00335E4F /* TutorialDataRepository.swift in Sources */,
 				DE8487462425FACD00A40975 /* ApplicationUserEntity.swift in Sources */,
 				DEAA65A523F70E2700C5232B /* NSObjectProtocolExtension.swift in Sources */,
 				DE84854C2427A48A00766098 /* TutorialEntity.swift in Sources */,

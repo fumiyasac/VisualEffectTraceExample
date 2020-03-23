@@ -19,7 +19,7 @@ protocol TutorialViewModelInputs {
 protocol TutorialViewModelOutputs {
 
     // JSONから取得した表示用データを格納する
-    var tutorialItems: Observable<[TutorialEntity]> { get }
+    var tutorialItems: Observable<Array<TutorialEntity>> { get }
 
     // 最後のインデックス値に到達したかの判定結果を格納する
     var isLastIndex: Observable<Bool> { get }
@@ -42,7 +42,7 @@ final class TutorialViewModel: TutorialViewModelInputs, TutorialViewModelOutputs
 
     // MARK: - Properties (for TutorialViewModelOutputs)
 
-    var tutorialItems: Observable<[TutorialEntity]> {
+    var tutorialItems: Observable<Array<TutorialEntity>> {
         return _tutorialItems.asObservable()
     }
 
@@ -54,18 +54,25 @@ final class TutorialViewModel: TutorialViewModelInputs, TutorialViewModelOutputs
 
     // MEMO: 中継地点となるBehaviorRelayの変数（Outputの変数を生成するための「つなぎ」のような役割）
     // → BehaviorRelayの変化が起こったらObservableに変換されてOutputに流れてくる
-    private let _tutorialItems: BehaviorRelay<[TutorialEntity]> = BehaviorRelay<[TutorialEntity]>(value: [])
+    private let _tutorialItems: BehaviorRelay<Array<TutorialEntity>> = BehaviorRelay<Array<TutorialEntity>>(value: [])
     private let _isLastIndex: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
+
+    // MEMO: このViewModelで利用するUseCase(Domain Model)
+    private let tutorialUseCase: TutorialUseCase
 
     // MARK: - Initializer
 
-    init() {
-        let tutorialDataList = getTutorialDataFromJson()
-        let lastIndex = tutorialDataList.count - 1
+    init(useCase: TutorialUseCase) {
+
+        // このViewModelで利用するUseCaseのインスタンス経由で該当データを取得する
+        tutorialUseCase = useCase
+        let tutorialDataList = tutorialUseCase.execute()
 
         // JSONファイルから取得したModelオブジェクトを中継地点となるBehaviorRelayに格納する
         _tutorialItems.accept(tutorialDataList)
+
         // インデックス変化時に受け取った値をBehaviorRelayに格納する
+        let lastIndex = tutorialDataList.count - 1
         Observable
             // MEMO: この部分で(1つ前の値, 現在の値)を見て変わったタイミングで以降の処理を流す
             // → スクロール位置変化が発生した都度実行されるのでこのようにしている点に注意する
@@ -77,21 +84,5 @@ final class TutorialViewModel: TutorialViewModelInputs, TutorialViewModelOutputs
                 }
             )
             .disposed(by: disposeBag)
-    }
-
-    // MARK: - Private Function
-
-    private func getTutorialDataFromJson() -> [TutorialEntity] {
-        // JSONファイルから表示用のデータを取得してFeaturedModelの型に合致するようにする
-        guard let path = Bundle.main.path(forResource: "tutorial_data", ofType: "json") else {
-            fatalError()
-        }
-        guard let data = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
-            fatalError()
-        }
-        guard let tutorialDataList = try? JSONDecoder().decode([TutorialEntity].self, from: data) else {
-            fatalError()
-        }
-        return tutorialDataList
     }
 }
