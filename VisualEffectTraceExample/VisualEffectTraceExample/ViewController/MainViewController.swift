@@ -13,43 +13,115 @@ import RxSwift
 
 final class MainViewController: UIViewController {
 
-    private let disposeBag = DisposeBag()
-    
-    @IBAction func test(_ sender: Any) {
+    // MARK: - Properties
 
-        // 画面遷移処理をCoodinatorパターンで実施する形とする
-        let coodinator = TutorialScreenCoordinator()
-        coodinator.start()
+    private let disposeBag = DisposeBag()
+
+    // MEMO: ユーザー状態に応じた画面表示を実施するためのViewModel
+    private let viewModel = MainViewModel(
+        useCase: HandleMainScreenUseCase(
+            mainScreenRepository: MainScreenRepository(
+                realmAccessManager: RealmAccessManager.shared,
+                keychainAccessManager: KeychainAccessManager.shared
+            )
+        )
+    )
+
+    // MARK: - BlockSubscriber
+
+    private lazy var baseScreenSubscriber: BlockSubscriber<BaseScreenState> = BlockSubscriber { [weak self] state in
+
+        // MEMO: Reduxの処理で反映されたStateの値を経由して画面遷移処理を実施する
+        guard let targetApplicationUserStatus = state.applicationUserStatus else {
+            return
+        }
+        self?.displayScreenBy(targetApplicationUserStatus)
     }
+
+    // MARK: - Override
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Testing: APIリクエストの試験
-
-        // 一覧表示用のリクエスト
-        let api = APIRequestManager.shared
-        let _ = api.getAnnoucements()
+        // ViewModelのOutputで定義した変数の値が反映された際に実行する処理
+        viewModel.outputs.targetApplicationUserState
             .subscribe(
-                onSuccess: { data in
-                    print(data.result)
-                },
-                onError: { error in
-                    print(error)
-                }
-            )
-            .disposed(by: disposeBag)
+                onNext: { applicationUserStatus in
 
-        // 詳細表示用のリクエスト
-        let _ = api.getAnnoucementDetailBy(id: 1)
-            .subscribe(
-                onSuccess: { data in
-                    print(data.result)
-                },
-                onError: { error in
-                    print(error)
+                    // MEMO: 画面遷移などをはじめとする画面状態の管理についてはReduxを経由してハンドリングする
+                    BaseScreenActionCreator.setCurrentApplicationUserStatus(applicationUserStatus)
                 }
             )
             .disposed(by: disposeBag)
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        // ViewModelのInputで定義したデータ取得処理に関するトリガーを発火する
+        viewModel.inputs.initialSettingTrigger.onNext(())
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // 購読対象のStateをBlockSubscriberを利用して決定する
+        appStore.subscribe(self.baseScreenSubscriber) { state in
+            state.select { state in state.baseScreenState }
+        }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        // 購読対象のStateを解除する
+        appStore.unsubscribe(self.baseScreenSubscriber)
+    }
+
+    // MARK: - Private Function
+
+    private func displayScreenBy(_ applicationUserState: ApplicationUserStatus) {
+
+        // MEMO: 画面遷移処理をCoodinatorパターンで実施する形にする
+        switch applicationUserState {
+
+        case .needToMoveTutorialScreen:
+            let coodinator = TutorialScreenCoordinator()
+            coodinator.start()
+
+        // TODO: その他のユーザー状態に応じた画面遷移のハンドリングを実施する
+        default:
+            print("その他のハンドリングケースを実施する")
+        }
+    }
 }
+
+/*
+＜補足: RxSwiftを利用したAPIリクエストの実装例＞
+
+(1) 一覧表示用のリクエストを取得する際の実装例
+let api = APIRequestManager.shared
+let _ = api.getAnnoucements()
+    .subscribe(
+        onSuccess: { data in
+            print(data.result)
+        },
+        onError: { error in
+            print(error)
+        }
+    )
+    .disposed(by: disposeBag)
+
+(2) 詳細表示用のリクエストを取得する際の実装例
+let _ = api.getAnnoucementDetailBy(id: 1)
+    .subscribe(
+        onSuccess: { data in
+            print(data.result)
+        },
+        onError: { error in
+            print(error)
+        }
+    )
+    .disposed(by: disposeBag)
+
+*/
