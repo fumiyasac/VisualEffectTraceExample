@@ -15,6 +15,7 @@
 		DE2AB8A42429787B00335E4F /* TutorialDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB8A32429787B00335E4F /* TutorialDataRepository.swift */; };
 		DE2AB8AC242F424800335E4F /* ScreenCoodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB8AB242F424800335E4F /* ScreenCoodinator.swift */; };
 		DE2AB8B1242F4C3600335E4F /* TutorialScreenCoodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB8B0242F4C3600335E4F /* TutorialScreenCoodinator.swift */; };
+		DE2AB8B9242F7EC200335E4F /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB8B8242F7EC200335E4F /* MainViewModel.swift */; };
 		DE84854224279D7D00766098 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE84854024279D7D00766098 /* Tutorial.storyboard */; };
 		DE84854524279DF800766098 /* TutorialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE84854324279DF800766098 /* TutorialCollectionViewCell.swift */; };
 		DE84854624279DF800766098 /* TutorialCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE84854424279DF800766098 /* TutorialCollectionViewCell.xib */; };
@@ -75,11 +76,12 @@
 		DE2AB8A32429787B00335E4F /* TutorialDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialDataRepository.swift; sourceTree = "<group>"; };
 		DE2AB8AB242F424800335E4F /* ScreenCoodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenCoodinator.swift; sourceTree = "<group>"; };
 		DE2AB8B0242F4C3600335E4F /* TutorialScreenCoodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreenCoodinator.swift; sourceTree = "<group>"; };
+		DE2AB8B8242F7EC200335E4F /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		DE84854124279D7D00766098 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Tutorial.storyboard; sourceTree = "<group>"; };
 		DE84854324279DF800766098 /* TutorialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialCollectionViewCell.swift; sourceTree = "<group>"; };
 		DE84854424279DF800766098 /* TutorialCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialCollectionViewCell.xib; sourceTree = "<group>"; };
 		DE84854724279E2200766098 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TutorialViewController.swift; path = VisualEffectTraceExample/ViewController/Tutorial/TutorialViewController.swift; sourceTree = SOURCE_ROOT; };
-		DE8485492427A43C00766098 /* TutorialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TutorialViewModel.swift; path = VisualEffectTraceExample/View/TutorialViewModel.swift; sourceTree = SOURCE_ROOT; };
+		DE8485492427A43C00766098 /* TutorialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TutorialViewModel.swift; path = VisualEffectTraceExample/ViewModel/TutorialViewModel.swift; sourceTree = SOURCE_ROOT; };
 		DE84854B2427A48A00766098 /* TutorialEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TutorialEntity.swift; path = VisualEffectTraceExample/View/TutorialEntity.swift; sourceTree = SOURCE_ROOT; };
 		DE84873E2425B5D400A40975 /* KeychainAccessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainAccessManager.swift; sourceTree = "<group>"; };
 		DE8487402425E21D00A40975 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
@@ -155,37 +157,11 @@
 			path = Response;
 			sourceTree = "<group>";
 		};
-		DE14134423FAF1840000D27C /* TestData */ = {
-			isa = PBXGroup;
-			children = (
-				DE14134523FAF27A0000D27C /* Mock */,
-				DE14134623FAF27F0000D27C /* Stub */,
-			);
-			name = TestData;
-			path = ../TestData;
-			sourceTree = "<group>";
-		};
-		DE14134523FAF27A0000D27C /* Mock */ = {
-			isa = PBXGroup;
-			children = (
-				DEDCC87A241DCDE100BFA165 /* Announcement */,
-			);
-			path = Mock;
-			sourceTree = "<group>";
-		};
-		DE14134623FAF27F0000D27C /* Stub */ = {
-			isa = PBXGroup;
-			children = (
-				DEDCC879241DCD2700BFA165 /* Announcement */,
-			);
-			path = Stub;
-			sourceTree = "<group>";
-		};
 		DE2AB8972427A53C00335E4F /* DataSet */ = {
 			isa = PBXGroup;
 			children = (
 				DE2AB8982427A55F00335E4F /* ProductionData */,
-				DE14134423FAF1840000D27C /* TestData */,
+				DE2AB8B7242F7E9B00335E4F /* TestData */,
 			);
 			path = DataSet;
 			sourceTree = "<group>";
@@ -246,7 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				DE2AB8AB242F424800335E4F /* ScreenCoodinator.swift */,
-				DE2AB8AF242F4BC500335E4F /* Tutorial */,
+				DE2AB8B0242F4C3600335E4F /* TutorialScreenCoodinator.swift */,
 			);
 			path = Coodinator;
 			sourceTree = "<group>";
@@ -266,12 +242,20 @@
 			path = Tutorial;
 			sourceTree = "<group>";
 		};
-		DE2AB8AF242F4BC500335E4F /* Tutorial */ = {
+		DE2AB8B6242F7E8200335E4F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				DE2AB8B0242F4C3600335E4F /* TutorialScreenCoodinator.swift */,
+				DE8485492427A43C00766098 /* TutorialViewModel.swift */,
+				DE2AB8B8242F7EC200335E4F /* MainViewModel.swift */,
 			);
-			path = Tutorial;
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DE2AB8B7242F7E9B00335E4F /* TestData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TestData;
 			sourceTree = "<group>";
 		};
 		DE3A9D25242636F60060FE30 /* InternalJsonEntity */ = {
@@ -369,7 +353,7 @@
 				DEAA659923F70B8200C5232B /* Storyboard */,
 				DEAA659E23F70CE400C5232B /* View */,
 				DEAA659823F70B7700C5232B /* ViewController */,
-				DEAA659B23F70C8C00C5232B /* ViewModel */,
+				DE2AB8B6242F7E8200335E4F /* ViewModel */,
 			);
 			path = VisualEffectTraceExample;
 			sourceTree = "<group>";
@@ -425,14 +409,6 @@
 				DEDCC876241CF1FE00BFA165 /* BlockSubscriber */,
 			);
 			path = Redux;
-			sourceTree = "<group>";
-		};
-		DEAA659B23F70C8C00C5232B /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				DE8485492427A43C00766098 /* TutorialViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		DEAA659D23F70CD900C5232B /* Modules */ = {
@@ -503,20 +479,6 @@
 				DE2AB89E242973A100335E4F /* GetTutorialDataUseCase.swift */,
 			);
 			path = UseCase;
-			sourceTree = "<group>";
-		};
-		DEDCC879241DCD2700BFA165 /* Announcement */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Announcement;
-			sourceTree = "<group>";
-		};
-		DEDCC87A241DCDE100BFA165 /* Announcement */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Announcement;
 			sourceTree = "<group>";
 		};
 		DEDCC886241DE23B00BFA165 /* Request */ = {
@@ -759,6 +721,7 @@
 				DE2AB8B1242F4C3600335E4F /* TutorialScreenCoodinator.swift in Sources */,
 				DE8487412425E21D00A40975 /* AppConstants.swift in Sources */,
 				DEDCC88A241DE30500BFA165 /* AnnouncementAPIRequest.swift in Sources */,
+				DE2AB8B9242F7EC200335E4F /* MainViewModel.swift in Sources */,
 				DE14134823FB02A10000D27C /* APIRequestManager.swift in Sources */,
 				DE2AB89F242973A100335E4F /* GetTutorialDataUseCase.swift in Sources */,
 				DEA01C7F240107DC00346C1E /* AnnouncementEntity.swift in Sources */,
