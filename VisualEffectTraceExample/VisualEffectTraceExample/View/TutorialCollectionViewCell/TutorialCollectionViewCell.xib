@@ -20,21 +20,50 @@
                         <rect key="frame" x="24" y="68" width="202" height="300"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AR4-G3-mvt">
-                                <rect key="frame" x="24" y="24" width="154" height="252"/>
+                                <rect key="frame" x="6" y="6" width="190" height="288"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cBx-Ks-M75">
+                                        <rect key="frame" x="10" y="6" width="170" height="21.5"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g8k-yP-G3p">
+                                        <rect key="frame" x="10" y="33.5" width="170" height="14"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jh5-GD-0O1">
+                                        <rect key="frame" x="0.0" y="67.5" width="190" height="220.5"/>
+                                    </imageView>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="cBx-Ks-M75" firstAttribute="top" secondItem="AR4-G3-mvt" secondAttribute="top" constant="6" id="3By-cC-rFD"/>
+                                    <constraint firstAttribute="trailing" secondItem="jh5-GD-0O1" secondAttribute="trailing" id="CpD-49-XYO"/>
+                                    <constraint firstItem="jh5-GD-0O1" firstAttribute="top" secondItem="g8k-yP-G3p" secondAttribute="bottom" constant="20" id="IqG-MB-b5y"/>
+                                    <constraint firstItem="cBx-Ks-M75" firstAttribute="leading" secondItem="AR4-G3-mvt" secondAttribute="leading" constant="10" id="MGv-7Y-7B6"/>
+                                    <constraint firstAttribute="trailing" secondItem="g8k-yP-G3p" secondAttribute="trailing" constant="10" id="X8S-sE-LC7"/>
+                                    <constraint firstItem="g8k-yP-G3p" firstAttribute="leading" secondItem="AR4-G3-mvt" secondAttribute="leading" constant="10" id="Zfs-we-Psh"/>
+                                    <constraint firstItem="g8k-yP-G3p" firstAttribute="top" secondItem="cBx-Ks-M75" secondAttribute="bottom" constant="6" id="dKW-5J-PRZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="jh5-GD-0O1" secondAttribute="bottom" id="uO5-Yo-vZO"/>
+                                    <constraint firstAttribute="trailing" secondItem="cBx-Ks-M75" secondAttribute="trailing" constant="10" id="vhG-F3-AxZ"/>
+                                    <constraint firstItem="jh5-GD-0O1" firstAttribute="leading" secondItem="AR4-G3-mvt" secondAttribute="leading" id="yuD-Jy-M4i"/>
+                                </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="AR4-G3-mvt" firstAttribute="leading" secondItem="hE4-iJ-6GU" secondAttribute="leading" constant="24" id="4ZF-db-yjE"/>
-                            <constraint firstItem="AR4-G3-mvt" firstAttribute="top" secondItem="hE4-iJ-6GU" secondAttribute="top" constant="24" id="9ZL-46-bv9"/>
-                            <constraint firstAttribute="bottom" secondItem="AR4-G3-mvt" secondAttribute="bottom" constant="24" id="K5p-Bl-P4r"/>
-                            <constraint firstAttribute="trailing" secondItem="AR4-G3-mvt" secondAttribute="trailing" constant="24" id="isC-bN-ht1"/>
+                            <constraint firstItem="AR4-G3-mvt" firstAttribute="leading" secondItem="hE4-iJ-6GU" secondAttribute="leading" constant="6" id="4ZF-db-yjE"/>
+                            <constraint firstItem="AR4-G3-mvt" firstAttribute="top" secondItem="hE4-iJ-6GU" secondAttribute="top" constant="6" id="9ZL-46-bv9"/>
+                            <constraint firstAttribute="bottom" secondItem="AR4-G3-mvt" secondAttribute="bottom" constant="6" id="K5p-Bl-P4r"/>
+                            <constraint firstAttribute="trailing" secondItem="AR4-G3-mvt" secondAttribute="trailing" constant="6" id="isC-bN-ht1"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
-            <color key="backgroundColor" red="0.0" green="0.65098039220000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="hE4-iJ-6GU" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="68" id="69X-o8-Xjz"/>
                 <constraint firstAttribute="bottom" secondItem="hE4-iJ-6GU" secondAttribute="bottom" constant="112" id="A1n-xZ-mce"/>
@@ -42,6 +71,12 @@
                 <constraint firstItem="hE4-iJ-6GU" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="24" id="uoJ-Mf-fVc"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="tutorialCatchCopyLabel" destination="g8k-yP-G3p" id="MkB-FS-TZW"/>
+                <outlet property="tutorialImageView" destination="jh5-GD-0O1" id="d1a-rO-kzV"/>
+                <outlet property="tutorialTitleLabel" destination="cBx-Ks-M75" id="eHq-ih-BpA"/>
+                <outlet property="tutorialWrappedView" destination="hE4-iJ-6GU" id="Uv5-hh-a44"/>
+            </connections>
             <point key="canvasLocation" x="131.8840579710145" y="148.66071428571428"/>
         </collectionViewCell>
     </objects>

@@ -28,18 +28,21 @@
                                 <cells/>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZYT-mJ-B01">
-                                <rect key="frame" x="12" y="607" width="351" height="48"/>
-                                <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="24" y="607" width="327" height="48"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="QY9-7n-ASL"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="アプリの利用を開始する">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="XAb-ZS-SMt" firstAttribute="trailing" secondItem="ZYT-mJ-B01" secondAttribute="trailing" constant="12" id="SDM-sC-Xfx"/>
-                            <constraint firstItem="ZYT-mJ-B01" firstAttribute="leading" secondItem="XAb-ZS-SMt" secondAttribute="leading" constant="12" id="dMZ-0o-jeb"/>
+                            <constraint firstItem="XAb-ZS-SMt" firstAttribute="trailing" secondItem="ZYT-mJ-B01" secondAttribute="trailing" constant="24" id="SDM-sC-Xfx"/>
+                            <constraint firstItem="ZYT-mJ-B01" firstAttribute="leading" secondItem="XAb-ZS-SMt" secondAttribute="leading" constant="24" id="dMZ-0o-jeb"/>
                             <constraint firstItem="XAb-ZS-SMt" firstAttribute="bottom" secondItem="ZYT-mJ-B01" secondAttribute="bottom" constant="12" id="nqf-66-vSP"/>
                             <constraint firstItem="1Vm-fm-LI8" firstAttribute="bottom" secondItem="XAb-ZS-SMt" secondAttribute="bottom" id="o7u-9B-oex"/>
                             <constraint firstItem="1Vm-fm-LI8" firstAttribute="trailing" secondItem="XAb-ZS-SMt" secondAttribute="trailing" id="rJl-tp-31Z"/>

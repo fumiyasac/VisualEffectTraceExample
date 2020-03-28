@@ -63,8 +63,10 @@ final class TutorialViewController: UIViewController {
 
         // RxSwiftを利用して一覧データをUICollectionViewに適用する
         // MEMO: UICollectionViewのHeader・Footerのレイアウト調整等が絡んで取り扱いにくい場合もあるので、状況に合わせて使い分けていくと良いかと思います。
-        viewModel.tutorialItems.bind(to: tutorialCollectionView.rx.items) { (collectionView, row, model) in
+        viewModel.tutorialItems.bind(to: tutorialCollectionView.rx.items) { (collectionView, row, tutorialEntity) in
                 let cell = collectionView.dequeueReusableCustomCell(with: TutorialCollectionViewCell.self, indexPath: IndexPath(row: row, section: 0))
+                cell.setCell(tutorialEntity)
+                cell.setCellDecoration()
                 return cell
             }
             .disposed(by: disposeBag)
@@ -77,19 +79,20 @@ final class TutorialViewController: UIViewController {
             )
             .disposed(by: disposeBag)
 
-        // RxSwiftを利用して該当のセルをタップした場合にタップ時のindexPathを返す
+        // 参考: RxSwiftを利用して該当のセルをタップした場合にタップ時のindexPathを返す場合の記述例
+        /*
         tutorialCollectionView.rx.itemSelected
             .asSignal()
             .emit(
                 onNext: { [weak self] indexPath in
                     let cell = self?.tutorialCollectionView.cellForItem(at: indexPath) as! TutorialCollectionViewCell
-
                     print(indexPath.section)
                     print(indexPath.row)
                     print(cell)
                 }
             )
             .disposed(by: disposeBag)
+        */
 
         // 参考: タップ時にセルに紐づいているModelを返す場合の記述例
         /*
