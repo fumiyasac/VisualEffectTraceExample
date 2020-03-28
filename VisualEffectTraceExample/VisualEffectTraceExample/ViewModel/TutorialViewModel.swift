@@ -50,6 +50,8 @@ final class TutorialViewModel: TutorialViewModelInputs, TutorialViewModelOutputs
         return _isLastIndex.asObservable()
     }
 
+    // MARK: - Properties
+
     private let disposeBag = DisposeBag()
 
     // MEMO: 中継地点となるBehaviorRelayの変数（Outputの変数を生成するための「つなぎ」のような役割）
