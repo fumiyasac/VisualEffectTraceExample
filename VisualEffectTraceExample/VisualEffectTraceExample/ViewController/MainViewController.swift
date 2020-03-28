@@ -17,12 +17,9 @@ final class MainViewController: UIViewController {
     
     @IBAction func test(_ sender: Any) {
 
-        // TODO: rootViewControllerを置き換える
-        let vc = TutorialViewController.instantiate()
-        if #available(iOS 13.0, *) {
-            vc.modalPresentationStyle = .fullScreen
-        }
-        present(vc, animated: true, completion: nil)
+        // 画面遷移処理をCoodinatorパターンで実施する形とする
+        let coodinator = TutorialScreenCoordinator()
+        coodinator.start()
     }
 
     override func viewDidLoad() {

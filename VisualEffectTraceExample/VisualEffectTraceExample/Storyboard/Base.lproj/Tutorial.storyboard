@@ -28,9 +28,10 @@
                                 <cells/>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZYT-mJ-B01">
-                                <rect key="frame" x="12" y="611" width="351" height="44"/>
+                                <rect key="frame" x="12" y="607" width="351" height="48"/>
+                                <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="QY9-7n-ASL"/>
+                                    <constraint firstAttribute="height" constant="48" id="QY9-7n-ASL"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                             </button>
@@ -40,9 +41,9 @@
                             <constraint firstItem="XAb-ZS-SMt" firstAttribute="trailing" secondItem="ZYT-mJ-B01" secondAttribute="trailing" constant="12" id="SDM-sC-Xfx"/>
                             <constraint firstItem="ZYT-mJ-B01" firstAttribute="leading" secondItem="XAb-ZS-SMt" secondAttribute="leading" constant="12" id="dMZ-0o-jeb"/>
                             <constraint firstItem="XAb-ZS-SMt" firstAttribute="bottom" secondItem="ZYT-mJ-B01" secondAttribute="bottom" constant="12" id="nqf-66-vSP"/>
-                            <constraint firstItem="1Vm-fm-LI8" firstAttribute="bottom" secondItem="PEs-UY-nMI" secondAttribute="bottom" id="o7u-9B-oex"/>
+                            <constraint firstItem="1Vm-fm-LI8" firstAttribute="bottom" secondItem="XAb-ZS-SMt" secondAttribute="bottom" id="o7u-9B-oex"/>
                             <constraint firstItem="1Vm-fm-LI8" firstAttribute="trailing" secondItem="XAb-ZS-SMt" secondAttribute="trailing" id="rJl-tp-31Z"/>
-                            <constraint firstItem="1Vm-fm-LI8" firstAttribute="top" secondItem="PEs-UY-nMI" secondAttribute="top" id="rwr-1u-fGz"/>
+                            <constraint firstItem="1Vm-fm-LI8" firstAttribute="top" secondItem="XAb-ZS-SMt" secondAttribute="top" id="rwr-1u-fGz"/>
                             <constraint firstItem="1Vm-fm-LI8" firstAttribute="leading" secondItem="XAb-ZS-SMt" secondAttribute="leading" id="v4B-ff-Wp1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XAb-ZS-SMt"/>

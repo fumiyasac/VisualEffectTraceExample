@@ -13,6 +13,8 @@
 		DE2AB89A2427A57000335E4F /* tutorial_data.json in Resources */ = {isa = PBXBuildFile; fileRef = DE2AB8992427A57000335E4F /* tutorial_data.json */; };
 		DE2AB89F242973A100335E4F /* GetTutorialDataUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB89E242973A100335E4F /* GetTutorialDataUseCase.swift */; };
 		DE2AB8A42429787B00335E4F /* TutorialDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB8A32429787B00335E4F /* TutorialDataRepository.swift */; };
+		DE2AB8AC242F424800335E4F /* ScreenCoodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB8AB242F424800335E4F /* ScreenCoodinator.swift */; };
+		DE2AB8B1242F4C3600335E4F /* TutorialScreenCoodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB8B0242F4C3600335E4F /* TutorialScreenCoodinator.swift */; };
 		DE84854224279D7D00766098 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE84854024279D7D00766098 /* Tutorial.storyboard */; };
 		DE84854524279DF800766098 /* TutorialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE84854324279DF800766098 /* TutorialCollectionViewCell.swift */; };
 		DE84854624279DF800766098 /* TutorialCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE84854424279DF800766098 /* TutorialCollectionViewCell.xib */; };
@@ -71,10 +73,12 @@
 		DE2AB8992427A57000335E4F /* tutorial_data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tutorial_data.json; sourceTree = "<group>"; };
 		DE2AB89E242973A100335E4F /* GetTutorialDataUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTutorialDataUseCase.swift; sourceTree = "<group>"; };
 		DE2AB8A32429787B00335E4F /* TutorialDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialDataRepository.swift; sourceTree = "<group>"; };
+		DE2AB8AB242F424800335E4F /* ScreenCoodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenCoodinator.swift; sourceTree = "<group>"; };
+		DE2AB8B0242F4C3600335E4F /* TutorialScreenCoodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialScreenCoodinator.swift; sourceTree = "<group>"; };
 		DE84854124279D7D00766098 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Tutorial.storyboard; sourceTree = "<group>"; };
 		DE84854324279DF800766098 /* TutorialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialCollectionViewCell.swift; sourceTree = "<group>"; };
 		DE84854424279DF800766098 /* TutorialCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialCollectionViewCell.xib; sourceTree = "<group>"; };
-		DE84854724279E2200766098 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TutorialViewController.swift; path = VisualEffectTraceExample/View/TutorialViewController.swift; sourceTree = SOURCE_ROOT; };
+		DE84854724279E2200766098 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TutorialViewController.swift; path = VisualEffectTraceExample/ViewController/Tutorial/TutorialViewController.swift; sourceTree = SOURCE_ROOT; };
 		DE8485492427A43C00766098 /* TutorialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TutorialViewModel.swift; path = VisualEffectTraceExample/View/TutorialViewModel.swift; sourceTree = SOURCE_ROOT; };
 		DE84854B2427A48A00766098 /* TutorialEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TutorialEntity.swift; path = VisualEffectTraceExample/View/TutorialEntity.swift; sourceTree = SOURCE_ROOT; };
 		DE84873E2425B5D400A40975 /* KeychainAccessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainAccessManager.swift; sourceTree = "<group>"; };
@@ -203,6 +207,73 @@
 			path = TutorialCollectionViewCell;
 			sourceTree = "<group>";
 		};
+		DE2AB8A5242F2D8300335E4F /* State */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		DE2AB8A6242F2DFD00335E4F /* Middleware */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Middleware;
+			sourceTree = "<group>";
+		};
+		DE2AB8A7242F2E0700335E4F /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		DE2AB8A8242F2E1300335E4F /* Reducers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Reducers;
+			sourceTree = "<group>";
+		};
+		DE2AB8A9242F2E2100335E4F /* ActionCreators */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ActionCreators;
+			sourceTree = "<group>";
+		};
+		DE2AB8AA242F36B900335E4F /* Coodinator */ = {
+			isa = PBXGroup;
+			children = (
+				DE2AB8AB242F424800335E4F /* ScreenCoodinator.swift */,
+				DE2AB8AF242F4BC500335E4F /* Tutorial */,
+			);
+			path = Coodinator;
+			sourceTree = "<group>";
+		};
+		DE2AB8AD242F4B3B00335E4F /* GlobalTabBar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = GlobalTabBar;
+			sourceTree = "<group>";
+		};
+		DE2AB8AE242F4B6600335E4F /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				DE84854724279E2200766098 /* TutorialViewController.swift */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
+		DE2AB8AF242F4BC500335E4F /* Tutorial */ = {
+			isa = PBXGroup;
+			children = (
+				DE2AB8B0242F4C3600335E4F /* TutorialScreenCoodinator.swift */,
+			);
+			path = Tutorial;
+			sourceTree = "<group>";
+		};
 		DE3A9D25242636F60060FE30 /* InternalJsonEntity */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,6 +358,7 @@
 				DEAA656823F3122F00C5232B /* AppDelegate.swift */,
 				DEAA656A23F3122F00C5232B /* SceneDelegate.swift */,
 				DEAA657123F3123100C5232B /* Assets.xcassets */,
+				DE2AB8AA242F36B900335E4F /* Coodinator */,
 				DE2AB8972427A53C00335E4F /* DataSet */,
 				DEA01C7A2400FE0E00346C1E /* Domain */,
 				DEAA65A023F70D1400C5232B /* Enum */,
@@ -326,7 +398,8 @@
 				DEAA656C23F3122F00C5232B /* MainViewController.swift */,
 				DEDCC88E241E794F00BFA165 /* Announcement */,
 				DEDCC88C241DF16200BFA165 /* Contents */,
-				DEDCC88B241DF15900BFA165 /* Tutorial */,
+				DE2AB8AD242F4B3B00335E4F /* GlobalTabBar */,
+				DE2AB8AE242F4B6600335E4F /* Tutorial */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -344,6 +417,11 @@
 		DEAA659A23F70C8200C5232B /* Redux */ = {
 			isa = PBXGroup;
 			children = (
+				DE2AB8A9242F2E2100335E4F /* ActionCreators */,
+				DE2AB8A8242F2E1300335E4F /* Reducers */,
+				DE2AB8A7242F2E0700335E4F /* Actions */,
+				DE2AB8A6242F2DFD00335E4F /* Middleware */,
+				DE2AB8A5242F2D8300335E4F /* State */,
 				DEDCC876241CF1FE00BFA165 /* BlockSubscriber */,
 			);
 			path = Redux;
@@ -447,14 +525,6 @@
 				DEDCC889241DE30500BFA165 /* AnnouncementAPIRequest.swift */,
 			);
 			path = Request;
-			sourceTree = "<group>";
-		};
-		DEDCC88B241DF15900BFA165 /* Tutorial */ = {
-			isa = PBXGroup;
-			children = (
-				DE84854724279E2200766098 /* TutorialViewController.swift */,
-			);
-			path = Tutorial;
 			sourceTree = "<group>";
 		};
 		DEDCC88C241DF16200BFA165 /* Contents */ = {
@@ -685,6 +755,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE84854524279DF800766098 /* TutorialCollectionViewCell.swift in Sources */,
+				DE2AB8AC242F424800335E4F /* ScreenCoodinator.swift in Sources */,
+				DE2AB8B1242F4C3600335E4F /* TutorialScreenCoodinator.swift in Sources */,
 				DE8487412425E21D00A40975 /* AppConstants.swift in Sources */,
 				DEDCC88A241DE30500BFA165 /* AnnouncementAPIRequest.swift in Sources */,
 				DE14134823FB02A10000D27C /* APIRequestManager.swift in Sources */,

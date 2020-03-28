@@ -13,6 +13,12 @@ import AnimatedCollectionViewLayout
 
 final class TutorialViewController: UIViewController {
 
+    // MARK: - TutorialFlow
+
+    var coordinator: TutorialFlow?
+
+    // MARK: - Properties
+
     private let disposeBag = DisposeBag()
 
     // MEMO: チュートリアル表示内容を取得するViewModel
@@ -159,13 +165,10 @@ final class TutorialViewController: UIViewController {
         UIView.animate(withDuration: 0.16, animations: {
             self.nextContentsButton.transform = CGAffineTransform.identity
         }, completion: { finished in
-            self.goLoginContents()
+            // MEMO: TutorialFlowプロトコルに定義したTutorialScreenCoodinatorの画面遷移を実行する
+            // → ここではCoodinator側に定義したログイン表示画面へ遷移する
+            self.coordinator?.coordinateToLogin()
         })
-    }
-
-    // ログイン表示画面へ遷移する
-    private func goLoginContents() {
-        print("ログイン画面へ遷移する")
     }
 }
 
