@@ -27,6 +27,7 @@
 		DE2AB8CC242FF07900335E4F /* BaseScreenReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB8CB242FF07900335E4F /* BaseScreenReducer.swift */; };
 		DE2AB8CE242FF0D300335E4F /* BaseScreenAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB8CD242FF0D300335E4F /* BaseScreenAction.swift */; };
 		DE2AB8D0242FF8A000335E4F /* BaseScreenActionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB8CF242FF8A000335E4F /* BaseScreenActionCreator.swift */; };
+		DE2AB8D4243070B900335E4F /* UIWindowScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB8D3243070B900335E4F /* UIWindowScanner.swift */; };
 		DE84854224279D7D00766098 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE84854024279D7D00766098 /* Tutorial.storyboard */; };
 		DE84854524279DF800766098 /* TutorialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE84854324279DF800766098 /* TutorialCollectionViewCell.swift */; };
 		DE84854624279DF800766098 /* TutorialCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE84854424279DF800766098 /* TutorialCollectionViewCell.xib */; };
@@ -99,6 +100,7 @@
 		DE2AB8CB242FF07900335E4F /* BaseScreenReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScreenReducer.swift; sourceTree = "<group>"; };
 		DE2AB8CD242FF0D300335E4F /* BaseScreenAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScreenAction.swift; sourceTree = "<group>"; };
 		DE2AB8CF242FF8A000335E4F /* BaseScreenActionCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScreenActionCreator.swift; sourceTree = "<group>"; };
+		DE2AB8D3243070B900335E4F /* UIWindowScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindowScanner.swift; sourceTree = "<group>"; };
 		DE84854124279D7D00766098 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Tutorial.storyboard; sourceTree = "<group>"; };
 		DE84854324279DF800766098 /* TutorialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialCollectionViewCell.swift; sourceTree = "<group>"; };
 		DE84854424279DF800766098 /* TutorialCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -446,6 +448,7 @@
 			isa = PBXGroup;
 			children = (
 				DEAA65A823F70E6900C5232B /* UILabelDecorator.swift */,
+				DE2AB8D3243070B900335E4F /* UIWindowScanner.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -777,6 +780,7 @@
 				DEDCC888241DE26700BFA165 /* APIRequestProtocol.swift in Sources */,
 				DEAA65AB23F70E9C00C5232B /* UIColorExtension.swift in Sources */,
 				DEAA656923F3122F00C5232B /* AppDelegate.swift in Sources */,
+				DE2AB8D4243070B900335E4F /* UIWindowScanner.swift in Sources */,
 				DE2AB8C1242FEACA00335E4F /* AppState.swift in Sources */,
 				DEAA65A723F70E4600C5232B /* StoryboardInstantiatable.swift in Sources */,
 				DE84873F2425B5D400A40975 /* KeychainAccessManager.swift in Sources */,

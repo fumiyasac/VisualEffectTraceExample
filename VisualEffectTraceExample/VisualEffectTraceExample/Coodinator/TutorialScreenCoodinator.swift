@@ -32,18 +32,11 @@ class TutorialScreenCoordinator: ScreenCoordinator, TutorialFlow {
         tutorialViewController.coordinator = self
 
         // 現在表示されているUIWindowインスタンスを取得する（※iOS13以降とそれ以下では取得方法が異なる点に注意！）
-        let targetWindow = UIApplication.shared.connectedScenes
-            .filter{ $0.activationState == .foregroundActive }
-            .map{ $0 as? UIWindowScene }
-            .compactMap{ $0 }
-            .first?.windows
-            .filter{ $0.isKeyWindow }
-            .first
-
-        // アニメーションを伴う形でrootViewControllerを切り替える
-        guard let window = targetWindow else {
+        guard let window = UIWindowScanner.getCurrentDisplayWindow() else {
             fatalError("対象のUIWindow要素を取得することができませんでした。")
         }
+
+        // アニメーションを伴う形でrootViewControllerを切り替える
         UIView.transition(with: window, duration: 0.24, options: [.transitionCrossDissolve], animations: {
             DispatchQueue.main.async {
                 window.rootViewController = tutorialViewController
