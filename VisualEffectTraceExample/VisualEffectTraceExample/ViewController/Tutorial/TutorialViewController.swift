@@ -169,8 +169,8 @@ final class TutorialViewController: UIViewController {
             self.nextContentsButton.transform = CGAffineTransform.identity
         }, completion: { finished in
             // MEMO: TutorialFlowプロトコルに定義したTutorialScreenCoodinatorの画面遷移を実行する
-            // → ここではCoodinator側に定義したログイン表示画面へ遷移する
-            self.coordinator?.coordinateToLogin()
+            // → ここではCoodinator側に定義したログイン画面へ遷移する
+            self.coordinator?.coordinateToSignin()
         })
     }
 }

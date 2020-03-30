@@ -85,9 +85,15 @@ final class MainViewController: UIViewController {
         // MEMO: 画面遷移処理をCoodinatorパターンで実施する形にする
         switch applicationUserState {
 
+        // チュートリアル画面へ遷移する
         case .needToMoveTutorialScreen:
-            let coodinator = TutorialScreenCoordinator()
-            coodinator.start()
+            let tutorialCoodinator = TutorialScreenCoordinator()
+            tutorialCoodinator.start()
+
+        // サインイン画面へ遷移する
+        case .needToMoveLoginScreen:
+            let signinCoodinator = SigninScreenCoordinator()
+            signinCoodinator.start()
 
         // TODO: その他のユーザー状態に応じた画面遷移のハンドリングを実施する
         default:

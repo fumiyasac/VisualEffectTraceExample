@@ -13,8 +13,8 @@ import UIKit
 
 protocol TutorialFlow: class {
 
-    // ログイン画面へ遷移するためのLoginScreenCoodinatorを初期化する
-    func coordinateToLogin()
+    // ログイン画面へ遷移するためのSignupScreenCoodinatorを初期化する
+    func coordinateToSignin()
 }
 
 class TutorialScreenCoordinator: ScreenCoordinator, TutorialFlow {
@@ -46,8 +46,12 @@ class TutorialScreenCoordinator: ScreenCoordinator, TutorialFlow {
 
     // MARK: - TutorialFlow
 
-    func coordinateToLogin() {
-        print("ログイン画面へ遷移するためのCoodinator定義が必要")
+    func coordinateToSignin() {
+
+        // ログイン画面へ遷移するための
+        let signinCoodinator = SigninScreenCoordinator()
+        coordinate(to: signinCoodinator)
+        //print("ログイン画面へ遷移するためのCoodinator定義が必要")
     }
 }
 

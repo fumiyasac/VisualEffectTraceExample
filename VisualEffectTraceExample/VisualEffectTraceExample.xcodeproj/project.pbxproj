@@ -28,6 +28,12 @@
 		DE2AB8CE242FF0D300335E4F /* BaseScreenAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB8CD242FF0D300335E4F /* BaseScreenAction.swift */; };
 		DE2AB8D0242FF8A000335E4F /* BaseScreenActionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB8CF242FF8A000335E4F /* BaseScreenActionCreator.swift */; };
 		DE2AB8D4243070B900335E4F /* UIWindowScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB8D3243070B900335E4F /* UIWindowScanner.swift */; };
+		DE67D97F2432370900EB2D61 /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE67D97D2432370900EB2D61 /* Signup.storyboard */; };
+		DE67D9822432372500EB2D61 /* Announcement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE67D9802432372500EB2D61 /* Announcement.storyboard */; };
+		DE67D984243246B300EB2D61 /* AnnoucementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67D983243246B300EB2D61 /* AnnoucementViewController.swift */; };
+		DE67D98824324A3300EB2D61 /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67D98724324A3300EB2D61 /* SigninViewController.swift */; };
+		DE67D98A24324A5900EB2D61 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67D98924324A5900EB2D61 /* SignupViewController.swift */; };
+		DE67D98C24324D7400EB2D61 /* SigninScreenCoodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67D98B24324D7400EB2D61 /* SigninScreenCoodinator.swift */; };
 		DE84854224279D7D00766098 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE84854024279D7D00766098 /* Tutorial.storyboard */; };
 		DE84854524279DF800766098 /* TutorialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE84854324279DF800766098 /* TutorialCollectionViewCell.swift */; };
 		DE84854624279DF800766098 /* TutorialCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE84854424279DF800766098 /* TutorialCollectionViewCell.xib */; };
@@ -38,6 +44,7 @@
 		DE8487412425E21D00A40975 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8487402425E21D00A40975 /* AppConstants.swift */; };
 		DE8487432425E81000A40975 /* RealmAccessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8487422425E81000A40975 /* RealmAccessManager.swift */; };
 		DE8487462425FACD00A40975 /* ApplicationUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8487452425FACD00A40975 /* ApplicationUserEntity.swift */; };
+		DE8FA1DD2432352D00577C47 /* Signin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE8FA1DB2432352D00577C47 /* Signin.storyboard */; };
 		DEA01C7F240107DC00346C1E /* AnnouncementEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA01C7E240107DC00346C1E /* AnnouncementEntity.swift */; };
 		DEAA656923F3122F00C5232B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA656823F3122F00C5232B /* AppDelegate.swift */; };
 		DEAA656B23F3122F00C5232B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA656A23F3122F00C5232B /* SceneDelegate.swift */; };
@@ -101,6 +108,12 @@
 		DE2AB8CD242FF0D300335E4F /* BaseScreenAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScreenAction.swift; sourceTree = "<group>"; };
 		DE2AB8CF242FF8A000335E4F /* BaseScreenActionCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScreenActionCreator.swift; sourceTree = "<group>"; };
 		DE2AB8D3243070B900335E4F /* UIWindowScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindowScanner.swift; sourceTree = "<group>"; };
+		DE67D97E2432370900EB2D61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Signup.storyboard; sourceTree = "<group>"; };
+		DE67D9812432372500EB2D61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Announcement.storyboard; sourceTree = "<group>"; };
+		DE67D983243246B300EB2D61 /* AnnoucementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnoucementViewController.swift; sourceTree = "<group>"; };
+		DE67D98724324A3300EB2D61 /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
+		DE67D98924324A5900EB2D61 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		DE67D98B24324D7400EB2D61 /* SigninScreenCoodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninScreenCoodinator.swift; sourceTree = "<group>"; };
 		DE84854124279D7D00766098 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Tutorial.storyboard; sourceTree = "<group>"; };
 		DE84854324279DF800766098 /* TutorialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialCollectionViewCell.swift; sourceTree = "<group>"; };
 		DE84854424279DF800766098 /* TutorialCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -111,6 +124,7 @@
 		DE8487402425E21D00A40975 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		DE8487422425E81000A40975 /* RealmAccessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmAccessManager.swift; sourceTree = "<group>"; };
 		DE8487452425FACD00A40975 /* ApplicationUserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationUserEntity.swift; sourceTree = "<group>"; };
+		DE8FA1DC2432352D00577C47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Signin.storyboard; sourceTree = "<group>"; };
 		DEA01C7E240107DC00346C1E /* AnnouncementEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementEntity.swift; sourceTree = "<group>"; };
 		DEAA656523F3122F00C5232B /* VisualEffectTraceExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisualEffectTraceExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEAA656823F3122F00C5232B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -254,6 +268,7 @@
 			children = (
 				DE2AB8AB242F424800335E4F /* ScreenCoodinator.swift */,
 				DE2AB8B0242F4C3600335E4F /* TutorialScreenCoodinator.swift */,
+				DE67D98B24324D7400EB2D61 /* SigninScreenCoodinator.swift */,
 			);
 			path = Coodinator;
 			sourceTree = "<group>";
@@ -295,6 +310,22 @@
 				DE84854B2427A48A00766098 /* TutorialEntity.swift */,
 			);
 			path = InternalJsonEntity;
+			sourceTree = "<group>";
+		};
+		DE67D985243249E700EB2D61 /* Signin */ = {
+			isa = PBXGroup;
+			children = (
+				DE67D98724324A3300EB2D61 /* SigninViewController.swift */,
+			);
+			path = Signin;
+			sourceTree = "<group>";
+		};
+		DE67D986243249F000EB2D61 /* Signup */ = {
+			isa = PBXGroup;
+			children = (
+				DE67D98924324A5900EB2D61 /* SignupViewController.swift */,
+			);
+			path = Signup;
 			sourceTree = "<group>";
 		};
 		DE84873D2425B32500A40975 /* KeychainManager */ = {
@@ -416,6 +447,8 @@
 				DEDCC88E241E794F00BFA165 /* Announcement */,
 				DEDCC88C241DF16200BFA165 /* Contents */,
 				DE2AB8AD242F4B3B00335E4F /* GlobalTabBar */,
+				DE67D985243249E700EB2D61 /* Signin */,
+				DE67D986243249F000EB2D61 /* Signup */,
 				DE2AB8AE242F4B6600335E4F /* Tutorial */,
 			);
 			path = ViewController;
@@ -424,8 +457,11 @@
 		DEAA659923F70B8200C5232B /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				DE67D9802432372500EB2D61 /* Announcement.storyboard */,
 				DEAA657323F3123100C5232B /* LaunchScreen.storyboard */,
 				DEAA656E23F3122F00C5232B /* Main.storyboard */,
+				DE8FA1DB2432352D00577C47 /* Signin.storyboard */,
+				DE67D97D2432370900EB2D61 /* Signup.storyboard */,
 				DE84854024279D7D00766098 /* Tutorial.storyboard */,
 			);
 			path = Storyboard;
@@ -543,6 +579,7 @@
 		DEDCC88E241E794F00BFA165 /* Announcement */ = {
 			isa = PBXGroup;
 			children = (
+				DE67D983243246B300EB2D61 /* AnnoucementViewController.swift */,
 			);
 			path = Announcement;
 			sourceTree = "<group>";
@@ -681,10 +718,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DEAA657523F3123100C5232B /* LaunchScreen.storyboard in Resources */,
+				DE67D9822432372500EB2D61 /* Announcement.storyboard in Resources */,
 				DEAA657223F3123100C5232B /* Assets.xcassets in Resources */,
+				DE8FA1DD2432352D00577C47 /* Signin.storyboard in Resources */,
 				DE84854224279D7D00766098 /* Tutorial.storyboard in Resources */,
 				DE2AB89A2427A57000335E4F /* tutorial_data.json in Resources */,
 				DEAA657023F3122F00C5232B /* Main.storyboard in Resources */,
+				DE67D97F2432370900EB2D61 /* Signup.storyboard in Resources */,
 				DE84854624279DF800766098 /* TutorialCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -768,6 +808,7 @@
 				DE2AB8D0242FF8A000335E4F /* BaseScreenActionCreator.swift in Sources */,
 				DEAA65B123F7289A00C5232B /* UICollectionViewExtension.swift in Sources */,
 				DEAA65A923F70E6900C5232B /* UILabelDecorator.swift in Sources */,
+				DE67D984243246B300EB2D61 /* AnnoucementViewController.swift in Sources */,
 				DEAA65AF23F7288C00C5232B /* UITableViewExtension.swift in Sources */,
 				DEAA65A323F70DEC00C5232B /* CustomViewBase.swift in Sources */,
 				DE2AB8C6242FEF1B00335E4F /* AppLogger.swift in Sources */,
@@ -775,8 +816,11 @@
 				DE2AB8BB242FC5AB00335E4F /* HandleMainScreenUseCase.swift in Sources */,
 				DEAA65AD23F70EE900C5232B /* UIViewControllerExtension.swift in Sources */,
 				DE84854A2427A43C00766098 /* TutorialViewModel.swift in Sources */,
+				DE67D98824324A3300EB2D61 /* SigninViewController.swift in Sources */,
 				DEAA656D23F3122F00C5232B /* MainViewController.swift in Sources */,
 				DE84854824279E2200766098 /* TutorialViewController.swift in Sources */,
+				DE67D98C24324D7400EB2D61 /* SigninScreenCoodinator.swift in Sources */,
+				DE67D98A24324A5900EB2D61 /* SignupViewController.swift in Sources */,
 				DEDCC888241DE26700BFA165 /* APIRequestProtocol.swift in Sources */,
 				DEAA65AB23F70E9C00C5232B /* UIColorExtension.swift in Sources */,
 				DEAA656923F3122F00C5232B /* AppDelegate.swift in Sources */,
@@ -829,12 +873,36 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		DE67D97D2432370900EB2D61 /* Signup.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE67D97E2432370900EB2D61 /* Base */,
+			);
+			name = Signup.storyboard;
+			sourceTree = "<group>";
+		};
+		DE67D9802432372500EB2D61 /* Announcement.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE67D9812432372500EB2D61 /* Base */,
+			);
+			name = Announcement.storyboard;
+			sourceTree = "<group>";
+		};
 		DE84854024279D7D00766098 /* Tutorial.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				DE84854124279D7D00766098 /* Base */,
 			);
 			name = Tutorial.storyboard;
+			sourceTree = "<group>";
+		};
+		DE8FA1DB2432352D00577C47 /* Signin.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE8FA1DC2432352D00577C47 /* Base */,
+			);
+			name = Signin.storyboard;
 			sourceTree = "<group>";
 		};
 		DEAA656E23F3122F00C5232B /* Main.storyboard */ = {
