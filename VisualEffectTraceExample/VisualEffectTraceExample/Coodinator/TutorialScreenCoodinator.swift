@@ -48,10 +48,10 @@ class TutorialScreenCoordinator: ScreenCoordinator, TutorialFlow {
 
     func coordinateToSignin() {
 
-        // ログイン画面へ遷移するための
+        // ログイン画面へ遷移するためのCoodinatorの処理を実施する
         let signinCoodinator = SigninScreenCoordinator()
         coordinate(to: signinCoodinator)
-        //print("ログイン画面へ遷移するためのCoodinator定義が必要")
     }
 }
+
 
