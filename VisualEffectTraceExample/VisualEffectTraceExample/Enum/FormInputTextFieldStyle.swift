@@ -16,5 +16,5 @@ enum FormInputTextFieldStyle {
     // パスワードなどセキュア文字入力用テキストフィールド
     case secureTextInput
     // 電話番号などの数値入力用テキストフィールド
-    case numericTextInput
+    case numericTextInput    
 }
