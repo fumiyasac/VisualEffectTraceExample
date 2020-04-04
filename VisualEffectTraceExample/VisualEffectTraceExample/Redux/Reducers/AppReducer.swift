@@ -16,6 +16,7 @@ func appReducer(action: Action, state: AppState?) -> AppState {
 
     // 各々のActionを実行して変更されたReducerを反映する
     state.baseScreenState = BaseScreenReducer.reducer(action: action, state: state.baseScreenState)
+    state.signinScreenState = SigninScreenReducer.reducer(action: action, state: state.signinScreenState)
 
     // Debug.
     AppLogger.printMessageForDebug("appReducerが実行されました。")

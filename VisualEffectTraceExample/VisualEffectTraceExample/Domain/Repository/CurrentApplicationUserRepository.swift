@@ -15,8 +15,8 @@ protocol ApplicationUserRepository {
     // ユーザーのチュートリアル完了フラグを更新する
     func updatePassTutorialStatus()
 
-    // ユーザーが会員登録を終えたタイミングで会員登録完了フラグを更新する
-    func updateAlreadySignupStatus()
+    // Keychainに格納されているJsonAccessTokenを更新する
+    func updateJsonAccessToken(_ token: String)
 }
 
 final class CurrentApplicationUserRepository: ApplicationUserRepository {
@@ -24,11 +24,13 @@ final class CurrentApplicationUserRepository: ApplicationUserRepository {
     // MARK: - Properties
 
     private let realmAccessManager: RealmAccessProtocol
+    private let keychainAccessManager: KeychainAccessProtocol
 
     // MARK: - Initializer
 
-    init(realmAccessManager: RealmAccessProtocol) {
+    init(realmAccessManager: RealmAccessProtocol, keychainAccessManager: KeychainAccessProtocol) {
         self.realmAccessManager = realmAccessManager
+        self.keychainAccessManager = keychainAccessManager
     }
 
     // MARK: - ApplicationUserRepository
@@ -41,12 +43,10 @@ final class CurrentApplicationUserRepository: ApplicationUserRepository {
         realmAccessManager.save(applicationUser)
     }
     
-    func updateAlreadySignupStatus() {
+    func updateJsonAccessToken(_ token: String) {
 
-        // Realm内の会員登録完了フラグを更新する
-        let applicationUser = executeFindOrCreateApplicationUser()
-        applicationUser.alreadySignup = true
-        realmAccessManager.save(applicationUser)
+        // 引数で受け取ったJsonAccessTokenをKeychainに格納する
+        keychainAccessManager.saveJsonAccessToken(token)
     }
 
     // MARK: - Private Function

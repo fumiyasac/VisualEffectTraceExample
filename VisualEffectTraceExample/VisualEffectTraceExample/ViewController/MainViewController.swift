@@ -93,7 +93,7 @@ final class MainViewController: UIViewController {
             tutorialCoodinator.start()
 
         // サインイン画面へ遷移する
-        case .needToMoveLoginScreen:
+        case .needToMoveSigninScreen:
             let signinCoodinator = SigninScreenCoordinator()
             signinCoodinator.start()
 

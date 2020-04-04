@@ -8,7 +8,7 @@
 
 import Foundation
 
-// MEMO: ログイン画面・新規会員登録画面をはじめとしたユーザーの入力を伴うViewを振り分けるための識別用
+// MEMO: サインイン画面・新規会員登録画面をはじめとしたユーザーの入力を伴うViewを振り分けるための識別用
 enum FormInputTextFieldStyle {
 
     // 普通の文字入力用テキストフィールド

@@ -30,7 +30,8 @@ final class TutorialViewController: UIViewController {
         // MEMO: 一番最初に起動後に表示される画面に関連するUseCase
         updateCurrentApplicationUserStatusUsecase: UpdateCurrentApplicationUserStatusUsecase(
             applicationUserRepository: CurrentApplicationUserRepository(
-                realmAccessManager: RealmAccessManager.shared
+                realmAccessManager: RealmAccessManager.shared,
+                keychainAccessManager: KeychainAccessManager.shared
             )
         )
     )
@@ -214,7 +215,7 @@ final class TutorialViewController: UIViewController {
 
             // MEMO: チュートリアル完了フラグの更新と該当画面への遷移を実行する
             self.viewModel.completeTutorialTrigger.onNext(())
-            BaseScreenActionCreator.setCurrentApplicationUserStatus(.needToMoveLoginScreen)
+            BaseScreenActionCreator.setCurrentApplicationUserStatus(.needToMoveSigninScreen)
         })
     }
 
@@ -224,10 +225,10 @@ final class TutorialViewController: UIViewController {
         switch applicationUserState {
 
         // サインイン画面へ遷移する
-        case .needToMoveLoginScreen:
+        case .needToMoveSigninScreen:
 
             // MEMO: TutorialFlowプロトコルに定義したTutorialScreenCoodinatorの画面遷移を実行する
-            // → ここではCoodinator側に定義したログイン画面へ遷移する
+            // → ここではCoodinator側に定義したサインイン画面へ遷移する
             self.coordinator?.coordinateToSignin()
 
         default:

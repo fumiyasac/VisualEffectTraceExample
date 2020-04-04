@@ -12,9 +12,7 @@ import RealmSwift
 class ApplicationUserEntity: Object {
 
     @objc dynamic var id = UUID().uuidString
-    @objc dynamic var alreadySignup = false
     @objc dynamic var alreadyPassTutorial = false
-    @objc dynamic var applicationFirstOpenedAt = Date()
 
     override static func primaryKey() -> String? {
         return "id"

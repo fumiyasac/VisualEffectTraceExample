@@ -15,8 +15,8 @@ protocol ApplicationUserStatusUsecase {
     // ユーザーのチュートリアル完了フラグを更新する
     func executeUpdatePassTutorialStatus()
 
-    // ユーザーが会員登録を終えたタイミングで実行する
-    func executeUpdateAlreadySignupStatus()
+    // ユーザーがサインイン時に受け取ったJsonAccessTokenをキーチェーンへ格納する
+    func executeUpdateToken(_ token: String)
 }
 
 final class UpdateCurrentApplicationUserStatusUsecase: ApplicationUserStatusUsecase {
@@ -35,7 +35,7 @@ final class UpdateCurrentApplicationUserStatusUsecase: ApplicationUserStatusUsec
         applicationUserRepository.updatePassTutorialStatus()
     }
 
-    func executeUpdateAlreadySignupStatus() {
-        applicationUserRepository.updatePassTutorialStatus()
+    func executeUpdateToken(_ token: String) {
+        applicationUserRepository.updateJsonAccessToken(token)
     }
 }

@@ -20,8 +20,8 @@ protocol FormTextFieldInputViewDelegate: NSObjectProtocol {
 }
 
 // MEMO: 利用しない場合やIBのエラーが出る場合は`@IBDesignable`をコメントする
-//@IBDesignable
-class FormTextFieldInputView: CustomViewBase {
+@IBDesignable
+class FormInputTextFieldView: CustomViewBase {
 
     private let disposeBag = DisposeBag()
 
@@ -42,6 +42,10 @@ class FormTextFieldInputView: CustomViewBase {
     @IBOutlet private weak var remarkLabel: UILabel!
     @IBOutlet private weak var errorMessageLabel: UILabel!
 
+    // 入力用のテキストフィールドやパスワード可視化用のボタンをまとめるUIView
+    // ※ UIStackViewには罫線をはじめとするlayerプロパティの装飾が適用されない点に注意
+    @IBOutlet private weak var inputTextFieldWrappedView: UIView!
+    
     // 入力用のテキストフィールド
     @IBOutlet private weak var inputTextField: UITextField!
 
@@ -116,6 +120,10 @@ class FormTextFieldInputView: CustomViewBase {
     }
 
     private func setupFormTextFieldInputView() {
+
+        // 入力エリア部分に罫線を付与する
+        inputTextFieldWrappedView.layer.borderWidth = 1.0
+        inputTextFieldWrappedView.layer.borderColor = UIColor.opaqueSeparator.cgColor
 
         // テキストフィールドの変化を検知した際のアクション設定
         inputTextField.rx.text

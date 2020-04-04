@@ -39,11 +39,11 @@ final class MainScreenRepository: MainRepository {
 
             switch applicationUser {
 
-            case _ where !applicationUser.alreadyPassTutorial :
+            case _ where !applicationUser.alreadyPassTutorial:
                 return ApplicationUserStatus.needToMoveTutorialScreen
 
-            case _ where applicationUser.alreadyPassTutorial && !applicationUser.alreadySignup :
-                return ApplicationUserStatus.needToMoveLoginScreen
+            case _ where applicationUser.alreadyPassTutorial && !keychainAccessManager.existsJsonAccessToken():
+                return ApplicationUserStatus.needToMoveSigninScreen
 
             default:
                 return ApplicationUserStatus.needToMoveGlobalTabBarScreen

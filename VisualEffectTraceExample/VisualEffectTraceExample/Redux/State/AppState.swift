@@ -14,4 +14,7 @@ struct AppState: ReSwift.StateType {
 
     // アプリ起動からベース画面(ここではrootViewControllerに表示したいもの)定義に関するstateの定義
     var baseScreenState = BaseScreenState()
+
+    // サインイン画面に関するstateの定義
+    var signinScreenState = SigninScreenState()
 }

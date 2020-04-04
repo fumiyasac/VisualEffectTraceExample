@@ -17,10 +17,9 @@ extension BaseScreenReducer {
 
     static func reducer(action: ReSwift.Action, state: BaseScreenState?) -> BaseScreenState {
 
-        // ユーザーの画面遷移を決定するためのstateを取得する(ない場合は初期状態とする)
         var state = state ?? BaseScreenState()
 
-        // ユーザーの画面遷移を決定するためのsアクションでない場合はStateの変更は許容しない
+        // MEMO: ユーザーの画面遷移を決定するためのアクションでない場合はStateの変更は許容しない
         guard let action = action as? BaseScreenState.BaseScreenAction else { return state }
 
         switch action {
