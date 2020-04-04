@@ -23,11 +23,34 @@ final class TutorialViewController: UIViewController {
 
     // MEMO: チュートリアル表示内容を取得するViewModel
     private let viewModel = TutorialViewModel(
-        useCase: GetTutorialDataUseCase(tutorialRepository: TutorialDataRepository())
+        // MEMO: チュートリアル画面表示に必要なデータを取得するUseCase
+        getTutorialUseCase: GetTutorialDataUseCase(
+            tutorialRepository: TutorialDataRepository()
+        ),
+        // MEMO: 一番最初に起動後に表示される画面に関連するUseCase
+        updateCurrentApplicationUserStatusUsecase: UpdateCurrentApplicationUserStatusUsecase(
+            applicationUserRepository: CurrentApplicationUserRepository(
+                realmAccessManager: RealmAccessManager.shared
+            )
+        )
     )
+
+    // MARK: - @IBOutlet
 
     @IBOutlet private weak var nextContentsButton: UIButton!
     @IBOutlet private weak var tutorialCollectionView: UICollectionView!
+
+    // MARK: - BlockSubscriber
+
+    private lazy var baseScreenSubscriber: BlockSubscriber<BaseScreenState> = BlockSubscriber { [weak self] state in
+        guard let self = self else { return }
+
+        // MEMO: Reduxの処理で反映されたStateの値を経由して画面遷移処理を実施する
+        guard let targetApplicationUserStatus = state.applicationUserStatus else {
+            return
+        }
+        self.displayScreenBy(targetApplicationUserStatus)
+    }
 
     // MARK: - Override
 
@@ -36,6 +59,22 @@ final class TutorialViewController: UIViewController {
 
         setupTutorialCollectionView()
         bindToRxSwift()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // 購読対象のStateをBlockSubscriberを利用して決定する
+        appStore.subscribe(self.baseScreenSubscriber) { state in
+            state.select { state in state.baseScreenState }
+        }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        // 購読対象のStateを解除する
+        appStore.unsubscribe(self.baseScreenSubscriber)
     }
 
     // MARK: - Private Function
@@ -74,7 +113,8 @@ final class TutorialViewController: UIViewController {
         viewModel.isLastIndex
             .subscribe(
                 onNext: { [weak self] result in
-                    self?.shouldDisplayNextButton(result)
+                    guard let self = self else { return }
+                    self.shouldDisplayNextButton(result)
                 }
             )
             .disposed(by: disposeBag)
@@ -117,13 +157,14 @@ final class TutorialViewController: UIViewController {
         tutorialCollectionView.rx.contentOffset
             .subscribe(
                 onNext: { [weak self] currentPoint in
-                    guard let collectionView = self?.tutorialCollectionView else {
+                    guard let self = self else { return }
+                    guard let collectionView = self.tutorialCollectionView else {
                         return
                     }
                     let visibleRect = CGRect(origin: currentPoint, size: collectionView.bounds.size)
                     let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
                     if let visibleIndexPath = collectionView.indexPathForItem(at: visiblePoint) {
-                        self?.viewModel.changeIndexTrigger.onNext(visibleIndexPath.row)
+                        self.viewModel.changeIndexTrigger.onNext(visibleIndexPath.row)
                     }
                 }
             )
@@ -134,7 +175,8 @@ final class TutorialViewController: UIViewController {
             .asObservable()
             .subscribe(
                 onNext: { [weak self] _ in
-                    self?.executeNextButtonAnimationOfTouchDown()
+                    guard let self = self else { return }
+                    self.executeNextButtonAnimationOfTouchDown()
                 }
             )
             .disposed(by: disposeBag)
@@ -142,7 +184,8 @@ final class TutorialViewController: UIViewController {
             .asObservable()
             .subscribe(
                 onNext: { [weak self] _ in
-                    self?.executeNextButtonAnimationOfTouchUpInside()
+                    guard let self = self else { return }
+                    self.executeNextButtonAnimationOfTouchUpInside()
                 }
             )
             .disposed(by: disposeBag)
@@ -168,10 +211,28 @@ final class TutorialViewController: UIViewController {
         UIView.animate(withDuration: 0.16, animations: {
             self.nextContentsButton.transform = CGAffineTransform.identity
         }, completion: { finished in
+
+            // MEMO: チュートリアル完了フラグの更新と該当画面への遷移を実行する
+            self.viewModel.completeTutorialTrigger.onNext(())
+            BaseScreenActionCreator.setCurrentApplicationUserStatus(.needToMoveLoginScreen)
+        })
+    }
+
+    private func displayScreenBy(_ applicationUserState: ApplicationUserStatus) {
+
+        // MEMO: 画面遷移処理をCoodinatorパターンで実施する形にする
+        switch applicationUserState {
+
+        // サインイン画面へ遷移する
+        case .needToMoveLoginScreen:
+
             // MEMO: TutorialFlowプロトコルに定義したTutorialScreenCoodinatorの画面遷移を実行する
             // → ここではCoodinator側に定義したログイン画面へ遷移する
             self.coordinator?.coordinateToSignin()
-        })
+
+        default:
+            break
+        }
     }
 }
 

@@ -9,9 +9,8 @@
 import Foundation
 import ReSwift
 
-// アプリ起動からベース画面定義に関するstateの定義
+// アプリ起動からベース画面(ここではrootViewControllerに表示したいもの)定義に関するstateの定義
 struct BaseScreenState: ReSwift.StateType {
 
-    // UIPageViewControllerのインデックス位置（初期値: nil）
     var applicationUserStatus: ApplicationUserStatus? = nil
 }

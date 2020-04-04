@@ -16,7 +16,7 @@ extension BaseScreenActionCreator {
 
     // ユーザーの状態に応じた画面遷移を実行するためのアクションを発行する
     static func setCurrentApplicationUserStatus(_ targetApplicationUserStatus: ApplicationUserStatus) {
-        let action = BaseScreenState.Action.setApplicationUserStatus(targetStatus: targetApplicationUserStatus)
+        let action = BaseScreenState.BaseScreenAction.setApplicationUserStatus(targetStatus: targetApplicationUserStatus)
         appStore.dispatch(action)
     }
 }

@@ -12,9 +12,8 @@ import ReSwift
 extension BaseScreenState {
 
     // アプリ起動からベース画面定義に関するstateを変更させるアクションをEnumで定義する
-    enum Action: ReSwift.Action {
+    enum BaseScreenAction: ReSwift.Action {
 
-        // ユーザーの状態に応じた対象画面への遷移パターンをBaseScreenStateに反映するためのアクション
         case setApplicationUserStatus(targetStatus: ApplicationUserStatus)
     }
 }

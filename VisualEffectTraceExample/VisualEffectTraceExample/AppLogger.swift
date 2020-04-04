@@ -19,6 +19,7 @@ struct AppLogger {
 
         let viewControllerName = String(describing: type(of: viewController))
         print("---")
+        print("実行時刻:", Date())
         print("State Logging #start:", viewControllerName)
         print(targetState)
         print("State Logging #end:")
@@ -29,6 +30,7 @@ struct AppLogger {
     static func printExecuteActionForDebug(_ targetAction: ReSwift.Action) {
 
         print("---")
+        print("実行時刻:", Date())
         print("ActionCreator logging #start:")
         print(targetAction)
         print("ActionCreator logging #end:")
@@ -39,6 +41,7 @@ struct AppLogger {
     static func printMessageForDebug(_ message: String) {
 
         print("---")
+        print("実行時刻:", Date())
         print(message)
         print("---\n\n")
     }

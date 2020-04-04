@@ -12,6 +12,6 @@ import ReSwift
 // アプリの画面状態管理に関するState
 struct AppState: ReSwift.StateType {
 
-    // チュートリアルに関する画面に関するstate
+    // アプリ起動からベース画面(ここではrootViewControllerに表示したいもの)定義に関するstateの定義
     var baseScreenState = BaseScreenState()
 }

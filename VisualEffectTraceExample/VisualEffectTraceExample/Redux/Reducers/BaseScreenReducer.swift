@@ -21,7 +21,7 @@ extension BaseScreenReducer {
         var state = state ?? BaseScreenState()
 
         // ユーザーの画面遷移を決定するためのsアクションでない場合はStateの変更は許容しない
-        guard let action = action as? BaseScreenState.Action else { return state }
+        guard let action = action as? BaseScreenState.BaseScreenAction else { return state }
 
         switch action {
         
@@ -30,7 +30,7 @@ extension BaseScreenReducer {
         }
 
         // Debug.
-        //AppLogger.printMessageForDebug("BaseScreenStateが更新されました。")
+        AppLogger.printMessageForDebug("BaseScreenStateが更新されました。")
 
         return state
     }

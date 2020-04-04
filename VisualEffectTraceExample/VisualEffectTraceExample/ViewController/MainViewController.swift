@@ -19,6 +19,7 @@ final class MainViewController: UIViewController {
 
     // MEMO: ユーザー状態に応じた画面表示を実施するためのViewModel
     private let viewModel = MainViewModel(
+        // MEMO: 一番最初に起動後に表示される画面に関連するUseCase
         useCase: HandleMainScreenUseCase(
             mainScreenRepository: MainScreenRepository(
                 realmAccessManager: RealmAccessManager.shared,
@@ -30,12 +31,13 @@ final class MainViewController: UIViewController {
     // MARK: - BlockSubscriber
 
     private lazy var baseScreenSubscriber: BlockSubscriber<BaseScreenState> = BlockSubscriber { [weak self] state in
+        guard let self = self else { return }
 
         // MEMO: Reduxの処理で反映されたStateの値を経由して画面遷移処理を実施する
         guard let targetApplicationUserStatus = state.applicationUserStatus else {
             return
         }
-        self?.displayScreenBy(targetApplicationUserStatus)
+        self.displayScreenBy(targetApplicationUserStatus)
     }
 
     // MARK: - Override
@@ -54,7 +56,7 @@ final class MainViewController: UIViewController {
             )
             .disposed(by: disposeBag)
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
@@ -97,7 +99,7 @@ final class MainViewController: UIViewController {
 
         // TODO: その他のユーザー状態に応じた画面遷移のハンドリングを実施する
         default:
-            print("その他のハンドリングケースを実施する")
+            break
         }
     }
 }

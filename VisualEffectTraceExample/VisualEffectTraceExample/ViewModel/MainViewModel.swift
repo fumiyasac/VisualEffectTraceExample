@@ -64,7 +64,8 @@ final class MainViewModel: MainViewModelInputs, MainViewModelOutputs, MainViewMo
         initialSettingTrigger
             .subscribe(
                 onNext: { [weak self] in
-                    self?.getApplicationUserStatus()
+                    guard let self = self else { return }
+                    self.getApplicationUserStatus()
                 }
             )
             .disposed(by: disposeBag)

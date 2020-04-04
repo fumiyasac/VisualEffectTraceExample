@@ -14,6 +14,9 @@ protocol TutorialViewModelInputs {
 
     // 変化したIndex値をViewModelへ伝える
     var changeIndexTrigger: ReplaySubject<Int> { get }
+
+    // チュートリアル完了をViewModelへ伝える
+    var completeTutorialTrigger: PublishSubject<Void> { get }
 }
 
 protocol TutorialViewModelOutputs {
@@ -40,6 +43,8 @@ final class TutorialViewModel: TutorialViewModelInputs, TutorialViewModelOutputs
     // MEMO: ReplaySubjectはBufferSize分の過去のeventを受け取れるSubjectなので、「bufferSize: 1」を利用して1つ前まで取得できるようにする
     let changeIndexTrigger: ReplaySubject<Int> = ReplaySubject<Int>.create(bufferSize: 1)
 
+    let completeTutorialTrigger: PublishSubject<Void> = PublishSubject<Void>()
+
     // MARK: - Properties (for TutorialViewModelOutputs)
 
     var tutorialItems: Observable<Array<TutorialEntity>> {
@@ -60,15 +65,21 @@ final class TutorialViewModel: TutorialViewModelInputs, TutorialViewModelOutputs
     private let _isLastIndex: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
 
     // MEMO: このViewModelで利用するUseCase(Domain Model)
-    private let tutorialUseCase: TutorialUseCase
+    private let getTutorialUseCase: TutorialUseCase
+    private let updateCurrentApplicationUserStatusUsecase: ApplicationUserStatusUsecase
 
     // MARK: - Initializer
 
-    init(useCase: TutorialUseCase) {
+    init(getTutorialUseCase: TutorialUseCase, updateCurrentApplicationUserStatusUsecase: ApplicationUserStatusUsecase) {
 
-        // このViewModelで利用するUseCaseのインスタンス経由で該当データを取得する
-        tutorialUseCase = useCase
-        let tutorialDataList = tutorialUseCase.execute()
+        // TutorialUseCaseプロトコルを適合させるUserCaseをインスタンス経由で該当データを取得する
+        self.getTutorialUseCase = getTutorialUseCase
+
+        // ApplicationUserStatusUsecaseプロトコルを適合させるUserCaseをインスタンス経由で該当データを取得する
+        self.updateCurrentApplicationUserStatusUsecase = updateCurrentApplicationUserStatusUsecase
+
+        // チュートリアルで表示するためのデータをUseCase層経由で取得する
+        let tutorialDataList = self.getTutorialUseCase.execute()
 
         // JSONファイルから取得したModelオブジェクトを中継地点となるBehaviorRelayに格納する
         _tutorialItems.accept(tutorialDataList)
@@ -82,7 +93,17 @@ final class TutorialViewModel: TutorialViewModelInputs, TutorialViewModelOutputs
             .filter { $0.0 != $0.1 }
             .subscribe(
                 onNext: { [weak self] (_, currentIndex) in
-                    self?._isLastIndex.accept((currentIndex == lastIndex))
+                    guard let self = self else { return }
+                    self._isLastIndex.accept((currentIndex == lastIndex))
+                }
+            )
+            .disposed(by: disposeBag)
+
+        completeTutorialTrigger
+            .subscribe(
+                onNext: { [weak self] _ in
+                    guard let self = self else { return }
+                    self.updateCurrentApplicationUserStatusUsecase.executeUpdatePassTutorialStatus()
                 }
             )
             .disposed(by: disposeBag)

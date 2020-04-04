@@ -18,7 +18,7 @@ func appReducer(action: Action, state: AppState?) -> AppState {
     state.baseScreenState = BaseScreenReducer.reducer(action: action, state: state.baseScreenState)
 
     // Debug.
-    //AppLogger.printMessageForDebug("appReducerが実行されました。")
+    AppLogger.printMessageForDebug("appReducerが実行されました。")
 
     return state
 }

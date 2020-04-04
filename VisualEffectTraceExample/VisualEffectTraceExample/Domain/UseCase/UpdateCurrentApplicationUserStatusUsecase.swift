@@ -21,19 +21,21 @@ protocol ApplicationUserStatusUsecase {
 
 final class UpdateCurrentApplicationUserStatusUsecase: ApplicationUserStatusUsecase {
 
-    private let mainScreenRepository: MainScreenRepository
+    private let applicationUserRepository: ApplicationUserRepository
 
     // MARK: - Initializer
 
-    init(mainScreenRepository: MainScreenRepository) {
-        self.mainScreenRepository = mainScreenRepository
+    init(applicationUserRepository: ApplicationUserRepository) {
+        self.applicationUserRepository = applicationUserRepository
     }
 
     // MARK: - ApplicationUserStatusUsecase
 
     func executeUpdatePassTutorialStatus() {
+        applicationUserRepository.updatePassTutorialStatus()
     }
 
     func executeUpdateAlreadySignupStatus() {
+        applicationUserRepository.updatePassTutorialStatus()
     }
 }
