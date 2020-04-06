@@ -24,6 +24,14 @@ enum APIError: Error {
     case error(String)
 }
 
+// MEMO: APIリクエストの状態に関するEnum定義
+enum APIRequestState {
+    case none
+    case requesting
+    case success
+    case error
+}
+
 class APIRequestManager {
     
     // MEMO: API Mock ServerへのURLに関する情報

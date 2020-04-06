@@ -11,10 +11,15 @@ import Foundation
 // MEMO: サインイン画面・新規会員登録画面をはじめとしたユーザーの入力を伴うViewを振り分けるための識別用
 enum FormInputTextFieldStyle {
 
-    // 普通の文字入力用テキストフィールド
+    // 普通の文字入力用テキストフィールド（※特に何もない場合のデフォルト指定）
     case defaultTextInput
-    // パスワードなどセキュア文字入力用テキストフィールド
-    case secureTextInput
-    // 電話番号などの数値入力用テキストフィールド
-    case numericTextInput    
+
+    // メールアドレス入力用テキストフィールド
+    case mailAddressTextInput
+
+    // パスワード入力用テキストフィールド
+    case securePasswordTextInput
+
+    // 電話番号入力用テキストフィールド
+    case telephoneNumberTextInput
 }

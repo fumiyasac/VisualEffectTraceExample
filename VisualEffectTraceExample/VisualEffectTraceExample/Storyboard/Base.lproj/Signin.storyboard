@@ -19,10 +19,110 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="BPT-ga-Mva">
-                                        <rect key="frame" x="0.0" y="20" width="375" height="282"/>
+                                        <rect key="frame" x="0.0" y="20" width="375" height="591.5"/>
                                         <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jrk-uK-C61">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Life Style Introduction Sign in" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w6o-rT-i2R">
+                                                        <rect key="frame" x="12" y="22" width="351" height="21.5"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="このアプリを利用する際はログインが必要です。" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPk-gt-sHu">
+                                                        <rect key="frame" x="12" y="53.5" width="351" height="14"/>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="w6o-rT-i2R" firstAttribute="top" secondItem="jrk-uK-C61" secondAttribute="top" constant="22" id="1o1-gw-f8e"/>
+                                                    <constraint firstAttribute="trailing" secondItem="hPk-gt-sHu" secondAttribute="trailing" constant="12" id="2AX-6D-CuG"/>
+                                                    <constraint firstAttribute="bottom" secondItem="hPk-gt-sHu" secondAttribute="bottom" constant="22" id="8GU-9K-uzo"/>
+                                                    <constraint firstItem="hPk-gt-sHu" firstAttribute="leading" secondItem="jrk-uK-C61" secondAttribute="leading" constant="12" id="H70-lC-09s"/>
+                                                    <constraint firstAttribute="trailing" secondItem="w6o-rT-i2R" secondAttribute="trailing" constant="12" id="ILw-zd-ru9"/>
+                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" id="JmB-e6-NvR"/>
+                                                    <constraint firstItem="w6o-rT-i2R" firstAttribute="leading" secondItem="jrk-uK-C61" secondAttribute="leading" constant="12" id="dGA-2L-KLv"/>
+                                                    <constraint firstItem="hPk-gt-sHu" firstAttribute="top" secondItem="w6o-rT-i2R" secondAttribute="bottom" constant="10" id="hnI-bk-fu6"/>
+                                                    <constraint firstAttribute="height" priority="250" constant="68" id="rvI-qL-xR0"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bUI-io-xYj">
+                                                <rect key="frame" x="0.0" y="89.5" width="375" height="64"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="eIG-eb-dY6">
+                                                        <rect key="frame" x="12" y="3" width="351" height="58"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MWx-dU-Qkq">
+                                                                <rect key="frame" x="0.0" y="0.0" width="293" height="58"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="最新の情報はここで確認しましょう" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C4n-bu-d6q">
+                                                                        <rect key="frame" x="0.0" y="12" width="283" height="14.5"/>
+                                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                                                                        <nil key="textColor"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="アプリに関する情報を掲載しています。" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QV7-a9-etQ">
+                                                                        <rect key="frame" x="0.0" y="32.5" width="283" height="13"/>
+                                                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                    </label>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="QV7-a9-etQ" firstAttribute="leading" secondItem="MWx-dU-Qkq" secondAttribute="leading" id="GmI-gG-5vR"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="C4n-bu-d6q" secondAttribute="trailing" constant="10" id="Hnh-Lm-8fc"/>
+                                                                    <constraint firstItem="C4n-bu-d6q" firstAttribute="leading" secondItem="MWx-dU-Qkq" secondAttribute="leading" id="IEz-oD-Ykd"/>
+                                                                    <constraint firstItem="C4n-bu-d6q" firstAttribute="top" secondItem="MWx-dU-Qkq" secondAttribute="top" constant="12" id="Xjc-yL-TQV"/>
+                                                                    <constraint firstItem="QV7-a9-etQ" firstAttribute="top" secondItem="C4n-bu-d6q" secondAttribute="bottom" constant="6" id="cFI-El-vcN"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="QV7-a9-etQ" secondAttribute="trailing" constant="10" id="oSv-JR-AJi"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="QV7-a9-etQ" secondAttribute="bottom" constant="12.5" id="xr5-6N-QCs"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4m4-U2-gZF">
+                                                                <rect key="frame" x="293" y="0.0" width="58" height="58"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gEA-AD-o2C">
+                                                                        <rect key="frame" x="5" y="5" width="48" height="48"/>
+                                                                        <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                                                        <state key="normal" title="🗒"/>
+                                                                    </button>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="trailing" secondItem="gEA-AD-o2C" secondAttribute="trailing" constant="5" id="7hX-TZ-d6q"/>
+                                                                    <constraint firstAttribute="height" constant="58" id="IiE-9Q-ozq"/>
+                                                                    <constraint firstAttribute="width" constant="58" id="LZR-vQ-hPA"/>
+                                                                    <constraint firstItem="gEA-AD-o2C" firstAttribute="top" secondItem="4m4-U2-gZF" secondAttribute="top" constant="5" id="Ri5-Ok-ieG"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="gEA-AD-o2C" secondAttribute="bottom" constant="5" id="cw6-BF-i4h"/>
+                                                                    <constraint firstItem="gEA-AD-o2C" firstAttribute="leading" secondItem="4m4-U2-gZF" secondAttribute="leading" constant="5" id="hlG-6q-LMQ"/>
+                                                                </constraints>
+                                                            </view>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="MWx-dU-Qkq" firstAttribute="leading" secondItem="eIG-eb-dY6" secondAttribute="leading" id="HWu-iO-hzn"/>
+                                                            <constraint firstAttribute="bottom" secondItem="MWx-dU-Qkq" secondAttribute="bottom" id="Ls7-2n-xAD"/>
+                                                            <constraint firstItem="MWx-dU-Qkq" firstAttribute="top" secondItem="eIG-eb-dY6" secondAttribute="top" id="vs6-Fm-549"/>
+                                                            <constraint firstItem="4m4-U2-gZF" firstAttribute="leading" secondItem="MWx-dU-Qkq" secondAttribute="trailing" id="yU3-mU-XIm"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="eIG-eb-dY6" firstAttribute="leading" secondItem="bUI-io-xYj" secondAttribute="leading" constant="12" id="ALF-5Y-S2I"/>
+                                                    <constraint firstAttribute="trailing" secondItem="eIG-eb-dY6" secondAttribute="trailing" constant="12" id="Ft4-AB-f9n"/>
+                                                    <constraint firstItem="eIG-eb-dY6" firstAttribute="top" secondItem="bUI-io-xYj" secondAttribute="top" constant="3" id="LBi-yl-5NM"/>
+                                                    <constraint firstAttribute="height" constant="64" id="U9e-qV-OXD"/>
+                                                    <constraint firstAttribute="bottom" secondItem="eIG-eb-dY6" secondAttribute="bottom" constant="3" id="VhG-nA-eDf"/>
+                                                </constraints>
+                                            </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RsX-Zq-683" customClass="FormInputTextFieldView" customModule="VisualEffectTraceExample" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="141"/>
+                                                <rect key="frame" x="0.0" y="153.5" width="375" height="141"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="Pwd-gu-bIQ"/>
@@ -30,11 +130,63 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="38H-fI-qPi" customClass="FormInputTextFieldView" customModule="VisualEffectTraceExample" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="141" width="375" height="141"/>
+                                                <rect key="frame" x="0.0" y="294.5" width="375" height="141"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" priority="250" constant="141" id="Zkg-9c-pYd"/>
                                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" id="cYn-jP-VCF"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d4w-A6-kTq">
+                                                <rect key="frame" x="0.0" y="435.5" width="375" height="156"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" translatesAutoresizingMaskIntoConstraints="NO" id="Mgb-lp-evd">
+                                                        <rect key="frame" x="12" y="24" width="351" height="36"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="※アカウントをお持ちでない方" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIc-5v-BJG">
+                                                                <rect key="frame" x="0.0" y="0.0" width="219" height="36"/>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                                                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Pa-IM-Neu">
+                                                                <rect key="frame" x="219" y="0.0" width="132" height="36"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="132" id="vDH-4O-jz6"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                                                                <state key="normal" title="&gt; 新規会員登録はこちら">
+                                                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </state>
+                                                            </button>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="7Pa-IM-Neu" firstAttribute="leading" secondItem="bIc-5v-BJG" secondAttribute="trailing" id="M3L-d6-veK"/>
+                                                            <constraint firstAttribute="height" constant="36" id="cO5-bO-fkc"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="84S-hT-x5Y">
+                                                        <rect key="frame" x="24" y="84" width="327" height="48"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="48" id="6ln-A7-H9t"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                                        <state key="normal" title="ログイン">
+                                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="84S-hT-x5Y" secondAttribute="trailing" constant="24" id="3FE-WS-Qxl"/>
+                                                    <constraint firstAttribute="height" constant="156" id="DHn-c1-TAP"/>
+                                                    <constraint firstItem="84S-hT-x5Y" firstAttribute="leading" secondItem="d4w-A6-kTq" secondAttribute="leading" constant="24" id="DZO-tK-VwF"/>
+                                                    <constraint firstAttribute="trailing" secondItem="Mgb-lp-evd" secondAttribute="trailing" constant="12" id="S1r-jG-3PU"/>
+                                                    <constraint firstItem="Mgb-lp-evd" firstAttribute="top" secondItem="d4w-A6-kTq" secondAttribute="top" constant="24" id="cTr-jv-GZ6"/>
+                                                    <constraint firstItem="84S-hT-x5Y" firstAttribute="top" secondItem="Mgb-lp-evd" secondAttribute="bottom" constant="24" id="hbr-R8-YXU"/>
+                                                    <constraint firstAttribute="bottom" secondItem="84S-hT-x5Y" secondAttribute="bottom" constant="24" id="sLJ-bU-8Ur"/>
+                                                    <constraint firstItem="Mgb-lp-evd" firstAttribute="leading" secondItem="d4w-A6-kTq" secondAttribute="leading" constant="12" id="vGs-OS-R8M"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -58,6 +210,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XLp-sK-KCn"/>
                     </view>
+                    <connections>
+                        <outlet property="mailAddressInputView" destination="RsX-Zq-683" id="Foo-sR-rEF"/>
+                        <outlet property="rawPasswordInputView" destination="38H-fI-qPi" id="G4t-00-Tbn"/>
+                        <outlet property="showAnnouncementScreenButton" destination="gEA-AD-o2C" id="evK-o9-Tkk"/>
+                        <outlet property="showSignupScreenButton" destination="7Pa-IM-Neu" id="Gcs-OQ-NLS"/>
+                        <outlet property="signinButton" destination="84S-hT-x5Y" id="30c-6Z-XTf"/>
+                        <outlet property="signinScrollView" destination="8h5-aO-XXB" id="qF9-3h-hmp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="241-S4-6YM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

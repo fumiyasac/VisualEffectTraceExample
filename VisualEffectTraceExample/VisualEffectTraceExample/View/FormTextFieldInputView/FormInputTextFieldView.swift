@@ -16,7 +16,7 @@ import RxSwift
 protocol FormTextFieldInputViewDelegate: NSObjectProtocol {
 
     // MEMO: テキストフィールドの入力を変更した際の処理を画面へ伝える
-    func getInputTextByTextFieldType(_ text: String, formInputStyle: FormInputTextFieldStyle)
+    func getInputTextByTextFieldType(_ text: String, targetFormInputTextFieldStyle: FormInputTextFieldStyle)
 }
 
 // MEMO: 利用しない場合やIBのエラーが出る場合は`@IBDesignable`をコメントする
@@ -25,12 +25,14 @@ class FormInputTextFieldView: CustomViewBase {
 
     private let disposeBag = DisposeBag()
 
+    // MARK: -  FormTextFieldInputViewDelegate
+
     weak var delegate: FormTextFieldInputViewDelegate?
 
     // MARK: -  Variable
 
     // MEMO: 入力フィールドのタイプを格納する変数（デフォルト値を設定しておく）
-    private var targetFormInputStyle: FormInputTextFieldStyle = .defaultTextInput
+    private var targetFormInputTextFieldStyle: FormInputTextFieldStyle = .defaultTextInput
 
     // MEMO: 入力フィールドをSecure状態にするかどうかのフラグ値を格納する変数（デフォルト値を設定しておく）
     private var shouldSecure: Bool = false
@@ -45,7 +47,7 @@ class FormInputTextFieldView: CustomViewBase {
     // 入力用のテキストフィールドやパスワード可視化用のボタンをまとめるUIView
     // ※ UIStackViewには罫線をはじめとするlayerプロパティの装飾が適用されない点に注意
     @IBOutlet private weak var inputTextFieldWrappedView: UIView!
-    
+
     // 入力用のテキストフィールド
     @IBOutlet private weak var inputTextField: UITextField!
 
@@ -87,20 +89,26 @@ class FormInputTextFieldView: CustomViewBase {
         inputTextField.placeholder = text
     }
 
-    func setInitialText(_ text: String?) {
+    func setInitialText(_ text: String) {
         inputTextField.text = text
     }
 
-    func setFormInputTextFieldStyle(_ formInputStyle: FormInputTextFieldStyle) {
-        displayShowPasswordButtonIfNeeded(formInputStyle)
+    func setErrorMessage(_ text: String) {
+        errorMessageLabel.text = text
+    }
+
+    func setFormInputTextFieldStyle(_ formInputTextFieldStyle: FormInputTextFieldStyle) {
+        targetFormInputTextFieldStyle = formInputTextFieldStyle
+        setShowPasswordButtonState()
+        setTextFieldContentTypeAndKeyboardType()
     }
 
     // MARK: - Private Function
 
-    private func displayShowPasswordButtonIfNeeded(_ formInputStyle: FormInputTextFieldStyle) {
+    private func setShowPasswordButtonState() {
 
         // MEMO: FormInputTextFieldStyleがパスワード入力の場合にはパスワード表示ボタンを非表示にする
-        let shouldDisplayShowPasswordButton = (formInputStyle == .secureTextInput)
+        let shouldDisplayShowPasswordButton = (targetFormInputTextFieldStyle == .securePasswordTextInput)
         if shouldDisplayShowPasswordButton {
             shouldSecure = true
             showPasswordButton.isHidden = false
@@ -110,6 +118,26 @@ class FormInputTextFieldView: CustomViewBase {
             showPasswordButton.isHidden = true
             showPasswordButtonWidthConstraint.constant = 0
         }
+    }
+
+    private func setTextFieldContentTypeAndKeyboardType() {
+
+        var keyboardType: UIKeyboardType
+        var contentType: UITextContentType
+
+        switch targetFormInputTextFieldStyle {
+        case .mailAddressTextInput:
+            contentType = .emailAddress
+            keyboardType = .emailAddress
+        case .telephoneNumberTextInput:
+            contentType = .telephoneNumber
+            keyboardType = .numberPad
+        default:
+            // MEMO: 特段この設定が必要ない場合はスキップしてしまう
+            return
+        }
+        inputTextField.textContentType = contentType
+        inputTextField.keyboardType = keyboardType
     }
 
     private func showPasswordButtonTapped() {
@@ -125,6 +153,10 @@ class FormInputTextFieldView: CustomViewBase {
         inputTextFieldWrappedView.layer.borderWidth = 1.0
         inputTextFieldWrappedView.layer.borderColor = UIColor.opaqueSeparator.cgColor
 
+        // このViewにおける初期状態を決定する
+        setShowPasswordButtonState()
+        setTextFieldContentTypeAndKeyboardType()
+        
         // テキストフィールドの変化を検知した際のアクション設定
         inputTextField.rx.text
             .observeOn(MainScheduler.instance)
@@ -132,7 +164,7 @@ class FormInputTextFieldView: CustomViewBase {
                 onNext: { [weak self] targetText in
                     guard let self = self else { return }
                     if let targetText = self.inputTextField.text {
-                        self.delegate?.getInputTextByTextFieldType(targetText, formInputStyle: self.targetFormInputStyle)
+                        self.delegate?.getInputTextByTextFieldType(targetText, targetFormInputTextFieldStyle: self.targetFormInputTextFieldStyle)
                     }
                 }
             )
