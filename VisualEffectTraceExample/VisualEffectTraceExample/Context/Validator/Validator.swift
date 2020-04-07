@@ -52,9 +52,9 @@ enum ValidationError: ValidationErrorProtocol {
         case .shouldKatakanaFormat:
             return "全角カタカナのみで入力してください。"
         case .shouldUpperAndlowerCaseFormat:
-            return "半角英字(ハイフンなし)のみで入力してください。"
+            return "半角英字(記号なし)のみで入力してください。"
         case .shouldNumericAndUpperAndlowerCaseFormat:
-            return "半角英数字(ハイフンなし)のみで入力してください。"
+            return "半角英数字(記号なし)のみで入力してください。"
         case .shouldMatchMailAddressFormat:
             return "正しいメールアドレス形式で入力してください。"
         }
@@ -70,4 +70,104 @@ enum ValidationResult {
 
 // MARK: - Struct
 
-// 各種ValidationErrorで定義したValidationロジックを定義する
+struct ApplicationValidator {}
+
+// MARK: - ApplicationValidator
+
+// MEMO: 各種ValidationErrorで定義したValidationロジックを定義する
+extension ApplicationValidator {
+
+    // 空文字のチェック
+    struct EmptyValidator: Validator {
+
+        func validate(_ value: String) -> ValidationResult {
+
+            let condition = (!value.isEmpty)
+            return condition ? .valid : .invalid(errors: .empty)
+        }
+    }
+
+    // 最小文字数のチェック
+    struct MinLengthValidator: Validator {
+
+        let min: Int
+
+        func validate(_ value: String) -> ValidationResult {
+
+            let condition = (value.count <= min)
+            return condition ? .valid : .invalid(errors: .shouldMinLength(min: min))
+        }
+    }
+
+    // 最大文字数のチェック
+    struct MaxLengthValidator: Validator {
+
+        let max: Int
+
+        func validate(_ value: String) -> ValidationResult {
+
+            let condition = (value.count >= max)
+            return condition ? .valid : .invalid(errors: .shouldMaxLength(max: max))
+        }
+    }
+
+    // 文字数範囲のチェック
+    struct BetweenLengthValidator: Validator {
+
+        let min: Int
+        let max: Int
+
+        func validate(_ value: String) -> ValidationResult {
+
+            let condition = (min...max ~= value.count)
+            return condition ? .valid : .invalid(errors: .shouldBetweenLength(min: min, max: max))
+        }
+    }
+
+    // 全角カタカナのチェック
+    struct KatakanaValidator: Validator {
+
+        let min: Int
+        let max: Int
+
+        func validate(_ value: String) -> ValidationResult {
+
+            let regex = "^[ァ-ヾ]+$"
+            let condition = (regex ~= value)
+            return condition ? .valid : .invalid(errors: .shouldKatakanaFormat)
+        }
+    }
+
+    // 半角英字(記号なし)のみのチェック
+    struct UpperAndlowerCaseValidator: Validator {
+
+        func validate(_ value: String) -> ValidationResult {
+
+            let regex = "[a-zA-Z]"
+            let condition = (regex ~= value)
+            return condition ? .valid : .invalid(errors: .shouldUpperAndlowerCaseFormat)
+        }
+    }
+
+    // 半角英数字(記号なし)のみのチェック
+    struct NumericAndUpperAndlowerCaseValidator: Validator {
+
+        func validate(_ value: String) -> ValidationResult {
+
+            let regex = "[a-zA-Z0-9]"
+            let condition = (regex ~= value)
+            return condition ? .valid : .invalid(errors: .shouldNumericAndUpperAndlowerCaseFormat)
+        }
+    }
+
+    // 正しいメールアドレス形式のチェック
+    struct MatchMailAddressFormatValidator: Validator {
+
+        func validate(_ value: String) -> ValidationResult {
+
+            let regex = "^([A-Z0-9a-z._+-])+@([A-Za-z0-9.-])+\\.([A-Za-z]{2,4})+$"
+            let condition = (regex ~= value)
+            return condition ? .valid : .invalid(errors: .shouldMatchMailAddressFormat)
+        }
+    }
+}

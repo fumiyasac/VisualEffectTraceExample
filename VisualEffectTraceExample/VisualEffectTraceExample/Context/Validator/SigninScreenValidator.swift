@@ -7,3 +7,29 @@
 //
 
 import Foundation
+
+// サインイン画面でのバリデーションとして適用するものを定義する
+
+// MARK: - Struct
+
+struct SigninScreenValidator {}
+
+extension SigninScreenValidator {
+
+    // メールアドレス入力時におけるバリデーション
+    struct mailAddressValidator: CompositionalValidator {
+        var validators: [Validator] = [
+            ApplicationValidator.EmptyValidator(),
+            ApplicationValidator.MatchMailAddressFormatValidator()
+        ]
+    }
+
+    // パスワード入力時におけるバリデーション
+    struct rawPasswordValidator: CompositionalValidator {
+        var validators: [Validator] = [
+            ApplicationValidator.EmptyValidator(),
+            ApplicationValidator.NumericAndUpperAndlowerCaseValidator(),
+            ApplicationValidator.BetweenLengthValidator(min: 6, max: 50)
+        ]
+    }
+}
