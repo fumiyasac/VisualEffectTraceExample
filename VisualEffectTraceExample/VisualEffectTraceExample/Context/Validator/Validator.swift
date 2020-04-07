@@ -42,21 +42,21 @@ enum ValidationError: ValidationErrorProtocol {
     var errorDescription: String? {
         switch self {
         case .empty:
-            return "文字を入力してください"
+            return ""
         case .shouldMinLength(let min):
-            return "\(min)文字以上で入力してください。"
+            return "エラー: \(min)文字以上で入力してください。"
         case .shouldMaxLength(let max):
-            return "\(max)文字以下で入力してください。"
+            return "エラー: \(max)文字以下で入力してください。"
         case .shouldBetweenLength(let min, let max):
-            return "\(min)〜\(max)文字の範囲で入力してください。"
+            return "エラー: \(min)〜\(max)文字の範囲で入力してください。"
         case .shouldKatakanaFormat:
-            return "全角カタカナのみで入力してください。"
+            return "エラー: 全角カタカナのみで入力してください。"
         case .shouldUpperAndlowerCaseFormat:
-            return "半角英字(記号なし)のみで入力してください。"
+            return "エラー: 半角英字(記号なし)のみで入力してください。"
         case .shouldNumericAndUpperAndlowerCaseFormat:
-            return "半角英数字(記号なし)のみで入力してください。"
+            return "エラー: 半角英数字(記号なし)のみで入力してください。"
         case .shouldMatchMailAddressFormat:
-            return "正しいメールアドレス形式で入力してください。"
+            return "エラー: 正しいメールアドレス形式で入力してください。"
         }
     }
 }
@@ -127,13 +127,10 @@ extension ApplicationValidator {
     // 全角カタカナのチェック
     struct KatakanaValidator: Validator {
 
-        let min: Int
-        let max: Int
-
         func validate(_ value: String) -> ValidationResult {
 
-            let regex = "^[ァ-ヾ]+$"
-            let condition = (regex ~= value)
+            let regexString = "^[ァ-ヾ]+$"
+            let condition = shouldMatchRegexPattern(string: value, regexString: regexString)
             return condition ? .valid : .invalid(errors: .shouldKatakanaFormat)
         }
     }
@@ -143,8 +140,8 @@ extension ApplicationValidator {
 
         func validate(_ value: String) -> ValidationResult {
 
-            let regex = "[a-zA-Z]"
-            let condition = (regex ~= value)
+            let regexString = "[a-zA-Z]"
+            let condition = shouldMatchRegexPattern(string: value, regexString: regexString)
             return condition ? .valid : .invalid(errors: .shouldUpperAndlowerCaseFormat)
         }
     }
@@ -154,8 +151,8 @@ extension ApplicationValidator {
 
         func validate(_ value: String) -> ValidationResult {
 
-            let regex = "[a-zA-Z0-9]"
-            let condition = (regex ~= value)
+            let regexString = "[a-zA-Z0-9]"
+            let condition = shouldMatchRegexPattern(string: value, regexString: regexString)
             return condition ? .valid : .invalid(errors: .shouldNumericAndUpperAndlowerCaseFormat)
         }
     }
@@ -165,9 +162,26 @@ extension ApplicationValidator {
 
         func validate(_ value: String) -> ValidationResult {
 
-            let regex = "^([A-Z0-9a-z._+-])+@([A-Za-z0-9.-])+\\.([A-Za-z]{2,4})+$"
-            let condition = (regex ~= value)
+            let regexString = "^([A-Z0-9a-z._+-])+@([A-Za-z0-9.-])+\\.([A-Za-z]{2,4})+$"
+            let condition = shouldMatchRegexPattern(string: value, regexString: regexString)
             return condition ? .valid : .invalid(errors: .shouldMatchMailAddressFormat)
         }
     }
 }
+
+// MARK: - Fileprivate Function
+
+// MEMO: 正規表現のパターンマッチを実行するための処理
+
+fileprivate func shouldMatchRegexPattern(string: String, regexString: String) -> Bool {
+    guard let regex = try? NSRegularExpression(pattern: regexString, options: NSRegularExpression.Options()) else {
+        return false
+    }
+    let numberOfMatchResult = regex.numberOfMatches(
+        in: string,
+        options: NSRegularExpression.MatchingOptions(),
+        range: NSRange(location: 0, length: string.count)
+    )
+    return numberOfMatchResult > 0
+}
+

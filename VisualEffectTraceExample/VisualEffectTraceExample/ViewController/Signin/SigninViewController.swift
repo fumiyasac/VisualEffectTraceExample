@@ -18,6 +18,15 @@ final class SigninViewController: UIViewController {
 
     private let tapGestureOfScrollView = UITapGestureRecognizer()
 
+    // MEMO: もし値の中継が必要になった場合にはBehaviorRelay<T>を別途用意する
+    private let inputMailAddress: BehaviorRelay<String?> = BehaviorRelay<String?>(value: nil)
+    private let inputRawPassword: BehaviorRelay<String?> = BehaviorRelay<String?>(value: nil)
+    private let shouldEnableLoginButton: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
+
+    // MEMO: 適用するValidatorを用意する
+    private let mailAddressValidator = SigninScreenValidator.MailAddressValidator()
+    private let rawPasswordValidator = SigninScreenValidator.RawPasswordValidator()
+
     // MARK: - SigninFlow
 
     var coordinator: SigninFlow?
@@ -37,8 +46,24 @@ final class SigninViewController: UIViewController {
 
     private lazy var signinScreenSubscriber: BlockSubscriber<SigninScreenState> = BlockSubscriber { [weak self] state in
         guard let self = self else { return }
-        // TODO: 画面表示に関連する処理を実行する
 
+        // メールアドレスに対してバリデーションを実行してエラーメッセージを表示する
+        let targetMailAddressValidationResult = self.mailAddressValidator.validate(state.mailAddress)
+        self.displayErrorMessageForMailAddressIfNeeded(
+            mailAddressValidationResult: targetMailAddressValidationResult
+        )
+
+        // パスワードに対してバリデーションを実行してエラーメッセージを表示する
+        let targetRawPasswordValidationResult = self.rawPasswordValidator.validate(state.rawPassword)
+        self.displayErrorMessageForRawPasswordIfNeeded(
+            rawPasswordValidationResult: targetRawPasswordValidationResult
+        )
+
+        // ログインボタンの押下状態をコントロールする
+        self.handleSigninButtonState(
+            mailAddressValidationResult: targetMailAddressValidationResult,
+            rawPasswordValidationResult: targetRawPasswordValidationResult
+        )
     }
 
     // MARK: - Override
@@ -53,6 +78,22 @@ final class SigninViewController: UIViewController {
         bindToRxSwift()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        // 購読対象のStateをBlockSubscriberを利用して決定する
+        appStore.subscribe(self.signinScreenSubscriber) { state in
+            state.select { state in state.signinScreenState }
+        }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        // 購読対象のStateを解除する
+        appStore.unsubscribe(self.signinScreenSubscriber)
+    }
+
     // MARK: - Private Fucntion
 
     private func setupSigninScrollView() {
@@ -64,6 +105,8 @@ final class SigninViewController: UIViewController {
     private func setupMailAddressInputView() {
 
         mailAddressInputView.delegate = self
+        mailAddressInputView.setFormInputTextFieldStyle(.mailAddressTextInput)
+
         mailAddressInputView.setTitle("メールアドレス")
         mailAddressInputView.setSummary("登録したメールアドレスを入力して下さい。")
         mailAddressInputView.setRemark("※必須項目", shouldRequired: true)
@@ -73,6 +116,8 @@ final class SigninViewController: UIViewController {
     private func setupRawPasswordInputView() {
 
         rawPasswordInputView.delegate = self
+        rawPasswordInputView.setFormInputTextFieldStyle(.securePasswordTextInput)
+
         rawPasswordInputView.setTitle("パスワード")
         rawPasswordInputView.setSummary("登録したパスワードを入力して下さい。")
         rawPasswordInputView.setRemark("※必須項目", shouldRequired: true)
@@ -86,6 +131,37 @@ final class SigninViewController: UIViewController {
     }
 
     private func bindToRxSwift() {
+        
+        // Viewからの入力値の変化に関する処理
+        // MEMO: 入力されたメールアドレス/パスワードを画面状態を保持するReduxへ反映させる
+        inputMailAddress
+            .asDriver()
+            .drive(
+                onNext: { mailAddress in
+                    guard let mailAddress = mailAddress else { return }
+                    SigninScreenActionCreator.inputMailAddress(targetText: mailAddress)
+                }
+            )
+            .disposed(by: disposeBag)
+        inputRawPassword
+            .asDriver()
+            .drive(
+                onNext: { rawPassword in
+                    guard let rawPassword = rawPassword else { return }
+                    SigninScreenActionCreator.inputRawPassword(targetText: rawPassword)
+                }
+            )
+            .disposed(by: disposeBag)
+        shouldEnableLoginButton
+            .asDriver()
+            .drive(
+                onNext: { [weak self] result in
+                    guard let self = self else { return }
+                    self.signinButton.alpha = result ? 1.0 : 0.4
+                    self.signinButton.isEnabled = result
+                }
+            )
+            .disposed(by: disposeBag)
 
         // キーボードを閉じるためのGestureRecognizerに関する処理
         tapGestureOfScrollView.rx.event
@@ -209,6 +285,33 @@ final class SigninViewController: UIViewController {
             // MEMO: サインイン処理を実行する
         })
     }
+
+    private func displayErrorMessageForMailAddressIfNeeded(mailAddressValidationResult: ValidationResult) {
+        switch mailAddressValidationResult {
+        case .invalid(let error):
+            self.mailAddressInputView.setErrorMessage(error.localizedDescription)
+        default:
+            self.mailAddressInputView.setErrorMessage("")
+        }
+    }
+
+    private func displayErrorMessageForRawPasswordIfNeeded(rawPasswordValidationResult: ValidationResult) {
+        switch rawPasswordValidationResult {
+        case .invalid(let error):
+            self.rawPasswordInputView.setErrorMessage(error.localizedDescription)
+        default:
+            self.rawPasswordInputView.setErrorMessage("")
+        }
+    }
+
+    private func handleSigninButtonState(mailAddressValidationResult: ValidationResult, rawPasswordValidationResult: ValidationResult) {
+        switch (mailAddressValidationResult, rawPasswordValidationResult) {
+        case (.valid, .valid):
+            self.shouldEnableLoginButton.accept(true)
+        default:
+            self.shouldEnableLoginButton.accept(false)
+        }
+    }
 }
 
 // MARK: - StoryboardInstantiatable
@@ -217,12 +320,12 @@ extension SigninViewController: FormTextFieldInputViewDelegate {
 
     func getInputTextByTextFieldType(_ text: String, targetFormInputTextFieldStyle: FormInputTextFieldStyle) {
 
-        // 入力されたメールアドレス/パスワードを画面状態を保持するReduxへ反映させる
+        // 受け取った値を中継地点となる変数へ格納しておく（ここではメールアドレスとパスワードのBehaviorRelay<String?>に値をセットする）
         switch targetFormInputTextFieldStyle {
         case .mailAddressTextInput:
-            SigninScreenActionCreator.inputMailAddress(targetText: text)
+            inputMailAddress.accept(text)
         case .securePasswordTextInput:
-            SigninScreenActionCreator.inputRawPassword(targetText: text)
+            inputRawPassword.accept(text)
         default:
             break
         }

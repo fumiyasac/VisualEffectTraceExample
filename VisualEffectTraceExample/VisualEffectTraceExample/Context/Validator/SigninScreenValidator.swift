@@ -17,7 +17,7 @@ struct SigninScreenValidator {}
 extension SigninScreenValidator {
 
     // メールアドレス入力時におけるバリデーション
-    struct mailAddressValidator: CompositionalValidator {
+    struct MailAddressValidator: CompositionalValidator {
         var validators: [Validator] = [
             ApplicationValidator.EmptyValidator(),
             ApplicationValidator.MatchMailAddressFormatValidator()
@@ -25,7 +25,7 @@ extension SigninScreenValidator {
     }
 
     // パスワード入力時におけるバリデーション
-    struct rawPasswordValidator: CompositionalValidator {
+    struct RawPasswordValidator: CompositionalValidator {
         var validators: [Validator] = [
             ApplicationValidator.EmptyValidator(),
             ApplicationValidator.NumericAndUpperAndlowerCaseValidator(),

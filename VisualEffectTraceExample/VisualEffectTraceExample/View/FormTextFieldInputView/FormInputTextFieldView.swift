@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import RxSwift
+import RxCocoa
 
 // MARK: - Protocol
 
@@ -32,10 +33,10 @@ class FormInputTextFieldView: CustomViewBase {
     // MARK: -  Variable
 
     // MEMO: 入力フィールドのタイプを格納する変数（デフォルト値を設定しておく）
-    private var targetFormInputTextFieldStyle: FormInputTextFieldStyle = .defaultTextInput
-
+    private let targetFormInputTextFieldStyle: BehaviorRelay<FormInputTextFieldStyle> = BehaviorRelay<FormInputTextFieldStyle>(value: .defaultTextInput)
+    
     // MEMO: 入力フィールドをSecure状態にするかどうかのフラグ値を格納する変数（デフォルト値を設定しておく）
-    private var shouldSecure: Bool = false
+    private let shouldSecureTextField: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
 
     // MARK: - @IBOutlet
 
@@ -98,29 +99,28 @@ class FormInputTextFieldView: CustomViewBase {
     }
 
     func setFormInputTextFieldStyle(_ formInputTextFieldStyle: FormInputTextFieldStyle) {
-        targetFormInputTextFieldStyle = formInputTextFieldStyle
-        setShowPasswordButtonState()
-        setTextFieldContentTypeAndKeyboardType()
+        targetFormInputTextFieldStyle.accept(formInputTextFieldStyle)
     }
 
     // MARK: - Private Function
 
-    private func setShowPasswordButtonState() {
+    // MEMO: FormInputTextFieldStyleがパスワード入力の場合にはパスワード表示ボタンを有効にする
+    private func setShowPasswordButtonState(_ targetFormInputTextFieldStyle: FormInputTextFieldStyle) {
 
-        // MEMO: FormInputTextFieldStyleがパスワード入力の場合にはパスワード表示ボタンを非表示にする
         let shouldDisplayShowPasswordButton = (targetFormInputTextFieldStyle == .securePasswordTextInput)
         if shouldDisplayShowPasswordButton {
-            shouldSecure = true
             showPasswordButton.isHidden = false
             showPasswordButtonWidthConstraint.constant = 33.0
         } else {
-            shouldSecure = false
             showPasswordButton.isHidden = true
             showPasswordButtonWidthConstraint.constant = 0
         }
+        // MEMO: パスワード入力時にはセキュア表示の状態を更新する
+        shouldSecureTextField.accept(shouldDisplayShowPasswordButton)
     }
 
-    private func setTextFieldContentTypeAndKeyboardType() {
+    // MEMO: FormInputTextFieldStyleに応じたキーボードの種類＆入力候補の種類を設定する
+    private func setTextFieldContentTypeAndKeyboardType(_ targetFormInputTextFieldStyle: FormInputTextFieldStyle) {
 
         var keyboardType: UIKeyboardType
         var contentType: UITextContentType
@@ -140,31 +140,49 @@ class FormInputTextFieldView: CustomViewBase {
         inputTextField.keyboardType = keyboardType
     }
 
-    private func showPasswordButtonTapped() {
-
-        // MEMO: パスワード表示を見える状態にする
-        shouldSecure = !shouldSecure
-        inputTextField.isSecureTextEntry = !shouldSecure
-    }
-
     private func setupFormTextFieldInputView() {
 
         // 入力エリア部分に罫線を付与する
         inputTextFieldWrappedView.layer.borderWidth = 1.0
         inputTextFieldWrappedView.layer.borderColor = UIColor.opaqueSeparator.cgColor
 
-        // このViewにおける初期状態を決定する
-        setShowPasswordButtonState()
-        setTextFieldContentTypeAndKeyboardType()
-        
+        // 入力データの種別(FormInputTextFieldStyle.swift参照)が変更された際のデザインに関する処理
+        targetFormInputTextFieldStyle
+            .asDriver()
+            .drive(
+                onNext: { [weak self] targetFormInputTextFieldStyle in
+                    guard let self = self else { return }
+
+                    // MEMO: パスワード可視化ボタンの表示とキーボードの種類＆入力候補の決定をする
+                    self.setShowPasswordButtonState(targetFormInputTextFieldStyle)
+                    self.setTextFieldContentTypeAndKeyboardType(targetFormInputTextFieldStyle)
+                }
+            )
+            .disposed(by: disposeBag)
+
+        // セキュア表示にするか否かの値が変更された際のデザインに関する処理
+        shouldSecureTextField
+            .asDriver()
+            .drive(
+                onNext: { [weak self] result in
+                    guard let self = self else { return }
+
+                    // MEMO: テキストフィールドをセキュア状態にするかを決定する
+                    self.inputTextField.isSecureTextEntry = result
+                }
+            )
+            .disposed(by: disposeBag)
+
         // テキストフィールドの変化を検知した際のアクション設定
         inputTextField.rx.text
             .observeOn(MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] targetText in
                     guard let self = self else { return }
+
+                    //
                     if let targetText = self.inputTextField.text {
-                        self.delegate?.getInputTextByTextFieldType(targetText, targetFormInputTextFieldStyle: self.targetFormInputTextFieldStyle)
+                        self.delegate?.getInputTextByTextFieldType(targetText, targetFormInputTextFieldStyle: self.targetFormInputTextFieldStyle.value)
                     }
                 }
             )
@@ -176,7 +194,10 @@ class FormInputTextFieldView: CustomViewBase {
             .drive(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }
-                    self.showPasswordButtonTapped()
+
+                    // MEMO: Boolの結果をひっくり返して反映する
+                    let changedResult = !self.shouldSecureTextField.value
+                    self.shouldSecureTextField.accept(changedResult)
                 }
             )
             .disposed(by: disposeBag)
