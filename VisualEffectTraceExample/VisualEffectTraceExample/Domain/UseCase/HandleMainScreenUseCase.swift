@@ -10,13 +10,13 @@ import Foundation
 
 // MARK: - Protocol
 
-protocol MainUseCase {
+protocol MainScreenUseCase {
 
     // 起動用画面からユーザーの状態を確認して遷移先を決定する
     func execute() -> ApplicationUserStatus
 }
 
-final class HandleMainScreenUseCase: MainUseCase {
+final class HandleMainScreenUseCase: MainScreenUseCase {
 
     private let mainScreenRepository: MainScreenRepository
 

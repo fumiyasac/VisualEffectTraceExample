@@ -20,7 +20,7 @@ final class MainViewController: UIViewController {
     // MEMO: ユーザー状態に応じた画面表示を実施するためのViewModel
     private let viewModel = MainViewModel(
         // MEMO: 一番最初に起動後に表示される画面に関連するUseCase
-        useCase: HandleMainScreenUseCase(
+        handleMainScreenUseCase: HandleMainScreenUseCase(
             mainScreenRepository: MainScreenRepository(
                 realmAccessManager: RealmAccessManager.shared,
                 keychainAccessManager: KeychainAccessManager.shared
