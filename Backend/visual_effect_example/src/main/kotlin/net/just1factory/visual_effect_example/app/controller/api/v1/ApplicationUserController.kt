@@ -102,11 +102,11 @@ class ApplicationUserController {
 		val rawPassword = loginUserRequest.rawPassword!!
 
 		// MEMO: メールアドレスとパスワードを検証して正しい場合はユーザー名を取得する
-		// 例外: ユーザー名が取得できなかった場合はUnauthorizedExceptionを投げる
+		// 例外: ユーザー名が取得できなかった場合はUnprocessableEntityExceptionを投げる
 		val loginSuccessUserName = applicationUserService.checkLoginAndGetUserName(
 			mailAddress = mailAddress,
 			rawPassword = rawPassword
-		) ?: throw UnauthorizedException("入力したパスワードまたはメールアドレスに誤りがあります。")
+		) ?: throw UnprocessableEntityException("入力したパスワードまたはメールアドレスに誤りがあります。")
 
 		// 該当ユーザーのJWT(Json Web Token)を生成する
 		val userJwt = JWTGenerator().generateToken(
