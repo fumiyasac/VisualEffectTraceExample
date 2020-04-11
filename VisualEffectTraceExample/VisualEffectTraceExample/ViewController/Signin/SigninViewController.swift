@@ -9,12 +9,17 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import PKHUD
 
 final class SigninViewController: UIViewController {
 
     private let disposeBag = DisposeBag()
 
-    // MARK: - Variables
+    // MARK: - SigninFlow
+
+    var coordinator: SigninFlow?
+
+    // MARK: - Properties
 
     private let tapGestureOfScrollView = UITapGestureRecognizer()
 
@@ -27,9 +32,22 @@ final class SigninViewController: UIViewController {
     private let mailAddressValidator = SigninScreenValidator.MailAddressValidator()
     private let rawPasswordValidator = SigninScreenValidator.RawPasswordValidator()
 
-    // MARK: - SigninFlow
-
-    var coordinator: SigninFlow?
+    // MEMO: サインイン状態をハンドリングするViewModel
+    private let viewModel = SigninViewModel(
+        // MEMO: ユーザー状態更新用のUseCase
+        updateCurrentApplicationUserStatusUsecase: UpdateCurrentApplicationUserStatusUsecase(
+            applicationUserRepository: CurrentApplicationUserRepository(
+                realmAccessManager: RealmAccessManager.shared,
+                keychainAccessManager: KeychainAccessManager.shared
+            )
+        ),
+        // MEMO: サインイン実行用のUseCase
+        requestSigninUseCase: RequestSigninUseCase(
+            signinRepository: RequestSigninRepository(
+                apiRequestManager: APIRequestManager.shared
+            )
+        )
+    )
 
     // MARK: - @IBOutlet
 
@@ -47,23 +65,27 @@ final class SigninViewController: UIViewController {
     private lazy var signinScreenSubscriber: BlockSubscriber<SigninScreenState> = BlockSubscriber { [weak self] state in
         guard let self = self else { return }
 
-        // メールアドレスに対してバリデーションを実行してエラーメッセージを表示する
-        let targetMailAddressValidationResult = self.mailAddressValidator.validate(state.mailAddress)
-        self.displayErrorMessageForMailAddressIfNeeded(
-            mailAddressValidationResult: targetMailAddressValidationResult
-        )
+        // MEMO: UI要素への反映を実行する場合はメインスレッドで処理を実行する
+        DispatchQueue.main.async {
 
-        // パスワードに対してバリデーションを実行してエラーメッセージを表示する
-        let targetRawPasswordValidationResult = self.rawPasswordValidator.validate(state.rawPassword)
-        self.displayErrorMessageForRawPasswordIfNeeded(
-            rawPasswordValidationResult: targetRawPasswordValidationResult
-        )
-
-        // ログインボタンの押下状態をコントロールする
-        self.handleSigninButtonState(
-            mailAddressValidationResult: targetMailAddressValidationResult,
-            rawPasswordValidationResult: targetRawPasswordValidationResult
-        )
+            // メールアドレスに対してバリデーションを実行してエラーメッセージを表示する
+            let targetMailAddressValidationResult = self.mailAddressValidator.validate(state.mailAddress)
+            self.displayErrorMessageForMailAddressIfNeeded(
+                mailAddressValidationResult: targetMailAddressValidationResult
+            )
+            // パスワードに対してバリデーションを実行してエラーメッセージを表示する
+            let targetRawPasswordValidationResult = self.rawPasswordValidator.validate(state.rawPassword)
+            self.displayErrorMessageForRawPasswordIfNeeded(
+                rawPasswordValidationResult: targetRawPasswordValidationResult
+            )
+            // ログインボタンの押下状態をコントロールする
+            self.handleSigninButtonState(
+                mailAddressValidationResult: targetMailAddressValidationResult,
+                rawPasswordValidationResult: targetRawPasswordValidationResult
+            )
+            // 画面全体に表示するプログレスバーの状態をコントロールする
+            self.handleProgressViewState(state: state)
+        }
     }
 
     // MARK: - Override
@@ -131,7 +153,28 @@ final class SigninViewController: UIViewController {
     }
 
     private func bindToRxSwift() {
-        
+
+        // ViewModelからの入力＆出力値の変化に関する処理
+        viewModel.outputs.requestStatus
+            .subscribeOn(MainScheduler.instance)
+            .subscribe(
+                onNext: { apiRequestStatus in
+
+                    // MEMO: Redux側の処理を更新することでUI表示を変化させる
+                    switch apiRequestStatus {
+                    case .none:
+                        break
+                    case .requesting:
+                        SigninScreenActionCreator.changeStateToProcessingSignin()
+                    case .success:
+                        SigninScreenActionCreator.changeStateToSigninSuccess()
+                    case .error:
+                        SigninScreenActionCreator.changeStateToSigninError()
+                    }
+                }
+            )
+            .disposed(by: disposeBag)
+
         // Viewからの入力値の変化に関する処理
         // MEMO: 入力されたメールアドレス/パスワードを画面状態を保持するReduxへ反映させる
         inputMailAddress
@@ -281,8 +324,14 @@ final class SigninViewController: UIViewController {
         UIView.animate(withDuration: 0.16, animations: {
             self.signinButton.transform = CGAffineTransform.identity
         }, completion: { finished in
-
-            // MEMO: サインイン処理を実行する
+            // MEMO: ViewModelに定義したサインイン処理を実行する
+            if let targetMailAddress = self.inputMailAddress.value, let targetRawPassword = self.inputRawPassword.value {
+                let signinParameters = SigninViewModel.SigninPatameters(
+                    targetMailAddress: targetMailAddress,
+                    targetRawPassword: targetRawPassword
+                )
+                self.viewModel.executeSigninRequestTrigger.onNext(signinParameters)
+            }
         })
     }
 
@@ -310,6 +359,37 @@ final class SigninViewController: UIViewController {
             self.shouldEnableLoginButton.accept(true)
         default:
             self.shouldEnableLoginButton.accept(false)
+        }
+    }
+
+    private func handleProgressViewState(state: SigninScreenState) {
+        switch state {
+        case _ where state.isProcessionSigninRequest:
+            // MEMO: 読み込み中のプログレス表示をする
+            HUD.show(.labeledProgress(title: "処理中", subtitle: nil))
+        case _ where state.isSigninRequestSuccess:
+            // MEMO: 画面の状態を元に戻してGlobalTab(メインのタブ表示画面へ遷移する)
+            HUD.flash(
+                .labeledSuccess(title: "ログイン成功", subtitle: nil),
+                delay: 1.50,
+                completion: { _ in
+                    HUD.hide()
+                    SigninScreenActionCreator.changeStateToInitial()
+                    self.coordinator?.coordinateToGlobalTab()
+                }
+            )
+        case _ where state.isSigninRequestError:
+            // MEMO: 入力部分以外の画面の状態を元に戻す
+            HUD.flash(
+                .labeledError(title: "ログイン失敗", subtitle: nil),
+                delay: 1.50,
+                completion: { _ in
+                    HUD.hide()
+                    SigninScreenActionCreator.changeStateToSigninNormal()
+                }
+            )
+        default:
+            break
         }
     }
 }

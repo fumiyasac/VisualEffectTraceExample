@@ -30,31 +30,36 @@ extension SigninScreenReducer {
         case let .changeRawPasswordInput(targetText):
             state.rawPassword = targetText
 
-        case .isProcessingLoginRequest:
-            state.isProcessionLoginRequest = true
-            state.isLoginRequestSuccess = false
-            state.isLoginRequestError = false
+        case .isProcessingSigninRequest:
+            state.isProcessionSigninRequest = true
+            state.isSigninRequestSuccess = false
+            state.isSigninRequestError = false
 
-        case .becomeLoginRequestSuccess:
-            state.isProcessionLoginRequest = false
-            state.isLoginRequestSuccess = true
-            state.isLoginRequestError = false
+        case .becomeSigninRequestSuccess:
+            state.isProcessionSigninRequest = false
+            state.isSigninRequestSuccess = true
+            state.isSigninRequestError = false
 
-        case .becomeLoginRequestError:
-            state.isProcessionLoginRequest = false
-            state.isLoginRequestSuccess = false
-            state.isLoginRequestError = true
- 
+        case .becomeSigninRequestError:
+            state.isProcessionSigninRequest = false
+            state.isSigninRequestSuccess = false
+            state.isSigninRequestError = true
+
+        case .becomeSigninRequestNormal:
+            state.isProcessionSigninRequest = false
+            state.isSigninRequestSuccess = false
+            state.isSigninRequestError = false
+
         case .restoreInitialState:
             state.mailAddress = ""
             state.rawPassword = ""
-            state.isProcessionLoginRequest = false
-            state.isLoginRequestSuccess = false
-            state.isLoginRequestError = false
+            state.isProcessionSigninRequest = false
+            state.isSigninRequestSuccess = false
+            state.isSigninRequestError = false
         }
 
-    // Debug.
-        AppLogger.printMessageForDebug("LoginScreenStateが更新されました。")
+        // Debug.
+        AppLogger.printMessageForDebug("SigninScreenStateが更新されました。")
 
         return state
     }

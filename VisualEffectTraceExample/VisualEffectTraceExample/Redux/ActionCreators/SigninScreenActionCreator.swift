@@ -21,16 +21,20 @@ extension SigninScreenActionCreator {
         appStore.dispatch(SigninScreenState.SigninScreenAction.changeRawPasswordInput(targetText: targetText))
     }
 
-    static func changeStateToProcessingLogin() {
-        appStore.dispatch(SigninScreenState.SigninScreenAction.isProcessingLoginRequest)
+    static func changeStateToProcessingSignin() {
+        appStore.dispatch(SigninScreenState.SigninScreenAction.isProcessingSigninRequest)
     }
 
-    static func changeStateToLoginSuccess() {
-        appStore.dispatch(SigninScreenState.SigninScreenAction.becomeLoginRequestSuccess)
+    static func changeStateToSigninSuccess() {
+        appStore.dispatch(SigninScreenState.SigninScreenAction.becomeSigninRequestSuccess)
     }
 
-    static func changeStateToLoginError() {
-        appStore.dispatch(SigninScreenState.SigninScreenAction.becomeLoginRequestError)
+    static func changeStateToSigninError() {
+        appStore.dispatch(SigninScreenState.SigninScreenAction.becomeSigninRequestError)
+    }
+
+    static func changeStateToSigninNormal() {
+        appStore.dispatch(SigninScreenState.SigninScreenAction.becomeSigninRequestNormal)
     }
 
     static func changeStateToInitial() {

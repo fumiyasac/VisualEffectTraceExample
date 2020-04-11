@@ -14,18 +14,12 @@ protocol SigninViewModelInputs {
 
     // ログイン処理の実行をViewModelへ伝える
     var executeSigninRequestTrigger: PublishSubject<SigninViewModel.SigninPatameters> { get }
-
-    // ログイン処理時に取得したJsonWebTokenの保存をViewModelへ伝える
-    var saveJsonWebTokenTrigger: PublishSubject<String> { get }
 }
 
 protocol SigninViewModelOutputs {
 
     // ログイン処理の実行結果を格納する
     var requestStatus: Observable<APIRequestState> { get }
-
-    // ログイン処理成功時に取得できるJsonWebToken格納する
-    var returnedJsonWebToken: Observable<String> { get }
 }
 
 protocol SigninViewModelType {
@@ -46,19 +40,10 @@ final class SigninViewModel: SigninViewModelInputs, SigninViewModelOutputs, Sign
 
     let executeSigninRequestTrigger: PublishSubject<SigninViewModel.SigninPatameters> = PublishSubject<SigninViewModel.SigninPatameters>()
 
-    let saveJsonWebTokenTrigger: PublishSubject<String> = PublishSubject<String>()
-
     // MARK: - Properties (for SigninViewModelOutputs)
 
     var requestStatus: Observable<APIRequestState> {
         return _requestStatus.asObservable()
-    }
-
-    var returnedJsonWebToken: Observable<String> {
-        return _returnedJsonWebToken
-            .filter { $0 != nil }
-            .map { $0! }
-            .asObservable()
     }
 
     // MARK: - Properties
@@ -68,5 +53,53 @@ final class SigninViewModel: SigninViewModelInputs, SigninViewModelOutputs, Sign
     // MEMO: 中継地点となるBehaviorRelayの変数（Outputの変数を生成するための「つなぎ」のような役割）
     // → BehaviorRelayの変化が起こったらObservableに変換されてOutputに流れてくる
     private let _requestStatus: BehaviorRelay<APIRequestState> = BehaviorRelay<APIRequestState>(value: .none)
-    private let _returnedJsonWebToken: BehaviorRelay<String?> = BehaviorRelay<String?>(value: nil)
+
+    // MEMO: このViewModelで利用するUseCase(Domain Model)
+    private let updateCurrentApplicationUserStatusUsecase: ApplicationUserStatusUsecase
+    private let requestSigninUseCase: RequestSigninUseCase
+
+    // MARK: - Initializer
+
+    init(updateCurrentApplicationUserStatusUsecase: ApplicationUserStatusUsecase, requestSigninUseCase: RequestSigninUseCase) {
+
+        // ApplicationUserStatusUsecaseプロトコルを適合させるUserCaseをインスタンス経由で該当データを取得する
+        self.updateCurrentApplicationUserStatusUsecase = updateCurrentApplicationUserStatusUsecase
+
+        // SigninUsecaseプロトコルを適合させるUserCaseをインスタンス経由で該当データを取得する
+        self.requestSigninUseCase = requestSigninUseCase
+
+        // ViewModel側の処理実行トリガーと連結させる
+        executeSigninRequestTrigger
+            .subscribe(
+                onNext: { [weak self] signinPatameters in
+                    guard let self = self else { return }
+                    self.executeSigninRequest(signinPatameters: signinPatameters)
+                }
+            )
+            .disposed(by: disposeBag)
+    }
+
+    // MARK: - Private Function
+
+    private func executeSigninRequest(signinPatameters: SigninPatameters) {
+        _requestStatus.accept(.requesting)
+        requestSigninUseCase.execute(mailAddress: signinPatameters.targetMailAddress, rawPassword: signinPatameters.targetRawPassword)
+            .subscribe(
+                onSuccess: { [weak self] data in
+                    guard let self = self else { return }
+                    self._requestStatus.accept(.success)
+                    // MEMO: JsonAccessTokenを保存する
+                    self.saveJsonWebToken(token: data.token)
+                },
+                onError: { [weak self] error in
+                    guard let self = self else { return }
+                    self._requestStatus.accept(.error)
+                }
+            )
+            .disposed(by: disposeBag)
+    }
+
+    private func saveJsonWebToken(token: String) {
+        updateCurrentApplicationUserStatusUsecase.executeUpdateToken(token)
+    }
 }

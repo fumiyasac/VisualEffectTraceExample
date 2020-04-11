@@ -23,11 +23,11 @@ final class TutorialViewController: UIViewController {
 
     // MEMO: チュートリアル表示内容を取得するViewModel
     private let viewModel = TutorialViewModel(
-        // MEMO: チュートリアル画面表示に必要なデータを取得するUseCase
+        // MEMO: チュートリアル画面データを取得用のUseCase
         getTutorialUseCase: GetTutorialDataUseCase(
             tutorialRepository: TutorialDataRepository()
         ),
-        // MEMO: 一番最初に起動後に表示される画面に関連するUseCase
+        // MEMO: ユーザー状態更新用のUseCase
         updateCurrentApplicationUserStatusUsecase: UpdateCurrentApplicationUserStatusUsecase(
             applicationUserRepository: CurrentApplicationUserRepository(
                 realmAccessManager: RealmAccessManager.shared,

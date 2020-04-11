@@ -19,11 +19,11 @@ struct SigninScreenState: ReSwift.StateType {
     var rawPassword: String = ""
 
     // サインイン処理が実行中かを判定するフラグ（初期値: false）
-    var isProcessionLoginRequest: Bool = false
+    var isProcessionSigninRequest: Bool = false
 
     // サインイン処理が成功かを判定するフラグ（初期値: false）
-    var isLoginRequestSuccess: Bool = false
+    var isSigninRequestSuccess: Bool = false
 
     // サインイン処理が失敗かを判定するフラグ（初期値: false）
-    var isLoginRequestError: Bool = false
+    var isSigninRequestError: Bool = false
 }

@@ -21,7 +21,7 @@ target 'VisualEffectTraceExample' do
   pod 'YPImagePicker'
   pod 'ExpandingMenu', '~> 0.4'
   pod 'Loaf'
-  pod 'NVActivityIndicatorView'
+  pod 'PKHUD', '~> 5.0'
   pod 'AnimatedCollectionViewLayout'
   pod 'Nuke'
 

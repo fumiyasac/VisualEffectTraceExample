@@ -21,13 +21,16 @@ extension SigninScreenState {
         case changeRawPasswordInput(targetText: String)
 
         // サインイン処理中の場合のアクション
-        case isProcessingLoginRequest
+        case isProcessingSigninRequest
 
         // サインイン処理が成功した場合のアクション
-        case becomeLoginRequestSuccess
+        case becomeSigninRequestSuccess
 
         // サインイン処理が失敗した場合のアクション
-        case becomeLoginRequestError
+        case becomeSigninRequestError
+
+        // サインイン処理中状態を元に戻す場合のアクション
+        case becomeSigninRequestNormal
 
         // このStateを初期状態へ戻す場合のアクション
         case restoreInitialState

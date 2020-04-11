@@ -48,10 +48,17 @@ class APIRequestManager {
 
     // MARK: - Function
 
-    func executeAPIRequest<T: Decodable>(endpointUrl: String, httpMethod: HTTPMethod = .GET, responseFormat: T.Type) -> Single<T> {
+    func executeAPIRequest<T: Decodable>(endpointUrl: String, withParameters: [String : Any] = [:], httpMethod: HTTPMethod = .GET, responseFormat: T.Type) -> Single<T> {
 
-        // TODO: GET/POST/PUT/DELETE時それぞれにおける条件分岐が必要
-        let urlRequest = makeGetRequest(endpointUrl)
+        var urlRequest: URLRequest
+        switch httpMethod {
+        case .GET:
+            urlRequest = makeGetRequest(endpointUrl)
+        case .POST:
+            urlRequest = makePostRequest(endpointUrl, withParameters: withParameters)
+        default:
+            fatalError()
+        }
         return handleDataTask(T.self, request: urlRequest)
     }
 
@@ -69,7 +76,7 @@ class APIRequestManager {
                     return
                 }
                 // MEMO: Debug用にエラー発生時のJSONを出力する
-                //self.displayErrorForDebug(targetResponse: response, targetData: data)
+                self.displayErrorForDebug(targetResponse: response, targetData: data)
                 // MEMO: ステータスコードの精査及びエラーハンドリング
                 guard let response = response as? HTTPURLResponse, case 200..<400 = response.statusCode else {
                     singleEvent(.error(APIError.error("Error: StatusCodeが200~399以外です。")))
@@ -103,6 +110,28 @@ class APIRequestManager {
         }
         var urlRequest = URLRequest(url: url)
         urlRequest.httpMethod = "GET"
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        let authraizationHeader = KeychainAccessManager.shared.getAuthenticationHeader()
+        if !authraizationHeader.isEmpty {
+            urlRequest.addValue(authraizationHeader , forHTTPHeaderField: "Authorization")
+        }
+        return urlRequest
+    }
+
+    // API Mock ServerへのPOSTリクエストを作成する
+    private func makePostRequest(_ urlString: String, withParameters: [String : Any] = [:]) -> URLRequest {
+        guard let url = URL(string: urlString) else {
+            fatalError()
+        }
+        var urlRequest = URLRequest(url: url)
+        urlRequest.httpMethod = "POST"
+        // MEMO: Dictionaryで取得したリクエストパラメータをJSONに変換している
+        do {
+            let requestBody = try JSONSerialization.data(withJSONObject: withParameters, options: [])
+            urlRequest.httpBody = requestBody
+        } catch {
+            fatalError("Invalid request body parameters.")
+        }
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
         let authraizationHeader = KeychainAccessManager.shared.getAuthenticationHeader()
         if !authraizationHeader.isEmpty {
