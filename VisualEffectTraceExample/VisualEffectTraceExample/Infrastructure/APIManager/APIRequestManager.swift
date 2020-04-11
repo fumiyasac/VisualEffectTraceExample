@@ -76,12 +76,21 @@ class APIRequestManager {
                     return
                 }
                 // MEMO: Debug用にエラー発生時のJSONを出力する
-                self.displayErrorForDebug(targetResponse: response, targetData: data)
+                //self.displayErrorForDebug(targetResponse: response, targetData: data)
                 // MEMO: ステータスコードの精査及びエラーハンドリング
-                guard let response = response as? HTTPURLResponse, case 200..<400 = response.statusCode else {
-                    singleEvent(.error(APIError.error("Error: StatusCodeが200~399以外です。")))
+                if let response = response as? HTTPURLResponse, case 400...500 = response.statusCode {
+
+                    // MEMO: ステータスコードが403(Access Denied)の場合にはサインイン画面へ強制的に表示させるようにする
+                    // → ここにCoodinatorの処理を強制的に加えるのは果たして良いのかは迷うところです。
+                    if response.statusCode == 403 {
+                        let signinCoodinator = SigninScreenCoordinator()
+                        signinCoodinator.start()
+                    } else {
+                        singleEvent(.error(APIError.error("Error: StatusCodeが200~399以外です。")))
+                    }
                     return
                 }
+
                 // MEMO: 取得データの内容の精査及びエラーハンドリング
                 guard let data = data else {
                     singleEvent(.error(APIError.error("Error: レスポンスが空でした。")))
