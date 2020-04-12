@@ -53,7 +53,10 @@ class SigninScreenCoordinator: ScreenCoordinator, SigninFlow {
     // MARK: - SigninFlow
 
     func coordinateToSignup() {
-        print("新規会員画面へ遷移するためのCoodinator定義が必要")
+
+        // サインアップ画面へ遷移するためのCoodinatorの処理を実施する
+        let signupCoodinator = SignupScreenCoordinator()
+        coordinate(to: signupCoodinator)
     }
 
     func coordinateToAnnouncement() {

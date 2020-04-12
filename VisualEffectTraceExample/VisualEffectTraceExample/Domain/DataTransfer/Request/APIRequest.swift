@@ -18,6 +18,7 @@ extension APIRequestManager: APIRequestProtocol {
 
         case announcement = "announcement"
         case signin = "signin"
+        case signup = "signup"
 
         func getBaseUrl() -> String {
             return [host, version, self.rawValue].joined(separator: "/")
@@ -48,7 +49,7 @@ extension APIRequestManager: APIRequestProtocol {
         )
     }
 
-    // お知らせ詳細表示用のAPIリクエスト処理の実行
+    // サインイン処理用のAPIリクエスト処理の実行
     func requestSiginin(mailAddress: String, rawPassword: String) -> Single<SigninSuccessResponse> {
         let parameters: [String : Any] = [
             "mail_address" : mailAddress,
@@ -60,6 +61,22 @@ extension APIRequestManager: APIRequestProtocol {
             withParameters: parameters,
             httpMethod: HTTPMethod.POST,
             responseFormat: SigninSuccessResponse.self
+        )
+    }
+
+    // サインアップ処理用のAPIリクエスト処理の実行
+    func requestSiginup(userName: String, mailAddress: String, rawPassword: String) -> Single<GeneralPostSuccessARIResponse> {
+        let parameters: [String : Any] = [
+            "user_name" : userName,
+            "mail_address" : mailAddress,
+            "password" : rawPassword
+        ]
+        let signupEndPoint = EndPoint.signup.getBaseUrl()
+        return executeAPIRequest(
+            endpointUrl: signupEndPoint,
+            withParameters: parameters,
+            httpMethod: HTTPMethod.POST,
+            responseFormat: GeneralPostSuccessARIResponse.self
         )
     }
 }

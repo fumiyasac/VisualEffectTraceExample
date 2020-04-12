@@ -16,9 +16,11 @@ import RxSwift
 protocol APIRequestProtocol {
 
     // MEMO: 認証済みユーザーのAPIリクエスト
-    func requestSiginin(mailAddress: String, rawPassword: String) -> Single<SigninSuccessResponse>
 
     // MEMO: 公開部分のAPIリクエスト
     func getAnnoucements() -> Single<AnnouncementListResponse>
     func getAnnoucementDetailBy(id: Int) -> Single<AnnouncementDetailResponse>
+
+    func requestSiginin(mailAddress: String, rawPassword: String) -> Single<SigninSuccessResponse>
+    func requestSiginup(userName: String, mailAddress: String, rawPassword: String) -> Single<GeneralPostSuccessARIResponse>
 }

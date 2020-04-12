@@ -14,6 +14,9 @@ enum FormInputTextFieldStyle {
     // 普通の文字入力用テキストフィールド（※特に何もない場合のデフォルト指定）
     case defaultTextInput
 
+    // ユーザーネーム入力用テキストフィールド
+    case userNameTextInput
+
     // メールアドレス入力用テキストフィールド
     case mailAddressTextInput
 

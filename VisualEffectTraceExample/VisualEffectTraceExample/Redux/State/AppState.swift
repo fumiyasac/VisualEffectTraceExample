@@ -17,4 +17,7 @@ struct AppState: ReSwift.StateType {
 
     // サインイン画面に関するstateの定義
     var signinScreenState = SigninScreenState()
+
+    // サインアップ画面に関するstateの定義
+    var signupScreenState = SignupScreenState()
 }

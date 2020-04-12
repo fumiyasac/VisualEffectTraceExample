@@ -26,7 +26,7 @@ final class SigninViewController: UIViewController {
     // MEMO: もし値の中継が必要になった場合にはBehaviorRelay<T>を別途用意する
     private let inputMailAddress: BehaviorRelay<String?> = BehaviorRelay<String?>(value: nil)
     private let inputRawPassword: BehaviorRelay<String?> = BehaviorRelay<String?>(value: nil)
-    private let shouldEnableLoginButton: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
+    private let shouldEnableSigninButton: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
 
     // MEMO: 適用するValidatorを用意する
     private let mailAddressValidator = SigninScreenValidator.MailAddressValidator()
@@ -195,7 +195,7 @@ final class SigninViewController: UIViewController {
                 }
             )
             .disposed(by: disposeBag)
-        shouldEnableLoginButton
+        shouldEnableSigninButton
             .asDriver()
             .drive(
                 onNext: { [weak self] result in
@@ -338,27 +338,27 @@ final class SigninViewController: UIViewController {
     private func displayErrorMessageForMailAddressIfNeeded(mailAddressValidationResult: ValidationResult) {
         switch mailAddressValidationResult {
         case .invalid(let error):
-            self.mailAddressInputView.setErrorMessage(error.localizedDescription)
+            mailAddressInputView.setErrorMessage(error.localizedDescription)
         default:
-            self.mailAddressInputView.setErrorMessage("")
+            mailAddressInputView.setErrorMessage("")
         }
     }
 
     private func displayErrorMessageForRawPasswordIfNeeded(rawPasswordValidationResult: ValidationResult) {
         switch rawPasswordValidationResult {
         case .invalid(let error):
-            self.rawPasswordInputView.setErrorMessage(error.localizedDescription)
+            rawPasswordInputView.setErrorMessage(error.localizedDescription)
         default:
-            self.rawPasswordInputView.setErrorMessage("")
+            rawPasswordInputView.setErrorMessage("")
         }
     }
 
     private func handleSigninButtonState(mailAddressValidationResult: ValidationResult, rawPasswordValidationResult: ValidationResult) {
         switch (mailAddressValidationResult, rawPasswordValidationResult) {
         case (.valid, .valid):
-            self.shouldEnableLoginButton.accept(true)
+            shouldEnableSigninButton.accept(true)
         default:
-            self.shouldEnableLoginButton.accept(false)
+            shouldEnableSigninButton.accept(false)
         }
     }
 
@@ -368,9 +368,9 @@ final class SigninViewController: UIViewController {
             // MEMO: 読み込み中のプログレス表示をする
             HUD.show(.labeledProgress(title: "処理中", subtitle: nil))
         case _ where state.isSigninRequestSuccess:
-            // MEMO: 画面の状態を元に戻してGlobalTab(メインのタブ表示画面へ遷移する)
+            // MEMO: 画面の状態を元に戻して、メインのタブ表示画面(GlobalTab)へ遷移する
             HUD.flash(
-                .labeledSuccess(title: "ログイン成功", subtitle: nil),
+                .labeledSuccess(title: "サインイン成功", subtitle: nil),
                 delay: 1.50,
                 completion: { _ in
                     HUD.hide()
@@ -381,7 +381,7 @@ final class SigninViewController: UIViewController {
         case _ where state.isSigninRequestError:
             // MEMO: 入力部分以外の画面の状態を元に戻す
             HUD.flash(
-                .labeledError(title: "ログイン失敗", subtitle: nil),
+                .labeledError(title: "サインイン失敗", subtitle: nil),
                 delay: 1.50,
                 completion: { _ in
                     HUD.hide()
@@ -394,7 +394,7 @@ final class SigninViewController: UIViewController {
     }
 }
 
-// MARK: - StoryboardInstantiatable
+// MARK: - FormTextFieldInputViewDelegate
 
 extension SigninViewController: FormTextFieldInputViewDelegate {
 

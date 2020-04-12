@@ -58,6 +58,8 @@
 		DE8487432425E81000A40975 /* RealmAccessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8487422425E81000A40975 /* RealmAccessManager.swift */; };
 		DE8487462425FACD00A40975 /* ApplicationUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8487452425FACD00A40975 /* ApplicationUserEntity.swift */; };
 		DE8FA1DD2432352D00577C47 /* Signin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE8FA1DB2432352D00577C47 /* Signin.storyboard */; };
+		DE9D4EFD24437571003439ED /* RequestSignupRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9D4EFC24437571003439ED /* RequestSignupRepository.swift */; };
+		DE9D4EFF24437611003439ED /* GeneralPostSuccessARIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9D4EFE24437611003439ED /* GeneralPostSuccessARIResponse.swift */; };
 		DEA01C7F240107DC00346C1E /* AnnouncementEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA01C7E240107DC00346C1E /* AnnouncementEntity.swift */; };
 		DEAA656923F3122F00C5232B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA656823F3122F00C5232B /* AppDelegate.swift */; };
 		DEAA656B23F3122F00C5232B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA656A23F3122F00C5232B /* SceneDelegate.swift */; };
@@ -81,6 +83,14 @@
 		DEF5A22E244171FC00383473 /* RequestSigninUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5A22D244171FC00383473 /* RequestSigninUseCase.swift */; };
 		DEF5A230244172F800383473 /* RequestSigninRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5A22F244172F800383473 /* RequestSigninRepository.swift */; };
 		DEF5A2322441743600383473 /* SigninAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5A2312441743600383473 /* SigninAPIResponse.swift */; };
+		DEF5A23624433E1C00383473 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5A23524433E1C00383473 /* SignupViewModel.swift */; };
+		DEF5A2382443435600383473 /* RequestSignupUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5A2372443435600383473 /* RequestSignupUseCase.swift */; };
+		DEF5A23C2443438A00383473 /* SignupScreenCoodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5A23B2443438A00383473 /* SignupScreenCoodinator.swift */; };
+		DEF5A23E244343D400383473 /* SignupScreenValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5A23D244343D400383473 /* SignupScreenValidator.swift */; };
+		DEF5A240244343F600383473 /* SignupScreenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5A23F244343F600383473 /* SignupScreenState.swift */; };
+		DEF5A2422443440800383473 /* SignupScreenAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5A2412443440800383473 /* SignupScreenAction.swift */; };
+		DEF5A2442443442300383473 /* SignupScreenReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5A2432443442300383473 /* SignupScreenReducer.swift */; };
+		DEF5A2462443443800383473 /* SignupScreenActionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5A2452443443800383473 /* SignupScreenActionCreator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,6 +164,8 @@
 		DE8487422425E81000A40975 /* RealmAccessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmAccessManager.swift; sourceTree = "<group>"; };
 		DE8487452425FACD00A40975 /* ApplicationUserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationUserEntity.swift; sourceTree = "<group>"; };
 		DE8FA1DC2432352D00577C47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Signin.storyboard; sourceTree = "<group>"; };
+		DE9D4EFC24437571003439ED /* RequestSignupRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSignupRepository.swift; sourceTree = "<group>"; };
+		DE9D4EFE24437611003439ED /* GeneralPostSuccessARIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPostSuccessARIResponse.swift; sourceTree = "<group>"; };
 		DEA01C7E240107DC00346C1E /* AnnouncementEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementEntity.swift; sourceTree = "<group>"; };
 		DEAA656523F3122F00C5232B /* VisualEffectTraceExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisualEffectTraceExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEAA656823F3122F00C5232B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -183,6 +195,14 @@
 		DEF5A22D244171FC00383473 /* RequestSigninUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSigninUseCase.swift; sourceTree = "<group>"; };
 		DEF5A22F244172F800383473 /* RequestSigninRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSigninRepository.swift; sourceTree = "<group>"; };
 		DEF5A2312441743600383473 /* SigninAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninAPIResponse.swift; sourceTree = "<group>"; };
+		DEF5A23524433E1C00383473 /* SignupViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
+		DEF5A2372443435600383473 /* RequestSignupUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSignupUseCase.swift; sourceTree = "<group>"; };
+		DEF5A23B2443438A00383473 /* SignupScreenCoodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupScreenCoodinator.swift; sourceTree = "<group>"; };
+		DEF5A23D244343D400383473 /* SignupScreenValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupScreenValidator.swift; sourceTree = "<group>"; };
+		DEF5A23F244343F600383473 /* SignupScreenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupScreenState.swift; sourceTree = "<group>"; };
+		DEF5A2412443440800383473 /* SignupScreenAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupScreenAction.swift; sourceTree = "<group>"; };
+		DEF5A2432443442300383473 /* SignupScreenReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupScreenReducer.swift; sourceTree = "<group>"; };
+		DEF5A2452443443800383473 /* SignupScreenActionCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupScreenActionCreator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,6 +244,7 @@
 			children = (
 				DE0424E42402AF50008DEF36 /* AnnouncementAPIResponse.swift */,
 				DEF5A2312441743600383473 /* SigninAPIResponse.swift */,
+				DE9D4EFE24437611003439ED /* GeneralPostSuccessARIResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -260,6 +281,7 @@
 				DE2AB8C0242FEACA00335E4F /* AppState.swift */,
 				DE2AB8C3242FEB5700335E4F /* BaseScreenState.swift */,
 				DE634C3F2438CFB2004CA920 /* SigninScreenState.swift */,
+				DEF5A23F244343F600383473 /* SignupScreenState.swift */,
 			);
 			path = State;
 			sourceTree = "<group>";
@@ -277,6 +299,7 @@
 			children = (
 				DE2AB8CD242FF0D300335E4F /* BaseScreenAction.swift */,
 				DE634C412438D052004CA920 /* SigninScreenAction.swift */,
+				DEF5A2412443440800383473 /* SignupScreenAction.swift */,
 			);
 			path = Actions;
 			sourceTree = "<group>";
@@ -287,6 +310,7 @@
 				DE2AB8C9242FF01100335E4F /* AppReducer.swift */,
 				DE2AB8CB242FF07900335E4F /* BaseScreenReducer.swift */,
 				DE634C452438D56B004CA920 /* SigninScreenReducer.swift */,
+				DEF5A2432443442300383473 /* SignupScreenReducer.swift */,
 			);
 			path = Reducers;
 			sourceTree = "<group>";
@@ -296,6 +320,7 @@
 			children = (
 				DE2AB8CF242FF8A000335E4F /* BaseScreenActionCreator.swift */,
 				DE634C432438D097004CA920 /* SigninScreenActionCreator.swift */,
+				DEF5A2452443443800383473 /* SignupScreenActionCreator.swift */,
 			);
 			path = ActionCreators;
 			sourceTree = "<group>";
@@ -306,6 +331,7 @@
 				DE2AB8AB242F424800335E4F /* ScreenCoodinator.swift */,
 				DE2AB8B0242F4C3600335E4F /* TutorialScreenCoodinator.swift */,
 				DE67D98B24324D7400EB2D61 /* SigninScreenCoodinator.swift */,
+				DEF5A23B2443438A00383473 /* SignupScreenCoodinator.swift */,
 			);
 			path = Coodinator;
 			sourceTree = "<group>";
@@ -331,6 +357,7 @@
 				DE8485492427A43C00766098 /* TutorialViewModel.swift */,
 				DE2AB8B8242F7EC200335E4F /* MainViewModel.swift */,
 				DE634C492438ED41004CA920 /* SigninViewModel.swift */,
+				DEF5A23524433E1C00383473 /* SignupViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -389,6 +416,7 @@
 				DE726CBD243AA47F0043FA4E /* Validator.swift */,
 				DE726CBF243AB5310043FA4E /* CompositionalValidator.swift */,
 				DE726CBB243AA3450043FA4E /* SigninScreenValidator.swift */,
+				DEF5A23D244343D400383473 /* SignupScreenValidator.swift */,
 			);
 			path = Validator;
 			sourceTree = "<group>";
@@ -428,6 +456,7 @@
 				DE2AB8BE242FCA1A00335E4F /* MainScreenRepository.swift */,
 				DE634C3924361150004CA920 /* CurrentApplicationUserRepository.swift */,
 				DEF5A22F244172F800383473 /* RequestSigninRepository.swift */,
+				DE9D4EFC24437571003439ED /* RequestSignupRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -621,6 +650,7 @@
 				DE2AB8BA242FC5AB00335E4F /* HandleMainScreenUseCase.swift */,
 				DE67D994243568A000EB2D61 /* UpdateCurrentApplicationUserStatusUsecase.swift */,
 				DEF5A22D244171FC00383473 /* RequestSigninUseCase.swift */,
+				DEF5A2372443435600383473 /* RequestSignupUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -877,10 +907,15 @@
 				DE634C402438CFB2004CA920 /* SigninScreenState.swift in Sources */,
 				DE2AB8C8242FEF8700335E4F /* ActionLoggingMiddleware.swift in Sources */,
 				DE8487412425E21D00A40975 /* AppConstants.swift in Sources */,
+				DEF5A23624433E1C00383473 /* SignupViewModel.swift in Sources */,
 				DEDCC88A241DE30500BFA165 /* APIRequest.swift in Sources */,
 				DE2AB8B9242F7EC200335E4F /* MainViewModel.swift in Sources */,
+				DEF5A2422443440800383473 /* SignupScreenAction.swift in Sources */,
 				DE14134823FB02A10000D27C /* APIRequestManager.swift in Sources */,
+				DEF5A2382443435600383473 /* RequestSignupUseCase.swift in Sources */,
 				DE2AB89F242973A100335E4F /* GetTutorialDataUseCase.swift in Sources */,
+				DE9D4EFD24437571003439ED /* RequestSignupRepository.swift in Sources */,
+				DEF5A2442443442300383473 /* SignupScreenReducer.swift in Sources */,
 				DEA01C7F240107DC00346C1E /* AnnouncementEntity.swift in Sources */,
 				DE2AB8BD242FC69700335E4F /* ApplicationUserStatus.swift in Sources */,
 				DE2AB8D0242FF8A000335E4F /* BaseScreenActionCreator.swift in Sources */,
@@ -889,14 +924,19 @@
 				DEAA65A923F70E6900C5232B /* UILabelDecorator.swift in Sources */,
 				DE67D984243246B300EB2D61 /* AnnoucementViewController.swift in Sources */,
 				DEAA65AF23F7288C00C5232B /* UITableViewExtension.swift in Sources */,
+				DEF5A2462443443800383473 /* SignupScreenActionCreator.swift in Sources */,
 				DEAA65A323F70DEC00C5232B /* CustomViewBase.swift in Sources */,
 				DE2AB8C6242FEF1B00335E4F /* AppLogger.swift in Sources */,
 				DE2AB8C4242FEB5700335E4F /* BaseScreenState.swift in Sources */,
+				DE9D4EFF24437611003439ED /* GeneralPostSuccessARIResponse.swift in Sources */,
+				DEF5A240244343F600383473 /* SignupScreenState.swift in Sources */,
 				DE2AB8BB242FC5AB00335E4F /* HandleMainScreenUseCase.swift in Sources */,
 				DEAA65AD23F70EE900C5232B /* UIViewControllerExtension.swift in Sources */,
 				DE726CBE243AA47F0043FA4E /* Validator.swift in Sources */,
+				DEF5A23E244343D400383473 /* SignupScreenValidator.swift in Sources */,
 				DE84854A2427A43C00766098 /* TutorialViewModel.swift in Sources */,
 				DE67D98824324A3300EB2D61 /* SigninViewController.swift in Sources */,
+				DEF5A23C2443438A00383473 /* SignupScreenCoodinator.swift in Sources */,
 				DEF5A2322441743600383473 /* SigninAPIResponse.swift in Sources */,
 				DEAA656D23F3122F00C5232B /* MainViewController.swift in Sources */,
 				DE634C4A2438ED41004CA920 /* SigninViewModel.swift in Sources */,

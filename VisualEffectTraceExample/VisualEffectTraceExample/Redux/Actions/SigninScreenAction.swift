@@ -17,7 +17,7 @@ extension SigninScreenState {
         // メールアドレス入力欄へ入力があった場合のアクション
         case changeMailAddressInput(targetText: String)
 
-        // メールアドレス入力欄へ入力があった場合のアクション
+        // パスワード入力欄へ入力があった場合のアクション
         case changeRawPasswordInput(targetText: String)
 
         // サインイン処理中の場合のアクション

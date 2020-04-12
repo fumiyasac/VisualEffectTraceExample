@@ -12,13 +12,13 @@ import RxCocoa
 
 protocol SigninViewModelInputs {
 
-    // ログイン処理の実行をViewModelへ伝える
+    // サインイン処理の実行をViewModelへ伝える
     var executeSigninRequestTrigger: PublishSubject<SigninViewModel.SigninPatameters> { get }
 }
 
 protocol SigninViewModelOutputs {
 
-    // ログイン処理の実行結果を格納する
+    // サインイン処理の実行結果を格納する
     var requestStatus: Observable<APIRequestState> { get }
 }
 
@@ -56,11 +56,11 @@ final class SigninViewModel: SigninViewModelInputs, SigninViewModelOutputs, Sign
 
     // MEMO: このViewModelで利用するUseCase(Domain Model)
     private let updateCurrentApplicationUserStatusUsecase: ApplicationUserStatusUsecase
-    private let requestSigninUseCase: RequestSigninUseCase
+    private let requestSigninUseCase: SigninUsecase
 
     // MARK: - Initializer
 
-    init(updateCurrentApplicationUserStatusUsecase: ApplicationUserStatusUsecase, requestSigninUseCase: RequestSigninUseCase) {
+    init(updateCurrentApplicationUserStatusUsecase: ApplicationUserStatusUsecase, requestSigninUseCase: SigninUsecase) {
 
         // ApplicationUserStatusUsecaseプロトコルを適合させるUserCaseをインスタンス経由で該当データを取得する
         self.updateCurrentApplicationUserStatusUsecase = updateCurrentApplicationUserStatusUsecase

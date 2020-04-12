@@ -27,6 +27,8 @@ final class RequestSigninUseCase: SigninUsecase {
         self.signinRepository = signinRepository
     }
 
+    // MARK: - SigninUsecase
+
     func execute(mailAddress: String, rawPassword: String) -> Single<SigninSuccessResponse> {
         return signinRepository.requestSignin(mailAddress: mailAddress, rawPassword: rawPassword)
     }
