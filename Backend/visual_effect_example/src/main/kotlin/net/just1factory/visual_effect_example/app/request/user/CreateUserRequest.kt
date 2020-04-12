@@ -16,7 +16,7 @@ data class CreateUserRequest(
 	@JsonProperty("user_name")
 	@field: NotNull(message = "ユーザー名が送信されていません。")
 	@field: Pattern(regexp = "^[0-9a-zA-Z]+${'$'}", message = "ユーザー名に利用できるのは記号を除いた半角英数字だけになります。")
-	@field: Size(min = 8, max = 50, message = "ユーザー名は6文字以上50文字以下で入力してください。")
+	@field: Size(min = 6, max = 50, message = "ユーザー名は6文字以上50文字以下で入力してください。")
 	val userName: String?,
 
 	@JsonProperty("mail_address")
@@ -27,6 +27,6 @@ data class CreateUserRequest(
 	@JsonProperty("password")
 	@field: NotNull(message = "パスワードが送信されていません。")
 	@field: Pattern(regexp = "^[0-9a-zA-Z]+${'$'}", message = "パスワードに利用できるのは記号を除いた半角英数字だけになります。")
-	@field: Size(min = 8, max = 50, message = "パスワードは6文字以上50文字以下で入力してください。")
+	@field: Size(min = 6, max = 50, message = "パスワードは6文字以上50文字以下で入力してください。")
 	val rawPassword: String?
 )

@@ -15,6 +15,6 @@ data class LoginUserRequest(
 	@JsonProperty("password")
 	@field: NotNull(message = "パスワードが送信されていません。")
 	@field: Pattern(regexp = "^[0-9a-zA-Z]+${'$'}", message = "パスワードに利用できるのは記号を除いた半角英数字だけになります。")
-	@field: Size(min = 8, max = 50, message = "パスワードは6文字以上50文字以下で入力してください。")
+	@field: Size(min = 6, max = 50, message = "パスワードは6文字以上50文字以下で入力してください。")
 	val rawPassword: String?
 )
