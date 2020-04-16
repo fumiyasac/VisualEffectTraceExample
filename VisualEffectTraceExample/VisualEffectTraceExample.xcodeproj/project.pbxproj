@@ -57,9 +57,17 @@
 		DE8487412425E21D00A40975 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8487402425E21D00A40975 /* AppConstants.swift */; };
 		DE8487432425E81000A40975 /* RealmAccessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8487422425E81000A40975 /* RealmAccessManager.swift */; };
 		DE8487462425FACD00A40975 /* ApplicationUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8487452425FACD00A40975 /* ApplicationUserEntity.swift */; };
+		DE8E96542444B9DE0033375F /* AnnouncementScreenCoodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E96532444B9DE0033375F /* AnnouncementScreenCoodinator.swift */; };
+		DE8E96572444C7480033375F /* AnnouncementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E96562444C7480033375F /* AnnouncementViewModel.swift */; };
+		DE8E96592444C9870033375F /* RequestAnnouncementDataUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E96582444C9870033375F /* RequestAnnouncementDataUseCase.swift */; };
+		DE8E965B2444C9E60033375F /* RequestAnnoucementDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E965A2444C9E60033375F /* RequestAnnoucementDataRepository.swift */; };
+		DE8E965D2444D1080033375F /* AnnoucementTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE8E965C2444D1080033375F /* AnnoucementTableHeaderView.xib */; };
+		DE8E965F2444D1130033375F /* AnnoucementTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E965E2444D1130033375F /* AnnoucementTableHeaderView.swift */; };
 		DE8FA1DD2432352D00577C47 /* Signin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE8FA1DB2432352D00577C47 /* Signin.storyboard */; };
 		DE9D4EFD24437571003439ED /* RequestSignupRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9D4EFC24437571003439ED /* RequestSignupRepository.swift */; };
 		DE9D4EFF24437611003439ED /* GeneralPostSuccessARIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9D4EFE24437611003439ED /* GeneralPostSuccessARIResponse.swift */; };
+		DE9D4F0324449A91003439ED /* AnnouncementTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE9D4F0124449A91003439ED /* AnnouncementTableViewCell.swift */; };
+		DE9D4F0424449A91003439ED /* AnnouncementTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE9D4F0224449A91003439ED /* AnnouncementTableViewCell.xib */; };
 		DEA01C7F240107DC00346C1E /* AnnouncementEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEA01C7E240107DC00346C1E /* AnnouncementEntity.swift */; };
 		DEAA656923F3122F00C5232B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA656823F3122F00C5232B /* AppDelegate.swift */; };
 		DEAA656B23F3122F00C5232B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAA656A23F3122F00C5232B /* SceneDelegate.swift */; };
@@ -163,9 +171,17 @@
 		DE8487402425E21D00A40975 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		DE8487422425E81000A40975 /* RealmAccessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmAccessManager.swift; sourceTree = "<group>"; };
 		DE8487452425FACD00A40975 /* ApplicationUserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationUserEntity.swift; sourceTree = "<group>"; };
+		DE8E96532444B9DE0033375F /* AnnouncementScreenCoodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementScreenCoodinator.swift; sourceTree = "<group>"; };
+		DE8E96562444C7480033375F /* AnnouncementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementViewModel.swift; sourceTree = "<group>"; };
+		DE8E96582444C9870033375F /* RequestAnnouncementDataUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAnnouncementDataUseCase.swift; sourceTree = "<group>"; };
+		DE8E965A2444C9E60033375F /* RequestAnnoucementDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAnnoucementDataRepository.swift; sourceTree = "<group>"; };
+		DE8E965C2444D1080033375F /* AnnoucementTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnnoucementTableHeaderView.xib; sourceTree = "<group>"; };
+		DE8E965E2444D1130033375F /* AnnoucementTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnoucementTableHeaderView.swift; sourceTree = "<group>"; };
 		DE8FA1DC2432352D00577C47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Signin.storyboard; sourceTree = "<group>"; };
 		DE9D4EFC24437571003439ED /* RequestSignupRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSignupRepository.swift; sourceTree = "<group>"; };
 		DE9D4EFE24437611003439ED /* GeneralPostSuccessARIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralPostSuccessARIResponse.swift; sourceTree = "<group>"; };
+		DE9D4F0124449A91003439ED /* AnnouncementTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementTableViewCell.swift; sourceTree = "<group>"; };
+		DE9D4F0224449A91003439ED /* AnnouncementTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnnouncementTableViewCell.xib; sourceTree = "<group>"; };
 		DEA01C7E240107DC00346C1E /* AnnouncementEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementEntity.swift; sourceTree = "<group>"; };
 		DEAA656523F3122F00C5232B /* VisualEffectTraceExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VisualEffectTraceExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEAA656823F3122F00C5232B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -332,6 +348,7 @@
 				DE2AB8B0242F4C3600335E4F /* TutorialScreenCoodinator.swift */,
 				DE67D98B24324D7400EB2D61 /* SigninScreenCoodinator.swift */,
 				DEF5A23B2443438A00383473 /* SignupScreenCoodinator.swift */,
+				DE8E96532444B9DE0033375F /* AnnouncementScreenCoodinator.swift */,
 			);
 			path = Coodinator;
 			sourceTree = "<group>";
@@ -358,6 +375,7 @@
 				DE2AB8B8242F7EC200335E4F /* MainViewModel.swift */,
 				DE634C492438ED41004CA920 /* SigninViewModel.swift */,
 				DEF5A23524433E1C00383473 /* SignupViewModel.swift */,
+				DE8E96562444C7480033375F /* AnnouncementViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -438,6 +456,24 @@
 			path = DataTransfer;
 			sourceTree = "<group>";
 		};
+		DE8E96552444C70F0033375F /* AnnoucementTableHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				DE8E965E2444D1130033375F /* AnnoucementTableHeaderView.swift */,
+				DE8E965C2444D1080033375F /* AnnoucementTableHeaderView.xib */,
+			);
+			path = AnnoucementTableHeaderView;
+			sourceTree = "<group>";
+		};
+		DE9D4F0024449A60003439ED /* AnnoucementTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DE9D4F0124449A91003439ED /* AnnouncementTableViewCell.swift */,
+				DE9D4F0224449A91003439ED /* AnnouncementTableViewCell.xib */,
+			);
+			path = AnnoucementTableViewCell;
+			sourceTree = "<group>";
+		};
 		DEA01C7A2400FE0E00346C1E /* Domain */ = {
 			isa = PBXGroup;
 			children = (
@@ -457,6 +493,7 @@
 				DE634C3924361150004CA920 /* CurrentApplicationUserRepository.swift */,
 				DEF5A22F244172F800383473 /* RequestSigninRepository.swift */,
 				DE9D4EFC24437571003439ED /* RequestSignupRepository.swift */,
+				DE8E965A2444C9E60033375F /* RequestAnnoucementDataRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -590,6 +627,8 @@
 			isa = PBXGroup;
 			children = (
 				DEAA65A223F70DEC00C5232B /* CustomViewBase.swift */,
+				DE8E96552444C70F0033375F /* AnnoucementTableHeaderView */,
+				DE9D4F0024449A60003439ED /* AnnoucementTableViewCell */,
 				DE67D98F24338F0700EB2D61 /* FormTextFieldInputView */,
 				DE2AB89B24282CCC00335E4F /* TutorialCollectionViewCell */,
 			);
@@ -651,6 +690,7 @@
 				DE67D994243568A000EB2D61 /* UpdateCurrentApplicationUserStatusUsecase.swift */,
 				DEF5A22D244171FC00383473 /* RequestSigninUseCase.swift */,
 				DEF5A2372443435600383473 /* RequestSignupUseCase.swift */,
+				DE8E96582444C9870033375F /* RequestAnnouncementDataUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -821,7 +861,9 @@
 			files = (
 				DEAA657523F3123100C5232B /* LaunchScreen.storyboard in Resources */,
 				DE67D9822432372500EB2D61 /* Announcement.storyboard in Resources */,
+				DE9D4F0424449A91003439ED /* AnnouncementTableViewCell.xib in Resources */,
 				DEAA657223F3123100C5232B /* Assets.xcassets in Resources */,
+				DE8E965D2444D1080033375F /* AnnoucementTableHeaderView.xib in Resources */,
 				DE8FA1DD2432352D00577C47 /* Signin.storyboard in Resources */,
 				DE84854224279D7D00766098 /* Tutorial.storyboard in Resources */,
 				DE67D99124338F4100EB2D61 /* FormInputTextFieldView.xib in Resources */,
@@ -896,6 +938,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE634C442438D097004CA920 /* SigninScreenActionCreator.swift in Sources */,
+				DE8E96542444B9DE0033375F /* AnnouncementScreenCoodinator.swift in Sources */,
 				DE2AB8BF242FCA1A00335E4F /* MainScreenRepository.swift in Sources */,
 				DE84854524279DF800766098 /* TutorialCollectionViewCell.swift in Sources */,
 				DE2AB8CE242FF0D300335E4F /* BaseScreenAction.swift in Sources */,
@@ -930,6 +973,7 @@
 				DE2AB8C4242FEB5700335E4F /* BaseScreenState.swift in Sources */,
 				DE9D4EFF24437611003439ED /* GeneralPostSuccessARIResponse.swift in Sources */,
 				DEF5A240244343F600383473 /* SignupScreenState.swift in Sources */,
+				DE8E965F2444D1130033375F /* AnnoucementTableHeaderView.swift in Sources */,
 				DE2AB8BB242FC5AB00335E4F /* HandleMainScreenUseCase.swift in Sources */,
 				DEAA65AD23F70EE900C5232B /* UIViewControllerExtension.swift in Sources */,
 				DE726CBE243AA47F0043FA4E /* Validator.swift in Sources */,
@@ -937,7 +981,9 @@
 				DE84854A2427A43C00766098 /* TutorialViewModel.swift in Sources */,
 				DE67D98824324A3300EB2D61 /* SigninViewController.swift in Sources */,
 				DEF5A23C2443438A00383473 /* SignupScreenCoodinator.swift in Sources */,
+				DE8E96572444C7480033375F /* AnnouncementViewModel.swift in Sources */,
 				DEF5A2322441743600383473 /* SigninAPIResponse.swift in Sources */,
+				DE8E96592444C9870033375F /* RequestAnnouncementDataUseCase.swift in Sources */,
 				DEAA656D23F3122F00C5232B /* MainViewController.swift in Sources */,
 				DE634C4A2438ED41004CA920 /* SigninViewModel.swift in Sources */,
 				DE84854824279E2200766098 /* TutorialViewController.swift in Sources */,
@@ -951,6 +997,7 @@
 				DE2AB8D4243070B900335E4F /* UIWindowScanner.swift in Sources */,
 				DE2AB8C1242FEACA00335E4F /* AppState.swift in Sources */,
 				DEF5A22E244171FC00383473 /* RequestSigninUseCase.swift in Sources */,
+				DE9D4F0324449A91003439ED /* AnnouncementTableViewCell.swift in Sources */,
 				DEF5A230244172F800383473 /* RequestSigninRepository.swift in Sources */,
 				DEAA65A723F70E4600C5232B /* StoryboardInstantiatable.swift in Sources */,
 				DE726CBC243AA3450043FA4E /* SigninScreenValidator.swift in Sources */,
@@ -962,6 +1009,7 @@
 				DE8487462425FACD00A40975 /* ApplicationUserEntity.swift in Sources */,
 				DEAA65A523F70E2700C5232B /* NSObjectProtocolExtension.swift in Sources */,
 				DE84854C2427A48A00766098 /* TutorialEntity.swift in Sources */,
+				DE8E965B2444C9E60033375F /* RequestAnnoucementDataRepository.swift in Sources */,
 				DE726CC0243AB5310043FA4E /* CompositionalValidator.swift in Sources */,
 				DE2AB8CA242FF01100335E4F /* AppReducer.swift in Sources */,
 				DE0424E52402AF50008DEF36 /* AnnouncementAPIResponse.swift in Sources */,

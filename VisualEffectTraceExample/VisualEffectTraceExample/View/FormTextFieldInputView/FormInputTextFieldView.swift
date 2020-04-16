@@ -22,7 +22,7 @@ protocol FormTextFieldInputViewDelegate: NSObjectProtocol {
 
 // MEMO: 利用しない場合やIBのエラーが出る場合は`@IBDesignable`をコメントする
 @IBDesignable
-class FormInputTextFieldView: CustomViewBase {
+final class FormInputTextFieldView: CustomViewBase {
 
     private let disposeBag = DisposeBag()
 
@@ -30,7 +30,7 @@ class FormInputTextFieldView: CustomViewBase {
 
     weak var delegate: FormTextFieldInputViewDelegate?
 
-    // MARK: -  Variable
+    // MARK: -  Properties
 
     // MEMO: 入力フィールドのタイプを格納する変数（デフォルト値を設定しておく）
     private let targetFormInputTextFieldStyle: BehaviorRelay<FormInputTextFieldStyle> = BehaviorRelay<FormInputTextFieldStyle>(value: .defaultTextInput)
@@ -148,8 +148,8 @@ class FormInputTextFieldView: CustomViewBase {
 
         // 入力データの種別(FormInputTextFieldStyle.swift参照)が変更された際のデザインに関する処理
         targetFormInputTextFieldStyle
-            .asDriver()
-            .drive(
+            .observeOn(MainScheduler.instance)
+            .subscribe(
                 onNext: { [weak self] targetFormInputTextFieldStyle in
                     guard let self = self else { return }
 
@@ -162,8 +162,8 @@ class FormInputTextFieldView: CustomViewBase {
 
         // セキュア表示にするか否かの値が変更された際のデザインに関する処理
         shouldSecureTextField
-            .asDriver()
-            .drive(
+            .observeOn(MainScheduler.instance)
+            .subscribe(
                 onNext: { [weak self] result in
                     guard let self = self else { return }
 
@@ -180,7 +180,7 @@ class FormInputTextFieldView: CustomViewBase {
                 onNext: { [weak self] targetText in
                     guard let self = self else { return }
 
-                    //
+                    // MEMO: 入力テキストが存在する場合には配置したViewControllerへ値をFormTextFieldInputViewDelegateを介して渡す
                     if let targetText = self.inputTextField.text {
                         self.delegate?.getInputTextByTextFieldType(targetText, targetFormInputTextFieldStyle: self.targetFormInputTextFieldStyle.value)
                     }
@@ -190,8 +190,8 @@ class FormInputTextFieldView: CustomViewBase {
 
         // ボタン押下時のアクション設定
         showPasswordButton.rx.controlEvent(.touchUpInside)
-            .asDriver(onErrorJustReturn: ())
-            .drive(
+            .observeOn(MainScheduler.instance)
+            .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }
 

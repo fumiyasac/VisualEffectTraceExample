@@ -14,13 +14,28 @@
                     <view key="view" contentMode="scaleToFill" id="wdw-Bz-sXW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Wnu-0M-m0x">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Wnu-0M-m0x" firstAttribute="trailing" secondItem="Ec0-7o-brv" secondAttribute="trailing" id="Bcy-Mn-kJ0"/>
+                            <constraint firstItem="Wnu-0M-m0x" firstAttribute="leading" secondItem="Ec0-7o-brv" secondAttribute="leading" id="NCU-D2-a8a"/>
+                            <constraint firstItem="Wnu-0M-m0x" firstAttribute="top" secondItem="Ec0-7o-brv" secondAttribute="top" id="aIN-LB-cds"/>
+                            <constraint firstItem="Wnu-0M-m0x" firstAttribute="bottom" secondItem="Ec0-7o-brv" secondAttribute="bottom" id="g94-Qx-4WP"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Ec0-7o-brv"/>
                     </view>
+                    <connections>
+                        <outlet property="announcementTableView" destination="Wnu-0M-m0x" id="ec6-W7-XwD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H2X-TG-o7G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="241" y="71"/>
+            <point key="canvasLocation" x="240.80000000000001" y="70.614692653673174"/>
         </scene>
     </scenes>
 </document>

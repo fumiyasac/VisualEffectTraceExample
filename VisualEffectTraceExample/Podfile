@@ -23,7 +23,7 @@ target 'VisualEffectTraceExample' do
   pod 'Loaf'
   pod 'PKHUD', '~> 5.0'
   pod 'AnimatedCollectionViewLayout'
-  pod 'Nuke'
+  pod 'Kingfisher'
 
 #  ※ ユニットテスト時に利用する
 #  target 'VisualEffectTraceExampleTests' do

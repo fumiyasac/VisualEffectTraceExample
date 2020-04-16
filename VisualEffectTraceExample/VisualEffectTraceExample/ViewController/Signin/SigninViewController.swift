@@ -178,8 +178,8 @@ final class SigninViewController: UIViewController {
         // Viewからの入力値の変化に関する処理
         // MEMO: 入力されたメールアドレス/パスワードを画面状態を保持するReduxへ反映させる
         inputMailAddress
-            .asDriver()
-            .drive(
+            .observeOn(MainScheduler.instance)
+            .subscribe(
                 onNext: { mailAddress in
                     guard let mailAddress = mailAddress else { return }
                     SigninScreenActionCreator.inputMailAddress(targetText: mailAddress)
@@ -187,8 +187,8 @@ final class SigninViewController: UIViewController {
             )
             .disposed(by: disposeBag)
         inputRawPassword
-            .asDriver()
-            .drive(
+            .observeOn(MainScheduler.instance)
+            .subscribe(
                 onNext: { rawPassword in
                     guard let rawPassword = rawPassword else { return }
                     SigninScreenActionCreator.inputRawPassword(targetText: rawPassword)
@@ -196,8 +196,8 @@ final class SigninViewController: UIViewController {
             )
             .disposed(by: disposeBag)
         shouldEnableSigninButton
-            .asDriver()
-            .drive(
+            .observeOn(MainScheduler.instance)
+            .subscribe(
                 onNext: { [weak self] result in
                     guard let self = self else { return }
                     self.signinButton.alpha = result ? 1.0 : 0.4
@@ -276,6 +276,7 @@ final class SigninViewController: UIViewController {
         // 配置したボタン類をRxSwiftの処理で結合する
         showAnnouncementScreenButton.rx.controlEvent(.touchUpInside)
             .asObservable()
+            .observeOn(MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }
@@ -285,6 +286,7 @@ final class SigninViewController: UIViewController {
             .disposed(by: disposeBag)
         showSignupScreenButton.rx.controlEvent(.touchUpInside)
             .asObservable()
+            .observeOn(MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }
@@ -294,6 +296,7 @@ final class SigninViewController: UIViewController {
             .disposed(by: disposeBag)
         signinButton.rx.controlEvent(.touchDown)
             .asObservable()
+            .observeOn(MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }
@@ -303,6 +306,7 @@ final class SigninViewController: UIViewController {
             .disposed(by: disposeBag)
         signinButton.rx.controlEvent(.touchUpInside)
             .asObservable()
+            .observeOn(MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }
