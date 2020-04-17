@@ -13,13 +13,13 @@ import PKHUD
 
 final class SigninViewController: UIViewController {
 
-    private let disposeBag = DisposeBag()
-
     // MARK: - SigninFlow
 
     var coordinator: SigninFlow?
 
     // MARK: - Properties
+
+    private let disposeBag = DisposeBag()
 
     private let tapGestureOfScrollView = UITapGestureRecognizer()
 

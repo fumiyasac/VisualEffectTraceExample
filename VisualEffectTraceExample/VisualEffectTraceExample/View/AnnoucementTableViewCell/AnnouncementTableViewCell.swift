@@ -11,6 +11,8 @@ import Kingfisher
 
 final class AnnouncementTableViewCell: UITableViewCell {
 
+    // MARK: -  Properties
+
     private let announceImageOptions: KingfisherOptionsInfo = [.transition(.fade(0.64)), .cacheOriginalImage]
 
     // MARK: - @IBOutlet
@@ -35,13 +37,39 @@ final class AnnouncementTableViewCell: UITableViewCell {
         if let url = URL(string: announcementEntity.thumbnailUrl) {
             thumbnailImageView.kf.setImage(with: url, options: announceImageOptions)
         }
-        titleLabel.text = announcementEntity.title
-        statementLabel.text = announcementEntity.statement
+
+        // 属性付きテキスト(タイトル表示)の設定をする
+        let titleAttributedKeys = UILabelDecorator.KeysForDecoration(
+            lineSpacing: 6.0,
+            font: UIFont(name: "HelveticaNeue-Bold", size: 13.0)!,
+            foregroundColor: UIColor.black
+        )
+        titleLabel.attributedText = NSAttributedString(
+            string: announcementEntity.title,
+            attributes: UILabelDecorator.getLabelAttributesBy(keys: titleAttributedKeys)
+        )
+
+        // 属性付きテキスト(本文表示)の設定をする
+        let statementAttributedKeys = UILabelDecorator.KeysForDecoration(
+            lineSpacing: 6.0,
+            font: UIFont(name: "HelveticaNeue-Bold", size: 11.0)!,
+            foregroundColor: UIColor.systemGray
+        )
+        statementLabel.attributedText = NSAttributedString(
+            string: announcementEntity.statement,
+            attributes: UILabelDecorator.getLabelAttributesBy(keys: statementAttributedKeys)
+        )
     }
 
     // MARK: - Private Function
 
     private func setupAnnouncementTableViewCell() {
+
+        // UITableViewCellの罫線・押下時のスタイルを設定する
+        self.accessoryType = .none
+        self.selectionStyle = .none
+
+        // サムネイル画像を表示するUIImageViewの設定
         thumbnailImageView.contentMode = .scaleAspectFill
         thumbnailImageView.clipsToBounds = true
     }

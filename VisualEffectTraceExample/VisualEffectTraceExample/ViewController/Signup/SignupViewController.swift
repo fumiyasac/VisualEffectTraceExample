@@ -13,13 +13,13 @@ import PKHUD
 
 final class SignupViewController: UIViewController {
 
-    private let disposeBag = DisposeBag()
-
     // MARK: - SignupFlow
 
     var coordinator: SignupFlow?
 
     // MARK: - Properties
+
+    private let disposeBag = DisposeBag()
 
     private let tapGestureOfScrollView = UITapGestureRecognizer()
 
@@ -193,8 +193,8 @@ final class SignupViewController: UIViewController {
         // Viewからの入力値の変化に関する処理
         // MEMO: 入力されたユーザーネーム/メールアドレス/パスワードを画面状態を保持するReduxへ反映させる
         inputUserName
-            .asDriver()
-            .drive(
+            .observeOn(MainScheduler.instance)
+            .subscribe(
                 onNext: { userName in
                     guard let userName = userName else { return }
                     SignupScreenActionCreator.inputUserName(targetText: userName)
@@ -202,8 +202,8 @@ final class SignupViewController: UIViewController {
             )
             .disposed(by: disposeBag)
         inputMailAddress
-            .asDriver()
-            .drive(
+            .observeOn(MainScheduler.instance)
+            .subscribe(
                 onNext: { mailAddress in
                     guard let mailAddress = mailAddress else { return }
                     SignupScreenActionCreator.inputMailAddress(targetText: mailAddress)
@@ -211,8 +211,8 @@ final class SignupViewController: UIViewController {
             )
             .disposed(by: disposeBag)
         inputRawPassword
-            .asDriver()
-            .drive(
+            .observeOn(MainScheduler.instance)
+            .subscribe(
                 onNext: { rawPassword in
                     guard let rawPassword = rawPassword else { return }
                     SignupScreenActionCreator.inputRawPassword(targetText: rawPassword)
@@ -220,8 +220,8 @@ final class SignupViewController: UIViewController {
             )
             .disposed(by: disposeBag)
         shouldEnableSignupButton
-            .asDriver()
-            .drive(
+            .observeOn(MainScheduler.instance)
+            .subscribe(
                 onNext: { [weak self] result in
                     guard let self = self else { return }
                     self.signupButton.alpha = result ? 1.0 : 0.4
@@ -300,6 +300,7 @@ final class SignupViewController: UIViewController {
         // 配置したボタン類をRxSwiftの処理で結合する
         closeSignupScreenButton.rx.controlEvent(.touchUpInside)
             .asObservable()
+            .observeOn(MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }
@@ -309,6 +310,7 @@ final class SignupViewController: UIViewController {
             .disposed(by: disposeBag)
         showTermsOfServiceButton.rx.controlEvent(.touchUpInside)
             .asObservable()
+            .observeOn(MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }
@@ -319,6 +321,7 @@ final class SignupViewController: UIViewController {
             .disposed(by: disposeBag)
         showPrivacyPolicyButton.rx.controlEvent(.touchUpInside)
             .asObservable()
+            .observeOn(MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }
@@ -329,6 +332,7 @@ final class SignupViewController: UIViewController {
             .disposed(by: disposeBag)
         signupButton.rx.controlEvent(.touchDown)
             .asObservable()
+            .observeOn(MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }
@@ -338,6 +342,7 @@ final class SignupViewController: UIViewController {
             .disposed(by: disposeBag)
         signupButton.rx.controlEvent(.touchUpInside)
             .asObservable()
+            .observeOn(MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }

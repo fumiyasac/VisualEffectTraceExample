@@ -29,7 +29,7 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="このアプリに関する最新情報になります。" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUh-Tw-Ml3">
                             <rect key="frame" x="12" y="54" width="351" height="14"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
-                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lh5-LS-oY2">
@@ -50,14 +50,13 @@
                         <constraint firstAttribute="trailing" secondItem="Lh5-LS-oY2" secondAttribute="trailing" constant="12" id="7Ih-g1-b6U"/>
                         <constraint firstAttribute="trailing" secondItem="NjF-yr-IGr" secondAttribute="trailing" constant="12" id="9dC-df-xwv"/>
                         <constraint firstAttribute="bottom" secondItem="eUh-Tw-Ml3" secondAttribute="bottom" constant="22" id="IX0-nm-O9w"/>
-                        <constraint firstAttribute="height" relation="greaterThanOrEqual" id="KR6-KZ-ycQ"/>
                         <constraint firstAttribute="trailing" secondItem="eUh-Tw-Ml3" secondAttribute="trailing" constant="12" id="Scd-Ia-ypG"/>
                         <constraint firstItem="eUh-Tw-Ml3" firstAttribute="leading" secondItem="VTU-aT-fYl" secondAttribute="leading" constant="12" id="Vty-9f-H2T"/>
                         <constraint firstItem="NjF-yr-IGr" firstAttribute="leading" secondItem="VTU-aT-fYl" secondAttribute="leading" constant="12" id="Vuo-SO-uPH"/>
                         <constraint firstItem="Lh5-LS-oY2" firstAttribute="top" secondItem="VTU-aT-fYl" secondAttribute="top" constant="16" id="b5l-fN-cCb"/>
                         <constraint firstItem="NjF-yr-IGr" firstAttribute="top" secondItem="VTU-aT-fYl" secondAttribute="top" constant="22" id="fhD-yT-NgN"/>
                         <constraint firstItem="eUh-Tw-Ml3" firstAttribute="top" secondItem="NjF-yr-IGr" secondAttribute="bottom" constant="10.5" id="iQY-Gl-82e"/>
-                        <constraint firstAttribute="height" priority="250" constant="68" id="sT9-cB-3jl"/>
+                        <constraint firstAttribute="height" constant="90" id="jJ4-T0-BZz"/>
                     </constraints>
                 </view>
             </subviews>

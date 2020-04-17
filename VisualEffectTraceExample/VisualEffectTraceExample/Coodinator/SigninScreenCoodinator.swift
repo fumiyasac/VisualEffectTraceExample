@@ -60,7 +60,10 @@ class SigninScreenCoordinator: ScreenCoordinator, SigninFlow {
     }
 
     func coordinateToAnnouncement() {
-        print("運営からのお知らせ画面へ遷移するためのCoodinator定義が必要")
+
+        // お知らせ画面へ遷移するためのCoodinatorの処理を実施する
+        let announcementCoodinator = AnnouncementScreenCoodinator()
+        coordinate(to: announcementCoodinator)
     }
 
     func coordinateToGlobalTab() {

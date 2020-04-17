@@ -22,11 +22,15 @@ protocol AnnoucementTableHeaderViewDelegate: NSObjectProtocol {
 
 final class AnnoucementTableHeaderView: CustomViewBase {
 
-    private let disposeBag = DisposeBag()
-
     // MARK: -  FormTextFieldInputViewDelegate
 
     weak var delegate: AnnoucementTableHeaderViewDelegate?
+
+    // MARK: -  Properties
+
+    static let viewHeight: CGFloat = 90.0
+
+    private let disposeBag = DisposeBag()
 
     // MARK: - @IBOutlet
 
@@ -51,7 +55,7 @@ final class AnnoucementTableHeaderView: CustomViewBase {
     private func setupAnnoucementTableHeaderView() {
 
         closeAnnouncementScreenButton.layer.masksToBounds = true
-        closeAnnouncementScreenButton.layer.cornerRadius = 24.0
+        closeAnnouncementScreenButton.layer.cornerRadius = 18.0
 
         closeAnnouncementScreenButton.rx.controlEvent(.touchUpInside)
             .asObservable()

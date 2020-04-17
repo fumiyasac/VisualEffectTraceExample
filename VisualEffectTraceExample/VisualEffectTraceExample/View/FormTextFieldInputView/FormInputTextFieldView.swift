@@ -24,13 +24,13 @@ protocol FormTextFieldInputViewDelegate: NSObjectProtocol {
 @IBDesignable
 final class FormInputTextFieldView: CustomViewBase {
 
-    private let disposeBag = DisposeBag()
-
     // MARK: -  FormTextFieldInputViewDelegate
 
     weak var delegate: FormTextFieldInputViewDelegate?
 
     // MARK: -  Properties
+
+    private let disposeBag = DisposeBag()
 
     // MEMO: 入力フィールドのタイプを格納する変数（デフォルト値を設定しておく）
     private let targetFormInputTextFieldStyle: BehaviorRelay<FormInputTextFieldStyle> = BehaviorRelay<FormInputTextFieldStyle>(value: .defaultTextInput)

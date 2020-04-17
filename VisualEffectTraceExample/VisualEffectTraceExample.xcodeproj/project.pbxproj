@@ -36,7 +36,7 @@
 		DE634C4A2438ED41004CA920 /* SigninViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE634C492438ED41004CA920 /* SigninViewModel.swift */; };
 		DE67D97F2432370900EB2D61 /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE67D97D2432370900EB2D61 /* Signup.storyboard */; };
 		DE67D9822432372500EB2D61 /* Announcement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE67D9802432372500EB2D61 /* Announcement.storyboard */; };
-		DE67D984243246B300EB2D61 /* AnnoucementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67D983243246B300EB2D61 /* AnnoucementViewController.swift */; };
+		DE67D984243246B300EB2D61 /* AnnouncementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67D983243246B300EB2D61 /* AnnouncementViewController.swift */; };
 		DE67D98824324A3300EB2D61 /* SigninViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67D98724324A3300EB2D61 /* SigninViewController.swift */; };
 		DE67D98A24324A5900EB2D61 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67D98924324A5900EB2D61 /* SignupViewController.swift */; };
 		DE67D98C24324D7400EB2D61 /* SigninScreenCoodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67D98B24324D7400EB2D61 /* SigninScreenCoodinator.swift */; };
@@ -150,7 +150,7 @@
 		DE634C492438ED41004CA920 /* SigninViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModel.swift; sourceTree = "<group>"; };
 		DE67D97E2432370900EB2D61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Signup.storyboard; sourceTree = "<group>"; };
 		DE67D9812432372500EB2D61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Announcement.storyboard; sourceTree = "<group>"; };
-		DE67D983243246B300EB2D61 /* AnnoucementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnoucementViewController.swift; sourceTree = "<group>"; };
+		DE67D983243246B300EB2D61 /* AnnouncementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementViewController.swift; sourceTree = "<group>"; };
 		DE67D98724324A3300EB2D61 /* SigninViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewController.swift; sourceTree = "<group>"; };
 		DE67D98924324A5900EB2D61 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		DE67D98B24324D7400EB2D61 /* SigninScreenCoodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninScreenCoodinator.swift; sourceTree = "<group>"; };
@@ -721,7 +721,7 @@
 		DEDCC88E241E794F00BFA165 /* Announcement */ = {
 			isa = PBXGroup;
 			children = (
-				DE67D983243246B300EB2D61 /* AnnoucementViewController.swift */,
+				DE67D983243246B300EB2D61 /* AnnouncementViewController.swift */,
 			);
 			path = Announcement;
 			sourceTree = "<group>";
@@ -965,7 +965,7 @@
 				DE67D99324338F5E00EB2D61 /* FormInputTextFieldView.swift in Sources */,
 				DEAA65B123F7289A00C5232B /* UICollectionViewExtension.swift in Sources */,
 				DEAA65A923F70E6900C5232B /* UILabelDecorator.swift in Sources */,
-				DE67D984243246B300EB2D61 /* AnnoucementViewController.swift in Sources */,
+				DE67D984243246B300EB2D61 /* AnnouncementViewController.swift in Sources */,
 				DEAA65AF23F7288C00C5232B /* UITableViewExtension.swift in Sources */,
 				DEF5A2462443443800383473 /* SignupScreenActionCreator.swift in Sources */,
 				DEAA65A323F70DEC00C5232B /* CustomViewBase.swift in Sources */,

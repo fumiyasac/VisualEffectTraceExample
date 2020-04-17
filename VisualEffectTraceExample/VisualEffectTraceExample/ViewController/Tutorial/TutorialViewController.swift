@@ -13,13 +13,13 @@ import AnimatedCollectionViewLayout
 
 final class TutorialViewController: UIViewController {
 
-    private let disposeBag = DisposeBag()
-
     // MARK: - TutorialFlow
 
     var coordinator: TutorialFlow?
 
     // MARK: - Properties
+
+    private let disposeBag = DisposeBag()
 
     // MEMO: チュートリアル表示内容を取得するViewModel
     private let viewModel = TutorialViewModel(

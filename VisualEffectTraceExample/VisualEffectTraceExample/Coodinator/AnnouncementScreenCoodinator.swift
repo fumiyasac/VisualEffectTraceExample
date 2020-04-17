@@ -42,14 +42,14 @@ class AnnouncementScreenCoodinator: ScreenCoordinator, AnnouncementFlow {
     func start() {
 
         // お知らせ画面表示用のViewControllerのインスタンスを取得して該当Coodinatorのプロトコルを適合させる
-        let annoucementViewController = AnnoucementViewController.instantiate()
-        annoucementViewController.coordinator = self
+        let announcementViewController = AnnouncementViewController.instantiate()
+        announcementViewController.coordinator = self
 
         // お知らせ画面へ画面遷移を実行する
         if #available(iOS 13.0, *) {
-            annoucementViewController.modalPresentationStyle = .fullScreen
+            announcementViewController.modalPresentationStyle = .fullScreen
         }
-        currentDisplayViewController.present(annoucementViewController, animated: true, completion: nil)
+        currentDisplayViewController.present(announcementViewController, animated: true, completion: nil)
     }
 
     // MARK: - AnnouncementFlow
