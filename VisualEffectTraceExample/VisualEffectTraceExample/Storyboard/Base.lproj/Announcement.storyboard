@@ -15,9 +15,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Wnu-0M-m0x">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Wnu-0M-m0x">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                             </tableView>
                         </subviews>
@@ -26,7 +26,7 @@
                             <constraint firstItem="Wnu-0M-m0x" firstAttribute="trailing" secondItem="Ec0-7o-brv" secondAttribute="trailing" id="Bcy-Mn-kJ0"/>
                             <constraint firstItem="Wnu-0M-m0x" firstAttribute="leading" secondItem="Ec0-7o-brv" secondAttribute="leading" id="NCU-D2-a8a"/>
                             <constraint firstItem="Wnu-0M-m0x" firstAttribute="top" secondItem="Ec0-7o-brv" secondAttribute="top" id="aIN-LB-cds"/>
-                            <constraint firstItem="Wnu-0M-m0x" firstAttribute="bottom" secondItem="Ec0-7o-brv" secondAttribute="bottom" id="g94-Qx-4WP"/>
+                            <constraint firstItem="Wnu-0M-m0x" firstAttribute="bottom" secondItem="wdw-Bz-sXW" secondAttribute="bottom" id="g94-Qx-4WP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ec0-7o-brv"/>
                     </view>

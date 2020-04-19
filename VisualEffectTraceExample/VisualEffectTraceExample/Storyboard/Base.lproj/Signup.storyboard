@@ -19,7 +19,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uWk-a4-8FF">
-                                        <rect key="frame" x="0.0" y="20" width="375" height="820"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="820"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="905-hG-WF4">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="89.5"/>
@@ -235,7 +235,7 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="uWk-a4-8FF" secondAttribute="bottom" id="Asn-Dx-tw8"/>
                                     <constraint firstItem="uWk-a4-8FF" firstAttribute="leading" secondItem="Pvb-Od-io1" secondAttribute="leading" id="GPG-8A-TB2"/>
-                                    <constraint firstItem="uWk-a4-8FF" firstAttribute="top" secondItem="Pvb-Od-io1" secondAttribute="top" constant="20" symbolic="YES" id="LqG-9k-sfI"/>
+                                    <constraint firstItem="uWk-a4-8FF" firstAttribute="top" secondItem="Pvb-Od-io1" secondAttribute="top" id="LqG-9k-sfI"/>
                                     <constraint firstAttribute="trailing" secondItem="uWk-a4-8FF" secondAttribute="trailing" id="c9Q-GE-48b"/>
                                     <constraint firstItem="uWk-a4-8FF" firstAttribute="width" secondItem="Pvb-Od-io1" secondAttribute="width" id="uI5-Rt-bLi"/>
                                 </constraints>

@@ -18,8 +18,11 @@ protocol AnnouncementFlow: class {
 }
 
 class AnnouncementScreenCoodinator: ScreenCoordinator, AnnouncementFlow {
-    
+
     private let currentDisplayViewController: UIViewController
+
+    // MEMO: カスタムトランジションを適用するためのアニメーションに関するクラス
+    private var targetTransitioningDelegate: UIViewControllerTransitioningDelegate? = nil
 
     // MARK: - Initializer
 
@@ -37,6 +40,13 @@ class AnnouncementScreenCoodinator: ScreenCoordinator, AnnouncementFlow {
         self.currentDisplayViewController = currentDisplayViewController
     }
 
+    // MARK: - Function
+
+    // MEMO: カスタムトランジションを適用するために必要なUIViewControllerTransitioningDelegateクラスを受け取る
+    func setTranstioningDelegateIfNeeded(transitioningDelegate: UIViewControllerTransitioningDelegate?) {
+        targetTransitioningDelegate = transitioningDelegate
+    }
+
     // MARK: - ScreenCoordinator
 
     func start() {
@@ -44,6 +54,7 @@ class AnnouncementScreenCoodinator: ScreenCoordinator, AnnouncementFlow {
         // お知らせ画面表示用のViewControllerのインスタンスを取得して該当Coodinatorのプロトコルを適合させる
         let announcementViewController = AnnouncementViewController.instantiate()
         announcementViewController.coordinator = self
+        announcementViewController.transitioningDelegate = targetTransitioningDelegate
 
         // お知らせ画面へ画面遷移を実行する
         if #available(iOS 13.0, *) {

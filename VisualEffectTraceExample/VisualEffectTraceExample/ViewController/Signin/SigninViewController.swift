@@ -280,7 +280,11 @@ final class SigninViewController: UIViewController {
             .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }
-                    self.coordinator?.coordinateToAnnouncement()
+
+                    // MEMO: カスタムトランジションに必要なクラスをインスタンス化して、必要な値をセットした上でCoodinatorに引き渡す
+                    let announcementScreenTransitioningDelegate = AnnouncementScreenTransitioningDelegate()
+                    announcementScreenTransitioningDelegate.screenFrame = self.view.frame
+                    self.coordinator?.coordinateToAnnouncement(transitioningDelegate: announcementScreenTransitioningDelegate)
                 }
             )
             .disposed(by: disposeBag)

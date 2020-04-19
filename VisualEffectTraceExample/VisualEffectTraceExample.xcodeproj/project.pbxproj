@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		843036C4A231FCAC14A48314 /* Pods_VisualEffectTraceExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C93C463F55AF4FFC433D1E5 /* Pods_VisualEffectTraceExample.framework */; };
 		DE0424E52402AF50008DEF36 /* AnnouncementAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0424E42402AF50008DEF36 /* AnnouncementAPIResponse.swift */; };
+		DE04C9C0244C76E100684BA1 /* AnnouncementScreenTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE04C9BF244C76E100684BA1 /* AnnouncementScreenTransition.swift */; };
+		DE04C9C2244C943100684BA1 /* AnnouncementScreenTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE04C9C1244C943100684BA1 /* AnnouncementScreenTransitioningDelegate.swift */; };
 		DE14134823FB02A10000D27C /* APIRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE14134723FB02A10000D27C /* APIRequestManager.swift */; };
 		DE2AB89A2427A57000335E4F /* tutorial_data.json in Resources */ = {isa = PBXBuildFile; fileRef = DE2AB8992427A57000335E4F /* tutorial_data.json */; };
 		DE2AB89F242973A100335E4F /* GetTutorialDataUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB89E242973A100335E4F /* GetTutorialDataUseCase.swift */; };
@@ -123,6 +125,8 @@
 		2C93C463F55AF4FFC433D1E5 /* Pods_VisualEffectTraceExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VisualEffectTraceExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AFA8542E8A9AD89F4086318 /* Pods-VisualEffectTraceExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisualEffectTraceExample.release.xcconfig"; path = "Target Support Files/Pods-VisualEffectTraceExample/Pods-VisualEffectTraceExample.release.xcconfig"; sourceTree = "<group>"; };
 		DE0424E42402AF50008DEF36 /* AnnouncementAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementAPIResponse.swift; sourceTree = "<group>"; };
+		DE04C9BF244C76E100684BA1 /* AnnouncementScreenTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementScreenTransition.swift; sourceTree = "<group>"; };
+		DE04C9C1244C943100684BA1 /* AnnouncementScreenTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementScreenTransitioningDelegate.swift; sourceTree = "<group>"; };
 		DE14134723FB02A10000D27C /* APIRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestManager.swift; sourceTree = "<group>"; };
 		DE2AB8992427A57000335E4F /* tutorial_data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tutorial_data.json; sourceTree = "<group>"; };
 		DE2AB89E242973A100335E4F /* GetTutorialDataUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTutorialDataUseCase.swift; sourceTree = "<group>"; };
@@ -263,6 +267,31 @@
 				DE9D4EFE24437611003439ED /* GeneralPostSuccessARIResponse.swift */,
 			);
 			path = Response;
+			sourceTree = "<group>";
+		};
+		DE04C9C3244C985B00684BA1 /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				DE04C9C5244C988800684BA1 /* ScreenTransition */,
+				DE04C9C4244C987100684BA1 /* TransitioningDelegate */,
+			);
+			path = Transition;
+			sourceTree = "<group>";
+		};
+		DE04C9C4244C987100684BA1 /* TransitioningDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				DE04C9C1244C943100684BA1 /* AnnouncementScreenTransitioningDelegate.swift */,
+			);
+			path = TransitioningDelegate;
+			sourceTree = "<group>";
+		};
+		DE04C9C5244C988800684BA1 /* ScreenTransition */ = {
+			isa = PBXGroup;
+			children = (
+				DE04C9BF244C76E100684BA1 /* AnnouncementScreenTransition.swift */,
+			);
+			path = ScreenTransition;
 			sourceTree = "<group>";
 		};
 		DE2AB8972427A53C00335E4F /* DataSet */ = {
@@ -423,6 +452,7 @@
 		DE726CB9243A99580043FA4E /* Context */ = {
 			isa = PBXGroup;
 			children = (
+				DE04C9C3244C985B00684BA1 /* Transition */,
 				DE726CBA243A99600043FA4E /* Validator */,
 			);
 			path = Context;
@@ -945,6 +975,7 @@
 				DE634C3A24361150004CA920 /* CurrentApplicationUserRepository.swift in Sources */,
 				DE2AB8AC242F424800335E4F /* ScreenCoodinator.swift in Sources */,
 				DE2AB8B1242F4C3600335E4F /* TutorialScreenCoodinator.swift in Sources */,
+				DE04C9C2244C943100684BA1 /* AnnouncementScreenTransitioningDelegate.swift in Sources */,
 				DE67D98E2433895300EB2D61 /* FormInputTextFieldStyle.swift in Sources */,
 				DE634C462438D56B004CA920 /* SigninScreenReducer.swift in Sources */,
 				DE634C402438CFB2004CA920 /* SigninScreenState.swift in Sources */,
@@ -984,6 +1015,7 @@
 				DE8E96572444C7480033375F /* AnnouncementViewModel.swift in Sources */,
 				DEF5A2322441743600383473 /* SigninAPIResponse.swift in Sources */,
 				DE8E96592444C9870033375F /* RequestAnnouncementDataUseCase.swift in Sources */,
+				DE04C9C0244C76E100684BA1 /* AnnouncementScreenTransition.swift in Sources */,
 				DEAA656D23F3122F00C5232B /* MainViewController.swift in Sources */,
 				DE634C4A2438ED41004CA920 /* SigninViewModel.swift in Sources */,
 				DE84854824279E2200766098 /* TutorialViewController.swift in Sources */,

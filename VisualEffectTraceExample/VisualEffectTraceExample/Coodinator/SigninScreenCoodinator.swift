@@ -17,7 +17,7 @@ protocol SigninFlow: class {
     func coordinateToSignup()
 
     // 運営からのお知らせ画面へ遷移するためのAnnouncementScreenCoodinatorを初期化する
-    func coordinateToAnnouncement()
+    func coordinateToAnnouncement(transitioningDelegate: UIViewControllerTransitioningDelegate?)
 
     // コンテンツ表示用のTabBar画面へ遷移するためのGlobalTabScreenCoodinatorを初期化する
     func coordinateToGlobalTab()
@@ -59,10 +59,12 @@ class SigninScreenCoordinator: ScreenCoordinator, SigninFlow {
         coordinate(to: signupCoodinator)
     }
 
-    func coordinateToAnnouncement() {
+    func coordinateToAnnouncement(transitioningDelegate: UIViewControllerTransitioningDelegate?) {
 
         // お知らせ画面へ遷移するためのCoodinatorの処理を実施する
         let announcementCoodinator = AnnouncementScreenCoodinator()
+        // MEMO: カスタムトランジションを加える場合にはsetTranstioningDelegateIfNeededを利用する
+        announcementCoodinator.setTranstioningDelegateIfNeeded(transitioningDelegate: transitioningDelegate)
         coordinate(to: announcementCoodinator)
     }
 
@@ -70,5 +72,3 @@ class SigninScreenCoordinator: ScreenCoordinator, SigninFlow {
         print("コンテンツ画面へ遷移するためのCoodinator定義が必要")
     }
 }
-
-

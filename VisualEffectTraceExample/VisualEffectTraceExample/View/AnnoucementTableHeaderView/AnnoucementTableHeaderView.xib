@@ -60,7 +60,7 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="VTU-aT-fYl" secondAttribute="trailing" id="VH7-m5-vmN"/>
                 <constraint firstItem="VTU-aT-fYl" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="pp9-v8-hXU"/>
