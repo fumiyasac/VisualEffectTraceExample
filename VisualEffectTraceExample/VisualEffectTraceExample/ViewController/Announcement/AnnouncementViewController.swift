@@ -54,9 +54,8 @@ final class AnnouncementViewController: UIViewController {
 
         // UITableViewに関する設定
         // MEMO: Interface Builder上で下記の設定をしている
-        // (1) Style: Grouped
-        // (2) BackgroundColor: Clear
-        // (3) Separatot Inset: Left(15) / Right(15)
+        // (1) BackgroundColor: Clear
+        // (2) Separatot Inset: Left(15) / Right(15)
         announcementTableView.refreshControl = announcementRefrashControl
         announcementTableView.estimatedRowHeight = 385.0
         announcementTableView.rowHeight = UITableView.automaticDimension
@@ -108,6 +107,32 @@ final class AnnouncementViewController: UIViewController {
 
                     // MEMO: UITableViewの「Pull to Refresh」を実行する
                     self.viewModel.pullToRefreshTrigger.onNext(())
+                }
+            )
+            .disposed(by: disposeBag)
+
+        // UITableViewのスクロール実施中に関する処理
+        // ※ UIScrollViewDelegateのscrollViewDidScrollに相当する
+        announcementTableView.rx
+            .didScroll
+            .asObservable()
+            // MEMO: この部分がないと「Reentrancy anomaly was detected.」の警告が発生してしまうので注意する。
+            .observeOn(SerialDispatchQueueScheduler(qos: .default))
+            .observeOn(MainScheduler.instance)
+            .subscribe(
+                onNext: { [weak self] _ in
+                    guard let self = self else { return }
+
+                    // MEMO: 現在画面に表示されているセルを抽出する
+                    if let visibleRows = self.announcementTableView.indexPathsForVisibleRows, let firstVisibleRows = visibleRows.first {
+
+                        // MEMO: 現在画面に表示されているセルからセクションHeaderを抽出する
+                        let visibleHeaderInSection = self.announcementTableView.rectForHeader(inSection: firstVisibleRows.section)
+                        let headerHeight = visibleHeaderInSection.size.height
+                        // MEMO: さらに現在表示されている高さを取得してUIEdgeInsetsのtop方向のオフセット値へ加算する
+                        let topOffset = max(min(0, -self.announcementTableView.contentOffset.y), -headerHeight)
+                        self.announcementTableView.contentInset = UIEdgeInsets(top: topOffset, left: 0, bottom: 0, right: 0)
+                    }
                 }
             )
             .disposed(by: disposeBag)
