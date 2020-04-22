@@ -11,6 +11,7 @@ import RxSwift
 import RxCocoa
 
 // MEMO: Reduxを利用する必要が特段なさそう(ViewModel側のハンドリングだけで済んでしまう)な場合は無理にしなくても良さそうかと思います。
+// → 必要に応じて画面の状態管理に関する処理を補うような位置付けでも良いかも個人的には感じる部分もある
 
 final class AnnouncementViewController: UIViewController {
 
@@ -123,19 +124,28 @@ final class AnnouncementViewController: UIViewController {
                 onNext: { [weak self] _ in
                     guard let self = self else { return }
 
-                    // MEMO: 現在画面に表示されているセルを抽出する
-                    if let visibleRows = self.announcementTableView.indexPathsForVisibleRows, let firstVisibleRows = visibleRows.first {
-
-                        // MEMO: 現在画面に表示されているセルからセクションHeaderを抽出する
-                        let visibleHeaderInSection = self.announcementTableView.rectForHeader(inSection: firstVisibleRows.section)
-                        let headerHeight = visibleHeaderInSection.size.height
-                        // MEMO: さらに現在表示されている高さを取得してUIEdgeInsetsのtop方向のオフセット値へ加算する
-                        let topOffset = max(min(0, -self.announcementTableView.contentOffset.y), -headerHeight)
-                        self.announcementTableView.contentInset = UIEdgeInsets(top: topOffset, left: 0, bottom: 0, right: 0)
-                    }
+                    // MEMO: スクロールの変化量に応じてUITableViewHeaderのTOP方向のオフセット値を調整する
+                    self.adjustAnnouncementTableViewTopOffset()
                 }
             )
             .disposed(by: disposeBag)
+    }
+
+    // MARK: - Private Fucntion
+
+    private func adjustAnnouncementTableViewTopOffset() {
+
+        // MEMO: 現在画面に表示されているセルを抽出する
+        if let visibleRows = announcementTableView.indexPathsForVisibleRows, let firstVisibleRows = visibleRows.first {
+
+            // MEMO: 現在画面に表示されているセルからセクションHeaderを抽出する
+            let visibleHeaderInSection = announcementTableView.rectForHeader(inSection: firstVisibleRows.section)
+            let headerHeight = visibleHeaderInSection.size.height
+
+            // MEMO: さらに現在表示されている高さを取得してUIEdgeInsetsのtop方向のオフセット値へ加算する
+            let topOffset = max(min(0, -announcementTableView.contentOffset.y), -headerHeight)
+            announcementTableView.contentInset = UIEdgeInsets(top: topOffset, left: 0, bottom: 0, right: 0)
+        }
     }
 }
 
