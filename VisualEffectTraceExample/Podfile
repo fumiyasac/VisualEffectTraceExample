@@ -18,7 +18,7 @@ target 'VisualEffectTraceExample' do
   pod 'ESTabBarController-swift'
   pod 'PanModal'
   pod 'AirBar'
-  pod 'YPImagePicker'
+  pod 'FontAwesome.swift'
   pod 'ExpandingMenu', '~> 0.4'
   pod 'Loaf'
   pod 'PKHUD', '~> 5.0'

@@ -12,6 +12,8 @@
 		DE04C9C0244C76E100684BA1 /* AnnouncementScreenTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE04C9BF244C76E100684BA1 /* AnnouncementScreenTransition.swift */; };
 		DE04C9C2244C943100684BA1 /* AnnouncementScreenTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE04C9C1244C943100684BA1 /* AnnouncementScreenTransitioningDelegate.swift */; };
 		DE14134823FB02A10000D27C /* APIRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE14134723FB02A10000D27C /* APIRequestManager.swift */; };
+		DE1A5D62244FCC5E0065A11E /* GlobalTabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE1A5D60244FCC5E0065A11E /* GlobalTabBar.storyboard */; };
+		DE1A5D64244FCD1C0065A11E /* GlobalTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1A5D63244FCD1C0065A11E /* GlobalTabBarController.swift */; };
 		DE2AB89A2427A57000335E4F /* tutorial_data.json in Resources */ = {isa = PBXBuildFile; fileRef = DE2AB8992427A57000335E4F /* tutorial_data.json */; };
 		DE2AB89F242973A100335E4F /* GetTutorialDataUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB89E242973A100335E4F /* GetTutorialDataUseCase.swift */; };
 		DE2AB8A42429787B00335E4F /* TutorialDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB8A32429787B00335E4F /* TutorialDataRepository.swift */; };
@@ -49,6 +51,7 @@
 		DE726CBC243AA3450043FA4E /* SigninScreenValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE726CBB243AA3450043FA4E /* SigninScreenValidator.swift */; };
 		DE726CBE243AA47F0043FA4E /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE726CBD243AA47F0043FA4E /* Validator.swift */; };
 		DE726CC0243AB5310043FA4E /* CompositionalValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE726CBF243AB5310043FA4E /* CompositionalValidator.swift */; };
+		DE8084A72451DC2700641A22 /* GlobalTabBarScreenCoodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8084A62451DC2700641A22 /* GlobalTabBarScreenCoodinator.swift */; };
 		DE84854224279D7D00766098 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE84854024279D7D00766098 /* Tutorial.storyboard */; };
 		DE84854524279DF800766098 /* TutorialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE84854324279DF800766098 /* TutorialCollectionViewCell.swift */; };
 		DE84854624279DF800766098 /* TutorialCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE84854424279DF800766098 /* TutorialCollectionViewCell.xib */; };
@@ -128,6 +131,8 @@
 		DE04C9BF244C76E100684BA1 /* AnnouncementScreenTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementScreenTransition.swift; sourceTree = "<group>"; };
 		DE04C9C1244C943100684BA1 /* AnnouncementScreenTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementScreenTransitioningDelegate.swift; sourceTree = "<group>"; };
 		DE14134723FB02A10000D27C /* APIRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestManager.swift; sourceTree = "<group>"; };
+		DE1A5D61244FCC5E0065A11E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/GlobalTabBar.storyboard; sourceTree = "<group>"; };
+		DE1A5D63244FCD1C0065A11E /* GlobalTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalTabBarController.swift; sourceTree = "<group>"; };
 		DE2AB8992427A57000335E4F /* tutorial_data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tutorial_data.json; sourceTree = "<group>"; };
 		DE2AB89E242973A100335E4F /* GetTutorialDataUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTutorialDataUseCase.swift; sourceTree = "<group>"; };
 		DE2AB8A32429787B00335E4F /* TutorialDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialDataRepository.swift; sourceTree = "<group>"; };
@@ -165,6 +170,7 @@
 		DE726CBB243AA3450043FA4E /* SigninScreenValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninScreenValidator.swift; sourceTree = "<group>"; };
 		DE726CBD243AA47F0043FA4E /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		DE726CBF243AB5310043FA4E /* CompositionalValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionalValidator.swift; sourceTree = "<group>"; };
+		DE8084A62451DC2700641A22 /* GlobalTabBarScreenCoodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalTabBarScreenCoodinator.swift; sourceTree = "<group>"; };
 		DE84854124279D7D00766098 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Tutorial.storyboard; sourceTree = "<group>"; };
 		DE84854324279DF800766098 /* TutorialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialCollectionViewCell.swift; sourceTree = "<group>"; };
 		DE84854424279DF800766098 /* TutorialCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -378,6 +384,7 @@
 				DE67D98B24324D7400EB2D61 /* SigninScreenCoodinator.swift */,
 				DEF5A23B2443438A00383473 /* SignupScreenCoodinator.swift */,
 				DE8E96532444B9DE0033375F /* AnnouncementScreenCoodinator.swift */,
+				DE8084A62451DC2700641A22 /* GlobalTabBarScreenCoodinator.swift */,
 			);
 			path = Coodinator;
 			sourceTree = "<group>";
@@ -385,6 +392,7 @@
 		DE2AB8AD242F4B3B00335E4F /* GlobalTabBar */ = {
 			isa = PBXGroup;
 			children = (
+				DE1A5D63244FCD1C0065A11E /* GlobalTabBarController.swift */,
 			);
 			path = GlobalTabBar;
 			sourceTree = "<group>";
@@ -609,7 +617,7 @@
 			children = (
 				DEAA656C23F3122F00C5232B /* MainViewController.swift */,
 				DEDCC88E241E794F00BFA165 /* Announcement */,
-				DEDCC88C241DF16200BFA165 /* Contents */,
+				DEDCC88C241DF16200BFA165 /* GlobalTabBarContents */,
 				DE2AB8AD242F4B3B00335E4F /* GlobalTabBar */,
 				DE67D985243249E700EB2D61 /* Signin */,
 				DE67D986243249F000EB2D61 /* Signup */,
@@ -627,6 +635,7 @@
 				DE8FA1DB2432352D00577C47 /* Signin.storyboard */,
 				DE67D97D2432370900EB2D61 /* Signup.storyboard */,
 				DE84854024279D7D00766098 /* Tutorial.storyboard */,
+				DE1A5D60244FCC5E0065A11E /* GlobalTabBar.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -733,11 +742,11 @@
 			path = Request;
 			sourceTree = "<group>";
 		};
-		DEDCC88C241DF16200BFA165 /* Contents */ = {
+		DEDCC88C241DF16200BFA165 /* GlobalTabBarContents */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Contents;
+			path = GlobalTabBarContents;
 			sourceTree = "<group>";
 		};
 		DEDCC88D241E2C3300BFA165 /* APIResponseEntity */ = {
@@ -889,6 +898,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE1A5D62244FCC5E0065A11E /* GlobalTabBar.storyboard in Resources */,
 				DEAA657523F3123100C5232B /* LaunchScreen.storyboard in Resources */,
 				DE67D9822432372500EB2D61 /* Announcement.storyboard in Resources */,
 				DE9D4F0424449A91003439ED /* AnnouncementTableViewCell.xib in Resources */,
@@ -1009,6 +1019,7 @@
 				DEAA65AD23F70EE900C5232B /* UIViewControllerExtension.swift in Sources */,
 				DE726CBE243AA47F0043FA4E /* Validator.swift in Sources */,
 				DEF5A23E244343D400383473 /* SignupScreenValidator.swift in Sources */,
+				DE8084A72451DC2700641A22 /* GlobalTabBarScreenCoodinator.swift in Sources */,
 				DE84854A2427A43C00766098 /* TutorialViewModel.swift in Sources */,
 				DE67D98824324A3300EB2D61 /* SigninViewController.swift in Sources */,
 				DEF5A23C2443438A00383473 /* SignupScreenCoodinator.swift in Sources */,
@@ -1023,6 +1034,7 @@
 				DE67D995243568A000EB2D61 /* UpdateCurrentApplicationUserStatusUsecase.swift in Sources */,
 				DE67D98A24324A5900EB2D61 /* SignupViewController.swift in Sources */,
 				DEDCC888241DE26700BFA165 /* APIRequestProtocol.swift in Sources */,
+				DE1A5D64244FCD1C0065A11E /* GlobalTabBarController.swift in Sources */,
 				DEAA65AB23F70E9C00C5232B /* UIColorExtension.swift in Sources */,
 				DEAA656923F3122F00C5232B /* AppDelegate.swift in Sources */,
 				DE634C422438D052004CA920 /* SigninScreenAction.swift in Sources */,
@@ -1081,6 +1093,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		DE1A5D60244FCC5E0065A11E /* GlobalTabBar.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DE1A5D61244FCC5E0065A11E /* Base */,
+			);
+			name = GlobalTabBar.storyboard;
+			sourceTree = "<group>";
+		};
 		DE67D97D2432370900EB2D61 /* Signup.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
