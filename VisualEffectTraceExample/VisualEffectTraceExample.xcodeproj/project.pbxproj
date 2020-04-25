@@ -106,6 +106,7 @@
 		DEE0B708245427BA00B285BA /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEE0B707245427BA00B285BA /* Search.storyboard */; };
 		DEE0B70A245427E500B285BA /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0B709245427E500B285BA /* SearchViewController.swift */; };
 		DEE0B70C245428B000B285BA /* SearchScreenCoodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0B70B245428B000B285BA /* SearchScreenCoodinator.swift */; };
+		DEE0B71324544D7100B285BA /* GlobalTabBarTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0B71224544D7100B285BA /* GlobalTabBarTransition.swift */; };
 		DEF5A22E244171FC00383473 /* RequestSigninUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5A22D244171FC00383473 /* RequestSigninUseCase.swift */; };
 		DEF5A230244172F800383473 /* RequestSigninRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5A22F244172F800383473 /* RequestSigninRepository.swift */; };
 		DEF5A2322441743600383473 /* SigninAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5A2312441743600383473 /* SigninAPIResponse.swift */; };
@@ -244,6 +245,7 @@
 		DEE0B707245427BA00B285BA /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
 		DEE0B709245427E500B285BA /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		DEE0B70B245428B000B285BA /* SearchScreenCoodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchScreenCoodinator.swift; sourceTree = "<group>"; };
+		DEE0B71224544D7100B285BA /* GlobalTabBarTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalTabBarTransition.swift; sourceTree = "<group>"; };
 		DEF5A22D244171FC00383473 /* RequestSigninUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSigninUseCase.swift; sourceTree = "<group>"; };
 		DEF5A22F244172F800383473 /* RequestSigninRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSigninRepository.swift; sourceTree = "<group>"; };
 		DEF5A2312441743600383473 /* SigninAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninAPIResponse.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 		DE04C9C3244C985B00684BA1 /* Transition */ = {
 			isa = PBXGroup;
 			children = (
+				DEE0B71124544D3600B285BA /* GlobalTabBarTransition */,
 				DE04C9C5244C988800684BA1 /* ScreenTransition */,
 				DE04C9C4244C987100684BA1 /* TransitioningDelegate */,
 			);
@@ -950,6 +953,14 @@
 			path = Story;
 			sourceTree = "<group>";
 		};
+		DEE0B71124544D3600B285BA /* GlobalTabBarTransition */ = {
+			isa = PBXGroup;
+			children = (
+				DEE0B71224544D7100B285BA /* GlobalTabBarTransition.swift */,
+			);
+			path = GlobalTabBarTransition;
+			sourceTree = "<group>";
+		};
 		E8F66E6433453D282DEF22BE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1173,6 +1184,7 @@
 				DEF5A2382443435600383473 /* RequestSignupUseCase.swift in Sources */,
 				DE2AB89F242973A100335E4F /* GetTutorialDataUseCase.swift in Sources */,
 				DE9D4EFD24437571003439ED /* RequestSignupRepository.swift in Sources */,
+				DEE0B71324544D7100B285BA /* GlobalTabBarTransition.swift in Sources */,
 				DEF5A2442443442300383473 /* SignupScreenReducer.swift in Sources */,
 				DEA01C7F240107DC00346C1E /* AnnouncementEntity.swift in Sources */,
 				DE2AB8BD242FC69700335E4F /* ApplicationUserStatus.swift in Sources */,

@@ -17,12 +17,37 @@ final class GlobalTabBarController: UITabBarController {
     private let selectedColor: UIColor = UIColor.systemYellow
     private let tabBarItemFont = UIFont(name: "HelveticaNeue-Medium", size: 10)!
 
+    // MEMO: UITabBarの切り替え時に実行するカスタムトランジションのクラス
+    private let tabBarTransition = GlobalTabBarTransition()
+
+    
+    // (参考) https://stackoverflow.com/questions/42135889/tabbar-icon-bounce-effect-on-selection-like-a-twitter-app-in-swift
+    private var bounceAnimation: CAKeyframeAnimation = {
+        let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
+        bounceAnimation.values = [1.0, 1.4, 0.9, 1.02, 1.0]
+        bounceAnimation.duration = TimeInterval(0.3)
+        bounceAnimation.calculationMode = CAAnimationCalculationMode.cubic
+        return bounceAnimation
+    }()
+    
     // MARK: - Override
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupGlobalTabBar()
+    }
+
+    // UITabBarItemが押下された際に実行される処理
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+
+        // MEMO: UITabBarに配置されているUIImageView要素に対してアニメーションさせるための処理
+        // (参考) https://bit.ly/2VCP5Am
+        guard let index = tabBar.items?.firstIndex(of: item), tabBar.subviews.count > index + 1, let imageView = tabBar.subviews[index + 1].subviews[1] as? UIImageView else {
+            return
+        }
+        // MEMO: 抽出したUIImageView要素に対してCoreAnimationを適用する
+        imageView.layer.add(bounceAnimation, forKey: nil)
     }
 
     // MARK: - Private Function
@@ -104,7 +129,14 @@ final class GlobalTabBarController: UITabBarController {
 
 // MARK: - UITabBarControllerDelegate
 
-extension GlobalTabBarController: UITabBarControllerDelegate {}
+extension GlobalTabBarController: UITabBarControllerDelegate {
+
+    // UITabBarControllerの画面遷移が実行された場合の遷移アニメーションの定義
+    func tabBarController(_ tabBarController: UITabBarController, animationControllerForTransitionFrom fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+
+        return tabBarTransition
+    }
+}
 
 // MARK: - StoryboardInstantiatable
 
