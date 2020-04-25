@@ -876,10 +876,10 @@
 		DEDCC88C241DF16200BFA165 /* GlobalTabBarContents */ = {
 			isa = PBXGroup;
 			children = (
-				DEAFA5902453E3130095B335 /* ItemsViewController.swift */,
-				DEE0B709245427E500B285BA /* SearchViewController.swift */,
-				DEAFA5922453E3230095B335 /* FeaturedViewController.swift */,
-				DEAFA5942453E32E0095B335 /* StoryViewController.swift */,
+				DEE0B70D2454419B00B285BA /* Items */,
+				DEE0B70E245441A900B285BA /* Search */,
+				DEE0B710245441BE00B285BA /* Story */,
+				DEE0B70F245441B100B285BA /* Featured */,
 			);
 			path = GlobalTabBarContents;
 			sourceTree = "<group>";
@@ -916,6 +916,38 @@
 				DE8487422425E81000A40975 /* RealmAccessManager.swift */,
 			);
 			path = RealmManager;
+			sourceTree = "<group>";
+		};
+		DEE0B70D2454419B00B285BA /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				DEAFA5902453E3130095B335 /* ItemsViewController.swift */,
+			);
+			path = Items;
+			sourceTree = "<group>";
+		};
+		DEE0B70E245441A900B285BA /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				DEE0B709245427E500B285BA /* SearchViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		DEE0B70F245441B100B285BA /* Featured */ = {
+			isa = PBXGroup;
+			children = (
+				DEAFA5922453E3230095B335 /* FeaturedViewController.swift */,
+			);
+			path = Featured;
+			sourceTree = "<group>";
+		};
+		DEE0B710245441BE00B285BA /* Story */ = {
+			isa = PBXGroup;
+			children = (
+				DEAFA5942453E32E0095B335 /* StoryViewController.swift */,
+			);
+			path = Story;
 			sourceTree = "<group>";
 		};
 		E8F66E6433453D282DEF22BE /* Pods */ = {
