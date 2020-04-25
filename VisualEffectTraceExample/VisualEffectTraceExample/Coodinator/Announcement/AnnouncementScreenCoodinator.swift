@@ -19,6 +19,8 @@ protocol AnnouncementFlow: class {
 
 class AnnouncementScreenCoodinator: ScreenCoordinator, AnnouncementFlow {
 
+    // MARK: - Properties
+
     private let currentDisplayViewController: UIViewController
 
     // MEMO: カスタムトランジションを適用するためのアニメーションに関するクラス

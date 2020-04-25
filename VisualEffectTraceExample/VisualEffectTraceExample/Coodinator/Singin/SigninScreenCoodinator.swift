@@ -69,6 +69,9 @@ class SigninScreenCoordinator: ScreenCoordinator, SigninFlow {
     }
 
     func coordinateToGlobalTab() {
-        print("コンテンツ画面へ遷移するためのCoodinator定義が必要")
+
+        // GlobalTabBar画面へ遷移するためのCoodinatorの処理を実施する
+        let globalTabBarCoodinator = GlobalTabBarScreenCoodinator()
+        coordinate(to: globalTabBarCoodinator)
     }
 }

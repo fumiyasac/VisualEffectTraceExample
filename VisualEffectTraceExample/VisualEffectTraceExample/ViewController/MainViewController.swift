@@ -97,9 +97,10 @@ final class MainViewController: UIViewController {
             let signinCoodinator = SigninScreenCoordinator()
             signinCoodinator.start()
 
-        // TODO: その他のユーザー状態に応じた画面遷移のハンドリングを実施する
-        default:
-            break
+        // サインイン成功時のコンテンツ画面へ遷移する
+        case .needToMoveGlobalTabBarScreen:
+            let globalTabBarCoodinator = GlobalTabBarScreenCoodinator()
+            globalTabBarCoodinator.start()
         }
     }
 }
