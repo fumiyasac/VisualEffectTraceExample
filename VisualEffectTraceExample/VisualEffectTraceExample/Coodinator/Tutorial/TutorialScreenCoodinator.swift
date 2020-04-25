@@ -53,5 +53,3 @@ class TutorialScreenCoordinator: ScreenCoordinator, TutorialFlow {
         coordinate(to: signinCoodinator)
     }
 }
-
-

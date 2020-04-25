@@ -20,7 +20,6 @@ final class GlobalTabBarController: UITabBarController {
     // MEMO: UITabBarの切り替え時に実行するカスタムトランジションのクラス
     private let tabBarTransition = GlobalTabBarTransition()
 
-    
     // (参考) https://stackoverflow.com/questions/42135889/tabbar-icon-bounce-effect-on-selection-like-a-twitter-app-in-swift
     private var bounceAnimation: CAKeyframeAnimation = {
         let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
