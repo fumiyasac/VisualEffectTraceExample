@@ -16,6 +16,11 @@ extension APIRequestManager: APIRequestProtocol {
     // MEMO: サンプルで利用するエンドポイント定義
     private enum EndPoint: String {
 
+        // Item.storyboardで利用するエンドポイント
+        case topBanner = "top_banner"
+        case eventIntroduction = "event_introduction"
+
+        // 認証前の画面で利用するエンドポイント
         case announcement = "announcement"
         case signin = "signin"
         case signup = "signup"
@@ -26,6 +31,28 @@ extension APIRequestManager: APIRequestProtocol {
     }
 
     // MARK: - Function
+
+    // トップバナー表示用のAPIリクエスト処理の実行
+    func getTopBanners() -> Single<TopBannerAPIResponse> {
+
+        let topBannerEndPoint = EndPoint.topBanner.getBaseUrl()
+        return executeAPIRequest(
+            endpointUrl: topBannerEndPoint,
+            httpMethod: HTTPMethod.GET,
+            responseFormat: TopBannerAPIResponse.self
+        )
+    }
+
+    // イベント概要一覧表示用のAPIリクエスト処理の実行
+    func getEventIntroductionsBy(page: Int) -> Single<EventIntroductionAPIResponse> {
+
+        let eventIntroductionEndPoint = EndPoint.eventIntroduction.getBaseUrl()
+        return executeAPIRequest(
+            endpointUrl: eventIntroductionEndPoint,
+            httpMethod: HTTPMethod.GET,
+            responseFormat: EventIntroductionAPIResponse.self
+        )
+    }
 
     // お知らせ一覧表示用のAPIリクエスト処理の実行
     func getAnnoucements() -> Single<AnnouncementListResponse> {

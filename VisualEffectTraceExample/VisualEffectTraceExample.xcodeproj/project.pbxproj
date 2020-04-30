@@ -105,6 +105,15 @@
 		DEAFA5912453E3130095B335 /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAFA5902453E3130095B335 /* ItemsViewController.swift */; };
 		DEAFA5932453E3230095B335 /* FeaturedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAFA5922453E3230095B335 /* FeaturedViewController.swift */; };
 		DEAFA5952453E32E0095B335 /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAFA5942453E32E0095B335 /* StoryViewController.swift */; };
+		DEC01227245B022F00C92A6F /* EventIntroductionAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC01226245B022F00C92A6F /* EventIntroductionAPIResponse.swift */; };
+		DEC01229245B034C00C92A6F /* EventIntroductionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC01228245B034C00C92A6F /* EventIntroductionEntity.swift */; };
+		DEC0122B245B079600C92A6F /* TopBannerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC0122A245B079600C92A6F /* TopBannerViewModel.swift */; };
+		DEC0122D245B07A800C92A6F /* EventIntroductionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC0122C245B07A800C92A6F /* EventIntroductionViewModel.swift */; };
+		DEC0122F245B17B300C92A6F /* RequestTopBannerDataUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC0122E245B17B300C92A6F /* RequestTopBannerDataUseCase.swift */; };
+		DEC01231245B17CC00C92A6F /* RequestTopBannerDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC01230245B17CC00C92A6F /* RequestTopBannerDataRepository.swift */; };
+		DEC01233245B1D2A00C92A6F /* RequestEventIntroductionDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC01232245B1D2A00C92A6F /* RequestEventIntroductionDataRepository.swift */; };
+		DEC01235245B1EF800C92A6F /* RequestEventIntroductionDataUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC01234245B1EF800C92A6F /* RequestEventIntroductionDataUseCase.swift */; };
+		DEC01237245B2A9000C92A6F /* UniqueArrayBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC01236245B2A9000C92A6F /* UniqueArrayBuilder.swift */; };
 		DEC8A80D245A96710033610D /* TopBannerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8A80C245A96710033610D /* TopBannerEntity.swift */; };
 		DEC8A80F245A97A30033610D /* TopBannerAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8A80E245A97A30033610D /* TopBannerAPIResponse.swift */; };
 		DEDCC875241CD82500BFA165 /* BlockSubScriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDCC874241CD82500BFA165 /* BlockSubScriber.swift */; };
@@ -256,6 +265,15 @@
 		DEAFA5902453E3130095B335 /* ItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
 		DEAFA5922453E3230095B335 /* FeaturedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedViewController.swift; sourceTree = "<group>"; };
 		DEAFA5942453E32E0095B335 /* StoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
+		DEC01226245B022F00C92A6F /* EventIntroductionAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventIntroductionAPIResponse.swift; sourceTree = "<group>"; };
+		DEC01228245B034C00C92A6F /* EventIntroductionEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventIntroductionEntity.swift; sourceTree = "<group>"; };
+		DEC0122A245B079600C92A6F /* TopBannerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBannerViewModel.swift; sourceTree = "<group>"; };
+		DEC0122C245B07A800C92A6F /* EventIntroductionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventIntroductionViewModel.swift; sourceTree = "<group>"; };
+		DEC0122E245B17B300C92A6F /* RequestTopBannerDataUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTopBannerDataUseCase.swift; sourceTree = "<group>"; };
+		DEC01230245B17CC00C92A6F /* RequestTopBannerDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTopBannerDataRepository.swift; sourceTree = "<group>"; };
+		DEC01232245B1D2A00C92A6F /* RequestEventIntroductionDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestEventIntroductionDataRepository.swift; sourceTree = "<group>"; };
+		DEC01234245B1EF800C92A6F /* RequestEventIntroductionDataUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestEventIntroductionDataUseCase.swift; sourceTree = "<group>"; };
+		DEC01236245B2A9000C92A6F /* UniqueArrayBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniqueArrayBuilder.swift; sourceTree = "<group>"; };
 		DEC8A80C245A96710033610D /* TopBannerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBannerEntity.swift; sourceTree = "<group>"; };
 		DEC8A80E245A97A30033610D /* TopBannerAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBannerAPIResponse.swift; sourceTree = "<group>"; };
 		DEDCC874241CD82500BFA165 /* BlockSubScriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockSubScriber.swift; sourceTree = "<group>"; };
@@ -321,6 +339,7 @@
 			isa = PBXGroup;
 			children = (
 				DE0424E42402AF50008DEF36 /* AnnouncementAPIResponse.swift */,
+				DEC01226245B022F00C92A6F /* EventIntroductionAPIResponse.swift */,
 				DEC8A80E245A97A30033610D /* TopBannerAPIResponse.swift */,
 				DEF5A2312441743600383473 /* SigninAPIResponse.swift */,
 				DE9D4EFE24437611003439ED /* GeneralPostSuccessARIResponse.swift */,
@@ -495,6 +514,8 @@
 				DE634C492438ED41004CA920 /* SigninViewModel.swift */,
 				DEF5A23524433E1C00383473 /* SignupViewModel.swift */,
 				DE8E96562444C7480033375F /* AnnouncementViewModel.swift */,
+				DEC0122A245B079600C92A6F /* TopBannerViewModel.swift */,
+				DEC0122C245B07A800C92A6F /* EventIntroductionViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -614,6 +635,8 @@
 				DEF5A22F244172F800383473 /* RequestSigninRepository.swift */,
 				DE9D4EFC24437571003439ED /* RequestSignupRepository.swift */,
 				DE8E965A2444C9E60033375F /* RequestAnnoucementDataRepository.swift */,
+				DEC01230245B17CC00C92A6F /* RequestTopBannerDataRepository.swift */,
+				DEC01232245B1D2A00C92A6F /* RequestEventIntroductionDataRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -742,6 +765,7 @@
 				DEAA65A823F70E6900C5232B /* UILabelDecorator.swift */,
 				DE2AB8D3243070B900335E4F /* UIWindowScanner.swift */,
 				DE234E62245A64CA00E1DC10 /* APIResponseDateFormatter.swift */,
+				DEC01236245B2A9000C92A6F /* UniqueArrayBuilder.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -921,6 +945,8 @@
 				DEF5A22D244171FC00383473 /* RequestSigninUseCase.swift */,
 				DEF5A2372443435600383473 /* RequestSignupUseCase.swift */,
 				DE8E96582444C9870033375F /* RequestAnnouncementDataUseCase.swift */,
+				DEC0122E245B17B300C92A6F /* RequestTopBannerDataUseCase.swift */,
+				DEC01234245B1EF800C92A6F /* RequestEventIntroductionDataUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -949,6 +975,7 @@
 			children = (
 				DEA01C7E240107DC00346C1E /* AnnouncementEntity.swift */,
 				DEC8A80C245A96710033610D /* TopBannerEntity.swift */,
+				DEC01228245B034C00C92A6F /* EventIntroductionEntity.swift */,
 			);
 			path = APIResponseEntity;
 			sourceTree = "<group>";
@@ -1231,7 +1258,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE634C442438D097004CA920 /* SigninScreenActionCreator.swift in Sources */,
+				DEC01237245B2A9000C92A6F /* UniqueArrayBuilder.swift in Sources */,
 				DE8E96542444B9DE0033375F /* AnnouncementScreenCoodinator.swift in Sources */,
+				DEC0122F245B17B300C92A6F /* RequestTopBannerDataUseCase.swift in Sources */,
 				DE234E63245A64CA00E1DC10 /* APIResponseDateFormatter.swift in Sources */,
 				DE2AB8BF242FCA1A00335E4F /* MainScreenRepository.swift in Sources */,
 				DEE0B70624541E4700B285BA /* FeaturedScreenCoodinator.swift in Sources */,
@@ -1252,9 +1281,11 @@
 				DE8487412425E21D00A40975 /* AppConstants.swift in Sources */,
 				DEF5A23624433E1C00383473 /* SignupViewModel.swift in Sources */,
 				DEDCC88A241DE30500BFA165 /* APIRequest.swift in Sources */,
+				DEC0122D245B07A800C92A6F /* EventIntroductionViewModel.swift in Sources */,
 				DE2AB8B9242F7EC200335E4F /* MainViewModel.swift in Sources */,
 				DEF5A2422443440800383473 /* SignupScreenAction.swift in Sources */,
 				DE14134823FB02A10000D27C /* APIRequestManager.swift in Sources */,
+				DEC01229245B034C00C92A6F /* EventIntroductionEntity.swift in Sources */,
 				DEF5A2382443435600383473 /* RequestSignupUseCase.swift in Sources */,
 				DE2AB89F242973A100335E4F /* GetTutorialDataUseCase.swift in Sources */,
 				DE9D4EFD24437571003439ED /* RequestSignupRepository.swift in Sources */,
@@ -1274,19 +1305,23 @@
 				DE2AB8C6242FEF1B00335E4F /* AppLogger.swift in Sources */,
 				DE2AB8C4242FEB5700335E4F /* BaseScreenState.swift in Sources */,
 				DE9D4EFF24437611003439ED /* GeneralPostSuccessARIResponse.swift in Sources */,
+				DEC01233245B1D2A00C92A6F /* RequestEventIntroductionDataRepository.swift in Sources */,
 				DEF5A240244343F600383473 /* SignupScreenState.swift in Sources */,
 				DE8E965F2444D1130033375F /* AnnoucementTableHeaderView.swift in Sources */,
 				DE2AB8BB242FC5AB00335E4F /* HandleMainScreenUseCase.swift in Sources */,
 				DEAA65AD23F70EE900C5232B /* UIViewControllerExtension.swift in Sources */,
+				DEC01235245B1EF800C92A6F /* RequestEventIntroductionDataUseCase.swift in Sources */,
 				DE726CBE243AA47F0043FA4E /* Validator.swift in Sources */,
 				DEF5A23E244343D400383473 /* SignupScreenValidator.swift in Sources */,
 				DE8084A72451DC2700641A22 /* GlobalTabBarScreenCoodinator.swift in Sources */,
+				DEC0122B245B079600C92A6F /* TopBannerViewModel.swift in Sources */,
 				DEC8A80F245A97A30033610D /* TopBannerAPIResponse.swift in Sources */,
 				DE84854A2427A43C00766098 /* TutorialViewModel.swift in Sources */,
 				DEE0B70A245427E500B285BA /* SearchViewController.swift in Sources */,
 				DE67D98824324A3300EB2D61 /* SigninViewController.swift in Sources */,
 				DEF5A23C2443438A00383473 /* SignupScreenCoodinator.swift in Sources */,
 				DE8E96572444C7480033375F /* AnnouncementViewModel.swift in Sources */,
+				DEC01227245B022F00C92A6F /* EventIntroductionAPIResponse.swift in Sources */,
 				DEF5A2322441743600383473 /* SigninAPIResponse.swift in Sources */,
 				DE8E96592444C9870033375F /* RequestAnnouncementDataUseCase.swift in Sources */,
 				DEAFA5952453E32E0095B335 /* StoryViewController.swift in Sources */,
@@ -1308,6 +1343,7 @@
 				DEAA656923F3122F00C5232B /* AppDelegate.swift in Sources */,
 				DE634C422438D052004CA920 /* SigninScreenAction.swift in Sources */,
 				DE2AB8D4243070B900335E4F /* UIWindowScanner.swift in Sources */,
+				DEC01231245B17CC00C92A6F /* RequestTopBannerDataRepository.swift in Sources */,
 				DE2AB8C1242FEACA00335E4F /* AppState.swift in Sources */,
 				DEF5A22E244171FC00383473 /* RequestSigninUseCase.swift in Sources */,
 				DE9D4F0324449A91003439ED /* AnnouncementTableViewCell.swift in Sources */,

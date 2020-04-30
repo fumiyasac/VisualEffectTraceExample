@@ -16,6 +16,9 @@ import RxSwift
 protocol APIRequestProtocol {
 
     // MEMO: 認証済みユーザーのAPIリクエスト
+    // Item.storyboardで利用するエンドポイント
+    func getTopBanners() -> Single<TopBannerAPIResponse>
+    func getEventIntroductionsBy(page: Int) -> Single<EventIntroductionAPIResponse>
 
     // MEMO: 公開部分のAPIリクエスト
     func getAnnoucements() -> Single<AnnouncementListResponse>
