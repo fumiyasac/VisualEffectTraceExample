@@ -1,27 +1,31 @@
 //
-//  AnnouncementEntity.swift
+//  TopBannerEntity.swift
 //  VisualEffectTraceExample
 //
-//  Created by 酒井文也 on 2020/02/22.
+//  Created by 酒井文也 on 2020/04/30.
 //  Copyright © 2020 酒井文也. All rights reserved.
 //
 
 import Foundation
 
-struct AnnouncementEntity: Hashable, Decodable {
+struct TopBannerEntity: Hashable, Decodable {
 
     let id: Int
+    let bannerContentsId: Int
+    let bannerUrl: String
     let title: String
-    let statement: String
-    let thumbnailUrl: String
+    let caption: String
+    let announcementAt: String
 
     // MARK: - Enum
 
     private enum Keys: String, CodingKey {
         case id
+        case bannerContentsId
+        case bannerUrl
         case title
-        case statement
-        case thumbnailUrl
+        case caption
+        case announcementAt
     }
 
     // MARK: - Initializer
@@ -33,9 +37,11 @@ struct AnnouncementEntity: Hashable, Decodable {
 
         // JSONの配列内の要素にある値をDecodeして初期化する
         self.id = try container.decode(Int.self, forKey: .id)
+        self.bannerContentsId = try container.decode(Int.self, forKey: .bannerContentsId)
+        self.bannerUrl = try container.decode(String.self, forKey: .bannerUrl)
         self.title = try container.decode(String.self, forKey: .title)
-        self.statement = try container.decode(String.self, forKey: .statement)
-        self.thumbnailUrl = try container.decode(String.self, forKey: .thumbnailUrl)
+        self.caption = try container.decode(String.self, forKey: .caption)
+        self.announcementAt = try container.decode(String.self, forKey: .announcementAt)
     }
 
     // MARK: - Hashable
@@ -45,7 +51,7 @@ struct AnnouncementEntity: Hashable, Decodable {
         hasher.combine(id)
     }
 
-    static func == (lhs: AnnouncementEntity, rhs: AnnouncementEntity) -> Bool {
+    static func == (lhs: TopBannerEntity, rhs: TopBannerEntity) -> Bool {
         return lhs.id == rhs.id
     }
 }

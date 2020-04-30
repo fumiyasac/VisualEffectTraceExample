@@ -14,6 +14,14 @@
 		DE14134823FB02A10000D27C /* APIRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE14134723FB02A10000D27C /* APIRequestManager.swift */; };
 		DE1A5D62244FCC5E0065A11E /* GlobalTabBar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE1A5D60244FCC5E0065A11E /* GlobalTabBar.storyboard */; };
 		DE1A5D64244FCD1C0065A11E /* GlobalTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE1A5D63244FCD1C0065A11E /* GlobalTabBarController.swift */; };
+		DE234E52245929DA00E1DC10 /* ItemsEventIntroductionContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE234E51245929DA00E1DC10 /* ItemsEventIntroductionContainerViewController.swift */; };
+		DE234E5624592D3700E1DC10 /* TopBannerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE234E5424592D3700E1DC10 /* TopBannerCollectionViewCell.swift */; };
+		DE234E5724592D3700E1DC10 /* TopBannerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE234E5524592D3700E1DC10 /* TopBannerCollectionViewCell.xib */; };
+		DE234E5B24592E9F00E1DC10 /* EventIntroductionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE234E5924592E9F00E1DC10 /* EventIntroductionCollectionViewCell.swift */; };
+		DE234E5C24592E9F00E1DC10 /* EventIntroductionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE234E5A24592E9F00E1DC10 /* EventIntroductionCollectionViewCell.xib */; };
+		DE234E602459930600E1DC10 /* ContainerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE234E5E2459930600E1DC10 /* ContainerCollectionViewCell.swift */; };
+		DE234E612459930600E1DC10 /* ContainerCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE234E5F2459930600E1DC10 /* ContainerCollectionViewCell.xib */; };
+		DE234E63245A64CA00E1DC10 /* APIResponseDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE234E62245A64CA00E1DC10 /* APIResponseDateFormatter.swift */; };
 		DE2AB89A2427A57000335E4F /* tutorial_data.json in Resources */ = {isa = PBXBuildFile; fileRef = DE2AB8992427A57000335E4F /* tutorial_data.json */; };
 		DE2AB89F242973A100335E4F /* GetTutorialDataUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB89E242973A100335E4F /* GetTutorialDataUseCase.swift */; };
 		DE2AB8A42429787B00335E4F /* TutorialDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB8A32429787B00335E4F /* TutorialDataRepository.swift */; };
@@ -97,6 +105,8 @@
 		DEAFA5912453E3130095B335 /* ItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAFA5902453E3130095B335 /* ItemsViewController.swift */; };
 		DEAFA5932453E3230095B335 /* FeaturedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAFA5922453E3230095B335 /* FeaturedViewController.swift */; };
 		DEAFA5952453E32E0095B335 /* StoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEAFA5942453E32E0095B335 /* StoryViewController.swift */; };
+		DEC8A80D245A96710033610D /* TopBannerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8A80C245A96710033610D /* TopBannerEntity.swift */; };
+		DEC8A80F245A97A30033610D /* TopBannerAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8A80E245A97A30033610D /* TopBannerAPIResponse.swift */; };
 		DEDCC875241CD82500BFA165 /* BlockSubScriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDCC874241CD82500BFA165 /* BlockSubScriber.swift */; };
 		DEDCC888241DE26700BFA165 /* APIRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDCC887241DE26700BFA165 /* APIRequestProtocol.swift */; };
 		DEDCC88A241DE30500BFA165 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDCC889241DE30500BFA165 /* APIRequest.swift */; };
@@ -118,6 +128,8 @@
 		DEF5A2422443440800383473 /* SignupScreenAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5A2412443440800383473 /* SignupScreenAction.swift */; };
 		DEF5A2442443442300383473 /* SignupScreenReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5A2432443442300383473 /* SignupScreenReducer.swift */; };
 		DEF5A2462443443800383473 /* SignupScreenActionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5A2452443443800383473 /* SignupScreenActionCreator.swift */; };
+		DEFC335C2458E6A500BFE132 /* ItemsTopBannerContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFC335B2458E6A500BFE132 /* ItemsTopBannerContainerViewController.swift */; };
+		DEFC335E245915CA00BFE132 /* ItemsScreenSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFC335D245915CA00BFE132 /* ItemsScreenSectionType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +159,14 @@
 		DE14134723FB02A10000D27C /* APIRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestManager.swift; sourceTree = "<group>"; };
 		DE1A5D61244FCC5E0065A11E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/GlobalTabBar.storyboard; sourceTree = "<group>"; };
 		DE1A5D63244FCD1C0065A11E /* GlobalTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalTabBarController.swift; sourceTree = "<group>"; };
+		DE234E51245929DA00E1DC10 /* ItemsEventIntroductionContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsEventIntroductionContainerViewController.swift; sourceTree = "<group>"; };
+		DE234E5424592D3700E1DC10 /* TopBannerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBannerCollectionViewCell.swift; sourceTree = "<group>"; };
+		DE234E5524592D3700E1DC10 /* TopBannerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopBannerCollectionViewCell.xib; sourceTree = "<group>"; };
+		DE234E5924592E9F00E1DC10 /* EventIntroductionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventIntroductionCollectionViewCell.swift; sourceTree = "<group>"; };
+		DE234E5A24592E9F00E1DC10 /* EventIntroductionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventIntroductionCollectionViewCell.xib; sourceTree = "<group>"; };
+		DE234E5E2459930600E1DC10 /* ContainerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerCollectionViewCell.swift; sourceTree = "<group>"; };
+		DE234E5F2459930600E1DC10 /* ContainerCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContainerCollectionViewCell.xib; sourceTree = "<group>"; };
+		DE234E62245A64CA00E1DC10 /* APIResponseDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponseDateFormatter.swift; sourceTree = "<group>"; };
 		DE2AB8992427A57000335E4F /* tutorial_data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tutorial_data.json; sourceTree = "<group>"; };
 		DE2AB89E242973A100335E4F /* GetTutorialDataUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTutorialDataUseCase.swift; sourceTree = "<group>"; };
 		DE2AB8A32429787B00335E4F /* TutorialDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialDataRepository.swift; sourceTree = "<group>"; };
@@ -236,6 +256,8 @@
 		DEAFA5902453E3130095B335 /* ItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewController.swift; sourceTree = "<group>"; };
 		DEAFA5922453E3230095B335 /* FeaturedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedViewController.swift; sourceTree = "<group>"; };
 		DEAFA5942453E32E0095B335 /* StoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewController.swift; sourceTree = "<group>"; };
+		DEC8A80C245A96710033610D /* TopBannerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBannerEntity.swift; sourceTree = "<group>"; };
+		DEC8A80E245A97A30033610D /* TopBannerAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBannerAPIResponse.swift; sourceTree = "<group>"; };
 		DEDCC874241CD82500BFA165 /* BlockSubScriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockSubScriber.swift; sourceTree = "<group>"; };
 		DEDCC887241DE26700BFA165 /* APIRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestProtocol.swift; sourceTree = "<group>"; };
 		DEDCC889241DE30500BFA165 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
@@ -257,6 +279,8 @@
 		DEF5A2412443440800383473 /* SignupScreenAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupScreenAction.swift; sourceTree = "<group>"; };
 		DEF5A2432443442300383473 /* SignupScreenReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupScreenReducer.swift; sourceTree = "<group>"; };
 		DEF5A2452443443800383473 /* SignupScreenActionCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupScreenActionCreator.swift; sourceTree = "<group>"; };
+		DEFC335B2458E6A500BFE132 /* ItemsTopBannerContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsTopBannerContainerViewController.swift; sourceTree = "<group>"; };
+		DEFC335D245915CA00BFE132 /* ItemsScreenSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsScreenSectionType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -297,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				DE0424E42402AF50008DEF36 /* AnnouncementAPIResponse.swift */,
+				DEC8A80E245A97A30033610D /* TopBannerAPIResponse.swift */,
 				DEF5A2312441743600383473 /* SigninAPIResponse.swift */,
 				DE9D4EFE24437611003439ED /* GeneralPostSuccessARIResponse.swift */,
 			);
@@ -327,6 +352,33 @@
 				DE04C9BF244C76E100684BA1 /* AnnouncementScreenTransition.swift */,
 			);
 			path = ScreenTransition;
+			sourceTree = "<group>";
+		};
+		DE234E5324592CE800E1DC10 /* TopBannerCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DE234E5424592D3700E1DC10 /* TopBannerCollectionViewCell.swift */,
+				DE234E5524592D3700E1DC10 /* TopBannerCollectionViewCell.xib */,
+			);
+			path = TopBannerCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		DE234E5824592E8200E1DC10 /* EventIntroductionCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DE234E5924592E9F00E1DC10 /* EventIntroductionCollectionViewCell.swift */,
+				DE234E5A24592E9F00E1DC10 /* EventIntroductionCollectionViewCell.xib */,
+			);
+			path = EventIntroductionCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		DE234E5D245992D200E1DC10 /* ContainerCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DE234E5E2459930600E1DC10 /* ContainerCollectionViewCell.swift */,
+				DE234E5F2459930600E1DC10 /* ContainerCollectionViewCell.xib */,
+			);
+			path = ContainerCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		DE2AB8972427A53C00335E4F /* DataSet */ = {
@@ -689,6 +741,7 @@
 			children = (
 				DEAA65A823F70E6900C5232B /* UILabelDecorator.swift */,
 				DE2AB8D3243070B900335E4F /* UIWindowScanner.swift */,
+				DE234E62245A64CA00E1DC10 /* APIResponseDateFormatter.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -699,7 +752,10 @@
 				DEAA65A223F70DEC00C5232B /* CustomViewBase.swift */,
 				DE8E96552444C70F0033375F /* AnnoucementTableHeaderView */,
 				DE9D4F0024449A60003439ED /* AnnoucementTableViewCell */,
+				DE234E5D245992D200E1DC10 /* ContainerCollectionViewCell */,
+				DE234E5824592E8200E1DC10 /* EventIntroductionCollectionViewCell */,
 				DE67D98F24338F0700EB2D61 /* FormTextFieldInputView */,
+				DE234E5324592CE800E1DC10 /* TopBannerCollectionViewCell */,
 				DE2AB89B24282CCC00335E4F /* TutorialCollectionViewCell */,
 			);
 			path = View;
@@ -724,6 +780,7 @@
 				DE2AB8BC242FC69700335E4F /* ApplicationUserStatus.swift */,
 				DE67D98D2433895300EB2D61 /* FormInputTextFieldStyle.swift */,
 				DEAFA5822453D82C0095B335 /* TabBarItemsType.swift */,
+				DEFC335D245915CA00BFE132 /* ItemsScreenSectionType.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -891,6 +948,7 @@
 			isa = PBXGroup;
 			children = (
 				DEA01C7E240107DC00346C1E /* AnnouncementEntity.swift */,
+				DEC8A80C245A96710033610D /* TopBannerEntity.swift */,
 			);
 			path = APIResponseEntity;
 			sourceTree = "<group>";
@@ -924,6 +982,7 @@
 		DEE0B70D2454419B00B285BA /* Items */ = {
 			isa = PBXGroup;
 			children = (
+				DEFC335A2458719700BFE132 /* ItemsContainer */,
 				DEAFA5902453E3130095B335 /* ItemsViewController.swift */,
 			);
 			path = Items;
@@ -959,6 +1018,15 @@
 				DEE0B71224544D7100B285BA /* GlobalTabBarTransition.swift */,
 			);
 			path = GlobalTabBarTransition;
+			sourceTree = "<group>";
+		};
+		DEFC335A2458719700BFE132 /* ItemsContainer */ = {
+			isa = PBXGroup;
+			children = (
+				DEFC335B2458E6A500BFE132 /* ItemsTopBannerContainerViewController.swift */,
+				DE234E51245929DA00E1DC10 /* ItemsEventIntroductionContainerViewController.swift */,
+			);
+			path = ItemsContainer;
 			sourceTree = "<group>";
 		};
 		E8F66E6433453D282DEF22BE /* Pods */ = {
@@ -1078,6 +1146,7 @@
 			files = (
 				DE1A5D62244FCC5E0065A11E /* GlobalTabBar.storyboard in Resources */,
 				DEAA657523F3123100C5232B /* LaunchScreen.storyboard in Resources */,
+				DE234E5724592D3700E1DC10 /* TopBannerCollectionViewCell.xib in Resources */,
 				DE67D9822432372500EB2D61 /* Announcement.storyboard in Resources */,
 				DE9D4F0424449A91003439ED /* AnnouncementTableViewCell.xib in Resources */,
 				DEAA657223F3123100C5232B /* Assets.xcassets in Resources */,
@@ -1085,8 +1154,10 @@
 				DEAFA5872453E29D0095B335 /* Featured.storyboard in Resources */,
 				DE8FA1DD2432352D00577C47 /* Signin.storyboard in Resources */,
 				DEAFA5892453E2A80095B335 /* Story.storyboard in Resources */,
+				DE234E612459930600E1DC10 /* ContainerCollectionViewCell.xib in Resources */,
 				DE84854224279D7D00766098 /* Tutorial.storyboard in Resources */,
 				DE67D99124338F4100EB2D61 /* FormInputTextFieldView.xib in Resources */,
+				DE234E5C24592E9F00E1DC10 /* EventIntroductionCollectionViewCell.xib in Resources */,
 				DE2AB89A2427A57000335E4F /* tutorial_data.json in Resources */,
 				DEAA657023F3122F00C5232B /* Main.storyboard in Resources */,
 				DE67D97F2432370900EB2D61 /* Signup.storyboard in Resources */,
@@ -1161,6 +1232,7 @@
 			files = (
 				DE634C442438D097004CA920 /* SigninScreenActionCreator.swift in Sources */,
 				DE8E96542444B9DE0033375F /* AnnouncementScreenCoodinator.swift in Sources */,
+				DE234E63245A64CA00E1DC10 /* APIResponseDateFormatter.swift in Sources */,
 				DE2AB8BF242FCA1A00335E4F /* MainScreenRepository.swift in Sources */,
 				DEE0B70624541E4700B285BA /* FeaturedScreenCoodinator.swift in Sources */,
 				DE84854524279DF800766098 /* TutorialCollectionViewCell.swift in Sources */,
@@ -1172,8 +1244,10 @@
 				DE67D98E2433895300EB2D61 /* FormInputTextFieldStyle.swift in Sources */,
 				DEE0B70224541E2000B285BA /* ItemsScreenCoodinator.swift in Sources */,
 				DEAFA5932453E3230095B335 /* FeaturedViewController.swift in Sources */,
+				DE234E602459930600E1DC10 /* ContainerCollectionViewCell.swift in Sources */,
 				DE634C462438D56B004CA920 /* SigninScreenReducer.swift in Sources */,
 				DE634C402438CFB2004CA920 /* SigninScreenState.swift in Sources */,
+				DE234E5B24592E9F00E1DC10 /* EventIntroductionCollectionViewCell.swift in Sources */,
 				DE2AB8C8242FEF8700335E4F /* ActionLoggingMiddleware.swift in Sources */,
 				DE8487412425E21D00A40975 /* AppConstants.swift in Sources */,
 				DEF5A23624433E1C00383473 /* SignupViewModel.swift in Sources */,
@@ -1207,6 +1281,7 @@
 				DE726CBE243AA47F0043FA4E /* Validator.swift in Sources */,
 				DEF5A23E244343D400383473 /* SignupScreenValidator.swift in Sources */,
 				DE8084A72451DC2700641A22 /* GlobalTabBarScreenCoodinator.swift in Sources */,
+				DEC8A80F245A97A30033610D /* TopBannerAPIResponse.swift in Sources */,
 				DE84854A2427A43C00766098 /* TutorialViewModel.swift in Sources */,
 				DEE0B70A245427E500B285BA /* SearchViewController.swift in Sources */,
 				DE67D98824324A3300EB2D61 /* SigninViewController.swift in Sources */,
@@ -1215,6 +1290,7 @@
 				DEF5A2322441743600383473 /* SigninAPIResponse.swift in Sources */,
 				DE8E96592444C9870033375F /* RequestAnnouncementDataUseCase.swift in Sources */,
 				DEAFA5952453E32E0095B335 /* StoryViewController.swift in Sources */,
+				DEFC335C2458E6A500BFE132 /* ItemsTopBannerContainerViewController.swift in Sources */,
 				DE04C9C0244C76E100684BA1 /* AnnouncementScreenTransition.swift in Sources */,
 				DEAA656D23F3122F00C5232B /* MainViewController.swift in Sources */,
 				DE634C4A2438ED41004CA920 /* SigninViewModel.swift in Sources */,
@@ -1223,8 +1299,10 @@
 				DE67D995243568A000EB2D61 /* UpdateCurrentApplicationUserStatusUsecase.swift in Sources */,
 				DE67D98A24324A5900EB2D61 /* SignupViewController.swift in Sources */,
 				DEE0B70424541E2F00B285BA /* StoryScreenCoodinator.swift in Sources */,
+				DEC8A80D245A96710033610D /* TopBannerEntity.swift in Sources */,
 				DEDCC888241DE26700BFA165 /* APIRequestProtocol.swift in Sources */,
 				DEAFA5912453E3130095B335 /* ItemsViewController.swift in Sources */,
+				DEFC335E245915CA00BFE132 /* ItemsScreenSectionType.swift in Sources */,
 				DE1A5D64244FCD1C0065A11E /* GlobalTabBarController.swift in Sources */,
 				DEAA65AB23F70E9C00C5232B /* UIColorExtension.swift in Sources */,
 				DEAA656923F3122F00C5232B /* AppDelegate.swift in Sources */,
@@ -1241,6 +1319,8 @@
 				DEDCC875241CD82500BFA165 /* BlockSubScriber.swift in Sources */,
 				DE8487432425E81000A40975 /* RealmAccessManager.swift in Sources */,
 				DEAFA5832453D82C0095B335 /* TabBarItemsType.swift in Sources */,
+				DE234E5624592D3700E1DC10 /* TopBannerCollectionViewCell.swift in Sources */,
+				DE234E52245929DA00E1DC10 /* ItemsEventIntroductionContainerViewController.swift in Sources */,
 				DE2AB8A42429787B00335E4F /* TutorialDataRepository.swift in Sources */,
 				DE8487462425FACD00A40975 /* ApplicationUserEntity.swift in Sources */,
 				DEAA65A523F70E2700C5232B /* NSObjectProtocolExtension.swift in Sources */,

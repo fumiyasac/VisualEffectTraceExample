@@ -13,7 +13,6 @@ import net.just1factory.visual_effect_example.app.response.user.signin.UserSigni
 import net.just1factory.visual_effect_example.context.jwt.JWTGenerator
 import net.just1factory.visual_effect_example.context.exception.UnprocessableEntityException
 import net.just1factory.visual_effect_example.context.exception.ConflictException
-import net.just1factory.visual_effect_example.context.exception.UnauthorizedException
 
 // Spring FrameworkのValidationに関するインポート宣言
 import org.springframework.validation.annotation.Validated

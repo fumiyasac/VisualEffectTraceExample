@@ -312,8 +312,7 @@ final class SignupViewController: UIViewController {
             .asObservable()
             .observeOn(MainScheduler.instance)
             .subscribe(
-                onNext: { [weak self] _ in
-                    guard let self = self else { return }
+                onNext: { _ in
                     // TODO: 利用規約ページへ遷移する
                     print("利用規約ページへ遷移する")
                 }
@@ -323,8 +322,7 @@ final class SignupViewController: UIViewController {
             .asObservable()
             .observeOn(MainScheduler.instance)
             .subscribe(
-                onNext: { [weak self] _ in
-                    guard let self = self else { return }
+                onNext: { _ in
                     // TODO: プライバシーポリシーページへ遷移する
                     print("プライバシーポリシーページへ遷移する")
                 }
