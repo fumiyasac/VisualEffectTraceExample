@@ -1,4 +1,5 @@
 PODS:
+  - ActiveLabel (1.1.0)
   - AirBar (2.0.5)
   - AnimatedCollectionViewLayout (1.0.1)
   - DifferenceKit (1.1.5):
@@ -7,8 +8,6 @@ PODS:
   - DifferenceKit/Core (1.1.5)
   - DifferenceKit/UIKitExtension (1.1.5):
     - DifferenceKit/Core
-  - ESTabBarController-swift (2.8.0)
-  - ExpandingMenu (0.4.0)
   - FontAwesome.swift (1.9.0)
   - KeychainAccess (4.1.0)
   - Kingfisher (5.13.2):
@@ -31,11 +30,10 @@ PODS:
   - RxSwift (5.1.0)
 
 DEPENDENCIES:
+  - ActiveLabel
   - AirBar
   - AnimatedCollectionViewLayout
   - DifferenceKit
-  - ESTabBarController-swift
-  - ExpandingMenu (~> 0.4)
   - FontAwesome.swift
   - KeychainAccess
   - Kingfisher
@@ -49,11 +47,10 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - ActiveLabel
     - AirBar
     - AnimatedCollectionViewLayout
     - DifferenceKit
-    - ESTabBarController-swift
-    - ExpandingMenu
     - FontAwesome.swift
     - KeychainAccess
     - Kingfisher
@@ -68,11 +65,10 @@ SPEC REPOS:
     - RxSwift
 
 SPEC CHECKSUMS:
+  ActiveLabel: 5e3f4de79a1952d4604b845a0610d4776e4b82b3
   AirBar: 01bfd58778a6f08491dd0eb7574979075da3bd14
   AnimatedCollectionViewLayout: 00f0997fd26f0fd02d8b99765023b95570b5d826
   DifferenceKit: 516f12e336ed65a3a0665847b5c3cb5cad4bd4ea
-  ESTabBarController-swift: 05593a6ad64700b03c0eb60ff625916370aa4136
-  ExpandingMenu: 3187a4ed1aa1aea85418e444c213e4cd6063c122
   FontAwesome.swift: a403b88cec950511745ba8f2decd1b6a07346d13
   KeychainAccess: 445e28864fe6d3458b41fa211bcdc39890e8bd5a
   Kingfisher: d342c8354c10c3d85a27d6d4c42c41285924b898
@@ -86,6 +82,6 @@ SPEC CHECKSUMS:
   RxRelay: a168bd6caf712d00c676ac344e9295afc93b418e
   RxSwift: ad5874f24bb0dbffd1e9bb8443604e3578796c7a
 
-PODFILE CHECKSUM: b9e1e2e1ab4e8b6da557bd5d3d2a5d5588cdcce2
+PODFILE CHECKSUM: 4d0af1cb0d555aa2fe10d34914f095c32d18ed76
 
 COCOAPODS: 1.9.1

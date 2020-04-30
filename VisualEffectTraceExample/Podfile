@@ -13,17 +13,16 @@ target 'VisualEffectTraceExample' do
   pod 'RealmSwift'
   pod 'KeychainAccess'
   pod 'DifferenceKit'
-  
+  pod 'Kingfisher'
+
   # 2. UI実装に関するライブラリ
-  pod 'ESTabBarController-swift'
   pod 'PanModal'
   pod 'AirBar'
   pod 'FontAwesome.swift'
-  pod 'ExpandingMenu', '~> 0.4'
+  pod 'ActiveLabel'
   pod 'Loaf'
   pod 'PKHUD', '~> 5.0'
   pod 'AnimatedCollectionViewLayout'
-  pod 'Kingfisher'
 
 #  ※ ユニットテスト時に利用する
 #  target 'VisualEffectTraceExampleTests' do
