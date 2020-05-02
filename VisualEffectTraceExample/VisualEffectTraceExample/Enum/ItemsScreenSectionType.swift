@@ -15,6 +15,12 @@ enum ItemsScreenSectionType: CaseIterable {
     case itemsEventIntroduction
     case itemsRegularList
 
+    // MARK: - Properties
+
+    static var allCount: Int {
+        return [.itemsTopBanner, itemsEventIntroduction, .itemsRegularList].count
+    }
+
     // MARK: - Function
 
     // 全体を包括するUICollectionViewの各種セクションのindex値を取得する

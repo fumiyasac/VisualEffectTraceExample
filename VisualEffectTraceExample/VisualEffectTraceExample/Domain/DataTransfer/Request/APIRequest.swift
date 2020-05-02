@@ -46,7 +46,7 @@ extension APIRequestManager: APIRequestProtocol {
     // イベント概要一覧表示用のAPIリクエスト処理の実行
     func getEventIntroductionsBy(page: Int) -> Single<EventIntroductionAPIResponse> {
 
-        let eventIntroductionEndPoint = EndPoint.eventIntroduction.getBaseUrl()
+        let eventIntroductionEndPoint = EndPoint.eventIntroduction.getBaseUrl() + "?page=" + String(page)
         return executeAPIRequest(
             endpointUrl: eventIntroductionEndPoint,
             httpMethod: HTTPMethod.GET,

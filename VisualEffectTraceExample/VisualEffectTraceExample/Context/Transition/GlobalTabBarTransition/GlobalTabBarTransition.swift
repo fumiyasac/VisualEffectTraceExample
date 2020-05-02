@@ -15,7 +15,7 @@ import UIKit
 final class GlobalTabBarTransition: NSObject {
 
     // トランジションの秒数
-    private let duration: TimeInterval = 0.24
+    private let duration: TimeInterval = 0.18
 }
 
 // MARK: - UIViewControllerAnimatedTransitioning
@@ -36,9 +36,9 @@ extension GlobalTabBarTransition: UIViewControllerAnimatedTransitioning {
         }
 
         // MEMO: アルファ値と拡大縮小を組み合わせたCoreAnimationを実行する
-        // 最初は拡大状態(1.36倍)＆アルファ(0.0) → アニメーション終了時は拡大状態(等倍)＆アルファ(1.0)
+        // 最初は拡大状態(1.016倍)＆アルファ(0.0) → アニメーション終了時は拡大状態(等倍)＆アルファ(1.0)
         destination.alpha = 0.0
-        destination.transform = .init(scaleX: 1.36, y: 1.36)
+        destination.transform = .init(scaleX: 1.016, y: 1.016)
         transitionContext.containerView.addSubview(destination)
 
         UIView.animate(withDuration: transitionDuration(using: transitionContext), animations: {

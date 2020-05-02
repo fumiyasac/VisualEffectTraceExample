@@ -7,8 +7,15 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class TopBannerCollectionViewCell: UICollectionViewCell {
+
+    // MARK: -  Properties
+
+    static let cellSize: CGSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width * 126.0 / 375.0)
+
+    private let topBannerImageOptions: KingfisherOptionsInfo = [.transition(.fade(0.36)), .cacheOriginalImage]
 
     // MARK: - @IBOutlet
 
@@ -26,6 +33,19 @@ final class TopBannerCollectionViewCell: UICollectionViewCell {
     }
 
     // MARK: - Function
+
+    func setCell(_ topBannerEntity: TopBannerEntity) {
+
+        // 引数で受け取ったEntityの内容をUIに反映する
+        if let url = URL(string: topBannerEntity.bannerUrl) {
+            topBannerImageView.kf.setImage(with: url, options: topBannerImageOptions)
+        }
+
+        // 引数で受け取ったEntityの内容をUIに反映する
+        topBannerTitleLabel.text = topBannerEntity.title
+        topBannerCaptionLabel.text = topBannerEntity.caption
+        topBannerAnnouncementDateLabel.text = DateLabelFormatter.getDateStringFromAPI(apiDateString: topBannerEntity.announcementAt)
+    }
 
     // MARK: - Private Function
 
