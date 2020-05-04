@@ -7,6 +7,15 @@
 //
 
 import UIKit
+import WaterfallLayout
+
+// MEMO: こちらのライブラリを利用した形で実装しています。
+// https://github.com/sgr-ksmt/WaterfallLayout
+// その他の実装について:
+// どのライブラリもUICollectionViewLayoutクラスを継承した方針で作成されている点は同じかと思います。
+// (1) https://github.com/Jinya/WaterflowLayout
+// (2) https://github.com/ecerney/CollectionViewWaterfallLayout
+// ※ iOS13で登場したUICollectionViewCompositionalLayoutでも同様な表現は実現できます。
 
 final class ItemsViewController: UIViewController {
 
@@ -46,6 +55,11 @@ final class ItemsViewController: UIViewController {
         itemCollectionView.delegate = self
         itemCollectionView.dataSource = self
         itemCollectionView.reloadData()
+
+        // ライブラリ「WaterfallLayout」を利用したUICollectionViewの表示
+        let layout = WaterfallLayout()
+        layout.delegate = self
+        itemCollectionView.collectionViewLayout = layout
     }
 
     private func bindToRxSwift() {
@@ -104,12 +118,12 @@ extension ItemsViewController: UICollectionViewDataSource {
     }
 }
 
-// MARK: - UICollectionViewDelegateFlowLayout
+// MARK: - WaterfallLayoutDelegate
 
-extension ItemsViewController: UICollectionViewDelegateFlowLayout {
-    
+extension ItemsViewController: WaterfallLayoutDelegate {
+
     // セルのサイズを設定する
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout: WaterfallLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         switch indexPath.section {
         case ItemsScreenSectionType.itemsTopBanner.getSectionIndex():
@@ -121,18 +135,31 @@ extension ItemsViewController: UICollectionViewDelegateFlowLayout {
         }
     }
 
+    // セルのレイアウトパターンを設定する
+    func collectionViewLayout(for section: Int) -> WaterfallLayout.Layout {
+
+        switch section {
+        case ItemsScreenSectionType.itemsTopBanner.getSectionIndex():
+            return .flow(column: 1)
+        case ItemsScreenSectionType.itemsEventIntroduction.getSectionIndex():
+            return .flow(column: 1)
+        default:
+            return .flow(column: 1)
+        }
+    }
+
     // セルの垂直方向の余白(margin)を設定する
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout: WaterfallLayout, minimumInteritemSpacingFor section: Int) -> CGFloat? {
         return .zero
     }
 
     // セルの水平方向の余白(margin)を設定する
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    func collectionView(_ collectionView: UICollectionView, layout: WaterfallLayout, minimumLineSpacingFor section: Int) -> CGFloat? {
         return .zero
     }
 
     // セル内のアイテム間の余白(margin)調整を行う
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView, layout: WaterfallLayout, sectionInsetFor section: Int) -> UIEdgeInsets? {
         return .zero
     }
 }

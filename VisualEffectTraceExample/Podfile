@@ -17,10 +17,11 @@ target 'VisualEffectTraceExample' do
 
   # 2. UI実装に関するライブラリ
   pod 'PanModal'
-  pod 'AirBar'
+  pod 'YNDropDownMenu'
+  pod 'BouncyLayout'
+  pod 'WaterfallLayout'
   pod 'FontAwesome.swift'
   pod 'ActiveLabel'
-  pod 'Loaf'
   pod 'PKHUD', '~> 5.0'
   pod 'AnimatedCollectionViewLayout'
 

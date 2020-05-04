@@ -9,6 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import BouncyLayout
 
 // MARK: - Protocol
 
@@ -28,8 +29,9 @@ final class ItemsEventIntroductionContainerViewController: UIViewController {
 
     // MARK: - Properties
 
-    // MEMO: ヘッダー部分の高さ(69.5px) + UICollectionViewの高さ(256.0px)
-    static let screenSize: CGSize = CGSize(width: UIScreen.main.bounds.width, height: 309.5)
+    // MEMO: ヘッダー部分の高さ(69.5px) + UICollectionViewの高さ(256.0px) + 罫線分(2.0px)
+    // エラー: 「Make a symbolic breakpoint at UICollectionViewFlowLayoutBreakForInvalidSizes to catch this in the debugger.」を暫定的に回避するため
+    static let screenSize: CGSize = CGSize(width: UIScreen.main.bounds.width, height: 311.5)
 
     private let disposeBag = DisposeBag()
 
@@ -56,6 +58,12 @@ final class ItemsEventIntroductionContainerViewController: UIViewController {
         bindToRxSwift()
     }
 
+//    override func viewWillLayoutSubviews() {
+//        super.viewWillLayoutSubviews()
+//
+//        eventIntroductionCollectionView.collectionViewLayout.invalidateLayout()
+//    }
+
     // MARK: - Private Fucntion
 
     private func setupEventIntroductionCollectionView() {
@@ -67,6 +75,12 @@ final class ItemsEventIntroductionContainerViewController: UIViewController {
         eventIntroductionCollectionView.showsHorizontalScrollIndicator = false
         eventIntroductionCollectionView.showsVerticalScrollIndicator = false
         eventIntroductionCollectionView.registerCustomCell(EventIntroductionCollectionViewCell.self)
+
+        // UICollectionViewに付与するアニメーションに関する設定
+        // → ライブラリ「BouncyLayout」を利用してスクロール時にバウンドする表現を加える
+        let layout = BouncyLayout(style: .prominent)
+        layout.scrollDirection = .horizontal
+        eventIntroductionCollectionView.collectionViewLayout = layout
     }
 
     private func bindToRxSwift() {

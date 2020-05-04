@@ -41,6 +41,10 @@
 		DE2AB8D0242FF8A000335E4F /* BaseScreenActionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB8CF242FF8A000335E4F /* BaseScreenActionCreator.swift */; };
 		DE2AB8D4243070B900335E4F /* UIWindowScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB8D3243070B900335E4F /* UIWindowScanner.swift */; };
 		DE4D3836245BC66100680B91 /* DateLabelFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4D3835245BC66100680B91 /* DateLabelFormatter.swift */; };
+		DE4D383E245FB6CA00680B91 /* ItemListCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4D383C245FB6CA00680B91 /* ItemListCollectionHeaderView.swift */; };
+		DE4D383F245FB6CA00680B91 /* ItemListCollectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE4D383D245FB6CA00680B91 /* ItemListCollectionHeaderView.xib */; };
+		DE4D3842245FB90E00680B91 /* ExpandedFileBinderCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4D3841245FB90E00680B91 /* ExpandedFileBinderCollectionViewLayout.swift */; };
+		DE4D3844245FB9A200680B91 /* IndexFileBinderCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4D3843245FB9A200680B91 /* IndexFileBinderCollectionViewLayout.swift */; };
 		DE634C3A24361150004CA920 /* CurrentApplicationUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE634C3924361150004CA920 /* CurrentApplicationUserRepository.swift */; };
 		DE634C402438CFB2004CA920 /* SigninScreenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE634C3F2438CFB2004CA920 /* SigninScreenState.swift */; };
 		DE634C422438D052004CA920 /* SigninScreenAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE634C412438D052004CA920 /* SigninScreenAction.swift */; };
@@ -196,6 +200,10 @@
 		DE2AB8CF242FF8A000335E4F /* BaseScreenActionCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScreenActionCreator.swift; sourceTree = "<group>"; };
 		DE2AB8D3243070B900335E4F /* UIWindowScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindowScanner.swift; sourceTree = "<group>"; };
 		DE4D3835245BC66100680B91 /* DateLabelFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateLabelFormatter.swift; sourceTree = "<group>"; };
+		DE4D383C245FB6CA00680B91 /* ItemListCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemListCollectionHeaderView.swift; sourceTree = "<group>"; };
+		DE4D383D245FB6CA00680B91 /* ItemListCollectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemListCollectionHeaderView.xib; sourceTree = "<group>"; };
+		DE4D3841245FB90E00680B91 /* ExpandedFileBinderCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedFileBinderCollectionViewLayout.swift; sourceTree = "<group>"; };
+		DE4D3843245FB9A200680B91 /* IndexFileBinderCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexFileBinderCollectionViewLayout.swift; sourceTree = "<group>"; };
 		DE634C3924361150004CA920 /* CurrentApplicationUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentApplicationUserRepository.swift; sourceTree = "<group>"; };
 		DE634C3F2438CFB2004CA920 /* SigninScreenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninScreenState.swift; sourceTree = "<group>"; };
 		DE634C412438D052004CA920 /* SigninScreenAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninScreenAction.swift; sourceTree = "<group>"; };
@@ -537,6 +545,24 @@
 			path = InternalJsonEntity;
 			sourceTree = "<group>";
 		};
+		DE4D3837245FB66000680B91 /* ItemListCollectionHeaderView */ = {
+			isa = PBXGroup;
+			children = (
+				DE4D383C245FB6CA00680B91 /* ItemListCollectionHeaderView.swift */,
+				DE4D383D245FB6CA00680B91 /* ItemListCollectionHeaderView.xib */,
+			);
+			path = ItemListCollectionHeaderView;
+			sourceTree = "<group>";
+		};
+		DE4D3840245FB8A200680B91 /* UICollectionViewLayout */ = {
+			isa = PBXGroup;
+			children = (
+				DE4D3841245FB90E00680B91 /* ExpandedFileBinderCollectionViewLayout.swift */,
+				DE4D3843245FB9A200680B91 /* IndexFileBinderCollectionViewLayout.swift */,
+			);
+			path = UICollectionViewLayout;
+			sourceTree = "<group>";
+		};
 		DE67D985243249E700EB2D61 /* Signin */ = {
 			isa = PBXGroup;
 			children = (
@@ -565,6 +591,7 @@
 		DE726CB9243A99580043FA4E /* Context */ = {
 			isa = PBXGroup;
 			children = (
+				DE4D3840245FB8A200680B91 /* UICollectionViewLayout */,
 				DE04C9C3244C985B00684BA1 /* Transition */,
 				DE726CBA243A99600043FA4E /* Validator */,
 			);
@@ -782,6 +809,7 @@
 				DE234E5D245992D200E1DC10 /* ContainerCollectionViewCell */,
 				DE234E5824592E8200E1DC10 /* EventIntroductionCollectionViewCell */,
 				DE67D98F24338F0700EB2D61 /* FormTextFieldInputView */,
+				DE4D3837245FB66000680B91 /* ItemListCollectionHeaderView */,
 				DE234E5324592CE800E1DC10 /* TopBannerCollectionViewCell */,
 				DE2AB89B24282CCC00335E4F /* TutorialCollectionViewCell */,
 			);
@@ -1188,6 +1216,7 @@
 				DE84854224279D7D00766098 /* Tutorial.storyboard in Resources */,
 				DE67D99124338F4100EB2D61 /* FormInputTextFieldView.xib in Resources */,
 				DE234E5C24592E9F00E1DC10 /* EventIntroductionCollectionViewCell.xib in Resources */,
+				DE4D383F245FB6CA00680B91 /* ItemListCollectionHeaderView.xib in Resources */,
 				DE2AB89A2427A57000335E4F /* tutorial_data.json in Resources */,
 				DEAA657023F3122F00C5232B /* Main.storyboard in Resources */,
 				DE67D97F2432370900EB2D61 /* Signup.storyboard in Resources */,
@@ -1338,6 +1367,7 @@
 				DE67D98A24324A5900EB2D61 /* SignupViewController.swift in Sources */,
 				DEE0B70424541E2F00B285BA /* StoryScreenCoodinator.swift in Sources */,
 				DEC8A80D245A96710033610D /* TopBannerEntity.swift in Sources */,
+				DE4D3844245FB9A200680B91 /* IndexFileBinderCollectionViewLayout.swift in Sources */,
 				DEDCC888241DE26700BFA165 /* APIRequestProtocol.swift in Sources */,
 				DEAFA5912453E3130095B335 /* ItemsViewController.swift in Sources */,
 				DEFC335E245915CA00BFE132 /* ItemsScreenSectionType.swift in Sources */,
@@ -1364,6 +1394,8 @@
 				DE4D3836245BC66100680B91 /* DateLabelFormatter.swift in Sources */,
 				DE8487462425FACD00A40975 /* ApplicationUserEntity.swift in Sources */,
 				DEAA65A523F70E2700C5232B /* NSObjectProtocolExtension.swift in Sources */,
+				DE4D383E245FB6CA00680B91 /* ItemListCollectionHeaderView.swift in Sources */,
+				DE4D3842245FB90E00680B91 /* ExpandedFileBinderCollectionViewLayout.swift in Sources */,
 				DE84854C2427A48A00766098 /* TutorialEntity.swift in Sources */,
 				DE8E965B2444C9E60033375F /* RequestAnnoucementDataRepository.swift in Sources */,
 				DE726CC0243AB5310043FA4E /* CompositionalValidator.swift in Sources */,
