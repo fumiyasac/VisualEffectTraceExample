@@ -81,10 +81,14 @@ class APIRequestManager {
                 if let response = response as? HTTPURLResponse, case 400...500 = response.statusCode {
 
                     // MEMO: ステータスコードが403(Access Denied)の場合にはサインイン画面へ強制的に表示させるようにする
-                    // → ここにCoodinatorの処理を強制的に加えるのは果たして良いのかは迷うところです。
                     if response.statusCode == 403 {
-                        let signinCoodinator = SigninScreenCoordinator()
-                        signinCoodinator.start()
+                        // MEMO: ここにCoodinatorの処理を強制的に加えるのは果たして良いのかは迷うところです。
+                        // → しかもこの中で無理やりDispatchQueueで処理するような処理だから強引っちゃ強引な感じがある
+                        DispatchQueue.main.async {
+                            let signinCoodinator = SigninScreenCoordinator()
+                            signinCoodinator.start()
+                        }
+                        singleEvent(.error(APIError.error("Error: StatusCodeが403です。")))
                     } else {
                         singleEvent(.error(APIError.error("Error: StatusCodeが200~399以外です。")))
                     }

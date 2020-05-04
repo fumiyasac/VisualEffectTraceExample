@@ -9,6 +9,9 @@
 import UIKit
 import Kingfisher
 
+// MEMO: サムネイル画像エリアをラップするUIView / 概要等テキスト表示エリアをラップするUIView は高さの制約をつけているがpriorityを999にしている。
+// → 1000にするとAutoLayoutの警告が発生するため。
+
 final class EventIntroductionCollectionViewCell: UICollectionViewCell {
 
     // MARK: -  Properties
