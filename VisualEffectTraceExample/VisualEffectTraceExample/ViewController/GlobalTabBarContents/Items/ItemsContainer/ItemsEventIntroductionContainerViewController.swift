@@ -58,12 +58,6 @@ final class ItemsEventIntroductionContainerViewController: UIViewController {
         bindToRxSwift()
     }
 
-//    override func viewWillLayoutSubviews() {
-//        super.viewWillLayoutSubviews()
-//
-//        eventIntroductionCollectionView.collectionViewLayout.invalidateLayout()
-//    }
-
     // MARK: - Private Fucntion
 
     private func setupEventIntroductionCollectionView() {
