@@ -9,6 +9,7 @@ PODS:
   - DifferenceKit/UIKitExtension (1.1.5):
     - DifferenceKit/Core
   - FontAwesome.swift (1.9.0)
+  - Gedatsu (0.0.7)
   - KeychainAccess (4.2.0)
   - Kingfisher (5.13.4):
     - Kingfisher/Core (= 5.13.4)
@@ -36,6 +37,7 @@ DEPENDENCIES:
   - BouncyLayout
   - DifferenceKit
   - FontAwesome.swift
+  - Gedatsu
   - KeychainAccess
   - Kingfisher
   - PanModal
@@ -54,6 +56,7 @@ SPEC REPOS:
     - BouncyLayout
     - DifferenceKit
     - FontAwesome.swift
+    - Gedatsu
     - KeychainAccess
     - Kingfisher
     - PanModal
@@ -73,6 +76,7 @@ SPEC CHECKSUMS:
   BouncyLayout: b8be605d6c729086d0fc83f180f71e804abeaf04
   DifferenceKit: 516f12e336ed65a3a0665847b5c3cb5cad4bd4ea
   FontAwesome.swift: a403b88cec950511745ba8f2decd1b6a07346d13
+  Gedatsu: 9b721389f5857f954451d1072287ada5ced48b83
   KeychainAccess: 3f760109aa99b05d0f231e28b22642da7153e38a
   Kingfisher: d2279a7abece3c7f25a80cd2b7f363ca5cf3f44c
   PanModal: 3e16ead1a907fb06f4df3f13492fd00149fa4974
@@ -86,6 +90,6 @@ SPEC CHECKSUMS:
   WaterfallLayout: 030e04b041e5c6c47ae2c1eaa685c60289fab0b1
   YNDropDownMenu: 9c88e36c5f913bc614aaf0f3d0a7968f6251268b
 
-PODFILE CHECKSUM: 7f1c5a8286840ba157acb244b4a8bdbd932af4ee
+PODFILE CHECKSUM: daeb0bf42f9fc513a5522fd4e1dd595405de3657
 
 COCOAPODS: 1.9.1

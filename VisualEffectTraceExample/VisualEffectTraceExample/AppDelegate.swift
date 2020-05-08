@@ -9,6 +9,10 @@
 import UIKit
 import ReSwift
 
+#if DEBUG
+import Gedatsu
+#endif
+
 // 全てのStateを一元管理で管理するStoreを定義
 let appStore = Store(reducer: appReducer, state: AppState(), middleware: [ActionLoggingMiddleware])
 
@@ -17,6 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // MEMO: AutoLayoutデバッギングライブラリ「Gedatsu」の有効化
+        #if DEBUG
+        Gedatsu.open()
+        #endif
+
         return true
     }
 

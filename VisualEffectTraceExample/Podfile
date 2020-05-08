@@ -25,6 +25,9 @@ target 'VisualEffectTraceExample' do
   pod 'PKHUD', '~> 5.0'
   pod 'AnimatedCollectionViewLayout'
 
+  # 3. UIデバッグ用のライブラリ
+  pod 'Gedatsu', configuration: %w(Debug)
+
 #  ※ ユニットテスト時に利用する
 #  target 'VisualEffectTraceExampleTests' do
 #    inherit! :search_paths
