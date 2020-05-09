@@ -9,13 +9,17 @@
 import UIKit
 import WaterfallLayout
 
-// MEMO: こちらのライブラリを利用した形で実装しています。
+// MEMO: 基本方針としてはiOS13で登場したUICollectionViewCompositionalLayoutで構築し、NSDiffableDataSourceを利用して内容の更新を実施する方針を採っています。
+// ※1) この画面状態における細かなコントロールについては、Reduxを利用して状態をコントロールを実行する形にしています。
+// ※2) Pinterestの様なWatefallLayout(MasonryLayout)についてもUICollectionViewCompositionalLayoutであればさほど難しくなく実現できるかと思います。
+
+// 補足: iOS12以前の場合に、WatefallLayout(MasonryLayout)を実現する場合は、UICollectionViewLayoutクラスを継承した方針を採ります（結構ハードモードです）。
+// 下記の様な形のライブラリを活用する方針でもエレガントな実装ができると思います。
 // https://github.com/sgr-ksmt/WaterfallLayout
-// その他の実装について:
-// どのライブラリもUICollectionViewLayoutクラスを継承した方針で作成されている点は同じかと思います。
+
+// その他の実装について: どのライブラリもUICollectionViewLayoutクラスを継承した方針で作成されている点は同じです。
 // (1) https://github.com/Jinya/WaterflowLayout
 // (2) https://github.com/ecerney/CollectionViewWaterfallLayout
-// ※ iOS13で登場したUICollectionViewCompositionalLayoutでも同様な表現は実現できます。
 
 final class ItemsViewController: UIViewController {
 

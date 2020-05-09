@@ -8,6 +8,9 @@
 
 import UIKit
 
+// MEMO: Safariのタブの様な動きをUICollectionViewを利用して実施する
+// → UICollectionViewLayoutを継承したクラスをセルタップ時 or セル内のボタン押下時に切り替えて適用する形で実現する
+
 final class FeaturedViewController: UIViewController {
 
     // MARK: - Properties
@@ -15,6 +18,12 @@ final class FeaturedViewController: UIViewController {
     // 一度だけ配置する処理を実行するための識別子のPrefix
     private let onceTokenPrefix = "Featured_"
 
+    // MEMO: 配置したUICollectionViewにおける下方向オフセット値を調整するための定数
+    private let adjustedContentInsetBottom: CGFloat = 82.0
+
+    // MEMO: セルごとの間隔を調整するための定数
+    private let adjustedTargetItemGap: CGFloat = 188.0
+    
     // バインダー型のUICollectionViewCellを開いた状態にするレイアウト属性クラス
     private let expandedFileBinderLayout = ExpandedFileBinderCollectionViewLayout()
 
@@ -46,17 +55,13 @@ final class FeaturedViewController: UIViewController {
         featuredCollectionView.dataSource = self
         featuredCollectionView.bounces = false
         featuredCollectionView.registerCustomCell(FeaturedCollectionViewCell.self)
-
-        // MEMO: 配置したUICollectionViewにおける下方向オフセット値を調整する
-        featuredCollectionView.contentInset.bottom = 82.0
+        featuredCollectionView.contentInset.bottom = adjustedContentInsetBottom
 
         // UICollectionViewに付与するUICollectionViewLayoutを継承したクラスを付与する
         featuredCollectionView.setCollectionViewLayout(indexFileBinderLayout, animated: true)
         if let targetCollectionView = self.featuredCollectionView {
             indexFileBinderLayout.height = targetCollectionView.frame.size.height
-
-            // MEMO: セルごとの間隔を調整する
-            indexFileBinderLayout.targetItemGap = 188.0
+            indexFileBinderLayout.targetItemGap = adjustedTargetItemGap
         }
     }
 }
