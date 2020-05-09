@@ -11,7 +11,7 @@ import Kingfisher
 
 final class TopBannerCollectionViewCell: UICollectionViewCell {
 
-    // MARK: -  Properties
+    // MARK: - Properties
 
     static let cellSize: CGSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.width * 126.0 / 375.0)
 

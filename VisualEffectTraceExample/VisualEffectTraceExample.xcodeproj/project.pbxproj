@@ -61,6 +61,9 @@
 		DE67D99124338F4100EB2D61 /* FormInputTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE67D99024338F4100EB2D61 /* FormInputTextFieldView.xib */; };
 		DE67D99324338F5E00EB2D61 /* FormInputTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67D99224338F5E00EB2D61 /* FormInputTextFieldView.swift */; };
 		DE67D995243568A000EB2D61 /* UpdateCurrentApplicationUserStatusUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE67D994243568A000EB2D61 /* UpdateCurrentApplicationUserStatusUsecase.swift */; };
+		DE68656D24666EAC003D3522 /* FeaturedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE68656B24666EAC003D3522 /* FeaturedCollectionViewCell.swift */; };
+		DE68656E24666EAC003D3522 /* FeaturedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE68656C24666EAC003D3522 /* FeaturedCollectionViewCell.xib */; };
+		DE6865702466700E003D3522 /* DispatchQueueExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE68656F2466700E003D3522 /* DispatchQueueExtension.swift */; };
 		DE726CBC243AA3450043FA4E /* SigninScreenValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE726CBB243AA3450043FA4E /* SigninScreenValidator.swift */; };
 		DE726CBE243AA47F0043FA4E /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE726CBD243AA47F0043FA4E /* Validator.swift */; };
 		DE726CC0243AB5310043FA4E /* CompositionalValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE726CBF243AB5310043FA4E /* CompositionalValidator.swift */; };
@@ -220,6 +223,9 @@
 		DE67D99024338F4100EB2D61 /* FormInputTextFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FormInputTextFieldView.xib; sourceTree = "<group>"; };
 		DE67D99224338F5E00EB2D61 /* FormInputTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormInputTextFieldView.swift; sourceTree = "<group>"; };
 		DE67D994243568A000EB2D61 /* UpdateCurrentApplicationUserStatusUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCurrentApplicationUserStatusUsecase.swift; sourceTree = "<group>"; };
+		DE68656B24666EAC003D3522 /* FeaturedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedCollectionViewCell.swift; sourceTree = "<group>"; };
+		DE68656C24666EAC003D3522 /* FeaturedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeaturedCollectionViewCell.xib; sourceTree = "<group>"; };
+		DE68656F2466700E003D3522 /* DispatchQueueExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueExtension.swift; sourceTree = "<group>"; };
 		DE726CBB243AA3450043FA4E /* SigninScreenValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninScreenValidator.swift; sourceTree = "<group>"; };
 		DE726CBD243AA47F0043FA4E /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		DE726CBF243AB5310043FA4E /* CompositionalValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionalValidator.swift; sourceTree = "<group>"; };
@@ -588,6 +594,15 @@
 			path = FormTextFieldInputView;
 			sourceTree = "<group>";
 		};
+		DE68656A24666E80003D3522 /* FeaturedCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DE68656B24666EAC003D3522 /* FeaturedCollectionViewCell.swift */,
+				DE68656C24666EAC003D3522 /* FeaturedCollectionViewCell.xib */,
+			);
+			path = FeaturedCollectionViewCell;
+			sourceTree = "<group>";
+		};
 		DE726CB9243A99580043FA4E /* Context */ = {
 			isa = PBXGroup;
 			children = (
@@ -808,6 +823,7 @@
 				DE9D4F0024449A60003439ED /* AnnoucementTableViewCell */,
 				DE234E5D245992D200E1DC10 /* ContainerCollectionViewCell */,
 				DE234E5824592E8200E1DC10 /* EventIntroductionCollectionViewCell */,
+				DE68656A24666E80003D3522 /* FeaturedCollectionViewCell */,
 				DE67D98F24338F0700EB2D61 /* FormTextFieldInputView */,
 				DE4D3837245FB66000680B91 /* ItemListCollectionHeaderView */,
 				DE234E5324592CE800E1DC10 /* TopBannerCollectionViewCell */,
@@ -825,6 +841,7 @@
 				DEAA65AA23F70E9C00C5232B /* UIColorExtension.swift */,
 				DEAA65AE23F7288C00C5232B /* UITableViewExtension.swift */,
 				DEAA65AC23F70EE900C5232B /* UIViewControllerExtension.swift */,
+				DE68656F2466700E003D3522 /* DispatchQueueExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1220,6 +1237,7 @@
 				DE2AB89A2427A57000335E4F /* tutorial_data.json in Resources */,
 				DEAA657023F3122F00C5232B /* Main.storyboard in Resources */,
 				DE67D97F2432370900EB2D61 /* Signup.storyboard in Resources */,
+				DE68656E24666EAC003D3522 /* FeaturedCollectionViewCell.xib in Resources */,
 				DE84854624279DF800766098 /* TutorialCollectionViewCell.xib in Resources */,
 				DEE0B708245427BA00B285BA /* Search.storyboard in Resources */,
 				DEAFA5852453E2850095B335 /* Items.storyboard in Resources */,
@@ -1333,6 +1351,7 @@
 				DE67D984243246B300EB2D61 /* AnnouncementViewController.swift in Sources */,
 				DEAA65AF23F7288C00C5232B /* UITableViewExtension.swift in Sources */,
 				DEF5A2462443443800383473 /* SignupScreenActionCreator.swift in Sources */,
+				DE68656D24666EAC003D3522 /* FeaturedCollectionViewCell.swift in Sources */,
 				DEAA65A323F70DEC00C5232B /* CustomViewBase.swift in Sources */,
 				DE2AB8C6242FEF1B00335E4F /* AppLogger.swift in Sources */,
 				DE2AB8C4242FEB5700335E4F /* BaseScreenState.swift in Sources */,
@@ -1365,6 +1384,7 @@
 				DE67D98C24324D7400EB2D61 /* SigninScreenCoodinator.swift in Sources */,
 				DE67D995243568A000EB2D61 /* UpdateCurrentApplicationUserStatusUsecase.swift in Sources */,
 				DE67D98A24324A5900EB2D61 /* SignupViewController.swift in Sources */,
+				DE6865702466700E003D3522 /* DispatchQueueExtension.swift in Sources */,
 				DEE0B70424541E2F00B285BA /* StoryScreenCoodinator.swift in Sources */,
 				DEC8A80D245A96710033610D /* TopBannerEntity.swift in Sources */,
 				DE4D3844245FB9A200680B91 /* IndexFileBinderCollectionViewLayout.swift in Sources */,

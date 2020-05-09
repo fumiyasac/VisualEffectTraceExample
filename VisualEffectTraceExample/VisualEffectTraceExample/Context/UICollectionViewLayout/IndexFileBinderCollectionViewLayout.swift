@@ -73,7 +73,7 @@ final class IndexFileBinderCollectionViewLayout: UICollectionViewLayout {
             // MEMO: 3DカメラのX軸方向回転を実現する
             var frameOffset = Float(targetCollectionView.contentOffset.y - frame.origin.y) - floorf(Float(targetCollectionView.frame.size.height / 10.0))
             if frameOffset > 0 {
-                frameOffset = frameOffset / 5.0
+                frameOffset = frameOffset / 12.0
                 frameOffset = min(frameOffset, angleOfLotationLimit)
                 angleOfRotation += CGFloat(frameOffset)
             }

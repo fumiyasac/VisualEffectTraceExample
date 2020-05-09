@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rel-KT-pF8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rel-KT-pF8">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,13 +14,35 @@
                     <view key="view" contentMode="scaleToFill" id="D2i-8G-toh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="8bt-Vr-Rke">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KrB-7q-gCc">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="8bt-Vr-Rke" firstAttribute="bottom" secondItem="hKq-IP-8bS" secondAttribute="bottom" id="Chw-Fb-Jtn"/>
+                            <constraint firstItem="8bt-Vr-Rke" firstAttribute="trailing" secondItem="hKq-IP-8bS" secondAttribute="trailing" id="miw-4I-0Aa"/>
+                            <constraint firstItem="8bt-Vr-Rke" firstAttribute="top" secondItem="hKq-IP-8bS" secondAttribute="top" id="nJD-ec-JZb"/>
+                            <constraint firstItem="8bt-Vr-Rke" firstAttribute="leading" secondItem="hKq-IP-8bS" secondAttribute="leading" id="v4k-Zv-oI9"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="hKq-IP-8bS"/>
                     </view>
+                    <connections>
+                        <outlet property="featuredCollectionView" destination="8bt-Vr-Rke" id="Fbx-Nj-MM2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EUW-uQ-n9o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="451" y="-199"/>
+            <point key="canvasLocation" x="450.39999999999998" y="-199.25037481259372"/>
         </scene>
     </scenes>
 </document>
