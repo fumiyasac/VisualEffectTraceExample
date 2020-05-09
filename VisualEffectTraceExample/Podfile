@@ -12,7 +12,6 @@ target 'VisualEffectTraceExample' do
   pod 'ReSwift'
   pod 'RealmSwift'
   pod 'KeychainAccess'
-  pod 'DifferenceKit'
   pod 'Kingfisher'
 
   # 2. UI実装に関するライブラリ

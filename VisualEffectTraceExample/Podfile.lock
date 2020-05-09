@@ -2,12 +2,6 @@ PODS:
   - ActiveLabel (1.1.0)
   - AnimatedCollectionViewLayout (1.0.1)
   - BouncyLayout (2.2.0)
-  - DifferenceKit (1.1.5):
-    - DifferenceKit/Core (= 1.1.5)
-    - DifferenceKit/UIKitExtension (= 1.1.5)
-  - DifferenceKit/Core (1.1.5)
-  - DifferenceKit/UIKitExtension (1.1.5):
-    - DifferenceKit/Core
   - FontAwesome.swift (1.9.0)
   - Gedatsu (0.0.7)
   - KeychainAccess (4.2.0)
@@ -35,7 +29,6 @@ DEPENDENCIES:
   - ActiveLabel
   - AnimatedCollectionViewLayout
   - BouncyLayout
-  - DifferenceKit
   - FontAwesome.swift
   - Gedatsu
   - KeychainAccess
@@ -54,7 +47,6 @@ SPEC REPOS:
     - ActiveLabel
     - AnimatedCollectionViewLayout
     - BouncyLayout
-    - DifferenceKit
     - FontAwesome.swift
     - Gedatsu
     - KeychainAccess
@@ -74,7 +66,6 @@ SPEC CHECKSUMS:
   ActiveLabel: 5e3f4de79a1952d4604b845a0610d4776e4b82b3
   AnimatedCollectionViewLayout: 00f0997fd26f0fd02d8b99765023b95570b5d826
   BouncyLayout: b8be605d6c729086d0fc83f180f71e804abeaf04
-  DifferenceKit: 516f12e336ed65a3a0665847b5c3cb5cad4bd4ea
   FontAwesome.swift: a403b88cec950511745ba8f2decd1b6a07346d13
   Gedatsu: 9b721389f5857f954451d1072287ada5ced48b83
   KeychainAccess: 3f760109aa99b05d0f231e28b22642da7153e38a
@@ -90,6 +81,6 @@ SPEC CHECKSUMS:
   WaterfallLayout: 030e04b041e5c6c47ae2c1eaa685c60289fab0b1
   YNDropDownMenu: 9c88e36c5f913bc614aaf0f3d0a7968f6251268b
 
-PODFILE CHECKSUM: daeb0bf42f9fc513a5522fd4e1dd595405de3657
+PODFILE CHECKSUM: d542824ef8c25f0a6f60f407972cd857617d4bb7
 
 COCOAPODS: 1.9.1
