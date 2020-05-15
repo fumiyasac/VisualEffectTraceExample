@@ -22,7 +22,6 @@ PODS:
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
-  - WaterfallLayout (0.2)
   - YNDropDownMenu (3.1.0)
 
 DEPENDENCIES:
@@ -39,7 +38,6 @@ DEPENDENCIES:
   - ReSwift
   - RxCocoa
   - RxSwift
-  - WaterfallLayout
   - YNDropDownMenu
 
 SPEC REPOS:
@@ -59,7 +57,6 @@ SPEC REPOS:
     - RxCocoa
     - RxRelay
     - RxSwift
-    - WaterfallLayout
     - YNDropDownMenu
 
 SPEC CHECKSUMS:
@@ -78,9 +75,8 @@ SPEC CHECKSUMS:
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
-  WaterfallLayout: 030e04b041e5c6c47ae2c1eaa685c60289fab0b1
   YNDropDownMenu: 9c88e36c5f913bc614aaf0f3d0a7968f6251268b
 
-PODFILE CHECKSUM: d542824ef8c25f0a6f60f407972cd857617d4bb7
+PODFILE CHECKSUM: 8fc45bb431ff67afc5a9c2c62c1fb2602490a7c8
 
 COCOAPODS: 1.9.1

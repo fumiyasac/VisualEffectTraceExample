@@ -18,7 +18,6 @@ target 'VisualEffectTraceExample' do
   pod 'PanModal'
   pod 'YNDropDownMenu'
   pod 'BouncyLayout'
-  pod 'WaterfallLayout'
   pod 'FontAwesome.swift'
   pod 'ActiveLabel'
   pod 'PKHUD', '~> 5.0'

@@ -10,9 +10,15 @@ import UIKit
 
 final class ItemListCollectionHeaderView: UICollectionReusableView {
 
-    // MARK: - Override
+    // MARK: - @IBOutlet
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
+    @IBOutlet weak private var titleLabel: UILabel!
+    @IBOutlet weak private var descriptionLabel: UILabel!
+
+    // MARK: - Function
+
+    func setHeader(title: String, description: String) {
+        titleLabel.text = title
+        descriptionLabel.text = description
     }
 }

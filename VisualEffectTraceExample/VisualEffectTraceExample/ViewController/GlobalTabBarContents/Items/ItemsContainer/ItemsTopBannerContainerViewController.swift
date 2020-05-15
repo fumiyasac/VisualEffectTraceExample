@@ -29,8 +29,8 @@ final class ItemsTopBannerContainerViewController: UIViewController {
 
     // MARK: - Properties
 
-    // MEMO: 加算分の117.5pxの内訳は、ヘッダー部分の高さ(69.5px) + UIPageControl表示エリアの高さ(48.0px)
-    static let screenSize: CGSize = CGSize(width: UIScreen.main.bounds.width, height: ceil(UIScreen.main.bounds.width * 126.0 / 375.0) + 117.5)
+    // MEMO: 加算分は、UIPageControl表示エリアの高さ(48.0px)
+    static let screenSize: CGSize = CGSize(width: UIScreen.main.bounds.width, height: ceil(UIScreen.main.bounds.width * 126.0 / 375.0) + 48.0)
 
     private let disposeBag = DisposeBag()
 

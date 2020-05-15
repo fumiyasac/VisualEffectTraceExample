@@ -29,9 +29,9 @@ final class ItemsEventIntroductionContainerViewController: UIViewController {
 
     // MARK: - Properties
 
-    // MEMO: ヘッダー部分の高さ(69.5px) + UICollectionViewの高さ(256.0px) + 罫線分(2.0px)
+    // MEMO: 加算分は、UICollectionViewの高さ(256.0px) + 罫線分(2.0px)
     // エラー: 「Make a symbolic breakpoint at UICollectionViewFlowLayoutBreakForInvalidSizes to catch this in the debugger.」を暫定的に回避するため
-    static let screenSize: CGSize = CGSize(width: UIScreen.main.bounds.width, height: 311.5)
+    static let screenSize: CGSize = CGSize(width: UIScreen.main.bounds.width, height: 258.0)
 
     private let disposeBag = DisposeBag()
 
