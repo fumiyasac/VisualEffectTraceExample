@@ -362,7 +362,7 @@ final class SignupViewController: UIViewController {
                     targetMailAddress: targetMailAddress,
                     targetRawPassword: targetRawPassword
                 )
-                self.viewModel.executeSignupRequestTrigger.onNext(signupParameters)
+                self.viewModel.inputs.executeSignupRequestTrigger.onNext(signupParameters)
             }
         })
     }

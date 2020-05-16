@@ -324,7 +324,7 @@ final class SigninViewController: UIViewController {
                     targetMailAddress: targetMailAddress,
                     targetRawPassword: targetRawPassword
                 )
-                self.viewModel.executeSigninRequestTrigger.onNext(signinParameters)
+                self.viewModel.inputs.executeSigninRequestTrigger.onNext(signinParameters)
             }
         })
     }

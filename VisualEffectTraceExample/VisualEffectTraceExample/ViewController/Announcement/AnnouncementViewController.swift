@@ -60,18 +60,18 @@ final class AnnouncementViewController: UIViewController {
     private func bindToRxSwift() {
 
         // ViewModelから表示内容を取得する
-        viewModel.initialFetchTrigger.onNext(())
+        viewModel.inputs.initialFetchTrigger.onNext(())
 
         // RxSwiftを利用して一覧データをUITableViewに適用する
         // MEMO: UITableViewのHeader/FooterはUITableViewDelegateで組み立てていく方針です。
-        viewModel.announcementItems
+        viewModel.outputs.announcementItems
             .bind(to: announcementTableView.rx.items) { (tableView, row, announcementEntity) in
                 let cell = tableView.dequeueReusableCustomCell(with: AnnouncementTableViewCell.self)
                 cell.setCell(announcementEntity)
                 return cell
             }
             .disposed(by: disposeBag)
-        viewModel.requestStatus
+        viewModel.outputs.requestStatus
             .observeOn(MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] requestStatus in
@@ -100,7 +100,7 @@ final class AnnouncementViewController: UIViewController {
                     guard let self = self else { return }
 
                     // MEMO: UITableViewの「Pull to Refresh」を実行する
-                    self.viewModel.pullToRefreshTrigger.onNext(())
+                    self.viewModel.inputs.pullToRefreshTrigger.onNext(())
                 }
             )
             .disposed(by: disposeBag)

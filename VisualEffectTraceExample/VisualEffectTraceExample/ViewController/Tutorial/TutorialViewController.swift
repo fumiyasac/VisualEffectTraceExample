@@ -87,11 +87,11 @@ final class TutorialViewController: UIViewController {
     private func bindToRxSwift() {
 
         // ViewModelから表示内容を取得する
-        viewModel.changeIndexTrigger.onNext(0)
+        viewModel.inputs.changeIndexTrigger.onNext(0)
 
         // RxSwiftを利用して一覧データをUICollectionViewに適用する
         // MEMO: UICollectionViewのHeader・Footerのレイアウト調整等が絡んで取り扱いにくい場合もあるので、状況に合わせて使い分けていくと良いかと思います。
-        viewModel.tutorialItems.bind(to: tutorialCollectionView.rx.items) { (collectionView, row, tutorialEntity) in
+        viewModel.outputs.tutorialItems.bind(to: tutorialCollectionView.rx.items) { (collectionView, row, tutorialEntity) in
                 let cell = collectionView.dequeueReusableCustomCell(with: TutorialCollectionViewCell.self, indexPath: IndexPath(row: row, section: 0))
                 cell.setCell(tutorialEntity)
                 cell.setCellDecoration()
@@ -99,7 +99,7 @@ final class TutorialViewController: UIViewController {
             }
             .disposed(by: disposeBag)
 
-        viewModel.isLastIndex
+        viewModel.outputs.isLastIndex
             .subscribe(
                 onNext: { [weak self] result in
                     guard let self = self else { return }
@@ -202,7 +202,7 @@ final class TutorialViewController: UIViewController {
         }, completion: { finished in
 
             // MEMO: チュートリアル完了フラグの更新と該当画面への遷移を実行する
-            self.viewModel.completeTutorialTrigger.onNext(())
+            self.viewModel.inputs.completeTutorialTrigger.onNext(())
             BaseScreenActionCreator.setCurrentApplicationUserStatus(.needToMoveSigninScreen)
         })
     }
