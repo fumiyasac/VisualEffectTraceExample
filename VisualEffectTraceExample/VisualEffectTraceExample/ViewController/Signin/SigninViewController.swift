@@ -33,21 +33,7 @@ final class SigninViewController: UIViewController {
     private let rawPasswordValidator = SigninScreenValidator.RawPasswordValidator()
 
     // MEMO: サインイン状態をハンドリングするViewModel
-    private let viewModel = SigninViewModel(
-        // MEMO: ユーザー状態更新用のUseCase
-        updateCurrentApplicationUserStatusUsecase: UpdateCurrentApplicationUserStatusUsecase(
-            applicationUserRepository: CurrentApplicationUserRepository(
-                realmAccessManager: RealmAccessManager.shared,
-                keychainAccessManager: KeychainAccessManager.shared
-            )
-        ),
-        // MEMO: サインイン実行用のUseCase
-        requestSigninUseCase: RequestSigninUseCase(
-            signinRepository: RequestSigninRepository(
-                apiRequestManager: APIRequestManager.shared
-            )
-        )
-    )
+    private let viewModel = SigninViewModel()
 
     // MARK: - @IBOutlet
 

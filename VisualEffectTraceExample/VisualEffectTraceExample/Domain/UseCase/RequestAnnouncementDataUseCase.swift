@@ -19,13 +19,9 @@ protocol AnnouncementUsecase {
 
 final class RequestAnnouncementDataUseCase: AnnouncementUsecase {
 
-    private let annoucementRepository: AnnoucementRepository
+    // MARK: - Properties
 
-    // MARK: - Initializer
-
-    init(annoucementRepository: AnnoucementRepository) {
-        self.annoucementRepository = annoucementRepository
-    }
+    @Dependencies.Inject(Dependencies.Name(rawValue: "AnnoucementRepository")) private var annoucementRepository: AnnoucementRepository
 
     // MARK: - AnnouncementUsecase
 

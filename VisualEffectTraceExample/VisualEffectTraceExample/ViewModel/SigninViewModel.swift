@@ -55,18 +55,12 @@ final class SigninViewModel: SigninViewModelInputs, SigninViewModelOutputs, Sign
     private let _requestStatus: BehaviorRelay<APIRequestState> = BehaviorRelay<APIRequestState>(value: .none)
 
     // MEMO: このViewModelで利用するUseCase(Domain Model)
-    private let updateCurrentApplicationUserStatusUsecase: ApplicationUserStatusUsecase
-    private let requestSigninUseCase: SigninUsecase
+    @Dependencies.Inject(Dependencies.Name(rawValue: "ApplicationUserStatusUseCase")) private var applicationUserStatusUseCase: ApplicationUserStatusUseCase
+    @Dependencies.Inject(Dependencies.Name(rawValue: "SigninUsecase")) private var signinUsecase: SigninUsecase
 
     // MARK: - Initializer
 
-    init(updateCurrentApplicationUserStatusUsecase: ApplicationUserStatusUsecase, requestSigninUseCase: SigninUsecase) {
-
-        // ApplicationUserStatusUsecaseプロトコルを適合させるUserCaseをインスタンス経由で該当データを取得する
-        self.updateCurrentApplicationUserStatusUsecase = updateCurrentApplicationUserStatusUsecase
-
-        // SigninUsecaseプロトコルを適合させるUserCaseをインスタンス経由で該当データを取得する
-        self.requestSigninUseCase = requestSigninUseCase
+    init() {
 
         // ViewModel側の処理実行トリガーと連結させる
         executeSigninRequestTrigger
@@ -83,7 +77,7 @@ final class SigninViewModel: SigninViewModelInputs, SigninViewModelOutputs, Sign
 
     private func executeSigninRequest(signinPatameters: SigninPatameters) {
         _requestStatus.accept(.requesting)
-        requestSigninUseCase.execute(mailAddress: signinPatameters.targetMailAddress, rawPassword: signinPatameters.targetRawPassword)
+        signinUsecase.execute(mailAddress: signinPatameters.targetMailAddress, rawPassword: signinPatameters.targetRawPassword)
             .subscribe(
                 onSuccess: { [weak self] data in
                     guard let self = self else { return }
@@ -100,6 +94,6 @@ final class SigninViewModel: SigninViewModelInputs, SigninViewModelOutputs, Sign
     }
 
     private func saveJsonWebToken(token: String) {
-        updateCurrentApplicationUserStatusUsecase.executeUpdateToken(token)
+        applicationUserStatusUseCase.executeUpdateToken(token)
     }
 }

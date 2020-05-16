@@ -36,14 +36,7 @@ final class ItemsEventIntroductionContainerViewController: UIViewController {
     private let disposeBag = DisposeBag()
 
     // MEMO: イベント概要内容を取得するViewModel
-    private let viewModel = EventIntroductionViewModel(
-        // MEMO: イベント概要を取得用のUseCase
-        requestEventIntroductionDataUseCase: RequestEventIntroductionDataUseCase(
-            eventIntroductionRepository: RequestEventIntroductionDataRepository(
-                apiRequestManager: APIRequestManager.shared
-            )
-        )
-    )
+    private let viewModel = EventIntroductionViewModel()
 
     // MARK: - @IBOutlet
 

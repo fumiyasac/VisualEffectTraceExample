@@ -55,14 +55,11 @@ final class SignupViewModel: SignupViewModelInputs, SignupViewModelOutputs, Sign
     private let _requestStatus: BehaviorRelay<APIRequestState> = BehaviorRelay<APIRequestState>(value: .none)
 
     // MEMO: このViewModelで利用するUseCase(Domain Model)
-    private let requestSignupUseCase: SignupUsecase
+    @Dependencies.Inject(Dependencies.Name(rawValue: "SignupUsecase")) private var signupUseCase: SignupUsecase
 
     // MARK: - Initializer
 
-    init(requestSignupUseCase: SignupUsecase) {
-
-        // SignupUsecaseプロトコルを適合させるUserCaseをインスタンス経由で該当データを取得する
-        self.requestSignupUseCase = requestSignupUseCase
+    init() {
 
         // ViewModel側の処理実行トリガーと連結させる
         executeSignupRequestTrigger
@@ -79,7 +76,7 @@ final class SignupViewModel: SignupViewModelInputs, SignupViewModelOutputs, Sign
 
     private func executeSignupRequest(signupPatameters: SignupPatameters) {
         _requestStatus.accept(.requesting)
-        requestSignupUseCase.execute(userName: signupPatameters.targetUserName, mailAddress: signupPatameters.targetMailAddress, rawPassword: signupPatameters.targetRawPassword)
+        signupUseCase.execute(userName: signupPatameters.targetUserName, mailAddress: signupPatameters.targetMailAddress, rawPassword: signupPatameters.targetRawPassword)
             .subscribe(
                 onSuccess: { [weak self] data in
                     guard let self = self else { return }

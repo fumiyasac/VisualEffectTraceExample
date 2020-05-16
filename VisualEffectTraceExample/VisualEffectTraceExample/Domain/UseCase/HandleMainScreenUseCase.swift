@@ -18,17 +18,13 @@ protocol MainScreenUseCase {
 
 final class HandleMainScreenUseCase: MainScreenUseCase {
 
-    private let mainScreenRepository: MainScreenRepository
+    // MARK: - Properties
 
-    // MARK: - Initializer
-
-    init(mainScreenRepository: MainScreenRepository) {
-        self.mainScreenRepository = mainScreenRepository
-    }
+    @Dependencies.Inject(Dependencies.Name(rawValue: "MainRepository")) private var mainRepository: MainRepository
 
     // MARK: - TutorialUseCase
 
     func execute() -> ApplicationUserStatus {
-        return mainScreenRepository.searchApplicationUserData()
+        return mainRepository.searchApplicationUserData()
     }
 }

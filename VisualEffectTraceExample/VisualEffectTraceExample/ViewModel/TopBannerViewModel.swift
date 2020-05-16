@@ -64,14 +64,11 @@ final class TopBannerViewModel: TopBannerViewModelInputs, TopBannerViewModelOutp
     private let _requestStatus: BehaviorRelay<APIRequestState> = BehaviorRelay<APIRequestState>(value: .none)
 
     // MEMO: このViewModelで利用するUseCase(Domain Model)
-    private let requestTopBannerDataUseCase: TopBannerUsecase
+    @Dependencies.Inject(Dependencies.Name(rawValue: "TopBannerUseCase")) private var topBannerUseCase: TopBannerUseCase
 
     // MARK: - Initializer
 
-    init(requestTopBannerDataUseCase: TopBannerUsecase) {
-
-        // TopBannerUsecaseプロトコルを適合させるUserCaseをインスタンス経由で該当データを取得する
-        self.requestTopBannerDataUseCase = requestTopBannerDataUseCase
+    init() {
 
         // ViewModel側の処理実行トリガーと連結させる
         initialFetchTrigger
@@ -96,7 +93,7 @@ final class TopBannerViewModel: TopBannerViewModelInputs, TopBannerViewModelOutp
 
     private func executeTopBannerDataRequest() {
         _requestStatus.accept(.requesting)
-        requestTopBannerDataUseCase.execute()
+        topBannerUseCase.execute()
             .subscribe(
                 onSuccess: { [weak self] data in
                     guard let self = self else { return }

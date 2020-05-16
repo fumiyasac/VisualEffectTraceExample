@@ -35,14 +35,7 @@ final class ItemsTopBannerContainerViewController: UIViewController {
     private let disposeBag = DisposeBag()
 
     // MEMO: トップバナー表示内容を取得するViewModel
-    private let viewModel = TopBannerViewModel(
-        // MEMO: トップバナーデータを取得用のUseCase
-        requestTopBannerDataUseCase: RequestTopBannerDataUseCase(
-            topBannerRepository: RequestTopBannerDataRepository(
-                apiRequestManager: APIRequestManager.shared
-            )
-        )
-    )
+    private let viewModel = TopBannerViewModel()
 
     // トップバナー表示におけるCarousel表現用のタイマー用のトリガー
     private let carouselIntervalTrigger: Observable<Int> = Observable.interval(.milliseconds(5000), scheduler: MainScheduler.instance)

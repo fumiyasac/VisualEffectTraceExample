@@ -17,10 +17,6 @@ protocol TutorialRepository {
 }
 
 final class TutorialDataRepository: TutorialRepository {
-    
-    // MARK: - Initializer
-
-    init() {}
 
     // MARK: - TutorialRepository
 

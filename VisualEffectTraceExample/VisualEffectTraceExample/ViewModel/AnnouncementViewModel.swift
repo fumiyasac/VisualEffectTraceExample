@@ -64,14 +64,11 @@ final class AnnouncementViewModel: AnnouncementViewModelInputs, AnnouncementView
     private let _requestStatus: BehaviorRelay<APIRequestState> = BehaviorRelay<APIRequestState>(value: .none)
 
     // MEMO: このViewModelで利用するUseCase(Domain Model)
-    private let requestAnnouncementDataUseCase: AnnouncementUsecase
+    @Dependencies.Inject(Dependencies.Name(rawValue: "AnnouncementUsecase")) private var announcementUsecase: AnnouncementUsecase
 
     // MARK: - Initializer
 
-    init(requestAnnouncementDataUseCase: AnnouncementUsecase) {
-
-        // AnnouncementUsecaseプロトコルを適合させるUserCaseをインスタンス経由で該当データを取得する
-        self.requestAnnouncementDataUseCase = requestAnnouncementDataUseCase
+    init() {
 
         // ViewModel側の処理実行トリガーと連結させる
         initialFetchTrigger
@@ -96,7 +93,7 @@ final class AnnouncementViewModel: AnnouncementViewModelInputs, AnnouncementView
 
     private func executeAnnouncementDataRequest() {
         _requestStatus.accept(.requesting)
-        requestAnnouncementDataUseCase.execute()
+        announcementUsecase.execute()
             .subscribe(
                 onSuccess: { [weak self] data in
                     guard let self = self else { return }

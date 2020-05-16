@@ -22,19 +22,7 @@ final class TutorialViewController: UIViewController {
     private let disposeBag = DisposeBag()
 
     // MEMO: チュートリアル表示内容を取得するViewModel
-    private let viewModel = TutorialViewModel(
-        // MEMO: チュートリアル画面データを取得用のUseCase
-        getTutorialUseCase: GetTutorialDataUseCase(
-            tutorialRepository: TutorialDataRepository()
-        ),
-        // MEMO: ユーザー状態更新用のUseCase
-        updateCurrentApplicationUserStatusUsecase: UpdateCurrentApplicationUserStatusUsecase(
-            applicationUserRepository: CurrentApplicationUserRepository(
-                realmAccessManager: RealmAccessManager.shared,
-                keychainAccessManager: KeychainAccessManager.shared
-            )
-        )
-    )
+    private let viewModel = TutorialViewModel()
 
     // MARK: - @IBOutlet
 

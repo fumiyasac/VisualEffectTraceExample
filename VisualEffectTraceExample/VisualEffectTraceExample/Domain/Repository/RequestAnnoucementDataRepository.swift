@@ -21,13 +21,7 @@ final class RequestAnnoucementDataRepository: AnnoucementRepository {
 
     // MARK: - Properties
 
-    private let apiRequestManager: APIRequestProtocol
-
-    // MARK: - Initializer
-
-    init(apiRequestManager: APIRequestProtocol) {
-        self.apiRequestManager = apiRequestManager
-    }
+    @Dependencies.Inject(Dependencies.Name(rawValue: "APIRequestProtocol")) private var apiRequestManager: APIRequestProtocol
 
     // MARK: - AnnoucementRepository
 

@@ -11,23 +11,19 @@ import RxSwift
 
 // MARK: - Protocol
 
-protocol TopBannerUsecase {
+protocol TopBannerUseCase {
 
     // トップバナー取得処理を実行する
     func execute() -> Single<TopBannerAPIResponse>
 }
 
-final class RequestTopBannerDataUseCase: TopBannerUsecase {
+final class RequestTopBannerDataUseCase: TopBannerUseCase {
 
-    private let topBannerRepository: TopBannerRepository
+    // MARK: - Properties
 
-    // MARK: - Initializer
+    @Dependencies.Inject(Dependencies.Name(rawValue: "TopBannerRepository")) private var topBannerRepository: TopBannerRepository
 
-    init(topBannerRepository: TopBannerRepository) {
-        self.topBannerRepository = topBannerRepository
-    }
-
-    // MARK: - TopBannerUsecase
+    // MARK: - TopBannerUseCase
 
     func execute() -> Single<TopBannerAPIResponse> {
         return topBannerRepository.requestTopBannerDataList()

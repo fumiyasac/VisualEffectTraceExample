@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - Protocol
 
-protocol ApplicationUserStatusUsecase {
+protocol ApplicationUserStatusUseCase {
 
     // ユーザーのチュートリアル完了フラグを更新する
     func executeUpdatePassTutorialStatus()
@@ -19,15 +19,11 @@ protocol ApplicationUserStatusUsecase {
     func executeUpdateToken(_ token: String)
 }
 
-final class UpdateCurrentApplicationUserStatusUsecase: ApplicationUserStatusUsecase {
+final class UpdateCurrentApplicationUserStatusUseCase: ApplicationUserStatusUseCase {
 
-    private let applicationUserRepository: ApplicationUserRepository
+    // MARK: - Properties
 
-    // MARK: - Initializer
-
-    init(applicationUserRepository: ApplicationUserRepository) {
-        self.applicationUserRepository = applicationUserRepository
-    }
+    @Dependencies.Inject(Dependencies.Name(rawValue: "ApplicationUserRepository")) private var applicationUserRepository: ApplicationUserRepository
 
     // MARK: - ApplicationUserStatusUsecase
 

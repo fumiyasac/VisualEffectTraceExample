@@ -18,15 +18,7 @@ final class MainViewController: UIViewController {
     private let disposeBag = DisposeBag()
 
     // MEMO: ユーザー状態に応じた画面表示を実施するためのViewModel
-    private let viewModel = MainViewModel(
-        // MEMO: 一番最初に起動後に表示される画面に関連するUseCase
-        handleMainScreenUseCase: HandleMainScreenUseCase(
-            mainScreenRepository: MainScreenRepository(
-                realmAccessManager: RealmAccessManager.shared,
-                keychainAccessManager: KeychainAccessManager.shared
-            )
-        )
-    )
+    private let viewModel = MainViewModel()
 
     // MARK: - BlockSubscriber
 

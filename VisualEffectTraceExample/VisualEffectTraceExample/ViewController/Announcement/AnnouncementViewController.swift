@@ -24,14 +24,7 @@ final class AnnouncementViewController: UIViewController {
     private let disposeBag = DisposeBag()
 
     // MEMO: お知らせ表示状態をハンドリングするViewModel
-    private let viewModel = AnnouncementViewModel(
-        // MEMO: お知らせデータ取得用のUseCase
-        requestAnnouncementDataUseCase: RequestAnnouncementDataUseCase(
-            annoucementRepository: RequestAnnoucementDataRepository(
-                apiRequestManager: APIRequestManager.shared
-            )
-        )
-    )
+    private let viewModel = AnnouncementViewModel()
 
     // UITableViewに設置するRefreshControl
     private let announcementRefrashControl = UIRefreshControl()

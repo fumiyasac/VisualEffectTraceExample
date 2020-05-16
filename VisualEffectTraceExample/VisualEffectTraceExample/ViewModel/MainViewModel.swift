@@ -51,14 +51,11 @@ final class MainViewModel: MainViewModelInputs, MainViewModelOutputs, MainViewMo
     private let _targetApplicationUserState: BehaviorRelay<ApplicationUserStatus?> = BehaviorRelay<ApplicationUserStatus?>(value: nil)
 
     // MEMO: このViewModelで利用するUseCase(Domain Model)
-    private let handleMainScreenUseCase: MainScreenUseCase
+    @Dependencies.Inject(Dependencies.Name(rawValue: "MainScreenUseCase")) private var mainScreenUseCase: MainScreenUseCase
 
     // MARK: - Initializer
 
-    init(handleMainScreenUseCase: MainScreenUseCase) {
-
-        // このViewModelで利用するUseCaseのインスタンス経由で該当データを取得する
-        self.handleMainScreenUseCase = handleMainScreenUseCase
+    init() {
 
         // ViewModel側の処理実行トリガーと連結させる
         initialSettingTrigger
@@ -74,7 +71,7 @@ final class MainViewModel: MainViewModelInputs, MainViewModelOutputs, MainViewMo
     // MARK: - Private Function
 
     private func getApplicationUserStatus() {
-        let applicationUserStatus = handleMainScreenUseCase.execute()
+        let applicationUserStatus = mainScreenUseCase.execute()
         _targetApplicationUserState.accept(applicationUserStatus)
     }
 }

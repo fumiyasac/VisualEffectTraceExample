@@ -19,13 +19,9 @@ protocol EventIntroductionUseCase {
 
 final class RequestEventIntroductionDataUseCase: EventIntroductionUseCase {
 
-    private let eventIntroductionRepository: EventIntroductionRepository
+    // MARK: - Properties
 
-    // MARK: - Initializer
-
-    init(eventIntroductionRepository: EventIntroductionRepository) {
-        self.eventIntroductionRepository = eventIntroductionRepository
-    }
+    @Dependencies.Inject(Dependencies.Name(rawValue: "EventIntroductionRepository")) private var eventIntroductionRepository: EventIntroductionRepository
 
     // MARK: - EventIntroductionUseCase
 

@@ -27,6 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Gedatsu.open()
         #endif
 
+        // MEMO: Dependency Injection用の処理を初期化する
+        let domainDependency = DependenciesDefinition()
+        domainDependency.inject()
+
         return true
     }
 

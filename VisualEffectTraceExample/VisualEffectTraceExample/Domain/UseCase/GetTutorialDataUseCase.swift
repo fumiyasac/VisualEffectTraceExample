@@ -18,13 +18,9 @@ protocol TutorialUseCase {
 
 final class GetTutorialDataUseCase: TutorialUseCase {
 
-    private let tutorialRepository: TutorialRepository
+    // MARK: - Properties
 
-    // MARK: - Initializer
-
-    init(tutorialRepository: TutorialRepository) {
-        self.tutorialRepository = tutorialRepository
-    }
+    @Dependencies.Inject(Dependencies.Name(rawValue: "TutorialRepository")) private var tutorialRepository: TutorialRepository
 
     // MARK: - TutorialUseCase
 

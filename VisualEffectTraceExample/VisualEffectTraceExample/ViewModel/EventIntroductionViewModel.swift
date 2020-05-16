@@ -73,14 +73,11 @@ final class EventIntroductionViewModel: EventIntroductionViewModelInputs, EventI
     private let _hasNextPage: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: true)
 
     // MEMO: このViewModelで利用するUseCase(Domain Model)
-    private let requestEventIntroductionDataUseCase: EventIntroductionUseCase
+    @Dependencies.Inject(Dependencies.Name(rawValue: "EventIntroductionUseCase")) private var eventIntroductionUseCase: EventIntroductionUseCase
 
     // MARK: - Initializer
 
-    init(requestEventIntroductionDataUseCase: EventIntroductionUseCase) {
-
-        // TopBannerUsecaseプロトコルを適合させるUserCaseをインスタンス経由で該当データを取得する
-        self.requestEventIntroductionDataUseCase = requestEventIntroductionDataUseCase
+    init() {
 
         // ViewModel側の処理実行トリガーと連結させる
         initialFetchTrigger
@@ -119,7 +116,7 @@ final class EventIntroductionViewModel: EventIntroductionViewModelInputs, EventI
 
     private func executeEventIntroductionDataRequest(page: Int) {
         _requestStatus.accept(.requesting)
-        requestEventIntroductionDataUseCase.execute(page: page)
+        eventIntroductionUseCase.execute(page: page)
             .subscribe(
                 onSuccess: { [weak self] data in
                     guard let self = self else { return }

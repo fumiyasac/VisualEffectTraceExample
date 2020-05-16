@@ -19,13 +19,9 @@ protocol SignupUsecase {
 
 final class RequestSignupUseCase: SignupUsecase {
 
-    private let signupRepository: SignupRepository
+    // MARK: - Properties
 
-    // MARK: - Initializer
-
-    init(signupRepository: SignupRepository) {
-        self.signupRepository = signupRepository
-    }
+    @Dependencies.Inject(Dependencies.Name(rawValue: "SignupRepository")) private var signupRepository: SignupRepository
 
     // MARK: - SignupUsecase
 

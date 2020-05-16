@@ -20,15 +20,8 @@ final class MainScreenRepository: MainRepository {
 
     // MARK: - Properties
 
-    private let realmAccessManager: RealmAccessProtocol
-    private let keychainAccessManager: KeychainAccessProtocol
-
-    // MARK: - Initializer
-
-    init(realmAccessManager: RealmAccessProtocol, keychainAccessManager: KeychainAccessProtocol) {
-        self.realmAccessManager = realmAccessManager
-        self.keychainAccessManager = keychainAccessManager
-    }
+    @Dependencies.Inject(Dependencies.Name(rawValue: "RealmAccessProtocol")) private var realmAccessManager: RealmAccessProtocol
+    @Dependencies.Inject(Dependencies.Name(rawValue: "KeychainAccessProtocol")) private var keychainAccessManager: KeychainAccessProtocol
 
     // MARK: - MainRepository
 

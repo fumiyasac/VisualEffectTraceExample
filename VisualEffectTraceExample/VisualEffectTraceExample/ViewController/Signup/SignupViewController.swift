@@ -35,14 +35,7 @@ final class SignupViewController: UIViewController {
     private let rawPasswordValidator = SignupScreenValidator.RawPasswordValidator()
 
     // MEMO: サインアップ状態をハンドリングするViewModel
-    private let viewModel = SignupViewModel(
-        // MEMO: サインアップ実行用のUseCase
-        requestSignupUseCase: RequestSignupUseCase(
-            signupRepository: RequestSignupRepository(
-                apiRequestManager: APIRequestManager.shared
-            )
-        )
-    )
+    private let viewModel = SignupViewModel()
 
     // MARK: - @IBOutlet
 
