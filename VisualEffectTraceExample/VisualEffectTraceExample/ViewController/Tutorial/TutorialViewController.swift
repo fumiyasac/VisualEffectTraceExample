@@ -22,7 +22,7 @@ final class TutorialViewController: UIViewController {
     private let disposeBag = DisposeBag()
 
     // MEMO: チュートリアル表示内容を取得するViewModel
-    private let viewModel = TutorialViewModel()
+    @Dependencies.Inject(Dependencies.Name(rawValue: "TutorialViewModelType")) private var viewModel: TutorialViewModelType
 
     // MARK: - @IBOutlet
 
@@ -153,7 +153,7 @@ final class TutorialViewController: UIViewController {
                     let visibleRect = CGRect(origin: currentPoint, size: collectionView.bounds.size)
                     let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
                     if let visibleIndexPath = collectionView.indexPathForItem(at: visiblePoint) {
-                        self.viewModel.changeIndexTrigger.onNext(visibleIndexPath.row)
+                        self.viewModel.inputs.changeIndexTrigger.onNext(visibleIndexPath.row)
                     }
                 }
             )

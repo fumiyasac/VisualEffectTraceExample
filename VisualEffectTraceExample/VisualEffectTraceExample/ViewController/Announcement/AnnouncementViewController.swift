@@ -24,7 +24,7 @@ final class AnnouncementViewController: UIViewController {
     private let disposeBag = DisposeBag()
 
     // MEMO: お知らせ表示状態をハンドリングするViewModel
-    private let viewModel = AnnouncementViewModel()
+    @Dependencies.Inject(Dependencies.Name(rawValue: "AnnouncementViewModelType")) private var viewModel: AnnouncementViewModelType
 
     // UITableViewに設置するRefreshControl
     private let announcementRefrashControl = UIRefreshControl()

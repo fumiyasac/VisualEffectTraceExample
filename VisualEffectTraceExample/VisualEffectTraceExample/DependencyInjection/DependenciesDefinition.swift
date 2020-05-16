@@ -127,5 +127,43 @@ final class DependenciesDefinition {
                 for: Dependencies.Name(rawValue: TypeScanner.getName(useCase.protocolName))
             )
         }
+
+        // MEMO: ViewModel層の登録
+        let viewModels: Array<(implInstance: Any, protocolName: Any)> = [
+            (
+                implInstance: MainViewModel(),
+                protocolName: MainViewModelType.self
+            ),
+            (
+                implInstance: AnnouncementViewModel(),
+                protocolName: AnnouncementViewModelType.self
+            ),
+            (
+                implInstance: TopBannerViewModel(),
+                protocolName: TopBannerViewModelType.self
+            ),
+            (
+                implInstance: EventIntroductionViewModel(),
+                protocolName: EventIntroductionViewModelType.self
+            ),
+            (
+                implInstance: SigninViewModel(),
+                protocolName: SigninViewModelType.self
+            ),
+            (
+                implInstance: SignupViewModel(),
+                protocolName: SignupViewModelType.self
+            ),
+            (
+                implInstance: TutorialViewModel(),
+                protocolName: TutorialViewModelType.self
+            )
+        ]
+        let _ = viewModels.map{ viewModel in
+            container.register(
+                viewModel.implInstance,
+                for: Dependencies.Name(rawValue: TypeScanner.getName(viewModel.protocolName))
+            )
+        }
     }
 }

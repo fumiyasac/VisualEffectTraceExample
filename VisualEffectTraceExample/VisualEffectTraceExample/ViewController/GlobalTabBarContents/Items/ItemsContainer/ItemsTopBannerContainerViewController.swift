@@ -35,15 +35,14 @@ final class ItemsTopBannerContainerViewController: UIViewController {
     private let disposeBag = DisposeBag()
 
     // MEMO: トップバナー表示内容を取得するViewModel
-    private let viewModel = TopBannerViewModel()
+    @Dependencies.Inject(Dependencies.Name(rawValue: "TopBannerViewModelType")) private var viewModel: TopBannerViewModelType
 
+    // MEMO: トップバナーを時限式で動かすために必要な値
     // トップバナー表示におけるCarousel表現用のタイマー用のトリガー
     private let carouselIntervalTrigger: Observable<Int> = Observable.interval(.milliseconds(5000), scheduler: MainScheduler.instance)
-
-    //
+    // 現在のスクロール実行状態
     private let bannerScrolling: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
-
-    //
+    // 現在選択されているインデックス値
     private let currentIndex: BehaviorRelay<Int> = BehaviorRelay<Int>(value: 0)
 
     // MARK: - @IBOutlet
@@ -105,10 +104,10 @@ final class ItemsTopBannerContainerViewController: UIViewController {
     private func bindToRxSwift() {
 
         // ViewModelから表示内容を取得する
-        viewModel.initialFetchTrigger.onNext(())
+        viewModel.inputs.initialFetchTrigger.onNext(())
 
         // RxSwiftを利用して一覧データをUICollectionViewに適用する
-        viewModel.topBannerItems.bind(to: topBannerCollectionView.rx.items) { (collectionView, row, topBannerEntity) in
+        viewModel.outputs.topBannerItems.bind(to: topBannerCollectionView.rx.items) { (collectionView, row, topBannerEntity) in
                 let cell = collectionView.dequeueReusableCustomCell(with: TopBannerCollectionViewCell.self, indexPath: IndexPath(row: row, section: 0))
                 cell.setCell(topBannerEntity)
                 return cell
@@ -116,7 +115,7 @@ final class ItemsTopBannerContainerViewController: UIViewController {
             .disposed(by: disposeBag)
  
         // バナーデータのセット時に左右に配置しているボタンの状態を変更する処理
-        viewModel.topBannerItems
+        viewModel.outputs.topBannerItems
             .asObservable()
             .observeOn(MainScheduler.instance)
             .subscribe(

@@ -33,7 +33,7 @@ final class SigninViewController: UIViewController {
     private let rawPasswordValidator = SigninScreenValidator.RawPasswordValidator()
 
     // MEMO: サインイン状態をハンドリングするViewModel
-    private let viewModel = SigninViewModel()
+    @Dependencies.Inject(Dependencies.Name(rawValue: "SigninViewModelType")) private var viewModel: SigninViewModelType
 
     // MARK: - @IBOutlet
 

@@ -36,7 +36,7 @@ final class ItemsEventIntroductionContainerViewController: UIViewController {
     private let disposeBag = DisposeBag()
 
     // MEMO: イベント概要内容を取得するViewModel
-    private let viewModel = EventIntroductionViewModel()
+    @Dependencies.Inject(Dependencies.Name(rawValue: "EventIntroductionViewModelType")) private var viewModel: EventIntroductionViewModelType
 
     // MARK: - @IBOutlet
 
@@ -73,10 +73,10 @@ final class ItemsEventIntroductionContainerViewController: UIViewController {
     private func bindToRxSwift() {
 
         // ViewModelから表示内容を取得する
-        viewModel.initialFetchTrigger.onNext(())
+        viewModel.inputs.initialFetchTrigger.onNext(())
 
         // RxSwiftを利用して一覧データをUICollectionViewに適用する
-        viewModel.eventIntroductionItems.bind(to: eventIntroductionCollectionView.rx.items) { (collectionView, row, eventIntroductionEntity) in
+        viewModel.outputs.eventIntroductionItems.bind(to: eventIntroductionCollectionView.rx.items) { (collectionView, row, eventIntroductionEntity) in
                 let cell = collectionView.dequeueReusableCustomCell(with: EventIntroductionCollectionViewCell.self, indexPath: IndexPath(row: row, section: 0))
                 cell.setCell(eventIntroductionEntity)
                 cell.setCellDecoration()

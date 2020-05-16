@@ -18,7 +18,7 @@ final class MainViewController: UIViewController {
     private let disposeBag = DisposeBag()
 
     // MEMO: ユーザー状態に応じた画面表示を実施するためのViewModel
-    private let viewModel = MainViewModel()
+    @Dependencies.Inject(Dependencies.Name(rawValue: "MainViewModelType")) private var viewModel: MainViewModelType
 
     // MARK: - BlockSubscriber
 

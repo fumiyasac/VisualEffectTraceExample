@@ -35,7 +35,7 @@ final class SignupViewController: UIViewController {
     private let rawPasswordValidator = SignupScreenValidator.RawPasswordValidator()
 
     // MEMO: サインアップ状態をハンドリングするViewModel
-    private let viewModel = SignupViewModel()
+    @Dependencies.Inject(Dependencies.Name(rawValue: "SignupViewModelType")) private var viewModel: SignupViewModelType
 
     // MARK: - @IBOutlet
 
