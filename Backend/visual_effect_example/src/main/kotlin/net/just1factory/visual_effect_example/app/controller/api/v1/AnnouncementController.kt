@@ -33,8 +33,15 @@ class AnnouncementController {
 		return AnnouncementListResponse(result = announcements)
 	}
 
+	// MEMO: AnnouncementServiceを経由してAnnouncementEntityにマッピングされたデータを最新1件取得する
+	@GetMapping("/internal_announcement/recent")
+	fun findRecent(): AnnouncementDetailResponse {
+		val announcement = announcementService.findRecent() ?: throw NotFoundException("現在最新のお知らせは見つかりませんでした。")
+		return AnnouncementDetailResponse(result = announcement)
+	}
+
 	// MEMO: AnnouncementServiceを経由して受け取ったIDに紐づくAnnouncementEntityにマッピングされたデータを1件取得する
-	@GetMapping("/announcement/{id}")
+	@GetMapping("/internal_announcement/{id}")
 	fun findBy(@PathVariable id: Int): AnnouncementDetailResponse {
 		val announcement = announcementService.findBy(id = id) ?: throw NotFoundException("ID: " + id + "に合致するデータが見つかりませんでした。")
 		return AnnouncementDetailResponse(result = announcement)

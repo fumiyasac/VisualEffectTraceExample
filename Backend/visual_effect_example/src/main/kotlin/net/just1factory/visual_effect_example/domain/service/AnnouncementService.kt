@@ -21,6 +21,11 @@ class AnnouncementService {
         return announcementRepository.findAll()
     }
 
+    // ライブラリ`JPA`を利用してAnnouncementEntityにマッピングされたデータを最新1件取得する
+    fun findRecent(): AnnouncementEntity? {
+        return announcementRepository.findAll().last()
+    }
+
     // ライブラリ`JPA`を利用してAnnouncementEntityにマッピングされたデータのうち該当するIDに紐づくものを取得する
     fun findBy(id: Int): AnnouncementEntity? {
         return announcementRepository.findById(id).orElse(null)
