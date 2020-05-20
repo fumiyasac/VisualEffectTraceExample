@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ItemsContainerErrorView" customModule="VisualEffectTraceExample" customModuleProvider="target">
+            <connections>
+                <outlet property="retryRequestButton" destination="sRA-cJ-HVH" id="bj8-qy-EVQ"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="210"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NVN-4m-Bi4">
+                    <rect key="frame" x="57.5" y="61" width="260" height="88"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="情報の取得に失敗しました" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fe2-Qe-kwy">
+                            <rect key="frame" x="6" y="6" width="248" height="14.5"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sRA-cJ-HVH">
+                            <rect key="frame" x="64" y="46" width="132" height="36"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="36" id="5YA-xa-c2A"/>
+                                <constraint firstAttribute="width" constant="132" id="k7A-4B-5mL"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
+                            <state key="normal" title="&gt; 再度取得を実行する">
+                                <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="下記のボタンより再取得ができます。" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8eT-uG-4Nz">
+                            <rect key="frame" x="6" y="26.5" width="248" height="13"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="11"/>
+                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Fe2-Qe-kwy" secondAttribute="trailing" constant="6" id="C9p-bL-VyK"/>
+                        <constraint firstAttribute="height" constant="88" id="CU8-cm-QNM"/>
+                        <constraint firstItem="8eT-uG-4Nz" firstAttribute="top" secondItem="Fe2-Qe-kwy" secondAttribute="bottom" constant="6" id="HDP-uc-Xna"/>
+                        <constraint firstItem="sRA-cJ-HVH" firstAttribute="centerX" secondItem="NVN-4m-Bi4" secondAttribute="centerX" id="NkN-rx-4Xf"/>
+                        <constraint firstItem="8eT-uG-4Nz" firstAttribute="leading" secondItem="NVN-4m-Bi4" secondAttribute="leading" constant="6" id="W3o-b5-zcj"/>
+                        <constraint firstAttribute="width" constant="260" id="YU9-3O-3wL"/>
+                        <constraint firstItem="Fe2-Qe-kwy" firstAttribute="top" secondItem="NVN-4m-Bi4" secondAttribute="top" constant="6" id="b6w-TN-Ghx"/>
+                        <constraint firstItem="Fe2-Qe-kwy" firstAttribute="leading" secondItem="NVN-4m-Bi4" secondAttribute="leading" constant="6" id="cEL-zx-3qt"/>
+                        <constraint firstAttribute="trailing" secondItem="8eT-uG-4Nz" secondAttribute="trailing" constant="6" id="lB3-Cm-NJD"/>
+                        <constraint firstAttribute="bottom" secondItem="sRA-cJ-HVH" secondAttribute="bottom" constant="6" id="zMP-TE-9j5"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+            <constraints>
+                <constraint firstItem="NVN-4m-Bi4" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="Z2b-Gd-aUK"/>
+                <constraint firstItem="NVN-4m-Bi4" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="cla-cj-r9L"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="132" y="107.0464767616192"/>
+        </view>
+    </objects>
+</document>

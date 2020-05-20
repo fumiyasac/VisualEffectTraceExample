@@ -16,14 +16,23 @@ import RxSwift
 protocol APIRequestProtocol {
 
     // MEMO: 認証済みユーザーのAPIリクエスト
+
     // Item.storyboardで利用するエンドポイント
     func getTopBanners() -> Single<TopBannerAPIResponse>
     func getEventIntroductionsBy(page: Int) -> Single<EventIntroductionAPIResponse>
+    func getRecentAnnoucement() -> Single<AnnouncementDetailResponse>
 
-    // MEMO: 公開部分のAPIリクエスト
-    func getAnnoucements() -> Single<AnnouncementListResponse>
+    // AnnouncementDetail.storyboardで利用するエンドポイント
     func getAnnoucementDetailBy(id: Int) -> Single<AnnouncementDetailResponse>
 
+    // MEMO: 公開部分のAPIリクエスト
+
+    // Announcement.storyboardで利用するエンドポイント
+    func getAnnoucements() -> Single<AnnouncementListResponse>
+
+    // Signin.storyboardで利用するエンドポイント
     func requestSiginin(mailAddress: String, rawPassword: String) -> Single<SigninSuccessResponse>
+
+    // Signup.storyboardで利用するエンドポイント
     func requestSiginup(userName: String, mailAddress: String, rawPassword: String) -> Single<GeneralPostSuccessARIResponse>
 }

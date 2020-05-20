@@ -16,13 +16,22 @@ extension APIRequestManager: APIRequestProtocol {
     // MEMO: サンプルで利用するエンドポイント定義
     private enum EndPoint: String {
 
+        // MEMO: 認証済みユーザーのAPIリクエスト
+
         // Item.storyboardで利用するエンドポイント
         case topBanner = "top_banner"
         case eventIntroduction = "event_introduction"
+        case internalAnnoucement = "internal_announcement"
 
         // 認証前の画面で利用するエンドポイント
+
+        // Announcement.storyboardで利用するエンドポイント
         case announcement = "announcement"
+
+        // Signin.storyboardで利用するエンドポイント
         case signin = "signin"
+
+        // Signup.storyboardで利用するエンドポイント
         case signup = "signup"
 
         func getBaseUrl() -> String {
@@ -54,14 +63,14 @@ extension APIRequestManager: APIRequestProtocol {
         )
     }
 
-    // お知らせ一覧表示用のAPIリクエスト処理の実行
-    func getAnnoucements() -> Single<AnnouncementListResponse> {
+    // 最新のお知らせ詳細表示用のAPIリクエスト処理の実行
+    func getRecentAnnoucement() -> Single<AnnouncementDetailResponse> {
 
-        let annoucementListsEndPoint = EndPoint.announcement.getBaseUrl()
+        let recentAnnoucementEndPoint = EndPoint.internalAnnoucement.getBaseUrl() + "/recent"
         return executeAPIRequest(
-            endpointUrl: annoucementListsEndPoint,
+            endpointUrl: recentAnnoucementEndPoint,
             httpMethod: HTTPMethod.GET,
-            responseFormat: AnnouncementListResponse.self
+            responseFormat: AnnouncementDetailResponse.self
         )
     }
 
@@ -73,6 +82,17 @@ extension APIRequestManager: APIRequestProtocol {
             endpointUrl: annoucementDetailEndPoint,
             httpMethod: HTTPMethod.GET,
             responseFormat: AnnouncementDetailResponse.self
+        )
+    }
+
+    // お知らせ一覧表示用のAPIリクエスト処理の実行
+    func getAnnoucements() -> Single<AnnouncementListResponse> {
+
+        let annoucementListsEndPoint = EndPoint.announcement.getBaseUrl()
+        return executeAPIRequest(
+            endpointUrl: annoucementListsEndPoint,
+            httpMethod: HTTPMethod.GET,
+            responseFormat: AnnouncementListResponse.self
         )
     }
 

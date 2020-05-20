@@ -80,6 +80,9 @@
 		DE8487412425E21D00A40975 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8487402425E21D00A40975 /* AppConstants.swift */; };
 		DE8487432425E81000A40975 /* RealmAccessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8487422425E81000A40975 /* RealmAccessManager.swift */; };
 		DE8487462425FACD00A40975 /* ApplicationUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8487452425FACD00A40975 /* ApplicationUserEntity.swift */; };
+		DE8E1D852475664900C55227 /* AnnouncementDetailAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E1D842475664900C55227 /* AnnouncementDetailAPIResponse.swift */; };
+		DE8E1D8824756CCE00C55227 /* ItemsContainerErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE8E1D8724756CCE00C55227 /* ItemsContainerErrorView.xib */; };
+		DE8E1D8A24756CDA00C55227 /* ItemsContainerErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E1D8924756CDA00C55227 /* ItemsContainerErrorView.swift */; };
 		DE8E96542444B9DE0033375F /* AnnouncementScreenCoodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E96532444B9DE0033375F /* AnnouncementScreenCoodinator.swift */; };
 		DE8E96572444C7480033375F /* AnnouncementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E96562444C7480033375F /* AnnouncementViewModel.swift */; };
 		DE8E96592444C9870033375F /* RequestAnnouncementDataUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E96582444C9870033375F /* RequestAnnouncementDataUseCase.swift */; };
@@ -245,6 +248,9 @@
 		DE8487402425E21D00A40975 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		DE8487422425E81000A40975 /* RealmAccessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmAccessManager.swift; sourceTree = "<group>"; };
 		DE8487452425FACD00A40975 /* ApplicationUserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationUserEntity.swift; sourceTree = "<group>"; };
+		DE8E1D842475664900C55227 /* AnnouncementDetailAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementDetailAPIResponse.swift; sourceTree = "<group>"; };
+		DE8E1D8724756CCE00C55227 /* ItemsContainerErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemsContainerErrorView.xib; sourceTree = "<group>"; };
+		DE8E1D8924756CDA00C55227 /* ItemsContainerErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsContainerErrorView.swift; sourceTree = "<group>"; };
 		DE8E96532444B9DE0033375F /* AnnouncementScreenCoodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementScreenCoodinator.swift; sourceTree = "<group>"; };
 		DE8E96562444C7480033375F /* AnnouncementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementViewModel.swift; sourceTree = "<group>"; };
 		DE8E96582444C9870033375F /* RequestAnnouncementDataUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAnnouncementDataUseCase.swift; sourceTree = "<group>"; };
@@ -361,10 +367,11 @@
 			isa = PBXGroup;
 			children = (
 				DE0424E42402AF50008DEF36 /* AnnouncementAPIResponse.swift */,
+				DE8E1D842475664900C55227 /* AnnouncementDetailAPIResponse.swift */,
 				DEC01226245B022F00C92A6F /* EventIntroductionAPIResponse.swift */,
-				DEC8A80E245A97A30033610D /* TopBannerAPIResponse.swift */,
-				DEF5A2312441743600383473 /* SigninAPIResponse.swift */,
 				DE9D4EFE24437611003439ED /* GeneralPostSuccessARIResponse.swift */,
+				DEF5A2312441743600383473 /* SigninAPIResponse.swift */,
+				DEC8A80E245A97A30033610D /* TopBannerAPIResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -656,6 +663,15 @@
 			path = DataTransfer;
 			sourceTree = "<group>";
 		};
+		DE8E1D8624756C7000C55227 /* ItemsContainerErrorView */ = {
+			isa = PBXGroup;
+			children = (
+				DE8E1D8924756CDA00C55227 /* ItemsContainerErrorView.swift */,
+				DE8E1D8724756CCE00C55227 /* ItemsContainerErrorView.xib */,
+			);
+			path = ItemsContainerErrorView;
+			sourceTree = "<group>";
+		};
 		DE8E96552444C70F0033375F /* AnnoucementTableHeaderView */ = {
 			isa = PBXGroup;
 			children = (
@@ -843,6 +859,7 @@
 				DE68656A24666E80003D3522 /* FeaturedCollectionViewCell */,
 				DE67D98F24338F0700EB2D61 /* FormTextFieldInputView */,
 				DE4D3837245FB66000680B91 /* ItemListCollectionHeaderView */,
+				DE8E1D8624756C7000C55227 /* ItemsContainerErrorView */,
 				DE234E5324592CE800E1DC10 /* TopBannerCollectionViewCell */,
 				DE2AB89B24282CCC00335E4F /* TutorialCollectionViewCell */,
 			);
@@ -1248,6 +1265,7 @@
 				DEAFA5892453E2A80095B335 /* Story.storyboard in Resources */,
 				DE234E612459930600E1DC10 /* ContainerCollectionViewCell.xib in Resources */,
 				DE84854224279D7D00766098 /* Tutorial.storyboard in Resources */,
+				DE8E1D8824756CCE00C55227 /* ItemsContainerErrorView.xib in Resources */,
 				DE67D99124338F4100EB2D61 /* FormInputTextFieldView.xib in Resources */,
 				DE234E5C24592E9F00E1DC10 /* EventIntroductionCollectionViewCell.xib in Resources */,
 				DE4D383F245FB6CA00680B91 /* ItemListCollectionHeaderView.xib in Resources */,
@@ -1356,6 +1374,7 @@
 				DEF5A2382443435600383473 /* RequestSignupUseCase.swift in Sources */,
 				DE2AB89F242973A100335E4F /* GetTutorialDataUseCase.swift in Sources */,
 				DE9D4EFD24437571003439ED /* RequestSignupRepository.swift in Sources */,
+				DE8E1D852475664900C55227 /* AnnouncementDetailAPIResponse.swift in Sources */,
 				DEE0B71324544D7100B285BA /* GlobalTabBarTransition.swift in Sources */,
 				DEF5A2442443442300383473 /* SignupScreenReducer.swift in Sources */,
 				DEA01C7F240107DC00346C1E /* AnnouncementEntity.swift in Sources */,
@@ -1437,6 +1456,7 @@
 				DE4D383E245FB6CA00680B91 /* ItemListCollectionHeaderView.swift in Sources */,
 				DE4D3842245FB90E00680B91 /* ExpandedFileBinderCollectionViewLayout.swift in Sources */,
 				DE84854C2427A48A00766098 /* TutorialEntity.swift in Sources */,
+				DE8E1D8A24756CDA00C55227 /* ItemsContainerErrorView.swift in Sources */,
 				DE8E965B2444C9E60033375F /* RequestAnnoucementDataRepository.swift in Sources */,
 				DE726CC0243AB5310043FA4E /* CompositionalValidator.swift in Sources */,
 				DE2AB8CA242FF01100335E4F /* AppReducer.swift in Sources */,
