@@ -51,6 +51,7 @@ final class ItemsTopBannerContainerViewController: UIViewController {
     @IBOutlet private weak var topBannerPrevButton: UIButton!
     @IBOutlet private weak var topBannerNextButton: UIButton!
     @IBOutlet private weak var topBannerPageControl: UIPageControl!
+    @IBOutlet private weak var topBannerErrorView: ItemsContainerErrorView!
 
     // MARK: - Override
 
@@ -60,6 +61,7 @@ final class ItemsTopBannerContainerViewController: UIViewController {
         setupTopBannerCollectionView()
         setupTopBannerPageControl()
         setupPreviousAndNextButtons()
+        setupTopBannerErrorView()
         bindToRxSwift()
     }
 
@@ -79,6 +81,9 @@ final class ItemsTopBannerContainerViewController: UIViewController {
         layout.animator = ParallaxAttributesAnimator()
         layout.scrollDirection = .horizontal
         topBannerCollectionView.collectionViewLayout = layout
+
+        // 一番最初は非表示状態にしておく
+        topBannerCollectionView.isHidden = true
     }
     
     private func setupTopBannerPageControl() {
@@ -101,6 +106,15 @@ final class ItemsTopBannerContainerViewController: UIViewController {
         topBannerNextButton.alpha = 0.7
     }
 
+    private func setupTopBannerErrorView() {
+
+        // ItemsContainerErrorViewDelegateの宣言
+        topBannerErrorView.delegate = self
+
+        // 一番最初は非表示状態にしておく
+        topBannerErrorView.isHidden = true
+    }
+
     private func bindToRxSwift() {
 
         // ViewModelから表示内容を取得する
@@ -114,16 +128,39 @@ final class ItemsTopBannerContainerViewController: UIViewController {
             }
             .disposed(by: disposeBag)
  
-        // バナーデータのセット時に左右に配置しているボタンの状態を変更する処理
+        // データのセット時に左右に配置しているボタン及び画面の状態を変更する処理
         viewModel.outputs.topBannerItems
             .asObservable()
             .observeOn(MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] topBanners in
                     guard let self = self else { return }
+ 
+                    // MEMO: データ表示用のUICollectionViewとエラー表示用のViewの表示・非表示を決定する
+                    self.topBannerCollectionView.isHidden = false
+                    self.topBannerErrorView.isHidden = true
+
+                    // MEMO: PageControl部分の設定をする
                     let totalCount = topBanners.count
                     self.topBannerPageControl.numberOfPages = totalCount
                     self.changeArrowButtonsState(at: 0, totalCount: totalCount)
+                }
+            )
+            .disposed(by: disposeBag)
+
+        // データのセット時にエラーが発生した場合における処理
+        viewModel.outputs.requestStatus
+            .observeOn(MainScheduler.instance)
+            .filter { requestStatus in
+                requestStatus == .error
+            }
+            .subscribe(
+                onNext: { [weak self] topBanners in
+                    guard let self = self else { return }
+
+                    // MEMO: データ表示用のUICollectionViewとエラー表示用のViewの表示・非表示を決定する
+                    self.topBannerCollectionView.isHidden = true
+                    self.topBannerErrorView.isHidden = false
                 }
             )
             .disposed(by: disposeBag)
@@ -287,6 +324,17 @@ extension ItemsTopBannerContainerViewController: UICollectionViewDelegateFlowLay
     // セル内のアイテム間の余白(margin)調整を行う
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return .zero
+    }
+}
+
+// MWRK: - ItemsContainerErrorViewDelegate
+
+extension ItemsTopBannerContainerViewController: ItemsContainerErrorViewDelegate {
+
+    func retryRequestButtonTapped() {
+
+        // ViewModelから表示内容を取得する
+        viewModel.inputs.initialFetchTrigger.onNext(())
     }
 }
 

@@ -21,7 +21,7 @@ protocol FormTextFieldInputViewDelegate: NSObjectProtocol {
 }
 
 // MEMO: 利用しない場合やIBのエラーが出る場合は`@IBDesignable`をコメントする
-@IBDesignable
+//@IBDesignable
 final class FormInputTextFieldView: CustomViewBase {
 
     // MARK: -  FormTextFieldInputViewDelegate

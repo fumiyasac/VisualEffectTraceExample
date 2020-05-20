@@ -20,7 +20,8 @@ protocol ItemsContainerErrorViewDelegate: NSObjectProtocol {
     func retryRequestButtonTapped()
 }
 
-@IBDesignable
+// MEMO: 利用しない場合やIBのエラーが出る場合は`@IBDesignable`をコメントする
+//@IBDesignable
 final class ItemsContainerErrorView: CustomViewBase {
 
     // MARK: - ItemsContainerErrorViewDelegate

@@ -41,13 +41,15 @@ final class ItemsEventIntroductionContainerViewController: UIViewController {
     // MARK: - @IBOutlet
 
     @IBOutlet private weak var eventIntroductionCollectionView: UICollectionView!
-    
+    @IBOutlet private weak var eventIntroductionErrorView: ItemsContainerErrorView!
+
     // MARK: - Override
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupEventIntroductionCollectionView()
+        setupEventIntroductionErrorView()
         bindToRxSwift()
     }
 
@@ -68,6 +70,18 @@ final class ItemsEventIntroductionContainerViewController: UIViewController {
         let layout = BouncyLayout(style: .prominent)
         layout.scrollDirection = .horizontal
         eventIntroductionCollectionView.collectionViewLayout = layout
+
+        // 一番最初は非表示状態にしておく
+        eventIntroductionCollectionView.isHidden = true
+    }
+
+    private func setupEventIntroductionErrorView() {
+
+        // ItemsContainerErrorViewDelegateの宣言
+        eventIntroductionErrorView.delegate = self
+
+        // 一番最初は非表示状態にしておく
+        eventIntroductionErrorView.isHidden = true
     }
 
     private func bindToRxSwift() {
@@ -82,6 +96,38 @@ final class ItemsEventIntroductionContainerViewController: UIViewController {
                 cell.setCellDecoration()
                 return cell
             }
+            .disposed(by: disposeBag)
+
+        // データのセット時に画面の状態を変更する処理
+        viewModel.outputs.eventIntroductionItems
+            .asObservable()
+            .observeOn(MainScheduler.instance)
+            .subscribe(
+                onNext: { [weak self] _ in
+                    guard let self = self else { return }
+
+                    // MEMO: データ表示用のUICollectionViewとエラー表示用のViewの表示・非表示を決定する
+                    self.eventIntroductionCollectionView.isHidden = false
+                    self.eventIntroductionErrorView.isHidden = true
+                }
+            )
+            .disposed(by: disposeBag)
+
+        // データのセット時にエラーが発生した場合における処理
+        viewModel.outputs.requestStatus
+            .observeOn(MainScheduler.instance)
+            .filter { requestStatus in
+                requestStatus == .error
+            }
+            .subscribe(
+                onNext: { [weak self] _ in
+                    guard let self = self else { return }
+
+                    // MEMO: データ表示用のUICollectionViewとエラー表示用のViewの表示・非表示を決定する
+                    self.eventIntroductionCollectionView.isHidden = true
+                    self.eventIntroductionErrorView.isHidden = false
+                }
+            )
             .disposed(by: disposeBag)
 
         // タップ時にセルに紐づいているModelに応じた処理
@@ -145,6 +191,17 @@ extension ItemsEventIntroductionContainerViewController: UICollectionViewDelegat
     // セル内のアイテム間の余白(margin)調整を行う
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 0.0, left: 8.0, bottom: 0.0, right: 8.0)
+    }
+}
+
+// MWRK: - ItemsContainerErrorViewDelegate
+
+extension ItemsEventIntroductionContainerViewController: ItemsContainerErrorViewDelegate {
+
+    func retryRequestButtonTapped() {
+
+        // ViewModelから表示内容を取得する
+        viewModel.inputs.initialFetchTrigger.onNext(())
     }
 }
 
