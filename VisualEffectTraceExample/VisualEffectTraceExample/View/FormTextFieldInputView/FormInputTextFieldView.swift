@@ -142,6 +142,9 @@ final class FormInputTextFieldView: CustomViewBase {
 
     private func setupFormTextFieldInputView() {
 
+        // UITextFieldDelegateの宣言
+        inputTextField.delegate = self
+
         // 入力エリア部分に罫線を付与する
         inputTextFieldWrappedView.layer.borderWidth = 1.0
         inputTextFieldWrappedView.layer.borderColor = UIColor.opaqueSeparator.cgColor
@@ -201,5 +204,28 @@ final class FormInputTextFieldView: CustomViewBase {
                 }
             )
             .disposed(by: disposeBag)
+    }
+}
+
+// MARK: - UITextFieldDelegate
+
+extension FormInputTextFieldView: UITextFieldDelegate {
+
+    // MEMO: isSecureTextEntryがtrueの場合で、●●●の表示状態から戻った際に入力値がクリアされてしまう事象の回避策として実施しています。
+    // https://stackoverflow.com/questions/7305538/uitextfield-with-secure-entry-always-getting-cleared-before-editing/49771445#49771445
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        let nsString = textField.text as NSString?
+        let updatedString = nsString?.replacingCharacters(in: range, with: string)
+        textField.text = updatedString
+
+        let selectedRange = NSRange(location: range.location + string.count, length: 0)
+        let from = textField.position(from: textField.beginningOfDocument, offset: selectedRange.location)
+        let to = textField.position(from: from!, offset: selectedRange.length)
+        textField.selectedTextRange = textField.textRange(from: from!, to: to!)
+        textField.sendActions(for: .editingChanged)
+
+        return false
     }
 }
