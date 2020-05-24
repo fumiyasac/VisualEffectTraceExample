@@ -66,6 +66,9 @@
 		DE68656D24666EAC003D3522 /* FeaturedCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE68656B24666EAC003D3522 /* FeaturedCollectionViewCell.swift */; };
 		DE68656E24666EAC003D3522 /* FeaturedCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE68656C24666EAC003D3522 /* FeaturedCollectionViewCell.xib */; };
 		DE6865702466700E003D3522 /* DispatchQueueExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE68656F2466700E003D3522 /* DispatchQueueExtension.swift */; };
+		DE6E7E82247AC5B10088B22A /* RequestRecentAnnouncementDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6E7E81247AC5B10088B22A /* RequestRecentAnnouncementDataRepository.swift */; };
+		DE6E7E84247AC8A10088B22A /* RequestRecentAnnouncementDataUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6E7E83247AC8A10088B22A /* RequestRecentAnnouncementDataUseCase.swift */; };
+		DE6E7E86247ACAD40088B22A /* ItemsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE6E7E85247ACAD40088B22A /* ItemsViewModel.swift */; };
 		DE726CBC243AA3450043FA4E /* SigninScreenValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE726CBB243AA3450043FA4E /* SigninScreenValidator.swift */; };
 		DE726CBE243AA47F0043FA4E /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE726CBD243AA47F0043FA4E /* Validator.swift */; };
 		DE726CC0243AB5310043FA4E /* CompositionalValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE726CBF243AB5310043FA4E /* CompositionalValidator.swift */; };
@@ -86,7 +89,7 @@
 		DE8E96542444B9DE0033375F /* AnnouncementScreenCoodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E96532444B9DE0033375F /* AnnouncementScreenCoodinator.swift */; };
 		DE8E96572444C7480033375F /* AnnouncementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E96562444C7480033375F /* AnnouncementViewModel.swift */; };
 		DE8E96592444C9870033375F /* RequestAnnouncementDataUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E96582444C9870033375F /* RequestAnnouncementDataUseCase.swift */; };
-		DE8E965B2444C9E60033375F /* RequestAnnoucementDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E965A2444C9E60033375F /* RequestAnnoucementDataRepository.swift */; };
+		DE8E965B2444C9E60033375F /* RequestAnnouncementDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E965A2444C9E60033375F /* RequestAnnouncementDataRepository.swift */; };
 		DE8E965D2444D1080033375F /* AnnoucementTableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE8E965C2444D1080033375F /* AnnoucementTableHeaderView.xib */; };
 		DE8E965F2444D1130033375F /* AnnoucementTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E965E2444D1130033375F /* AnnoucementTableHeaderView.swift */; };
 		DE8FA1DD2432352D00577C47 /* Signin.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE8FA1DB2432352D00577C47 /* Signin.storyboard */; };
@@ -236,6 +239,9 @@
 		DE68656B24666EAC003D3522 /* FeaturedCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedCollectionViewCell.swift; sourceTree = "<group>"; };
 		DE68656C24666EAC003D3522 /* FeaturedCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeaturedCollectionViewCell.xib; sourceTree = "<group>"; };
 		DE68656F2466700E003D3522 /* DispatchQueueExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchQueueExtension.swift; sourceTree = "<group>"; };
+		DE6E7E81247AC5B10088B22A /* RequestRecentAnnouncementDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRecentAnnouncementDataRepository.swift; sourceTree = "<group>"; };
+		DE6E7E83247AC8A10088B22A /* RequestRecentAnnouncementDataUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRecentAnnouncementDataUseCase.swift; sourceTree = "<group>"; };
+		DE6E7E85247ACAD40088B22A /* ItemsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewModel.swift; sourceTree = "<group>"; };
 		DE726CBB243AA3450043FA4E /* SigninScreenValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninScreenValidator.swift; sourceTree = "<group>"; };
 		DE726CBD243AA47F0043FA4E /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		DE726CBF243AB5310043FA4E /* CompositionalValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionalValidator.swift; sourceTree = "<group>"; };
@@ -256,7 +262,7 @@
 		DE8E96532444B9DE0033375F /* AnnouncementScreenCoodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementScreenCoodinator.swift; sourceTree = "<group>"; };
 		DE8E96562444C7480033375F /* AnnouncementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementViewModel.swift; sourceTree = "<group>"; };
 		DE8E96582444C9870033375F /* RequestAnnouncementDataUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAnnouncementDataUseCase.swift; sourceTree = "<group>"; };
-		DE8E965A2444C9E60033375F /* RequestAnnoucementDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAnnoucementDataRepository.swift; sourceTree = "<group>"; };
+		DE8E965A2444C9E60033375F /* RequestAnnouncementDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestAnnouncementDataRepository.swift; sourceTree = "<group>"; };
 		DE8E965C2444D1080033375F /* AnnoucementTableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnnoucementTableHeaderView.xib; sourceTree = "<group>"; };
 		DE8E965E2444D1130033375F /* AnnoucementTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnoucementTableHeaderView.swift; sourceTree = "<group>"; };
 		DE8FA1DC2432352D00577C47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Signin.storyboard; sourceTree = "<group>"; };
@@ -553,6 +559,7 @@
 			children = (
 				DE8E96562444C7480033375F /* AnnouncementViewModel.swift */,
 				DEC0122C245B07A800C92A6F /* EventIntroductionViewModel.swift */,
+				DE6E7E85247ACAD40088B22A /* ItemsViewModel.swift */,
 				DE2AB8B8242F7EC200335E4F /* MainViewModel.swift */,
 				DE634C492438ED41004CA920 /* SigninViewModel.swift */,
 				DEF5A23524433E1C00383473 /* SignupViewModel.swift */,
@@ -710,8 +717,9 @@
 			children = (
 				DE634C3924361150004CA920 /* CurrentApplicationUserRepository.swift */,
 				DE2AB8BE242FCA1A00335E4F /* MainScreenRepository.swift */,
-				DE8E965A2444C9E60033375F /* RequestAnnoucementDataRepository.swift */,
+				DE8E965A2444C9E60033375F /* RequestAnnouncementDataRepository.swift */,
 				DEC01232245B1D2A00C92A6F /* RequestEventIntroductionDataRepository.swift */,
+				DE6E7E81247AC5B10088B22A /* RequestRecentAnnouncementDataRepository.swift */,
 				DEF5A22F244172F800383473 /* RequestSigninRepository.swift */,
 				DE9D4EFC24437571003439ED /* RequestSignupRepository.swift */,
 				DEC01230245B17CC00C92A6F /* RequestTopBannerDataRepository.swift */,
@@ -1039,6 +1047,7 @@
 				DE2AB8BA242FC5AB00335E4F /* HandleMainScreenUseCase.swift */,
 				DE8E96582444C9870033375F /* RequestAnnouncementDataUseCase.swift */,
 				DEC01234245B1EF800C92A6F /* RequestEventIntroductionDataUseCase.swift */,
+				DE6E7E83247AC8A10088B22A /* RequestRecentAnnouncementDataUseCase.swift */,
 				DEF5A22D244171FC00383473 /* RequestSigninUseCase.swift */,
 				DEF5A2372443435600383473 /* RequestSignupUseCase.swift */,
 				DEC0122E245B17B300C92A6F /* RequestTopBannerDataUseCase.swift */,
@@ -1358,6 +1367,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE634C442438D097004CA920 /* SigninScreenActionCreator.swift in Sources */,
+				DE6E7E86247ACAD40088B22A /* ItemsViewModel.swift in Sources */,
 				DEC01237245B2A9000C92A6F /* UniqueArrayBuilder.swift in Sources */,
 				DE8E96542444B9DE0033375F /* AnnouncementScreenCoodinator.swift in Sources */,
 				DEC0122F245B17B300C92A6F /* RequestTopBannerDataUseCase.swift in Sources */,
@@ -1374,6 +1384,7 @@
 				DEE0B70224541E2000B285BA /* ItemsScreenCoodinator.swift in Sources */,
 				DEAFA5932453E3230095B335 /* FeaturedViewController.swift in Sources */,
 				DE234E602459930600E1DC10 /* ContainerCollectionViewCell.swift in Sources */,
+				DE6E7E82247AC5B10088B22A /* RequestRecentAnnouncementDataRepository.swift in Sources */,
 				DEA2A8FC24758B42000237DA /* RecentAnnouncementCollectionViewCell.swift in Sources */,
 				DE634C462438D56B004CA920 /* SigninScreenReducer.swift in Sources */,
 				DE634C402438CFB2004CA920 /* SigninScreenState.swift in Sources */,
@@ -1382,6 +1393,7 @@
 				DE8487412425E21D00A40975 /* AppConstants.swift in Sources */,
 				DEF5A23624433E1C00383473 /* SignupViewModel.swift in Sources */,
 				DEDCC88A241DE30500BFA165 /* APIRequest.swift in Sources */,
+				DE6E7E84247AC8A10088B22A /* RequestRecentAnnouncementDataUseCase.swift in Sources */,
 				DEC0122D245B07A800C92A6F /* EventIntroductionViewModel.swift in Sources */,
 				DE2AB8B9242F7EC200335E4F /* MainViewModel.swift in Sources */,
 				DEF5A2422443440800383473 /* SignupScreenAction.swift in Sources */,
@@ -1473,7 +1485,7 @@
 				DE4D3842245FB90E00680B91 /* ExpandedFileBinderCollectionViewLayout.swift in Sources */,
 				DE84854C2427A48A00766098 /* TutorialEntity.swift in Sources */,
 				DE8E1D8A24756CDA00C55227 /* ItemsContainerErrorView.swift in Sources */,
-				DE8E965B2444C9E60033375F /* RequestAnnoucementDataRepository.swift in Sources */,
+				DE8E965B2444C9E60033375F /* RequestAnnouncementDataRepository.swift in Sources */,
 				DE726CC0243AB5310043FA4E /* CompositionalValidator.swift in Sources */,
 				DE2AB8CA242FF01100335E4F /* AppReducer.swift in Sources */,
 				DE0424E52402AF50008DEF36 /* AnnouncementAPIResponse.swift in Sources */,

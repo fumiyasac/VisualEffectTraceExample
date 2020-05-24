@@ -84,6 +84,7 @@ class APIRequestManager {
                     if response.statusCode == 403 {
                         // MEMO: ここにCoodinatorの処理を強制的に加えるのは果たして良いのかは迷うところです。
                         // → しかもこの中で無理やりDispatchQueueで処理するような処理だから強引っちゃ強引な感じがある
+                        print("403 Error Occurs in", request)
                         DispatchQueue.main.async {
                             let signinCoodinator = SigninScreenCoordinator()
                             signinCoodinator.start()

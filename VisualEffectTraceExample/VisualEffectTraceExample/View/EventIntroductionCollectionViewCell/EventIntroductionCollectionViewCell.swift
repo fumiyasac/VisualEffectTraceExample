@@ -65,9 +65,9 @@ final class EventIntroductionCollectionViewCell: UICollectionViewCell {
     func setCellDecoration() {
 
         // UICollectionViewのおおもとの部分には罫線を付与する
-         self.contentView.layer.masksToBounds = true
+        self.contentView.layer.masksToBounds = true
         self.contentView.layer.borderWidth = 0.5
-         self.contentView.layer.borderColor = UIColor.darkGray.cgColor
+        self.contentView.layer.borderColor = UIColor.darkGray.cgColor
     }
 
     // MARK: - Private Function

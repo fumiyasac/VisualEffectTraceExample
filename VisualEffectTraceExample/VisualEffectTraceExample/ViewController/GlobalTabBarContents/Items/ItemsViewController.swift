@@ -52,6 +52,9 @@ final class ItemsViewController: UIViewController {
     // UICollectionViewに設置するRefreshControl
     private let photoRefrashControl = UIRefreshControl()
 
+    // MEMO: トップバナー表示内容を取得するViewModel
+    @Dependencies.Inject(Dependencies.Name(rawValue: "ItemsViewModelType")) private var viewModel: ItemsViewModelType
+
     // MARK: - Properties (for UICollectionViewCompositionalLayout)
 
     // MEMO: UICollectionViewを差分更新するためのNSDiffableDataSourceSnapshot
@@ -71,6 +74,9 @@ final class ItemsViewController: UIViewController {
 
             case ItemsScreenSectionType.itemsEventIntroduction.getSectionIndex():
                 return ItemsScreenSectionType.itemsEventIntroduction.getSectionLayout()
+
+            case ItemsScreenSectionType.itemsRecentAnnoucement.getSectionIndex():
+                return ItemsScreenSectionType.itemsRecentAnnoucement.getSectionLayout()
 
             default:
                 fatalError()
@@ -102,6 +108,7 @@ final class ItemsViewController: UIViewController {
         itemCollectionView.showsVerticalScrollIndicator = true
         itemCollectionView.registerCustomReusableHeaderView(ItemListCollectionHeaderView.self)
         itemCollectionView.registerCustomCell(ContainerCollectionViewCell.self)
+        itemCollectionView.registerCustomCell(RecentAnnouncementCollectionViewCell.self)
 
         // MEMO: UICollectionViewCompositionalLayoutを利用してレイアウトを組み立てる
         itemCollectionView.collectionViewLayout = compositionalLayout
@@ -135,6 +142,17 @@ final class ItemsViewController: UIViewController {
                 cell.setCell(viewControllerInfo)
                 return cell
 
+            case ItemsScreenSectionType.itemsRecentAnnoucement.getSectionIndex():
+
+                let cell = collectionView.dequeueReusableCustomCell(with: RecentAnnouncementCollectionViewCell.self, indexPath: indexPath)
+                switch model {
+                case let model as AnnouncementEntity:
+                    cell.setCell(model)
+                    return cell
+                default:
+                    return UICollectionViewCell()
+                }
+
             default:
                 return nil
             }
@@ -165,6 +183,16 @@ final class ItemsViewController: UIViewController {
                     return header
                 }
 
+            case ItemsScreenSectionType.itemsRecentAnnoucement.getSectionIndex():
+                if kind == UICollectionView.elementKindSectionHeader {
+                    let header = collectionView.dequeueReusableCustomHeaderView(with: ItemListCollectionHeaderView.self, indexPath: indexPath)
+                    header.setHeader(
+                        title: ItemsScreenSectionType.itemsRecentAnnoucement.getSectionTitle(),
+                        description: ItemsScreenSectionType.itemsRecentAnnoucement.getSectionDescription()
+                    )
+                    return header
+                }
+
             default:
                 break
             }
@@ -178,6 +206,24 @@ final class ItemsViewController: UIViewController {
     private func bindToRxSwift() {
         
         //
+        viewModel.inputs.initialFetchTrigger.onNext(())
+
+        //
+        viewModel.outputs.recentAnnouncement
+            .asObservable()
+            .observeOn(MainScheduler.instance)
+            .subscribe(
+                onNext: { [weak self] newRecentAnnouncement in
+                    guard let self = self else { return }
+
+                    //
+                    let oldRecentAnnouncement = self.snapshot.itemIdentifiers(inSection: .itemsRecentAnnoucement)
+                    self.snapshot.deleteItems(oldRecentAnnouncement)
+                    self.snapshot.appendItems([newRecentAnnouncement], toSection: .itemsRecentAnnoucement)
+                    self.dataSource.apply(self.snapshot, animatingDifferences: false)
+                }
+            )
+            .disposed(by: disposeBag)
     }
 
     // MEMO: NSDiffableDataSourceSnapshotの初期化処理

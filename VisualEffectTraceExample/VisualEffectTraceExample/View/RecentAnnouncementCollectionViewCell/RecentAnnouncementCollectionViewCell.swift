@@ -65,6 +65,11 @@ final class RecentAnnouncementCollectionViewCell: UICollectionViewCell {
 
     private func setupRecentAnnouncementCollectionViewCell() {
 
+        // UICollectionViewのおおもとの部分には罫線を付与する
+        thumbnailImageView.layer.masksToBounds = true
+        thumbnailImageView.layer.borderWidth = 0.5
+        thumbnailImageView.layer.borderColor = UIColor.lightGray.cgColor
+
         // サムネイル画像を表示するUIImageViewの設定
         thumbnailImageView.contentMode = .scaleAspectFill
         thumbnailImageView.clipsToBounds = true

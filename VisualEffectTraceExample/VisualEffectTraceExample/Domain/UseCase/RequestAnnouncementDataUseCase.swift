@@ -21,11 +21,11 @@ final class RequestAnnouncementDataUseCase: AnnouncementUsecase {
 
     // MARK: - Properties
 
-    @Dependencies.Inject(Dependencies.Name(rawValue: "AnnoucementRepository")) private var annoucementRepository: AnnoucementRepository
+    @Dependencies.Inject(Dependencies.Name(rawValue: "AnnouncementRepository")) private var announcementRepository: AnnouncementRepository
 
     // MARK: - AnnouncementUsecase
 
     func execute() -> Single<AnnouncementListResponse> {
-        return annoucementRepository.requestAnnouncementDataList()
+        return announcementRepository.requestAnnouncementDataList()
     }
 }

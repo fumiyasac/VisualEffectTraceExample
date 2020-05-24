@@ -1,5 +1,5 @@
 //
-//  RequestAnnoucementDataRepository.swift
+//  RequestAnnouncementDataRepository.swift
 //  VisualEffectTraceExample
 //
 //  Created by 酒井文也 on 2020/04/14.
@@ -11,21 +11,21 @@ import RxSwift
 
 // MARK: - Protocol
 
-protocol AnnoucementRepository {
+protocol AnnouncementRepository {
 
     // お知らせ一覧表示用のAPIリクエストを実行する
     func requestAnnouncementDataList() -> Single<AnnouncementListResponse>
 }
 
-final class RequestAnnoucementDataRepository: AnnoucementRepository {
+final class RequestAnnouncementDataRepository: AnnouncementRepository {
 
     // MARK: - Properties
 
     @Dependencies.Inject(Dependencies.Name(rawValue: "APIRequestProtocol")) private var apiRequestManager: APIRequestProtocol
 
-    // MARK: - AnnoucementRepository
+    // MARK: - AnnouncementRepository
 
     func requestAnnouncementDataList() -> Single<AnnouncementListResponse> {
-        return apiRequestManager.getAnnoucements()
+        return apiRequestManager.getAnnouncements()
     }
 }

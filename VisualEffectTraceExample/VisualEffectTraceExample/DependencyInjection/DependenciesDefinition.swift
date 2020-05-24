@@ -55,8 +55,12 @@ final class DependenciesDefinition {
                 protocolName: MainRepository.self
             ),
             (
-                implInstance: RequestAnnoucementDataRepository(),
-                protocolName: AnnoucementRepository.self
+                implInstance: RequestAnnouncementDataRepository(),
+                protocolName: AnnouncementRepository.self
+            ),
+            (
+                implInstance: RequestRecentAnnouncementRepository(),
+                protocolName: RecentAnnouncementRepository.self
             ),
             (
                 implInstance: RequestEventIntroductionDataRepository(),
@@ -105,6 +109,10 @@ final class DependenciesDefinition {
                 protocolName: EventIntroductionUseCase.self
             ),
             (
+                implInstance: RequestRecentAnnouncementDataUseCase(),
+                protocolName: RecentAnnouncementUseCase.self
+            ),
+            (
                 implInstance: RequestSigninUseCase(),
                 protocolName: SigninUsecase.self
             ),
@@ -145,6 +153,10 @@ final class DependenciesDefinition {
             (
                 implInstance: EventIntroductionViewModel(),
                 protocolName: EventIntroductionViewModelType.self
+            ),
+            (
+                implInstance: ItemsViewModel(),
+                protocolName: ItemsViewModelType.self
             ),
             (
                 implInstance: SigninViewModel(),

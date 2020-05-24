@@ -14,7 +14,7 @@ enum ItemsScreenSectionType: CaseIterable {
     
     case itemsTopBanner
     case itemsEventIntroduction
-//    case itemsRecentAnnoucement
+    case itemsRecentAnnoucement
 //    case itemsRegularList
 
     // MARK: - Properties
@@ -32,8 +32,8 @@ enum ItemsScreenSectionType: CaseIterable {
             return 0
         case .itemsEventIntroduction:
             return 1
-//        case .itemsRecentAnnoucement:
-//            return 2
+        case .itemsRecentAnnoucement:
+            return 2
 //        case .itemsRegularList:
 //            return 3
         }
@@ -46,8 +46,8 @@ enum ItemsScreenSectionType: CaseIterable {
             return "Seasonal Special"
         case .itemsEventIntroduction:
             return "Event Introduction"
-//        case .itemsRecentAnnoucement:
-//            return "Recent Announcement"
+        case .itemsRecentAnnoucement:
+            return "Recent Announcement"
 //        case .itemsRegularList:
 //            return "Regular Item List"
         }
@@ -60,8 +60,8 @@ enum ItemsScreenSectionType: CaseIterable {
             return "季節に合わせたトピックを掲載しています。"
         case .itemsEventIntroduction:
             return "購入イベントやSALE情報を掲載しています。"
-//        case .itemsRecentAnnoucement:
-//            return "現在お知らせしている最新情報になります。"
+        case .itemsRecentAnnoucement:
+            return "現在お知らせしている最新情報になります。"
 //        case .itemsRegularList:
 //            return "現在販売・購入実績があるアイテム一覧です。"
         }
@@ -74,8 +74,8 @@ enum ItemsScreenSectionType: CaseIterable {
             return createItemsTopBannerLayout()
         case .itemsEventIntroduction:
             return createItemsEventIntroductionLayout()
-//        case .itemsRecentAnnoucement:
-//            // TODO: レイアウトを作成する
+        case .itemsRecentAnnoucement:
+            return createItemsRecentAnnoucementLayout()
 //        case .itemsRegularList:
 //            // TODO: レイアウトを作成する
         }
@@ -122,6 +122,34 @@ enum ItemsScreenSectionType: CaseIterable {
         let groupHeight = ItemsEventIntroductionContainerViewController.screenSize.height
         let groupSize = NSCollectionLayoutSize(widthDimension: .absolute(groupWidth), heightDimension: .absolute(groupHeight))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitem: item, count: 1)
+        group.contentInsets = .zero
+
+        // 3. Sectionのサイズ設定
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = .zero
+
+        // 4. Headerのレイアウトを決定する
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(69.5))
+        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        section.boundarySupplementaryItems = [header]
+        section.contentInsets = .zero
+
+        return section
+    }
+
+    private func createItemsRecentAnnoucementLayout() -> NSCollectionLayoutSection {
+
+        // MEMO: 該当のセルを基準にした高さの予測値を設定する
+        let estimatedHeight = UIScreen.main.bounds.width + 81.0
+
+        // 1. Itemのサイズ設定
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(estimatedHeight))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = .zero
+
+        // 2. Groupのサイズ設定
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(estimatedHeight))
+        let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         group.contentInsets = .zero
 
         // 3. Sectionのサイズ設定

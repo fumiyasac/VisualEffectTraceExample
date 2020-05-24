@@ -16,14 +16,13 @@ extension APIRequestManager: APIRequestProtocol {
     // MEMO: サンプルで利用するエンドポイント定義
     private enum EndPoint: String {
 
-        // MEMO: 認証済みユーザーのAPIリクエスト
+        // MEMO: 認証済みユーザーのみ利用可能なエンドポイント
 
         // Item.storyboardで利用するエンドポイント
         case topBanner = "top_banner"
         case eventIntroduction = "event_introduction"
-        case internalAnnoucement = "internal_announcement"
 
-        // 認証前の画面で利用するエンドポイント
+        // MEMO: 認証前の画面でも利用可能なエンドポイント
 
         // Announcement.storyboardで利用するエンドポイント
         case announcement = "announcement"
@@ -43,7 +42,6 @@ extension APIRequestManager: APIRequestProtocol {
 
     // トップバナー表示用のAPIリクエスト処理の実行
     func getTopBanners() -> Single<TopBannerAPIResponse> {
-
         let topBannerEndPoint = EndPoint.topBanner.getBaseUrl()
         return executeAPIRequest(
             endpointUrl: topBannerEndPoint,
@@ -54,7 +52,6 @@ extension APIRequestManager: APIRequestProtocol {
 
     // イベント概要一覧表示用のAPIリクエスト処理の実行
     func getEventIntroductionsBy(page: Int) -> Single<EventIntroductionAPIResponse> {
-
         let eventIntroductionEndPoint = EndPoint.eventIntroduction.getBaseUrl() + "?page=" + String(page)
         return executeAPIRequest(
             endpointUrl: eventIntroductionEndPoint,
@@ -64,9 +61,8 @@ extension APIRequestManager: APIRequestProtocol {
     }
 
     // 最新のお知らせ詳細表示用のAPIリクエスト処理の実行
-    func getRecentAnnoucement() -> Single<AnnouncementDetailResponse> {
-
-        let recentAnnoucementEndPoint = EndPoint.internalAnnoucement.getBaseUrl() + "/recent"
+    func getRecentAnnouncement() -> Single<AnnouncementDetailResponse> {
+        let recentAnnoucementEndPoint = EndPoint.announcement.getBaseUrl() + "/recent"
         return executeAPIRequest(
             endpointUrl: recentAnnoucementEndPoint,
             httpMethod: HTTPMethod.GET,
@@ -75,8 +71,7 @@ extension APIRequestManager: APIRequestProtocol {
     }
 
     // お知らせ詳細表示用のAPIリクエスト処理の実行
-    func getAnnoucementDetailBy(id: Int) -> Single<AnnouncementDetailResponse> {
-
+    func getAnnouncementDetailBy(id: Int) -> Single<AnnouncementDetailResponse> {
         let annoucementDetailEndPoint = EndPoint.announcement.getBaseUrl() + "/" + String(id)
         return executeAPIRequest(
             endpointUrl: annoucementDetailEndPoint,
@@ -86,8 +81,7 @@ extension APIRequestManager: APIRequestProtocol {
     }
 
     // お知らせ一覧表示用のAPIリクエスト処理の実行
-    func getAnnoucements() -> Single<AnnouncementListResponse> {
-
+    func getAnnouncements() -> Single<AnnouncementListResponse> {
         let annoucementListsEndPoint = EndPoint.announcement.getBaseUrl()
         return executeAPIRequest(
             endpointUrl: annoucementListsEndPoint,
