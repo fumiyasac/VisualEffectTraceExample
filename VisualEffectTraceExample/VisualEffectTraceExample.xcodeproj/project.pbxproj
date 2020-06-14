@@ -83,6 +83,10 @@
 		DE8487412425E21D00A40975 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8487402425E21D00A40975 /* AppConstants.swift */; };
 		DE8487432425E81000A40975 /* RealmAccessManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8487422425E81000A40975 /* RealmAccessManager.swift */; };
 		DE8487462425FACD00A40975 /* ApplicationUserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8487452425FACD00A40975 /* ApplicationUserEntity.swift */; };
+		DE89828F249659F6008FE8B8 /* AnnouncementDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE89828E249659F6008FE8B8 /* AnnouncementDetail.storyboard */; };
+		DE89829124965A62008FE8B8 /* AnnouncementDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE89829024965A62008FE8B8 /* AnnouncementDetailViewController.swift */; };
+		DE89829424965AD2008FE8B8 /* StoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE89829324965AD2008FE8B8 /* StoryDetailViewController.swift */; };
+		DE89829724965B07008FE8B8 /* StoryDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE89829624965B07008FE8B8 /* StoryDetail.storyboard */; };
 		DE8E1D852475664900C55227 /* AnnouncementDetailAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E1D842475664900C55227 /* AnnouncementDetailAPIResponse.swift */; };
 		DE8E1D8824756CCE00C55227 /* ItemsContainerErrorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE8E1D8724756CCE00C55227 /* ItemsContainerErrorView.xib */; };
 		DE8E1D8A24756CDA00C55227 /* ItemsContainerErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8E1D8924756CDA00C55227 /* ItemsContainerErrorView.swift */; };
@@ -256,6 +260,10 @@
 		DE8487402425E21D00A40975 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		DE8487422425E81000A40975 /* RealmAccessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmAccessManager.swift; sourceTree = "<group>"; };
 		DE8487452425FACD00A40975 /* ApplicationUserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationUserEntity.swift; sourceTree = "<group>"; };
+		DE89828E249659F6008FE8B8 /* AnnouncementDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AnnouncementDetail.storyboard; sourceTree = "<group>"; };
+		DE89829024965A62008FE8B8 /* AnnouncementDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementDetailViewController.swift; sourceTree = "<group>"; };
+		DE89829324965AD2008FE8B8 /* StoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryDetailViewController.swift; sourceTree = "<group>"; };
+		DE89829624965B07008FE8B8 /* StoryDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StoryDetail.storyboard; sourceTree = "<group>"; };
 		DE8E1D842475664900C55227 /* AnnouncementDetailAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementDetailAPIResponse.swift; sourceTree = "<group>"; };
 		DE8E1D8724756CCE00C55227 /* ItemsContainerErrorView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemsContainerErrorView.xib; sourceTree = "<group>"; };
 		DE8E1D8924756CDA00C55227 /* ItemsContainerErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsContainerErrorView.swift; sourceTree = "<group>"; };
@@ -674,6 +682,38 @@
 			path = DataTransfer;
 			sourceTree = "<group>";
 		};
+		DE8982882496598A008FE8B8 /* AnnouncementDetail */ = {
+			isa = PBXGroup;
+			children = (
+				DE89829024965A62008FE8B8 /* AnnouncementDetailViewController.swift */,
+			);
+			path = AnnouncementDetail;
+			sourceTree = "<group>";
+		};
+		DE89828B249659C7008FE8B8 /* AnnouncementDetail */ = {
+			isa = PBXGroup;
+			children = (
+				DE89828E249659F6008FE8B8 /* AnnouncementDetail.storyboard */,
+			);
+			path = AnnouncementDetail;
+			sourceTree = "<group>";
+		};
+		DE89829224965AB9008FE8B8 /* StoryDetail */ = {
+			isa = PBXGroup;
+			children = (
+				DE89829324965AD2008FE8B8 /* StoryDetailViewController.swift */,
+			);
+			path = StoryDetail;
+			sourceTree = "<group>";
+		};
+		DE89829524965AF8008FE8B8 /* StoryDetail */ = {
+			isa = PBXGroup;
+			children = (
+				DE89829624965B07008FE8B8 /* StoryDetail.storyboard */,
+			);
+			path = StoryDetail;
+			sourceTree = "<group>";
+		};
 		DE8E1D8624756C7000C55227 /* ItemsContainerErrorView */ = {
 			isa = PBXGroup;
 			children = (
@@ -819,10 +859,12 @@
 			children = (
 				DEAA656C23F3122F00C5232B /* MainViewController.swift */,
 				DEDCC88E241E794F00BFA165 /* Announcement */,
+				DE8982882496598A008FE8B8 /* AnnouncementDetail */,
 				DE2AB8AD242F4B3B00335E4F /* GlobalTabBar */,
 				DEDCC88C241DF16200BFA165 /* GlobalTabBarContents */,
 				DE67D985243249E700EB2D61 /* Signin */,
 				DE67D986243249F000EB2D61 /* Signup */,
+				DE89829224965AB9008FE8B8 /* StoryDetail */,
 				DE2AB8AE242F4B6600335E4F /* Tutorial */,
 			);
 			path = ViewController;
@@ -834,10 +876,12 @@
 				DEAA657323F3123100C5232B /* LaunchScreen.storyboard */,
 				DEAA656E23F3122F00C5232B /* Main.storyboard */,
 				DEAFA58A2453E2BB0095B335 /* Announcement */,
+				DE89828B249659C7008FE8B8 /* AnnouncementDetail */,
 				DEAFA58E2453E2E60095B335 /* GlobalTabBar */,
 				DEAFA58F2453E2EF0095B335 /* GlobalTabBarContents */,
 				DEAFA58C2453E2CB0095B335 /* Signin */,
 				DEAFA58B2453E2C40095B335 /* Signup */,
+				DE89829524965AF8008FE8B8 /* StoryDetail */,
 				DEAFA58D2453E2D60095B335 /* Tutorial */,
 			);
 			path = Storyboard;
@@ -1280,8 +1324,10 @@
 				DEAA657523F3123100C5232B /* LaunchScreen.storyboard in Resources */,
 				DE234E5724592D3700E1DC10 /* TopBannerCollectionViewCell.xib in Resources */,
 				DE67D9822432372500EB2D61 /* Announcement.storyboard in Resources */,
+				DE89828F249659F6008FE8B8 /* AnnouncementDetail.storyboard in Resources */,
 				DE9D4F0424449A91003439ED /* AnnouncementTableViewCell.xib in Resources */,
 				DEAA657223F3123100C5232B /* Assets.xcassets in Resources */,
+				DE89829724965B07008FE8B8 /* StoryDetail.storyboard in Resources */,
 				DE8E965D2444D1080033375F /* AnnoucementTableHeaderView.xib in Resources */,
 				DEAFA5872453E29D0095B335 /* Featured.storyboard in Resources */,
 				DE8FA1DD2432352D00577C47 /* Signin.storyboard in Resources */,
@@ -1389,6 +1435,7 @@
 				DE634C462438D56B004CA920 /* SigninScreenReducer.swift in Sources */,
 				DE634C402438CFB2004CA920 /* SigninScreenState.swift in Sources */,
 				DE234E5B24592E9F00E1DC10 /* EventIntroductionCollectionViewCell.swift in Sources */,
+				DE89829124965A62008FE8B8 /* AnnouncementDetailViewController.swift in Sources */,
 				DE2AB8C8242FEF8700335E4F /* ActionLoggingMiddleware.swift in Sources */,
 				DE8487412425E21D00A40975 /* AppConstants.swift in Sources */,
 				DEF5A23624433E1C00383473 /* SignupViewModel.swift in Sources */,
@@ -1402,6 +1449,7 @@
 				DEF5A2382443435600383473 /* RequestSignupUseCase.swift in Sources */,
 				DE2AB89F242973A100335E4F /* GetTutorialDataUseCase.swift in Sources */,
 				DE9D4EFD24437571003439ED /* RequestSignupRepository.swift in Sources */,
+				DE89829424965AD2008FE8B8 /* StoryDetailViewController.swift in Sources */,
 				DE8E1D852475664900C55227 /* AnnouncementDetailAPIResponse.swift in Sources */,
 				DEE0B71324544D7100B285BA /* GlobalTabBarTransition.swift in Sources */,
 				DEF5A2442443442300383473 /* SignupScreenReducer.swift in Sources */,
