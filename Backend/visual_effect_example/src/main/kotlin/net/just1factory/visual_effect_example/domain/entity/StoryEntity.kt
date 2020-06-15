@@ -4,11 +4,11 @@ import javax.persistence.*
 import java.util.Date
 
 @Entity
-@Table(name="featured_articles")
-data class FeaturedArticleEntity(
+@Table(name="stories")
+data class StoryEntity(
 
 	// MEMO: カラムに対応する値を定義する
-	// ※テーブルとの対応が1:Nの場合 → One FeaturedArticleEntity has Many FeaturedArticleImageEntity
+	// ※テーブルとの対応が1:Nの場合 → One StoryEntity has Many StoryImageEntity
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
@@ -17,12 +17,10 @@ data class FeaturedArticleEntity(
 	val title: String,
 	@Column(name = "catch_copy", nullable = false)
 	val catchCopy: String,
-	@Column(name = "statement", nullable = true)
-	val statement: String? = null,
-	@Column(name = "thumbnail_url", nullable = true)
-	val thumbnailUrl: String? = null,
-	@Column(name = "publish_flag", nullable = false)
-	val publishFlag: Int = 0,
+	@Column(name = "main_statement", nullable = true)
+	val mainStatement: String? = null,
+	@Column(name = "sub_statement", nullable = true)
+	val subStatement: String? = null,
 	@Column(name = "author", nullable = false)
 	val author: String,
 	@Column(name="announcement_at")
@@ -33,5 +31,5 @@ data class FeaturedArticleEntity(
 	val updatedAt: Date,
 	// MEMO: 1:NのEntity同士のAssociation定義
 	@OneToMany(cascade = [CascadeType.ALL])
-	val featuredArticleImages: List<FeaturedArticleImageEntity>? = null
+	val storyImageEntity: List<StoryImageEntity>? = null
 )
