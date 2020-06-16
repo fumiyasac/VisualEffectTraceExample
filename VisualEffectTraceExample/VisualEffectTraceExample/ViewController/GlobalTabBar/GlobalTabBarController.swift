@@ -72,6 +72,9 @@ final class GlobalTabBarController: UITabBarController {
         // 4. Story
         let storyNavigationController = UINavigationController()
         let storyScreenCoordinator = StoryScreenCoodinator(navigationController: storyNavigationController)
+        // 5. Settings
+        let settingsNavigationController = UINavigationController()
+        let settingsScreenCoordinator = SettingsScreenCoodinator(navigationController: settingsNavigationController)
 
         // MEMO: 各画面の土台となるUINavigationControllerをセットする
         self.viewControllers = [
@@ -79,6 +82,7 @@ final class GlobalTabBarController: UITabBarController {
             searchNavigationController,
             featuredNavigationController,
             storyNavigationController,
+            settingsNavigationController
         ]
 
         // MEMO: GlobalTabBarControllerに配置する画面に対応するCoodinatorの処理を実行する
@@ -86,6 +90,7 @@ final class GlobalTabBarController: UITabBarController {
         searchScreenCoordinator.start()
         featuredScreenCoordinator.start()
         storyScreenCoordinator.start()
+        settingsScreenCoordinator.start()
 
         // MEMO: タブの選択時・非選択時の色とアイコンのサイズを決める
         // UITabBarItem用のAttributeを決める

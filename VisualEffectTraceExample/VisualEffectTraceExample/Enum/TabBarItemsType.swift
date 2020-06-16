@@ -16,6 +16,7 @@ enum TabBarItemsType: CaseIterable {
     case search
     case featured
     case story
+    case settings
 
     // MARK: - Function
 
@@ -30,6 +31,8 @@ enum TabBarItemsType: CaseIterable {
             return "Featured"
         case .story:
             return "Story"
+        case .settings:
+            return "Settings"
         }
     }
 
@@ -44,6 +47,8 @@ enum TabBarItemsType: CaseIterable {
             return .lightbulb
         case .story:
             return .book
+        case .settings:
+            return .cog
         }
     }
 }
