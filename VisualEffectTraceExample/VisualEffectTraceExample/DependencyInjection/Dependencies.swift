@@ -44,13 +44,22 @@ enum Dependencies {
             // Debug.
             //dump(dependencies)
 
-            // MEMO: 名前と依存関係を正しく対応させないとクラッシュが発生する形にしている
-            return (dependencies
-                .filter { (dependencyTuple) -> Bool in
-                    dependencyTuple.key == key
-                        && dependencyTuple.value is T
+            // MEMO: filterとfirstをするよりもfirst(where:)の方がパフォーマンスが良い
+            // https://qiita.com/shtnkgm/items/928630d692cf1e5b0846
+            let instanceObjectValue = dependencies
+                // MEMO: 引数のkeyと一致する＆型がTに設定している条件に合致する場合はその値(.value)だけを利用する
+                .first { (dependencyTuple) -> Bool in
+                    dependencyTuple.key == key && dependencyTuple.value is T
                 }
-                .first)?.value as! T
+                .flatMap{ (_, value) in
+                    value
+                }
+
+            // MEMO: 名前に対応する型でダウンキャストを実施し、名前と依存関係を正しく対応させないとクラッシュが発生する形にしている
+            guard let instance = instanceObjectValue as? T else {
+                fatalError("Could not cast value of type 'Any' to expected type.")
+            }
+            return instance
         }
     }
 
