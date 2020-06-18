@@ -7,12 +7,23 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+import PKHUD
 
 final class SettingsViewController: UIViewController {
 
     // MARK: - SettingsFlow
 
     var coordinator: SettingsFlow?
+
+    // MARK: - Properties
+
+    private let disposeBag = DisposeBag()
+
+    // MARK: - @IBOutlet
+
+    @IBOutlet private weak var settingsTableView: UITableView!
 
     // MARK: - Override
 

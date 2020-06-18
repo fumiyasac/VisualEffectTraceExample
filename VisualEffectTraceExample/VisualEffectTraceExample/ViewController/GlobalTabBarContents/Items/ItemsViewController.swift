@@ -205,10 +205,10 @@ final class ItemsViewController: UIViewController {
 
     private func bindToRxSwift() {
         
-        //
+        // ViewModelから表示内容を取得する
         viewModel.inputs.initialFetchTrigger.onNext(())
 
-        //
+        // 最新のお知らせ情報取得時のUICollectionViewへの反映処理
         viewModel.outputs.recentAnnouncement
             .asObservable()
             .observeOn(MainScheduler.instance)
@@ -216,7 +216,7 @@ final class ItemsViewController: UIViewController {
                 onNext: { [weak self] newRecentAnnouncement in
                     guard let self = self else { return }
 
-                    //
+                    // MEMO: NSDiffableDataSourceを利用した最新のお知らせセクション表示データの差分更新処理
                     let oldRecentAnnouncement = self.snapshot.itemIdentifiers(inSection: .itemsRecentAnnoucement)
                     self.snapshot.deleteItems(oldRecentAnnouncement)
                     self.snapshot.appendItems([newRecentAnnouncement], toSection: .itemsRecentAnnoucement)
