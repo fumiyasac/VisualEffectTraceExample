@@ -8,6 +8,12 @@
 
 import UIKit
 
+// UICollectionViewCompositionalLayoutでは実現できない表現の例（3）
+// 水平方向と垂直方向が合わさった形のUICollectionViewの表現（タイムテーブルやフォトギャラリー等でも類似した形のものがある）
+// 参考:
+// https://xyk.hatenablog.com/entry/2017/02/09/184410
+// https://www.indetail.co.jp/blog/5257/
+
 final class StoryViewController: UIViewController {
 
     // MARK: - StoryFlow

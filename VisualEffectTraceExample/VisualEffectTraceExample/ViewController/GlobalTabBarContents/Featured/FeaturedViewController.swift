@@ -8,8 +8,11 @@
 
 import UIKit
 
+// UICollectionViewCompositionalLayoutでは実現できない表現の例（2）
 // MEMO: Safariのタブの様な動きをUICollectionViewを利用して実施する
 // → UICollectionViewLayoutを継承したクラスをセルタップ時 or セル内のボタン押下時に切り替えて適用する形で実現する
+// https://github.com/AfrozZaheer/AZSafariCollectionViewLayout
+// https://github.com/gringoireDM/LNZCollectionLayouts
 
 final class FeaturedViewController: UIViewController {
 
