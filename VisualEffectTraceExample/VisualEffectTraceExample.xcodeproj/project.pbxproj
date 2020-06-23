@@ -47,6 +47,8 @@
 		DE4D383F245FB6CA00680B91 /* ItemListCollectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE4D383D245FB6CA00680B91 /* ItemListCollectionHeaderView.xib */; };
 		DE4D3842245FB90E00680B91 /* ExpandedFileBinderCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4D3841245FB90E00680B91 /* ExpandedFileBinderCollectionViewLayout.swift */; };
 		DE4D3844245FB9A200680B91 /* IndexFileBinderCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4D3843245FB9A200680B91 /* IndexFileBinderCollectionViewLayout.swift */; };
+		DE5C56C524A2136700B740AE /* AnnouncementDetailScreenTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5C56C424A2136700B740AE /* AnnouncementDetailScreenTransition.swift */; };
+		DE5C56C824A213F100B740AE /* AnnouncementDetailScreenCoodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5C56C724A213F100B740AE /* AnnouncementDetailScreenCoodinator.swift */; };
 		DE634C3A24361150004CA920 /* CurrentApplicationUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE634C3924361150004CA920 /* CurrentApplicationUserRepository.swift */; };
 		DE634C402438CFB2004CA920 /* SigninScreenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE634C3F2438CFB2004CA920 /* SigninScreenState.swift */; };
 		DE634C422438D052004CA920 /* SigninScreenAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE634C412438D052004CA920 /* SigninScreenAction.swift */; };
@@ -227,6 +229,8 @@
 		DE4D383D245FB6CA00680B91 /* ItemListCollectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemListCollectionHeaderView.xib; sourceTree = "<group>"; };
 		DE4D3841245FB90E00680B91 /* ExpandedFileBinderCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedFileBinderCollectionViewLayout.swift; sourceTree = "<group>"; };
 		DE4D3843245FB9A200680B91 /* IndexFileBinderCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexFileBinderCollectionViewLayout.swift; sourceTree = "<group>"; };
+		DE5C56C424A2136700B740AE /* AnnouncementDetailScreenTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementDetailScreenTransition.swift; sourceTree = "<group>"; };
+		DE5C56C724A213F100B740AE /* AnnouncementDetailScreenCoodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementDetailScreenCoodinator.swift; sourceTree = "<group>"; };
 		DE634C3924361150004CA920 /* CurrentApplicationUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentApplicationUserRepository.swift; sourceTree = "<group>"; };
 		DE634C3F2438CFB2004CA920 /* SigninScreenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninScreenState.swift; sourceTree = "<group>"; };
 		DE634C412438D052004CA920 /* SigninScreenAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninScreenAction.swift; sourceTree = "<group>"; };
@@ -403,8 +407,9 @@
 		DE04C9C3244C985B00684BA1 /* Transition */ = {
 			isa = PBXGroup;
 			children = (
+				DE5C56C324A2131800B740AE /* AnnouncementDetailScreenTransition */,
 				DEE0B71124544D3600B285BA /* GlobalTabBarTransition */,
-				DE04C9C5244C988800684BA1 /* ScreenTransition */,
+				DE04C9C5244C988800684BA1 /* AnnouncementScreenTransition */,
 				DE04C9C4244C987100684BA1 /* TransitioningDelegate */,
 			);
 			path = Transition;
@@ -418,12 +423,12 @@
 			path = TransitioningDelegate;
 			sourceTree = "<group>";
 		};
-		DE04C9C5244C988800684BA1 /* ScreenTransition */ = {
+		DE04C9C5244C988800684BA1 /* AnnouncementScreenTransition */ = {
 			isa = PBXGroup;
 			children = (
 				DE04C9BF244C76E100684BA1 /* AnnouncementScreenTransition.swift */,
 			);
-			path = ScreenTransition;
+			path = AnnouncementScreenTransition;
 			sourceTree = "<group>";
 		};
 		DE234E5324592CE800E1DC10 /* TopBannerCollectionViewCell */ = {
@@ -543,6 +548,7 @@
 			children = (
 				DE2AB8AB242F424800335E4F /* ScreenCoodinator.swift */,
 				DEAFA5972453EA570095B335 /* Announcement */,
+				DE5C56C624A213BC00B740AE /* AnnouncementDetail */,
 				DEAFA5992453EA890095B335 /* GlobalTabBar */,
 				DEAFA59B2453EAB30095B335 /* GlobalTabBarContents */,
 				DEAFA59A2453EA970095B335 /* Signup */,
@@ -614,6 +620,22 @@
 				DE4D3843245FB9A200680B91 /* IndexFileBinderCollectionViewLayout.swift */,
 			);
 			path = UICollectionViewLayout;
+			sourceTree = "<group>";
+		};
+		DE5C56C324A2131800B740AE /* AnnouncementDetailScreenTransition */ = {
+			isa = PBXGroup;
+			children = (
+				DE5C56C424A2136700B740AE /* AnnouncementDetailScreenTransition.swift */,
+			);
+			path = AnnouncementDetailScreenTransition;
+			sourceTree = "<group>";
+		};
+		DE5C56C624A213BC00B740AE /* AnnouncementDetail */ = {
+			isa = PBXGroup;
+			children = (
+				DE5C56C724A213F100B740AE /* AnnouncementDetailScreenCoodinator.swift */,
+			);
+			path = AnnouncementDetail;
 			sourceTree = "<group>";
 		};
 		DE67D985243249E700EB2D61 /* Signin */ = {
@@ -1465,6 +1487,7 @@
 				DE14134823FB02A10000D27C /* APIRequestManager.swift in Sources */,
 				DEC01229245B034C00C92A6F /* EventIntroductionEntity.swift in Sources */,
 				DEF5A2382443435600383473 /* RequestSignupUseCase.swift in Sources */,
+				DE5C56C524A2136700B740AE /* AnnouncementDetailScreenTransition.swift in Sources */,
 				DE2AB89F242973A100335E4F /* GetTutorialDataUseCase.swift in Sources */,
 				DE9D4EFD24437571003439ED /* RequestSignupRepository.swift in Sources */,
 				DE89829424965AD2008FE8B8 /* StoryDetailViewController.swift in Sources */,
@@ -1517,6 +1540,7 @@
 				DE67D98A24324A5900EB2D61 /* SignupViewController.swift in Sources */,
 				DE6865702466700E003D3522 /* DispatchQueueExtension.swift in Sources */,
 				DEE0B70424541E2F00B285BA /* StoryScreenCoodinator.swift in Sources */,
+				DE5C56C824A213F100B740AE /* AnnouncementDetailScreenCoodinator.swift in Sources */,
 				DEC8A80D245A96710033610D /* TopBannerEntity.swift in Sources */,
 				DE4D3844245FB9A200680B91 /* IndexFileBinderCollectionViewLayout.swift in Sources */,
 				DEDCC888241DE26700BFA165 /* APIRequestProtocol.swift in Sources */,

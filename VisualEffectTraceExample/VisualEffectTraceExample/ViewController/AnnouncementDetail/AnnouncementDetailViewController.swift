@@ -7,8 +7,18 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class AnnouncementDetailViewController: UIViewController {
+
+    // MARK: - AnnouncementDetailFlow
+
+    var coordinator: AnnouncementDetailFlow?
+
+    // MARK: - Properties
+
+    private let disposeBag = DisposeBag()
 
     // MARK: - Override
 

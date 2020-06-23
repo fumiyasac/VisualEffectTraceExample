@@ -1,8 +1,8 @@
 //
-//  AnnouncementScreenCoodinator.swift
+//  AnnouncementDetailScreenCoodinator.swift
 //  VisualEffectTraceExample
 //
-//  Created by 酒井文也 on 2020/04/14.
+//  Created by 酒井文也 on 2020/06/23.
 //  Copyright © 2020 酒井文也. All rights reserved.
 //
 
@@ -11,13 +11,13 @@ import UIKit
 
 // MARK: - Protocol
 
-protocol AnnouncementFlow: class {
+protocol AnnouncementDetailFlow: class {
 
-    // お知らせ一覧画面から前の画面へ戻る
-    func dismissSignin()
+    // お知らせ詳細画面から前の画面へ戻る
+    func dismissAnnouncementDetail()
 }
 
-class AnnouncementScreenCoodinator: ScreenCoordinator, AnnouncementFlow {
+class AnnouncementDetailScreenCoodinator: ScreenCoordinator, AnnouncementDetailFlow {
 
     // MARK: - Properties
 
@@ -54,22 +54,22 @@ class AnnouncementScreenCoodinator: ScreenCoordinator, AnnouncementFlow {
     func start() {
 
         // お知らせ画面表示用のViewControllerのインスタンスを取得して該当Coodinatorのプロトコルを適合させる
-        let announcementViewController = AnnouncementViewController.instantiate()
-        announcementViewController.coordinator = self
-        announcementViewController.transitioningDelegate = targetTransitioningDelegate
+        let announcementDetailViewController = AnnouncementDetailViewController.instantiate()
+        announcementDetailViewController.coordinator = self
+        announcementDetailViewController.transitioningDelegate = targetTransitioningDelegate
 
         // お知らせ画面へ画面遷移を実行する
         if #available(iOS 13.0, *) {
-            announcementViewController.modalPresentationStyle = .fullScreen
+            announcementDetailViewController.modalPresentationStyle = .fullScreen
         }
-        currentDisplayViewController.present(announcementViewController, animated: true, completion: nil)
+        currentDisplayViewController.present(announcementDetailViewController, animated: true, completion: nil)
     }
 
-    // MARK: - AnnouncementFlow
+    // MARK: - AnnouncementDetailFlow
 
-    func dismissSignin() {
+    func dismissAnnouncementDetail() {
 
-        // お知らせ一覧画面から元の遷移元へ戻る
+        // お知らせ詳細画面から元の遷移元へ戻る
         currentDisplayViewController.dismiss(animated: true, completion: nil)
     }
 }
