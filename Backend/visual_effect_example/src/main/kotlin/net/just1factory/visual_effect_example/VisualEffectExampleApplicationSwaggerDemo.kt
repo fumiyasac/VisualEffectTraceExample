@@ -33,7 +33,7 @@ class Swagger2Config {
 			.paths(PathSelectors.ant("/api/v1/**"))
 			.build()
 			.useDefaultResponseMessages(false)
-			.host("http://localhost:8080/")
+			.host("http://localhost:8080")
 			.apiInfo(apiInfo())
 	}
 
