@@ -28,6 +28,9 @@ dependencies {
 	implementation("org.flywaydb:flyway-core")
 	implementation("org.springframework.boot:spring-boot-starter-security")
 	implementation("io.jsonwebtoken:jjwt:0.9.1")
+	// MEMO: Swaggerの導入（このサンプルではSwaggerUIを利用する）
+	compile ("io.springfox:springfox-swagger2:2.9.2")
+	compile ("io.springfox:springfox-swagger-ui:2.9.2")
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
 	}

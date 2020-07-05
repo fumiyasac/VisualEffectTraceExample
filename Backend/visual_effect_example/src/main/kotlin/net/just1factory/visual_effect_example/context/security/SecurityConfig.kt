@@ -3,10 +3,8 @@ package net.just1factory.visual_effect_example.context.security
 import net.just1factory.visual_effect_example.context.jwt.JWTAuthenticationFilter
 import net.just1factory.visual_effect_example.domain.service.ApplicationUserService
 
-//
-import org.springframework.beans.factory.annotation.Autowired
-
 // MEMO: 設定クラスで必要なアノテーション
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Configuration
 
 // MEMO: Spring Securityが提供している機能を利用する
@@ -35,6 +33,16 @@ class SecurityConfig: WebSecurityConfigurerAdapter() {
 		http.csrf()
 			.disable()
 			.authorizeRequests()
+			// MEMO: SwaggerUIの表示のために必要な部分を除外する設定
+			.antMatchers(
+				"/v2/api-docs",
+				"/swagger-resources/**",
+				"/swagger-ui.html",
+				"/webjars/**" ,
+				"/swagger.json"
+			)
+			.permitAll()
+			// MEMO: アプリ側でJWTが必要なくともアクセス可能なエンドポイントに関する定義
 			.antMatchers(HttpMethod.GET,"/api/v1/announcement").permitAll()
 			.antMatchers(HttpMethod.GET,"/api/v1/announcement/{id}").permitAll()
 			.antMatchers(HttpMethod.POST,"/api/v1/signup").permitAll()
