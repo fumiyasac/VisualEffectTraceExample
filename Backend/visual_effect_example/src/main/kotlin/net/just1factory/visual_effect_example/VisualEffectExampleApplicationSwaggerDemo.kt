@@ -39,8 +39,8 @@ class Swagger2Config {
 
 	private fun apiInfo(): ApiInfo {
 		return ApiInfoBuilder()
-			.title("iOS App Example API Samole with Server Side Kotlin & SpringBoot2")
-			.description("こちらはiOSのCleanArchitectureのお試し用事例サンプルのAPI Mock Serverとして利用するために作られたKotlin & Spring Boot製のサンプルアプリケーションになります。Model層は3層（Entity/Repository/Service）に分離した形をとっています。iOSアプリとの認証処理部分はJWT(JSON Web Token)を利用することを想定しており、またDatabase(MySQL)とのやり取りをする部分ではJPAを利用することを想定に作っています。")
+			.title("iOS App Example API with Server Side Kotlin & SpringBoot2")
+			.description("こちらはiOSのCleanArchitectureのお試し用事例サンプルのAPI Mock Serverとして利用するために作られたKotlin & Spring Boot製のサンプルアプリケーションになります。Model層は3層（Entity/Repository/Service）に分離した形をとっています。iOSアプリとの認証処理部分はJWT（JSON Web Token）を利用することを想定しており、またDatabase（MySQL）とのやり取りをする部分ではJPAを利用することを想定に作っています。")
 			.termsOfServiceUrl("https://github.com/fumiyasac/VisualEffectTraceExample")
 			.contact(Contact("fumiyasac", "https://just1factory.net", "just1factory@gmail.com"))
 			.version("1.0.0")
