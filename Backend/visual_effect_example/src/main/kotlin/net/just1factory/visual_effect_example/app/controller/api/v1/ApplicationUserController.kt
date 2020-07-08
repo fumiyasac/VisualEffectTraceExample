@@ -23,9 +23,16 @@ import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.RestController
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.CrossOrigin
+
+// MEMO: Swagger UIに記載する内容を表示するためのアノテーション
+import io.swagger.annotations.Api
+import io.swagger.annotations.ApiParam
+import io.swagger.annotations.ApiOperation
+import io.swagger.annotations.ApiResponses
+import io.swagger.annotations.ApiResponse
+import io.swagger.annotations.Authorization
 
 // MEMO: RestAPIを開発する上で知っておくと良さそうな点
 
@@ -44,6 +51,7 @@ import org.springframework.web.bind.annotation.CrossOrigin
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/api/v1")
+@Api(description = "iOSアプリ登録会員情報に関するエンドポイント（ユーザーの新規登録・JWTの発行等の部分）")
 class ApplicationUserController {
 
 	@Autowired
@@ -51,7 +59,15 @@ class ApplicationUserController {
 
 	// MEMO: 新規会員登録処理を実行する
 	@PostMapping("/signup")
-	fun createApplicationUser(@RequestBody @Validated createUserRequest: CreateUserRequest, bindingResult: BindingResult) : UserSignupResponse {
+	@ApiOperation(value = "iOSアプリ新規会員登録", produces = "application/json", consumes = "application/json", notes = "送信された会員情報をDBへ保存します。")
+	@ApiResponses(
+		value = [
+			ApiResponse(code = 200, message = "OK"),
+			ApiResponse(code = 422, message = "送信された会員情報が不正です（UnprocessableEntityException）。"),
+			ApiResponse(code = 409, message = "このユーザーは既に存在しています（ConflictException）。")
+		]
+	)
+	fun createApplicationUser(@ApiParam(value = "ユーザー名・メールアドレス・パスワードを格納したJSON（全てString型＆バリデーション定義はCreateUserRequestを参照）", required = true) @RequestBody @Validated createUserRequest: CreateUserRequest, bindingResult: BindingResult) : UserSignupResponse {
 
 		// MEMO: 送信された会員情報のバリデーションを実施してエラーを検知した際はUnprocessableEntityExceptionを投げる
 		if (bindingResult.hasErrors()) {
@@ -89,6 +105,13 @@ class ApplicationUserController {
 
 	// MEMO: ログイン処理を実行する
 	@PostMapping("/signin")
+	@ApiOperation(value = "iOSアプリログイン", produces = "application/json", consumes = "application/json", notes = "送信されたメールアドレス・パスワードをDBと照合して一致時にJWTを発行します。", response = UserSigninResponse::class)
+	@ApiResponses(
+		value = [
+			ApiResponse(code = 200, message = "OK"),
+			ApiResponse(code = 422, message = "入力したパスワードまたはメールアドレスに誤りがあります（UnprocessableEntityException）。")
+		]
+	)
 	fun loginApplicationUser(@RequestBody @Validated loginUserRequest: LoginUserRequest, bindingResult: BindingResult) : UserSigninResponse {
 
 		// MEMO: 送信された会員情報のバリデーションを実施してエラーを検知した際はUnprocessableEntityExceptionを投げる
@@ -122,11 +145,5 @@ class ApplicationUserController {
 			result = "OK",
 			token = userJwt
 		)
-	}
-
-	// MEMO: JWTによる認可処理デバッグ時に表示する情報を取得する
-	@GetMapping("/debug")
-	fun example(): String {
-		return "成功: 認証が通過したら閲覧可能です!"
 	}
 }
