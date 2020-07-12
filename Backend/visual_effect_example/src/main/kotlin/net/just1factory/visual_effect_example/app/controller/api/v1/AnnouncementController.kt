@@ -61,18 +61,4 @@ class AnnouncementController {
 		val announcement = announcementService.findRecent() ?: throw NotFoundException("現在最新のお知らせは見つかりませんでした。")
 		return AnnouncementDetailResponse(result = announcement)
 	}
-
-	// MEMO: AnnouncementServiceを経由して受け取ったIDに紐づくAnnouncementEntityにマッピングされたデータを1件取得する
-	@ApiOperation(value = "IDに対応するお知らせ詳細データ取得", produces = "application/json", notes = "IDに対応するDB内にある詳細お知らせデータを1件取得します。", response = AnnouncementDetailResponse::class)
-	@ApiResponses(
-		value = [
-			ApiResponse(code = 200, message = "OK"),
-			ApiResponse(code = 404, message = "ID: xxxに合致するデータが見つかりませんでした。（NotFoundException）。")
-		]
-	)
-	@GetMapping("/announcement/{id}")
-	fun findBy(@ApiParam(value = "お知らせID", required = true) @PathVariable id: Int): AnnouncementDetailResponse {
-		val announcement = announcementService.findBy(id = id) ?: throw NotFoundException("ID: " + id + "に合致するデータが見つかりませんでした。")
-		return AnnouncementDetailResponse(result = announcement)
-	}
 }
