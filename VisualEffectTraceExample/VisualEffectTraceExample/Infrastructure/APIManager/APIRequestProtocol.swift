@@ -22,9 +22,6 @@ protocol APIRequestProtocol {
     func getEventIntroductionsBy(page: Int) -> Single<EventIntroductionAPIResponse>
     func getRecentAnnouncement() -> Single<AnnouncementDetailResponse>
 
-    // AnnouncementDetail.storyboardで利用するエンドポイント
-    func getAnnouncementDetailBy(id: Int) -> Single<AnnouncementDetailResponse>
-
     // MEMO: 公開部分のAPIリクエスト
 
     // Announcement.storyboardで利用するエンドポイント

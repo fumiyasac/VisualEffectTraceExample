@@ -70,16 +70,6 @@ extension APIRequestManager: APIRequestProtocol {
         )
     }
 
-    // お知らせ詳細表示用のAPIリクエスト処理の実行
-    func getAnnouncementDetailBy(id: Int) -> Single<AnnouncementDetailResponse> {
-        let annoucementDetailEndPoint = EndPoint.announcement.getBaseUrl() + "/" + String(id)
-        return executeAPIRequest(
-            endpointUrl: annoucementDetailEndPoint,
-            httpMethod: HTTPMethod.GET,
-            responseFormat: AnnouncementDetailResponse.self
-        )
-    }
-
     // お知らせ一覧表示用のAPIリクエスト処理の実行
     func getAnnouncements() -> Single<AnnouncementListResponse> {
         let annoucementListsEndPoint = EndPoint.announcement.getBaseUrl()
