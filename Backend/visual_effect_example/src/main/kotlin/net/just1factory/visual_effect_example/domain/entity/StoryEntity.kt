@@ -7,8 +7,7 @@ import java.util.Date
 @Table(name="stories")
 data class StoryEntity(
 
-	// MEMO: カラムに対応する値を定義する
-	// ※テーブルとの対応が1:Nの場合 → One StoryEntity has Many StoryImageEntity
+	// MEMO: カラムに対応する値を定義する（※テーブルとの対応が1:1の場合）
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
@@ -28,8 +27,5 @@ data class StoryEntity(
 	@Column(name="created_at")
 	val createdAt: Date,
 	@Column(name="updated_at")
-	val updatedAt: Date,
-	// MEMO: 1:NのEntity同士のAssociation定義
-	@OneToMany(cascade = [CascadeType.ALL])
-	val storyImageEntity: List<StoryImageEntity>? = null
+	val updatedAt: Date
 )

@@ -10,7 +10,3 @@ CREATE TABLE `user_notices` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'ユーザーへのお知らせ更新日',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- // 外部キー制約の付与: item & item_images テーブルに対して外部キー制約を付与する
-
-ALTER TABLE `user_notices` ADD FOREIGN KEY (`user_id`) REFERENCES users(`id`) ON DELETE CASCADE;

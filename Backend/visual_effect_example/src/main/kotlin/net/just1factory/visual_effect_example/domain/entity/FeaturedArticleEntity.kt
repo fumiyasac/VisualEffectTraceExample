@@ -7,8 +7,7 @@ import java.util.Date
 @Table(name="featured_articles")
 data class FeaturedArticleEntity(
 
-	// MEMO: カラムに対応する値を定義する
-	// ※テーブルとの対応が1:Nの場合 → One FeaturedArticleEntity has Many FeaturedArticleImageEntity
+	// MEMO: カラムに対応する値を定義する（※テーブルとの対応が1:1の場合）
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", unique = true, nullable = false)
@@ -30,8 +29,5 @@ data class FeaturedArticleEntity(
 	@Column(name="created_at")
 	val createdAt: Date,
 	@Column(name="updated_at")
-	val updatedAt: Date,
-	// MEMO: 1:NのEntity同士のAssociation定義
-	@OneToMany(cascade = [CascadeType.ALL])
-	val featuredArticleImages: List<FeaturedArticleImageEntity>? = null
+	val updatedAt: Date
 )
