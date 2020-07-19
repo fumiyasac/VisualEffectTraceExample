@@ -8,23 +8,26 @@
 
 import UIKit
 
-class UserNoticeViewController: UIViewController {
+final class UserNoticeViewController: UIViewController {
+
+    // MARK: - Override
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
     }
-    
+}
 
-    /*
-    // MARK: - Navigation
+// MARK: - StoryboardInstantiatable
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension UserNoticeViewController: StoryboardInstantiatable {
+
+    // このViewControllerに対応するStoryboard名
+    static var storyboardName: String {
+        return "UserNotice"
     }
-    */
 
+    // このViewControllerに対応するViewControllerのIdentifier名
+    static var viewControllerIdentifier: String? {
+        return nil
+    }
 }

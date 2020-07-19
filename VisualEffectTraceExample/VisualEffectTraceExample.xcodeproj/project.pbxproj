@@ -76,6 +76,8 @@
 		DE76EC4324C09ECA003B190E /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76EC4224C09ECA003B190E /* ItemDetailViewController.swift */; };
 		DE76EC4624C09F5C003B190E /* ItemDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE76EC4524C09F5C003B190E /* ItemDetail.storyboard */; };
 		DE76EC4824C3E461003B190E /* StickyStyleFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76EC4724C3E461003B190E /* StickyStyleFlowLayout.swift */; };
+		DE76EC4B24C3EAF3003B190E /* UserNoticeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE76EC4A24C3EAF3003B190E /* UserNoticeViewController.storyboard */; };
+		DE76EC4E24C3EC55003B190E /* UserNoticeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76EC4D24C3EC55003B190E /* UserNoticeViewController.swift */; };
 		DE8084A72451DC2700641A22 /* GlobalTabBarScreenCoodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8084A62451DC2700641A22 /* GlobalTabBarScreenCoodinator.swift */; };
 		DE84854224279D7D00766098 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE84854024279D7D00766098 /* Tutorial.storyboard */; };
 		DE84854524279DF800766098 /* TutorialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE84854324279DF800766098 /* TutorialCollectionViewCell.swift */; };
@@ -258,6 +260,8 @@
 		DE76EC4224C09ECA003B190E /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		DE76EC4524C09F5C003B190E /* ItemDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemDetail.storyboard; sourceTree = "<group>"; };
 		DE76EC4724C3E461003B190E /* StickyStyleFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyStyleFlowLayout.swift; sourceTree = "<group>"; };
+		DE76EC4A24C3EAF3003B190E /* UserNoticeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = UserNoticeViewController.storyboard; sourceTree = "<group>"; };
+		DE76EC4D24C3EC55003B190E /* UserNoticeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNoticeViewController.swift; sourceTree = "<group>"; };
 		DE8084A62451DC2700641A22 /* GlobalTabBarScreenCoodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalTabBarScreenCoodinator.swift; sourceTree = "<group>"; };
 		DE84854124279D7D00766098 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Tutorial.storyboard; sourceTree = "<group>"; };
 		DE84854324279DF800766098 /* TutorialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -701,6 +705,22 @@
 			path = ItemDetail;
 			sourceTree = "<group>";
 		};
+		DE76EC4924C3EABF003B190E /* UserNotice */ = {
+			isa = PBXGroup;
+			children = (
+				DE76EC4A24C3EAF3003B190E /* UserNoticeViewController.storyboard */,
+			);
+			path = UserNotice;
+			sourceTree = "<group>";
+		};
+		DE76EC4C24C3EC3D003B190E /* UserNotice */ = {
+			isa = PBXGroup;
+			children = (
+				DE76EC4D24C3EC55003B190E /* UserNoticeViewController.swift */,
+			);
+			path = UserNotice;
+			sourceTree = "<group>";
+		};
 		DE84873D2425B32500A40975 /* KeychainManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -894,6 +914,7 @@
 				DE67D986243249F000EB2D61 /* Signup */,
 				DE89829224965AB9008FE8B8 /* StoryDetail */,
 				DE2AB8AE242F4B6600335E4F /* Tutorial */,
+				DE76EC4C24C3EC3D003B190E /* UserNotice */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -911,6 +932,7 @@
 				DEAFA58B2453E2C40095B335 /* Signup */,
 				DE89829524965AF8008FE8B8 /* StoryDetail */,
 				DEAFA58D2453E2D60095B335 /* Tutorial */,
+				DE76EC4924C3EABF003B190E /* UserNotice */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -1377,6 +1399,7 @@
 				DE84854624279DF800766098 /* TutorialCollectionViewCell.xib in Resources */,
 				DEE0B708245427BA00B285BA /* Search.storyboard in Resources */,
 				DE76EC4624C09F5C003B190E /* ItemDetail.storyboard in Resources */,
+				DE76EC4B24C3EAF3003B190E /* UserNoticeViewController.storyboard in Resources */,
 				DEAFA5852453E2850095B335 /* Items.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1516,6 +1539,7 @@
 				DEC8A80F245A97A30033610D /* TopBannerAPIResponse.swift in Sources */,
 				DE84854A2427A43C00766098 /* TutorialViewModel.swift in Sources */,
 				DEE0B70A245427E500B285BA /* SearchViewController.swift in Sources */,
+				DE76EC4E24C3EC55003B190E /* UserNoticeViewController.swift in Sources */,
 				DE67D98824324A3300EB2D61 /* SigninViewController.swift in Sources */,
 				DEF5A23C2443438A00383473 /* SignupScreenCoodinator.swift in Sources */,
 				DE8E96572444C7480033375F /* AnnouncementViewModel.swift in Sources */,
