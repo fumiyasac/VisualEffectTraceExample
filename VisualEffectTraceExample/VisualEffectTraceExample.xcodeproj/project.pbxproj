@@ -75,6 +75,7 @@
 		DE726CC0243AB5310043FA4E /* CompositionalValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE726CBF243AB5310043FA4E /* CompositionalValidator.swift */; };
 		DE76EC4324C09ECA003B190E /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76EC4224C09ECA003B190E /* ItemDetailViewController.swift */; };
 		DE76EC4624C09F5C003B190E /* ItemDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE76EC4524C09F5C003B190E /* ItemDetail.storyboard */; };
+		DE76EC4824C3E461003B190E /* StickyStyleFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE76EC4724C3E461003B190E /* StickyStyleFlowLayout.swift */; };
 		DE8084A72451DC2700641A22 /* GlobalTabBarScreenCoodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8084A62451DC2700641A22 /* GlobalTabBarScreenCoodinator.swift */; };
 		DE84854224279D7D00766098 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE84854024279D7D00766098 /* Tutorial.storyboard */; };
 		DE84854524279DF800766098 /* TutorialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE84854324279DF800766098 /* TutorialCollectionViewCell.swift */; };
@@ -256,6 +257,7 @@
 		DE726CBF243AB5310043FA4E /* CompositionalValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionalValidator.swift; sourceTree = "<group>"; };
 		DE76EC4224C09ECA003B190E /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		DE76EC4524C09F5C003B190E /* ItemDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ItemDetail.storyboard; sourceTree = "<group>"; };
+		DE76EC4724C3E461003B190E /* StickyStyleFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyStyleFlowLayout.swift; sourceTree = "<group>"; };
 		DE8084A62451DC2700641A22 /* GlobalTabBarScreenCoodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalTabBarScreenCoodinator.swift; sourceTree = "<group>"; };
 		DE84854124279D7D00766098 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Tutorial.storyboard; sourceTree = "<group>"; };
 		DE84854324279DF800766098 /* TutorialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -615,6 +617,7 @@
 			children = (
 				DE4D3841245FB90E00680B91 /* ExpandedFileBinderCollectionViewLayout.swift */,
 				DE4D3843245FB9A200680B91 /* IndexFileBinderCollectionViewLayout.swift */,
+				DE76EC4724C3E461003B190E /* StickyStyleFlowLayout.swift */,
 			);
 			path = UICollectionViewLayout;
 			sourceTree = "<group>";
@@ -1461,6 +1464,7 @@
 				DE234E602459930600E1DC10 /* ContainerCollectionViewCell.swift in Sources */,
 				DE6E7E82247AC5B10088B22A /* RequestRecentAnnouncementDataRepository.swift in Sources */,
 				DEA2A8FC24758B42000237DA /* RecentAnnouncementCollectionViewCell.swift in Sources */,
+				DE76EC4824C3E461003B190E /* StickyStyleFlowLayout.swift in Sources */,
 				DE634C462438D56B004CA920 /* SigninScreenReducer.swift in Sources */,
 				DE634C402438CFB2004CA920 /* SigninScreenState.swift in Sources */,
 				DE234E5B24592E9F00E1DC10 /* EventIntroductionCollectionViewCell.swift in Sources */,
