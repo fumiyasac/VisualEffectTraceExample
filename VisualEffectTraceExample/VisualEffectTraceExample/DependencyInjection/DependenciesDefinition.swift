@@ -8,6 +8,10 @@
 
 import Foundation
 
+// PropertyWrapperを利用したDI処理に関する実装の解説については下記のブログにまとめています。
+// 【実装MEMO】PropertyWrappersの機能を利用したDependency Injectionのコードに触れた際の備忘録
+// https://bit.ly/2OLQwIu
+
 final class DependenciesDefinition {
 
     // MARK: - Function

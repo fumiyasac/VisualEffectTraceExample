@@ -9,6 +9,36 @@
 import Foundation
 import RxSwift
 
+/*
+＜補足: RxSwiftを利用したAPIリクエストの実装例＞
+
+(1) 一覧表示用のリクエストを取得する際の実装例
+let api = APIRequestManager.shared
+let _ = api.getAnnoucements()
+    .subscribe(
+        onSuccess: { data in
+            print(data.result)
+        },
+        onError: { error in
+            print(error)
+        }
+    )
+    .disposed(by: disposeBag)
+
+(2) 詳細表示用のリクエストを取得する際の実装例
+let _ = api.getAnnoucementDetailBy(id: 1)
+    .subscribe(
+        onSuccess: { data in
+            print(data.result)
+        },
+        onError: { error in
+            print(error)
+        }
+    )
+    .disposed(by: disposeBag)
+
+*/
+
 // MARK: - APIRequestManagerProtocol
 
 extension APIRequestManager: APIRequestProtocol {
