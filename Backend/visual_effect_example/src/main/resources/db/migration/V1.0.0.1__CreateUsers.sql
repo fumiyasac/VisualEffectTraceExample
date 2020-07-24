@@ -16,6 +16,6 @@ LOCK TABLES `users` WRITE;
 
 INSERT INTO `users` (`id`, `user_name`, `mail_address`, `password`, `device_token`, `status_code`, `created_at`, `updated_at`)
 VALUES
-	(1, 'fumiyasac', 'just1factory@gmail.com', '$2a$10$q0yZy5U8Ttz8vyakGgpZj.naWF0574p6i3.7lnkyN1DT06Fh/Jeq2', NULL, 0, '2020-03-08 00:00:00', '2020-03-08 00:00:00');
+	(1, 'fumiyasac', 'fumiya.sakai@example.com', '$2a$10$q0yZy5U8Ttz8vyakGgpZj.naWF0574p6i3.7lnkyN1DT06Fh/Jeq2', NULL, 0, '2020-07-24 16:30:00', '2020-07-24 16:30:00');
 
 UNLOCK TABLES;

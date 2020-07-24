@@ -1,12 +1,10 @@
 package net.just1factory.visual_effect_example.app.controller.api.v1
 
 // ドメイン層（Service）
-import net.just1factory.visual_effect_example.app.response.announcement.AnnouncementDetailResponse
 import net.just1factory.visual_effect_example.domain.service.StoryService
 
 // アプリケーション層（Request・Response）
 import net.just1factory.visual_effect_example.app.response.story.StoryListResponse
-import net.just1factory.visual_effect_example.app.response.story.StoryDetailResponse
 
 // コンテキスト層（Exception）
 import net.just1factory.visual_effect_example.context.exception.NotFoundException
@@ -32,12 +30,5 @@ class StoryController {
 	fun findAll(): StoryListResponse {
 		val stories = storyService.findAll()
 		return StoryListResponse(result = stories)
-	}
-
-	// MEMO: StoryServiceを経由して受け取ったIDに紐づくStoryEntityにマッピングされたデータを1件取得する
-	@GetMapping("/story/{id}")
-	fun findBy(@PathVariable id: Int): StoryDetailResponse {
-		val story = storyService.findBy(id = id) ?: throw NotFoundException("ID: " + id + "に合致するデータが見つかりませんでした。")
-		return StoryDetailResponse(result = story)
 	}
 }

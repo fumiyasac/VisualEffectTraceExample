@@ -20,9 +20,4 @@ class StoryService {
 	fun findAll(): List<StoryEntity> {
 		return storyRepository.findAll()
 	}
-
-	// ライブラリ`JPA`を利用してStoryEntityにマッピングされたデータのうち該当するIDに紐づくものを取得する
-	fun findBy(id: Int): StoryEntity? {
-		return storyRepository.findById(id).orElse(null)
-	}
 }
