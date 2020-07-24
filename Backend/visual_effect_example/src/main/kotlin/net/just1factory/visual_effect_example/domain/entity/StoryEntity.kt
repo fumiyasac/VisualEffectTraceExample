@@ -20,6 +20,8 @@ data class StoryEntity(
 	val mainStatement: String? = null,
 	@Column(name = "sub_statement", nullable = true)
 	val subStatement: String? = null,
+	@Column(name = "thumbnail_url", nullable = true)
+	val thumbnailUrl: String? = null,
 	@Column(name = "author", nullable = false)
 	val author: String,
 	@Column(name="announcement_at")
