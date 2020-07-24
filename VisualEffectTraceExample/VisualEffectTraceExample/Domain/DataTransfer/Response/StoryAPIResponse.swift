@@ -1,17 +1,17 @@
 //
-//  AnnouncementAPIResponse.swift
+//  StoryAPIResponse.swift
 //  VisualEffectTraceExample
 //
-//  Created by 酒井文也 on 2020/02/23.
+//  Created by 酒井文也 on 2020/07/25.
 //  Copyright © 2020 酒井文也. All rights reserved.
 //
 
 import Foundation
 
-// MEMO: お知らせ一覧表示用のAPIレスポンス定義
-struct AnnouncementListResponse: Decodable {
+// MEMO: Story表示用のAPIレスポンス定義
+struct StoryAPIResponse: Decodable {
 
-    let result: Array<AnnouncementEntity>
+    let result: Array<StoryEntity>
 
     // MARK: - Enum
 
@@ -24,6 +24,6 @@ struct AnnouncementListResponse: Decodable {
     // JSONの配列内の要素を取得する → JSONの配列内の要素にある値をDecodeして初期化する
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Keys.self)
-        self.result = try container.decode(Array<AnnouncementEntity>.self, forKey: .result)
+        self.result = try container.decode(Array<StoryEntity>.self, forKey: .result)
     }
 }

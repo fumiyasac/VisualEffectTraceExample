@@ -51,6 +51,7 @@ extension APIRequestManager: APIRequestProtocol {
         // Item.storyboardで利用するエンドポイント
         case topBanner = "top_banner"
         case eventIntroduction = "event_introduction"
+        case story = "story"
 
         // MEMO: 認証前の画面でも利用可能なエンドポイント
 
@@ -90,23 +91,32 @@ extension APIRequestManager: APIRequestProtocol {
         )
     }
 
+    func getStories() -> Single<StoryAPIResponse> {
+        let storyListsEndPoint = EndPoint.story.getBaseUrl()
+        return executeAPIRequest(
+            endpointUrl: storyListsEndPoint,
+            httpMethod: HTTPMethod.GET,
+            responseFormat: StoryAPIResponse.self
+        )
+    }
+
     // 最新のお知らせ詳細表示用のAPIリクエスト処理の実行
-    func getRecentAnnouncement() -> Single<AnnouncementDetailResponse> {
+    func getRecentAnnouncement() -> Single<AnnouncementDetailAPIResponse> {
         let recentAnnoucementEndPoint = EndPoint.announcement.getBaseUrl() + "/recent"
         return executeAPIRequest(
             endpointUrl: recentAnnoucementEndPoint,
             httpMethod: HTTPMethod.GET,
-            responseFormat: AnnouncementDetailResponse.self
+            responseFormat: AnnouncementDetailAPIResponse.self
         )
     }
 
     // お知らせ一覧表示用のAPIリクエスト処理の実行
-    func getAnnouncements() -> Single<AnnouncementListResponse> {
+    func getAnnouncements() -> Single<AnnouncementListAPIResponse> {
         let annoucementListsEndPoint = EndPoint.announcement.getBaseUrl()
         return executeAPIRequest(
             endpointUrl: annoucementListsEndPoint,
             httpMethod: HTTPMethod.GET,
-            responseFormat: AnnouncementListResponse.self
+            responseFormat: AnnouncementListAPIResponse.self
         )
     }
 

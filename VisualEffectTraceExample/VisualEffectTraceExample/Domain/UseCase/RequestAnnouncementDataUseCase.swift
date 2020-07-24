@@ -14,7 +14,7 @@ import RxSwift
 protocol AnnouncementUsecase {
 
     // お知らせ一覧取得処理を実行する
-    func execute() -> Single<AnnouncementListResponse>
+    func execute() -> Single<AnnouncementListAPIResponse>
 }
 
 final class RequestAnnouncementDataUseCase: AnnouncementUsecase {
@@ -25,7 +25,7 @@ final class RequestAnnouncementDataUseCase: AnnouncementUsecase {
 
     // MARK: - AnnouncementUsecase
 
-    func execute() -> Single<AnnouncementListResponse> {
+    func execute() -> Single<AnnouncementListAPIResponse> {
         return announcementRepository.requestAnnouncementDataList()
     }
 }

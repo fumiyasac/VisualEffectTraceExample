@@ -79,6 +79,10 @@ final class DependenciesDefinition {
                 protocolName: SignupRepository.self
             ),
             (
+                implInstance: RequestStoryRepository(),
+                protocolName: StoryRepository.self
+            ),
+            (
                 implInstance: RequestTopBannerDataRepository(),
                 protocolName: TopBannerRepository.self
             ),
@@ -125,6 +129,10 @@ final class DependenciesDefinition {
                 protocolName: SignupUsecase.self
             ),
             (
+                implInstance: RequestStoryDataUseCase(),
+                protocolName: StoryUseCase.self
+            ),
+            (
                 implInstance: RequestTopBannerDataUseCase(),
                 protocolName: TopBannerUseCase.self
             ),
@@ -169,6 +177,10 @@ final class DependenciesDefinition {
             (
                 implInstance: SignupViewModel(),
                 protocolName: SignupViewModelType.self
+            ),
+            (
+                implInstance: StoryViewModel(),
+                protocolName: StoryViewModelType.self
             ),
             (
                 implInstance: TutorialViewModel(),

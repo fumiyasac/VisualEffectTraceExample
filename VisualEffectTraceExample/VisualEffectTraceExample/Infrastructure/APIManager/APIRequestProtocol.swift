@@ -20,12 +20,15 @@ protocol APIRequestProtocol {
     // Item.storyboardで利用するエンドポイント
     func getTopBanners() -> Single<TopBannerAPIResponse>
     func getEventIntroductionsBy(page: Int) -> Single<EventIntroductionAPIResponse>
-    func getRecentAnnouncement() -> Single<AnnouncementDetailResponse>
+    func getRecentAnnouncement() -> Single<AnnouncementDetailAPIResponse>
+
+    // Story.storyboardで利用するエンドポイント
+    func getStories() -> Single<StoryAPIResponse>
 
     // MEMO: 公開部分のAPIリクエスト
 
     // Announcement.storyboardで利用するエンドポイント
-    func getAnnouncements() -> Single<AnnouncementListResponse>
+    func getAnnouncements() -> Single<AnnouncementListAPIResponse>
 
     // Signin.storyboardで利用するエンドポイント
     func requestSiginin(mailAddress: String, rawPassword: String) -> Single<SigninSuccessResponse>

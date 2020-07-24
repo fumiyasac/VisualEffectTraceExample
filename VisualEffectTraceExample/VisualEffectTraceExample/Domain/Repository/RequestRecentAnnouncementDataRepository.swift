@@ -14,7 +14,7 @@ import RxSwift
 protocol RecentAnnouncementRepository {
 
     // 最新のお知らせを1件取得するAPIリクエストを実行する
-    func requestRecentAnnouncementData() -> Single<AnnouncementDetailResponse>
+    func requestRecentAnnouncementData() -> Single<AnnouncementDetailAPIResponse>
 }
 
 final class RequestRecentAnnouncementRepository: RecentAnnouncementRepository {
@@ -25,7 +25,7 @@ final class RequestRecentAnnouncementRepository: RecentAnnouncementRepository {
 
     // MARK: - RecentAnnouncementRepository
 
-    func requestRecentAnnouncementData() -> Single<AnnouncementDetailResponse> {
+    func requestRecentAnnouncementData() -> Single<AnnouncementDetailAPIResponse> {
         return apiRequestManager.getRecentAnnouncement()
     }
 }

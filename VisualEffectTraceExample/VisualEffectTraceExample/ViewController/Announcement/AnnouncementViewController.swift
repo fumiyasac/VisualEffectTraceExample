@@ -38,13 +38,13 @@ final class AnnouncementViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupAnnouncementTableVieww()
+        setupAnnouncementTableView()
         bindToRxSwift()
     }
 
     // MARK: - Private Function
 
-    private func setupAnnouncementTableVieww() {
+    private func setupAnnouncementTableView() {
 
         // UITableViewに関する設定
         // MEMO: Interface Builder上で下記の設定をしている

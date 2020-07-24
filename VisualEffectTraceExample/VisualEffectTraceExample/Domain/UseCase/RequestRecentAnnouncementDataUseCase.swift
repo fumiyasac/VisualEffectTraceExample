@@ -14,7 +14,7 @@ import RxSwift
 protocol RecentAnnouncementUseCase {
 
     // 最新お知らせ取得処理を実行する
-    func execute() -> Single<AnnouncementDetailResponse>
+    func execute() -> Single<AnnouncementDetailAPIResponse>
 }
 
 final class RequestRecentAnnouncementDataUseCase: RecentAnnouncementUseCase {
@@ -25,7 +25,7 @@ final class RequestRecentAnnouncementDataUseCase: RecentAnnouncementUseCase {
 
     // MARK: - RecentAnnoucementUseCase
 
-    func execute() -> Single<AnnouncementDetailResponse> {
+    func execute() -> Single<AnnouncementDetailAPIResponse> {
         return recentAnnouncementRepository.requestRecentAnnouncementData()
     }
 }

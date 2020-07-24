@@ -14,7 +14,7 @@ import RxSwift
 protocol AnnouncementRepository {
 
     // お知らせ一覧表示用のAPIリクエストを実行する
-    func requestAnnouncementDataList() -> Single<AnnouncementListResponse>
+    func requestAnnouncementDataList() -> Single<AnnouncementListAPIResponse>
 }
 
 final class RequestAnnouncementDataRepository: AnnouncementRepository {
@@ -25,7 +25,7 @@ final class RequestAnnouncementDataRepository: AnnouncementRepository {
 
     // MARK: - AnnouncementRepository
 
-    func requestAnnouncementDataList() -> Single<AnnouncementListResponse> {
+    func requestAnnouncementDataList() -> Single<AnnouncementListAPIResponse> {
         return apiRequestManager.getAnnouncements()
     }
 }

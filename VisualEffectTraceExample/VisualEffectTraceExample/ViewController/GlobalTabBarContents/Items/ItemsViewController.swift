@@ -52,7 +52,7 @@ final class ItemsViewController: UIViewController {
     // UICollectionViewに設置するRefreshControl
     private let photoRefrashControl = UIRefreshControl()
 
-    // MEMO: トップバナー表示内容を取得するViewModel
+    // MEMO: 表示内容をハンドリングするViewModel
     @Dependencies.Inject(Dependencies.Name(rawValue: "ItemsViewModelType")) private var viewModel: ItemsViewModelType
 
     // MARK: - Properties (for UICollectionViewCompositionalLayout)
