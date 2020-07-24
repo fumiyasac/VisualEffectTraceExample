@@ -13,7 +13,6 @@ import FontAwesome_swift
 enum TabBarItemsType: CaseIterable {
 
     case items
-    case search
     case featured
     case story
     case settings
@@ -25,8 +24,6 @@ enum TabBarItemsType: CaseIterable {
         switch self {
         case .items:
             return "Items"
-        case .search:
-            return "Search"
         case .featured:
             return "Featured"
         case .story:
@@ -41,8 +38,6 @@ enum TabBarItemsType: CaseIterable {
         switch self {
         case .items:
             return .images
-        case .search:
-            return .search
         case .featured:
             return .lightbulb
         case .story:

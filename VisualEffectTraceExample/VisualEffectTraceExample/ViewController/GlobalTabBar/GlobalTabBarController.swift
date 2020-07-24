@@ -63,23 +63,19 @@ final class GlobalTabBarController: UITabBarController {
         // 1. Items
         let itemsNavigationController = UINavigationController()
         let itemsScreenCoordinator = ItemsScreenCoodinator(navigationController: itemsNavigationController)
-        // 2. Search
-        let searchNavigationController = UINavigationController()
-        let searchScreenCoordinator = SearchScreenCoodinator(navigationController: searchNavigationController)
-        // 3. Featured
+        // 2. Featured
         let featuredNavigationController = UINavigationController()
         let featuredScreenCoordinator = FeaturedScreenCoodinator(navigationController: featuredNavigationController)
-        // 4. Story
+        // 3. Story
         let storyNavigationController = UINavigationController()
         let storyScreenCoordinator = StoryScreenCoodinator(navigationController: storyNavigationController)
-        // 5. Settings
+        // 4. Settings
         let settingsNavigationController = UINavigationController()
         let settingsScreenCoordinator = SettingsScreenCoodinator(navigationController: settingsNavigationController)
 
         // MEMO: 各画面の土台となるUINavigationControllerをセットする
         self.viewControllers = [
             itemsNavigationController,
-            searchNavigationController,
             featuredNavigationController,
             storyNavigationController,
             settingsNavigationController
@@ -87,7 +83,6 @@ final class GlobalTabBarController: UITabBarController {
 
         // MEMO: GlobalTabBarControllerに配置する画面に対応するCoodinatorの処理を実行する
         itemsScreenCoordinator.start()
-        searchScreenCoordinator.start()
         featuredScreenCoordinator.start()
         storyScreenCoordinator.start()
         settingsScreenCoordinator.start()
