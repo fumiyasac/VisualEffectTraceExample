@@ -17,6 +17,8 @@ import UIKit
 
 final class StickyStyleFlowLayout: UICollectionViewFlowLayout {
 
+    // MARK: - Properties
+
     // 拡大縮小比を変更するための変数（値を変更する必要がある場合のみ利用する）
     var firstItemTransform: CGFloat?
 

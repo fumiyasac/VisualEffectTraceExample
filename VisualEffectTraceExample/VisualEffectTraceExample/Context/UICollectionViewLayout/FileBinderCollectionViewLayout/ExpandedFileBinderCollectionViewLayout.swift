@@ -30,6 +30,7 @@ final class ExpandedFileBinderCollectionViewLayout: UICollectionViewLayout {
 
     // MARK: - Override (Function)
 
+    // セルのレイアウト属性の計算処理を実行する前に実行する
     override func prepare() {
         super.prepare()
 
@@ -109,7 +110,7 @@ final class ExpandedFileBinderCollectionViewLayout: UICollectionViewLayout {
         return visibleLayoutAttributes
     }
 
-    // IndexPathに該当するセルのbUICollectionViewLayoutAttributesを再度計算して返す
+    // IndexPathに該当するセルのUICollectionViewLayoutAttributesを再度計算して返す
     override func layoutAttributesForItem(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
         return attributes[indexPath.item]
     }
