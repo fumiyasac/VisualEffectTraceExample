@@ -11,6 +11,8 @@ import UIKit
 
 // UICollectionViewで縦横両方向にスクロールさせる様な形を実現するUICollectionViewFlowLayoutを継承したクラス
 // MEMO: 下記ブログで紹介されているコードを参考に再実装をしてみました。
+// (1) 横方向のセル数はnumberOfItemsInSectionで定義する
+// (2) 縦方向のセル数はnumberOfSectionsで定義する
 // https://xyk.hatenablog.com/entry/2017/02/09/184410
 
 final class MultipleScrollDirectionLayout: UICollectionViewFlowLayout {
