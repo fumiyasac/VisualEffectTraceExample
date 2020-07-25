@@ -72,6 +72,11 @@ final class MultipleScrollDirectionLayout: UICollectionViewFlowLayout {
         return layoutInfo[indexPath]
     }
 
+    // 常にレイアウトの再計算を実行するか(※常に再計算を実行する場合はtrueを返す)
+    override func shouldInvalidateLayout(forBoundsChange newBounds: CGRect) -> Bool {
+        return true
+    }
+
     // MARK: - Private Function
 
     // 配置したセル要素群を基に全体の幅の最大値を算出する
