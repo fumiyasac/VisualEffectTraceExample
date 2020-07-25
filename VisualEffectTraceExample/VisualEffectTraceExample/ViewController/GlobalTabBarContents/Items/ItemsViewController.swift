@@ -118,7 +118,7 @@ final class ItemsViewController: UIViewController {
 
             // MEMO:
             // 0: itemsTopBanner, 1: itemsEventIntroductionは別画面で定義した画面クラスを読み込むためのContainerViewとして利用する
-            // 2: itemsRecentAnnoucementは最新お知らせ詳細画面へカスタムトランジション（サムネイルの拡大）を伴って画面遷移をする
+            // 2: itemsRecentAnnoucementは画面遷移をせずに表示だけを行う
             // 3: itemsRegularListは紹介アイテム詳細画面へカスタムトランジションを伴って画面遷移をする
             // ※3の補足事項:
             // 並べ方はInstagramの検索画面の様な形で、かつある程度の表示ができたタイミングで滑らかに次の要素が表示される形にする
