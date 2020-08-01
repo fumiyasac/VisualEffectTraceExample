@@ -50,7 +50,7 @@ final class StoryViewController: UIViewController {
     private func setupStoryCollectionView() {
 
         // UICollectionViewに関する設定
-        storyCollectionView.decelerationRate = .normal
+        storyCollectionView.decelerationRate = .fast
         storyCollectionView.showsHorizontalScrollIndicator = true
         storyCollectionView.showsVerticalScrollIndicator = true
         storyCollectionView.bounces = false
