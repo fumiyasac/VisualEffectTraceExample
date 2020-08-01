@@ -88,6 +88,10 @@ final class StoryViewController: UIViewController {
 
 // MARK: - UICollectionViewDataSource
 
+// MEMO: iOS13~利用可能なDiffableDataSourceを利用しても実装可能
+// → このレイアウトに関しては、「横方向のセル数はnumberOfItemsInSectionで定義する ＆ 縦方向のセル数はnumberOfSectionsで定義する」という形をとっている点に注意すれば可能
+// ※ この場合については特にセクション毎の表示データの更新を考える必要のない画面だから従来通りの方法で支障はない。
+
 extension StoryViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
