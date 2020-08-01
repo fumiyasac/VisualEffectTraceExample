@@ -8,7 +8,7 @@
 
 import UIKit
 
-// UICollectionViewCompositionalLayoutでは実現できない表現の例（2）
+// UICollectionViewCompositionalLayoutでは実現が難しいかもしれない表現の例（2）
 // MEMO: Safariのタブの様な動きをUICollectionViewを利用して実施する
 // → UICollectionViewLayoutを継承したクラスをセルタップ時 or セル内のボタン押下時に切り替えて適用する形で実現する
 // https://github.com/AfrozZaheer/AZSafariCollectionViewLayout
@@ -47,6 +47,7 @@ final class FeaturedViewController: UIViewController {
 
         setupNavigationBarTitle(TabBarItemsType.featured.getGlobalTabBarTitle())
         setupCollectionView()
+        bindToRxSwift()
     }
 
     // MARK: - Private Function
@@ -54,11 +55,14 @@ final class FeaturedViewController: UIViewController {
     private func setupCollectionView() {
 
         // UICollectionViewに関する初期設定
-        featuredCollectionView.delegate = self
-        featuredCollectionView.dataSource = self
         featuredCollectionView.bounces = false
         featuredCollectionView.registerCustomCell(FeaturedCollectionViewCell.self)
         featuredCollectionView.contentInset.bottom = adjustedContentInsetBottom
+
+        // MEMO: UICollectionViewのDelegate/DataSourceの宣言
+        // ※ RxSwiftを利用した宣言方法もあるが、この方法だと却って処理が書きにくい場合にはデータをセットするする部分だけをRxSwiftで書いて残りは従来通りの記載方法でも良いかもしれません。
+        featuredCollectionView.delegate = self
+        featuredCollectionView.dataSource = self
 
         // UICollectionViewに付与するUICollectionViewLayoutを継承したクラスを付与する
         featuredCollectionView.setCollectionViewLayout(indexFileBinderLayout, animated: true)
@@ -67,6 +71,8 @@ final class FeaturedViewController: UIViewController {
             indexFileBinderLayout.targetItemGap = adjustedTargetItemGap
         }
     }
+
+    private func bindToRxSwift() {}
 }
 
 // MARK: - UICollectionViewDelegate

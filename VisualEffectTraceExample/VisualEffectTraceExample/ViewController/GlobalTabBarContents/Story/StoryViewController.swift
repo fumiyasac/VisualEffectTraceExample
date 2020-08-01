@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-// UICollectionViewCompositionalLayoutでは実現できない表現の例（3）
+// UICollectionViewCompositionalLayoutでは実現が難しいかもしれない表現の例（3）
 // 水平方向と垂直方向が合わさった形のUICollectionViewの表現（タイムテーブルやフォトギャラリー等でも類似した形のものがある）
 // 参考:
 // https://xyk.hatenablog.com/entry/2017/02/09/184410
@@ -117,8 +117,10 @@ extension StoryViewController: UICollectionViewDataSource {
 extension StoryViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let position = "\(indexPath.section) - \(indexPath.row)"
-        print("didSelect:", position)
+        let fixedIndex = indexPath.section * 4 + indexPath.row
+        let selecedStoryEntity = storyItems.value[fixedIndex]
+        
+        // TODO: 簡単な画面遷移処理だけ作成
     }
 }
 
