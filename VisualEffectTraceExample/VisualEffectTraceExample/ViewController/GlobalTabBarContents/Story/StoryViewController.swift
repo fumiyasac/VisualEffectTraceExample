@@ -57,6 +57,8 @@ final class StoryViewController: UIViewController {
         storyCollectionView.registerCustomCell(StoryListCollectionViewCell.self)
 
         // MEMO: UICollectionViewのDelegate/DataSourceの宣言
+        // ※ RxSwiftを利用した宣言方法もあるが、この方法だと却って処理が書きにくい場合にはデータをセットするする部分だけをRxSwiftで書いて残りは従来通りの記載方法でも良いかもしれません。
+
         storyCollectionView.delegate = self
         storyCollectionView.dataSource = self
 
