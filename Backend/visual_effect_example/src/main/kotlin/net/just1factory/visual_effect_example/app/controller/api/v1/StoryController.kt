@@ -18,7 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired
 
 @RestController
 @RequestMapping("/api/v1")
-@Api(description = "Story(アプリ内ではフォトギャラリー)画面表示用バナーに関するエンドポイント（表示コンテンツ）")
+@Api(description = "Story(アプリ内ではフォトギャラリー)画面表示関するエンドポイント（表示コンテンツ）")
 class StoryController {
 
 	@Autowired
@@ -26,7 +26,7 @@ class StoryController {
 
 	// MEMO: StoryServiceを経由してStoryEntityにマッピングされたデータを全件取得する
 	@GetMapping("/story")
-	@ApiOperation(value = "Story一覧データ取得", produces = "application/json", notes = "DB内にあるStory一覧データ取得します。", response = TopBannerListResponse::class, authorizations = [Authorization(value = "発行したJWT")])
+	@ApiOperation(value = "Story一覧データ取得", produces = "application/json", notes = "DB内にあるStory一覧データ取得します。", response = StoryListResponse::class, authorizations = [Authorization(value = "発行したJWT")])
 	@ApiResponses(
 		value = [
 			ApiResponse(code = 200, message = "OK")
