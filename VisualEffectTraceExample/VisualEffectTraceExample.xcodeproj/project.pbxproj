@@ -482,20 +482,12 @@
 			path = DependencyInjection;
 			sourceTree = "<group>";
 		};
-		DE2AB8972427A53C00335E4F /* DataSet */ = {
-			isa = PBXGroup;
-			children = (
-				DE2AB8982427A55F00335E4F /* ProductionData */,
-			);
-			path = DataSet;
-			sourceTree = "<group>";
-		};
-		DE2AB8982427A55F00335E4F /* ProductionData */ = {
+		DE2AB8972427A53C00335E4F /* InternalJsonData */ = {
 			isa = PBXGroup;
 			children = (
 				DE2AB8992427A57000335E4F /* tutorial_data.json */,
 			);
-			path = ProductionData;
+			path = InternalJsonData;
 			sourceTree = "<group>";
 		};
 		DE2AB89B24282CCC00335E4F /* TutorialCollectionViewCell */ = {
@@ -859,7 +851,7 @@
 				DEAA657123F3123100C5232B /* Assets.xcassets */,
 				DE726CB9243A99580043FA4E /* Context */,
 				DE2AB8AA242F36B900335E4F /* Coodinator */,
-				DE2AB8972427A53C00335E4F /* DataSet */,
+				DE2AB8972427A53C00335E4F /* InternalJsonData */,
 				DE24F13A246FCA7000609C32 /* DependencyInjection */,
 				DEA01C7A2400FE0E00346C1E /* Domain */,
 				DEAA65A023F70D1400C5232B /* Enum */,
