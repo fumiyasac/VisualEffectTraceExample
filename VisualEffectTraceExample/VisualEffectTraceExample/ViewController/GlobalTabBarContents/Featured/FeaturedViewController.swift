@@ -20,9 +20,6 @@ final class FeaturedViewController: UIViewController {
 
     // MARK: - Properties
 
-    // 一度だけ配置する処理を実行するための識別子のPrefix
-    private let onceTokenPrefix = "Featured_"
-
     // MEMO: 配置したUICollectionViewにおける下方向オフセット値を調整するための定数
     private let adjustedContentInsetBottom: CGFloat = 82.0
 
@@ -48,6 +45,7 @@ final class FeaturedViewController: UIViewController {
     // MARK: - @IBOutlet
 
     @IBOutlet private weak var featuredCollectionView: UICollectionView!
+    @IBOutlet private weak var featuredErrorView: ScreenErrorView!
 
     // MARK: - Override
 
@@ -56,6 +54,7 @@ final class FeaturedViewController: UIViewController {
 
         setupNavigationBarTitle(TabBarItemsType.featured.getGlobalTabBarTitle())
         setupCollectionView()
+        setupFeaturedErrorView()
         bindToRxSwift()
     }
 
@@ -81,6 +80,15 @@ final class FeaturedViewController: UIViewController {
         }
     }
 
+    private func setupFeaturedErrorView() {
+
+        // ScreenErrorViewDelegateの宣言
+        featuredErrorView.delegate = self
+
+        // 一番最初は非表示状態にしておく
+        featuredErrorView.isHidden = true
+    }
+
     private func bindToRxSwift() {
 
         // ViewModelから表示内容を取得する
@@ -92,8 +100,31 @@ final class FeaturedViewController: UIViewController {
             .subscribe(
                 onNext: { [weak self] featuredArticleItems in
                     guard let self = self else { return }
+
+                    // MEMO: データ表示用のUICollectionViewとエラー表示用のViewの表示・非表示を決定する
+                    self.featuredCollectionView.isHidden = false
+                    self.featuredErrorView.isHidden = true
+
+                    // MEMO: 表示内容の反映処理を実行する
                     self.featuredArticleItems.accept(featuredArticleItems)
                     self.featuredCollectionView.reloadData()
+                }
+            )
+            .disposed(by: disposeBag)
+
+        // データのセット時にエラーが発生した場合における処理
+        viewModel.outputs.requestStatus
+            .observeOn(MainScheduler.instance)
+            .filter { requestStatus in
+                requestStatus == .error
+            }
+            .subscribe(
+                onNext: { [weak self] topBanners in
+                    guard let self = self else { return }
+
+                    // MEMO: データ表示用のUICollectionViewとエラー表示用のViewの表示・非表示を決定する
+                    self.featuredCollectionView.isHidden = true
+                    self.featuredErrorView.isHidden = false
                 }
             )
             .disposed(by: disposeBag)
@@ -140,13 +171,18 @@ extension FeaturedViewController: UICollectionViewDataSource {
         cell.setCell(featuredArticleItems.value[indexPath.row])
         cell.setDecoration()
 
-        // MEMO: セルの配置を一度だけ実行する
-        DispatchQueue.once(token: "\(onceTokenPrefix)\(indexPath.item)") {
-            DispatchQueue.main.async {
-
-            }
-        }
         return cell
+    }
+}
+
+// MWRK: - ScreenErrorViewDelegate
+
+extension FeaturedViewController: ScreenErrorViewDelegate {
+
+    func retryRequestButtonTapped() {
+
+        // ViewModelから表示内容を取得する
+        viewModel.inputs.initialFetchTrigger.onNext(())
     }
 }
 

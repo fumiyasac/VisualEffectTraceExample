@@ -14,7 +14,7 @@ import UIKit
 protocol SettingsFlow: class {
 
     // 設定一覧画面からログアウト処理を実行する
-    func coordinateToLogin()
+    func coordinateToSignin()
 }
 
 class SettingsScreenCoodinator: ScreenCoordinator, SettingsFlow {
@@ -45,7 +45,10 @@ class SettingsScreenCoodinator: ScreenCoordinator, SettingsFlow {
 
     // MARK: - SettingsFlow
 
-    func coordinateToLogin() {
-        print("アンケート画面へ遷移する")
+    func coordinateToSignin() {
+
+        // サインイン画面へ遷移するためのCoodinatorの処理を実施する
+        let signinCoodinator = SigninScreenCoordinator()
+        coordinate(to: signinCoodinator)
     }
 }

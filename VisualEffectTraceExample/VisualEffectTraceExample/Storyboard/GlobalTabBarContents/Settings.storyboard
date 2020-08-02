@@ -14,9 +14,81 @@
                     <view key="view" contentMode="scaleToFill" id="7bb-v6-S4n">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gdc-5X-uKF">
+                                <rect key="frame" x="16" y="16" width="343" height="127"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="このサンプルについて" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n93-Im-GrQ">
+                                        <rect key="frame" x="0.0" y="12" width="333" height="21.5"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="for-MU-Z0h">
+                                        <rect key="frame" x="0.0" y="49.5" width="333" height="65"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="簡単なサンプルとなって恐縮ではありますが、ログインから画面表示までの一覧の流れをローカルの">
+                                                <attributes>
+                                                    <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <font key="NSFont" size="12" name="HiraginoSans-W3"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="API">
+                                                <attributes>
+                                                    <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <font key="NSFont" size="12" name="HelveticaNeue"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="サーバーと一緒に見るものになります。もし、気になる点などがありましたらお気軽にお申し付け下さい！">
+                                                <attributes>
+                                                    <color key="NSColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <font key="NSFont" size="12" name="HiraginoSans-W3"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineSpacing="5" tighteningFactorForTruncation="0.0"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="for-MU-Z0h" firstAttribute="top" secondItem="n93-Im-GrQ" secondAttribute="bottom" constant="16" id="2td-Mi-S6K"/>
+                                    <constraint firstItem="n93-Im-GrQ" firstAttribute="top" secondItem="gdc-5X-uKF" secondAttribute="top" constant="12" id="4sL-ES-Q2k"/>
+                                    <constraint firstItem="for-MU-Z0h" firstAttribute="leading" secondItem="gdc-5X-uKF" secondAttribute="leading" id="X2E-HZ-CtZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="for-MU-Z0h" secondAttribute="trailing" constant="10" id="kzo-Ay-mG6"/>
+                                    <constraint firstItem="n93-Im-GrQ" firstAttribute="leading" secondItem="gdc-5X-uKF" secondAttribute="leading" id="lzd-7x-PE4"/>
+                                    <constraint firstAttribute="trailing" secondItem="n93-Im-GrQ" secondAttribute="trailing" constant="10" id="p2t-wO-ZP5"/>
+                                    <constraint firstAttribute="bottom" secondItem="for-MU-Z0h" secondAttribute="bottom" constant="12.5" id="rTO-bm-e4z"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TS8-Wl-KUs">
+                                <rect key="frame" x="16" y="159" width="343" height="48"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="Y5E-0g-TAc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <state key="normal" title="サインアウト">
+                                    <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="TS8-Wl-KUs" secondAttribute="trailing" constant="16" id="8fU-Cw-FeZ"/>
+                            <constraint firstItem="TS8-Wl-KUs" firstAttribute="leading" secondItem="s8P-0G-VxO" secondAttribute="leading" constant="16" id="9XZ-gS-e4l"/>
+                            <constraint firstItem="gdc-5X-uKF" firstAttribute="leading" secondItem="s8P-0G-VxO" secondAttribute="leading" constant="16" id="Kei-le-td6"/>
+                            <constraint firstItem="s8P-0G-VxO" firstAttribute="trailing" secondItem="gdc-5X-uKF" secondAttribute="trailing" constant="16" id="UPP-SN-XZk"/>
+                            <constraint firstItem="gdc-5X-uKF" firstAttribute="top" secondItem="s8P-0G-VxO" secondAttribute="top" constant="16" id="Uef-jl-0fb"/>
+                            <constraint firstItem="TS8-Wl-KUs" firstAttribute="top" secondItem="gdc-5X-uKF" secondAttribute="bottom" constant="16" id="ss8-E1-aqj"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="s8P-0G-VxO"/>
                     </view>
+                    <connections>
+                        <outlet property="signoutButton" destination="TS8-Wl-KUs" id="yIP-wc-OqA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ALl-4f-Uc9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

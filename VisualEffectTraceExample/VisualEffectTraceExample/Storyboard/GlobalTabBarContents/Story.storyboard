@@ -15,6 +15,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AF5-SV-qbf" customClass="ScreenErrorView" customModule="VisualEffectTraceExample" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CN2-KU-sV3">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -29,15 +33,20 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="AF5-SV-qbf" firstAttribute="leading" secondItem="Hsx-E2-hcO" secondAttribute="leading" id="4nr-nX-nwl"/>
                             <constraint firstItem="Hsx-E2-hcO" firstAttribute="bottom" secondItem="CN2-KU-sV3" secondAttribute="bottom" id="5Ju-iq-jXp"/>
                             <constraint firstItem="CN2-KU-sV3" firstAttribute="leading" secondItem="Hsx-E2-hcO" secondAttribute="leading" id="9ok-PX-dtl"/>
+                            <constraint firstItem="Hsx-E2-hcO" firstAttribute="trailing" secondItem="AF5-SV-qbf" secondAttribute="trailing" id="Ehd-nL-tGr"/>
                             <constraint firstItem="Hsx-E2-hcO" firstAttribute="trailing" secondItem="CN2-KU-sV3" secondAttribute="trailing" id="Qcz-he-FhT"/>
+                            <constraint firstItem="Hsx-E2-hcO" firstAttribute="bottom" secondItem="AF5-SV-qbf" secondAttribute="bottom" id="V8Z-CX-Rwp"/>
                             <constraint firstItem="CN2-KU-sV3" firstAttribute="top" secondItem="Hsx-E2-hcO" secondAttribute="top" id="sZG-Hw-4T7"/>
+                            <constraint firstItem="AF5-SV-qbf" firstAttribute="top" secondItem="Hsx-E2-hcO" secondAttribute="top" id="vRC-ud-euI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Hsx-E2-hcO"/>
                     </view>
                     <connections>
                         <outlet property="storyCollectionView" destination="CN2-KU-sV3" id="Sq3-90-bE7"/>
+                        <outlet property="storyErrorView" destination="AF5-SV-qbf" id="2gb-at-reA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yNm-mH-UGk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

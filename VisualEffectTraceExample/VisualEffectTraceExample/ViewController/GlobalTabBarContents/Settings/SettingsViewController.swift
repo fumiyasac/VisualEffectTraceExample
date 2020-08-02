@@ -9,7 +9,6 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import PKHUD
 
 final class SettingsViewController: UIViewController {
 
@@ -21,7 +20,11 @@ final class SettingsViewController: UIViewController {
 
     private let disposeBag = DisposeBag()
 
+    @Dependencies.Inject(Dependencies.Name(rawValue: "KeychainAccessProtocol")) private var keychainAccessManager: KeychainAccessProtocol
+
     // MARK: - @IBOutlet
+    
+    @IBOutlet private weak var signoutButton: UIButton!
 
     // MARK: - Override
 
@@ -29,6 +32,24 @@ final class SettingsViewController: UIViewController {
         super.viewDidLoad()
 
         setupNavigationBarTitle(TabBarItemsType.settings.getGlobalTabBarTitle())
+        bindToRxSwift()
+    }
+
+    private func bindToRxSwift() {
+        signoutButton.rx.controlEvent(.touchUpInside)
+            .asObservable()
+            .observeOn(MainScheduler.instance)
+            .subscribe(
+                onNext: { [weak self] _ in
+                    guard let self = self else { return }
+
+                    // MEMO: KaychainからTokenを削除して再びサインイン画面に引き渡す
+                    // → 厳密にいえばこの処理もきちんとRepository/UseCaseを利用した方が良い
+                    self.keychainAccessManager.deleteJsonAccessToken()
+                    self.coordinator?.coordinateToSignin()
+                }
+            )
+            .disposed(by: disposeBag)
     }
 }
 

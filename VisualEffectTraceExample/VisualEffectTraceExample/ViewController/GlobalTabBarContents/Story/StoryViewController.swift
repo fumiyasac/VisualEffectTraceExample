@@ -30,6 +30,7 @@ final class StoryViewController: UIViewController {
     // MARK: - @IBOutlet
 
     @IBOutlet private weak var storyCollectionView: UICollectionView!
+    @IBOutlet private weak var storyErrorView: ScreenErrorView!
 
     // MARK: - Override
 
@@ -64,6 +65,15 @@ final class StoryViewController: UIViewController {
         }
     }
 
+    private func setupFeaturedErrorView() {
+
+        // ScreenErrorViewDelegateの宣言
+        storyErrorView.delegate = self
+
+        // 一番最初は非表示状態にしておく
+        storyErrorView.isHidden = true
+    }
+
     private func bindToRxSwift() {
 
         // ViewModelから表示内容を取得する
@@ -75,8 +85,31 @@ final class StoryViewController: UIViewController {
             .subscribe(
                 onNext: { [weak self] storyItems in
                     guard let self = self else { return }
+
+                    // MEMO: データ表示用のUICollectionViewとエラー表示用のViewの表示・非表示を決定する
+                    self.storyCollectionView.isHidden = false
+                    self.storyErrorView.isHidden = true
+
+                    // MEMO: 表示内容の反映処理を実行する
                     self.storyItems.accept(storyItems)
                     self.storyCollectionView.reloadData()
+                }
+            )
+            .disposed(by: disposeBag)
+
+        // データのセット時にエラーが発生した場合における処理
+        viewModel.outputs.requestStatus
+            .observeOn(MainScheduler.instance)
+            .filter { requestStatus in
+                requestStatus == .error
+            }
+            .subscribe(
+                onNext: { [weak self] topBanners in
+                    guard let self = self else { return }
+
+                    // MEMO: データ表示用のUICollectionViewとエラー表示用のViewの表示・非表示を決定する
+                    self.storyCollectionView.isHidden = true
+                    self.storyErrorView.isHidden = false
                 }
             )
             .disposed(by: disposeBag)
@@ -129,6 +162,17 @@ extension StoryViewController: UICollectionViewDelegateFlowLayout {
     // セル内のアイテム間の余白(margin)調整を行う
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return .zero
+    }
+}
+
+// MWRK: - ScreenErrorViewDelegate
+
+extension StoryViewController: ScreenErrorViewDelegate {
+
+    func retryRequestButtonTapped() {
+
+        // ViewModelから表示内容を取得する
+        viewModel.inputs.initialFetchTrigger.onNext(())
     }
 }
 
