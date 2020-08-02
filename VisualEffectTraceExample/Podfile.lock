@@ -1,5 +1,4 @@
 PODS:
-  - ActiveLabel (1.1.0)
   - AnimatedCollectionViewLayout (1.0.1)
   - BouncyLayout (2.2.0)
   - FontAwesome.swift (1.9.0)
@@ -23,7 +22,6 @@ PODS:
   - RxSwift (5.1.1)
 
 DEPENDENCIES:
-  - ActiveLabel
   - AnimatedCollectionViewLayout
   - BouncyLayout
   - FontAwesome.swift
@@ -38,7 +36,6 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - ActiveLabel
     - AnimatedCollectionViewLayout
     - BouncyLayout
     - FontAwesome.swift
@@ -54,7 +51,6 @@ SPEC REPOS:
     - RxSwift
 
 SPEC CHECKSUMS:
-  ActiveLabel: 5e3f4de79a1952d4604b845a0610d4776e4b82b3
   AnimatedCollectionViewLayout: 00f0997fd26f0fd02d8b99765023b95570b5d826
   BouncyLayout: b8be605d6c729086d0fc83f180f71e804abeaf04
   FontAwesome.swift: a403b88cec950511745ba8f2decd1b6a07346d13
@@ -69,6 +65,6 @@ SPEC CHECKSUMS:
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
 
-PODFILE CHECKSUM: 81d128995df7bd95f261a04c753bcbe8a64f3b9b
+PODFILE CHECKSUM: 7b5140b56fd19f082a012d542dc8e7958a0d3c3c
 
 COCOAPODS: 1.9.1
