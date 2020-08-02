@@ -16,6 +16,6 @@ interface ItemRepository :JpaRepository<ItemEntity, Int> {
 	// 参考URL: 生のクエリを直接書いてデータを取得する方法
 	// https://kleinblog.net/kotlin-jpa-sql/
 
-	@Query(value = "SELECT * FROM items ORDER BY id DESC LIMIT :limit OFFSET :offset" , nativeQuery = true)
+	@Query(value = "SELECT * FROM items ORDER BY id ASC LIMIT :limit OFFSET :offset" , nativeQuery = true)
 	fun selectItemPerPage(@Param("limit") limit: Int, @Param("offset") offset: Int): List<ItemEntity>
 }

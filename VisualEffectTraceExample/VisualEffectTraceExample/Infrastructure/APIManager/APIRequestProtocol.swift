@@ -21,6 +21,7 @@ protocol APIRequestProtocol {
     func getTopBanners() -> Single<TopBannerAPIResponse>
     func getEventIntroductionsBy(page: Int) -> Single<EventIntroductionAPIResponse>
     func getRecentAnnouncement() -> Single<AnnouncementDetailAPIResponse>
+    func getItemsBy(page: Int) -> Single<ItemAPIResponse>
 
     // Featured.storyboardで利用するエンドポイント
     func getFeaturedArticles() -> Single<FeaturedArticleAPIResponse>

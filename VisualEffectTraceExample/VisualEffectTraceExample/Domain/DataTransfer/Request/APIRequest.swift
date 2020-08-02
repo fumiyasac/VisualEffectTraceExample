@@ -51,7 +51,12 @@ extension APIRequestManager: APIRequestProtocol {
         // Item.storyboardで利用するエンドポイント
         case topBanner = "top_banner"
         case eventIntroduction = "event_introduction"
+        case items = "items"
+
+        // Story.storyboardで利用するエンドポイント
         case story = "story"
+
+        // Featured.storyboardで利用するエンドポイント
         case featuredArticle = "featured_article"
 
         // MEMO: 認証前の画面でも利用可能なエンドポイント
@@ -89,6 +94,16 @@ extension APIRequestManager: APIRequestProtocol {
             endpointUrl: eventIntroductionEndPoint,
             httpMethod: HTTPMethod.GET,
             responseFormat: EventIntroductionAPIResponse.self
+        )
+    }
+
+    // アイテム一覧表示用のAPIリクエスト処理の実行
+    func getItemsBy(page: Int) -> Single<ItemAPIResponse> {
+        let itemsEndPoint = EndPoint.items.getBaseUrl() + "?page=" + String(page)
+        return executeAPIRequest(
+            endpointUrl: itemsEndPoint,
+            httpMethod: HTTPMethod.GET,
+            responseFormat: ItemAPIResponse.self
         )
     }
 

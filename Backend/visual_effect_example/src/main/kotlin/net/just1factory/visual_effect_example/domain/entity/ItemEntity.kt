@@ -17,7 +17,7 @@ data class ItemEntity(
         @Column(name = "statement", nullable = true)
         val statement: String? = null,
         @Column(name = "thumbnail_url", nullable = true)
-        val caption: String? = null,
+        val thumbnailUrl: String? = null,
         @Column(name="announcement_at")
         val announcementAt: Date,
         @Column(name="created_at")

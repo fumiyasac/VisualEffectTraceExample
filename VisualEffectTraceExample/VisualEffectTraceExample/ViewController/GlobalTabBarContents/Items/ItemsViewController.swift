@@ -9,7 +9,6 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import PKHUD
 
 // MEMO: 基本方針としてはiOS13で登場したUICollectionViewCompositionalLayoutで構築し、NSDiffableDataSourceを利用して内容の更新を実施する方針を採っています。
 // 今回の事例では、UICollectionViewCompositionalLayoutで全部まとめられそうだけど実はそうでもない？ような例
@@ -50,7 +49,7 @@ final class ItemsViewController: UIViewController {
     private let itemsEventIntroductionContainerViewController = ItemsEventIntroductionContainerViewController.instantiate()
     
     // UICollectionViewに設置するRefreshControl
-    private let photoRefrashControl = UIRefreshControl()
+    private let itemRefrashControl = UIRefreshControl()
 
     // MEMO: 表示内容をハンドリングするViewModel
     @Dependencies.Inject(Dependencies.Name(rawValue: "ItemsViewModelType")) private var viewModel: ItemsViewModelType
@@ -78,6 +77,9 @@ final class ItemsViewController: UIViewController {
             case ItemsScreenSectionType.itemsRecentAnnoucement.getSectionIndex():
                 return ItemsScreenSectionType.itemsRecentAnnoucement.getSectionLayout()
 
+            case ItemsScreenSectionType.itemsRegularList.getSectionIndex():
+                return ItemsScreenSectionType.itemsRegularList.getSectionLayout()
+
             default:
                 fatalError()
             }
@@ -104,11 +106,12 @@ final class ItemsViewController: UIViewController {
     private func setupItemCollectionView() {
 
         // UICollectionViewに関する設定
-        itemCollectionView.delegate = self
+        itemCollectionView.refreshControl = itemRefrashControl
         itemCollectionView.showsVerticalScrollIndicator = true
         itemCollectionView.registerCustomReusableHeaderView(ItemListCollectionHeaderView.self)
         itemCollectionView.registerCustomCell(ContainerCollectionViewCell.self)
         itemCollectionView.registerCustomCell(RecentAnnouncementCollectionViewCell.self)
+        itemCollectionView.registerCustomCell(ItemCollectionViewCell.self)
 
         // MEMO: UICollectionViewCompositionalLayoutを利用してレイアウトを組み立てる
         itemCollectionView.collectionViewLayout = compositionalLayout
@@ -118,8 +121,7 @@ final class ItemsViewController: UIViewController {
 
             // MEMO:
             // 0: itemsTopBanner, 1: itemsEventIntroductionは別画面で定義した画面クラスを読み込むためのContainerViewとして利用する
-            // 2: itemsRecentAnnoucementは画面遷移をせずに表示だけを行う
-            // 3: itemsRegularListは紹介アイテム詳細画面へカスタムトランジションを伴って画面遷移をする
+            // 2: itemsRecentAnnoucement, 3: itemsRegularListは画面遷移をせずに表示だけを行う
             // ※3の補足事項:
             // 並べ方はInstagramの検索画面の様な形で、かつある程度の表示ができたタイミングで滑らかに次の要素が表示される形にする
             switch indexPath.section {
@@ -153,6 +155,17 @@ final class ItemsViewController: UIViewController {
                 let cell = collectionView.dequeueReusableCustomCell(with: RecentAnnouncementCollectionViewCell.self, indexPath: indexPath)
                 switch model {
                 case let model as AnnouncementEntity:
+                    cell.setCell(model)
+                    return cell
+                default:
+                    return UICollectionViewCell()
+                }
+
+            case ItemsScreenSectionType.itemsRegularList.getSectionIndex():
+
+                let cell = collectionView.dequeueReusableCustomCell(with: ItemCollectionViewCell.self, indexPath: indexPath)
+                switch model {
+                case let model as ItemEntity:
                     cell.setCell(model)
                     return cell
                 default:
@@ -199,6 +212,16 @@ final class ItemsViewController: UIViewController {
                     return header
                 }
 
+            case ItemsScreenSectionType.itemsRegularList.getSectionIndex():
+                if kind == UICollectionView.elementKindSectionHeader {
+                    let header = collectionView.dequeueReusableCustomHeaderView(with: ItemListCollectionHeaderView.self, indexPath: indexPath)
+                    header.setHeader(
+                        title: ItemsScreenSectionType.itemsRegularList.getSectionTitle(),
+                        description: ItemsScreenSectionType.itemsRegularList.getSectionDescription()
+                    )
+                    return header
+                }
+
             default:
                 break
             }
@@ -210,7 +233,7 @@ final class ItemsViewController: UIViewController {
     }
 
     private func bindToRxSwift() {
-        
+
         // ViewModelから表示内容を取得する
         viewModel.inputs.initialFetchTrigger.onNext(())
 
@@ -227,6 +250,74 @@ final class ItemsViewController: UIViewController {
                     self.snapshot.deleteItems(oldRecentAnnouncement)
                     self.snapshot.appendItems([newRecentAnnouncement], toSection: .itemsRecentAnnoucement)
                     self.dataSource.apply(self.snapshot, animatingDifferences: false)
+                }
+            )
+            .disposed(by: disposeBag)
+
+        // アイテム取得時のUICollectionViewへの反映処理
+        viewModel.outputs.items
+            .asObservable()
+            .observeOn(MainScheduler.instance)
+            .subscribe(
+                onNext: { [weak self] newItems in
+                    guard let self = self else { return }
+
+                    // MEMO: NSDiffableDataSourceを利用したアイテムセクション表示データの差分更新処理
+                    let oldItems = self.snapshot.itemIdentifiers(inSection: .itemsRegularList)
+                    self.snapshot.deleteItems(oldItems)
+                    self.snapshot.appendItems(newItems, toSection: .itemsRegularList)
+                    self.dataSource.apply(self.snapshot, animatingDifferences: false)
+                }
+            )
+            .disposed(by: disposeBag)
+
+        // PullToRefreshを適用する
+        itemRefrashControl.rx.controlEvent(.valueChanged)
+            .asObservable()
+            .delay(.milliseconds(640), scheduler: MainScheduler.instance)
+            .subscribe(
+                onNext: { [weak self] newItems in
+                    guard let self = self else { return }
+                    self.viewModel.inputs.pullToRefreshTrigger.onNext(())
+                }
+            )
+            .disposed(by: disposeBag)
+        viewModel.outputs.requestStatus
+            .observeOn(MainScheduler.instance)
+            .subscribe(
+                onNext: { [weak self] requestStatus in
+                    guard let self = self else { return }
+
+                    // MEMO: RefreshControlのハンドリングを実施する
+                    if requestStatus == .requesting {
+                        self.itemRefrashControl.beginRefreshing()
+                    } else {
+                        self.itemRefrashControl.endRefreshing()
+                    }
+                }
+            )
+            .disposed(by: disposeBag)
+        
+        // スクロール実行時のイベント取得とViewModelでのAPIリクエスト状態の変化をキャッチしてそれぞれの最新状態のイベントを流す
+        // → 適切な表現かは自信はありませんが、一応ページネーションを伴ってデータの取得から表示までができてはいるので許容範囲としても良さそうと判断しています...
+        Observable.combineLatest(itemCollectionView.rx.contentOffset.asObservable(), viewModel.outputs.requestStatus.distinctUntilChanged())
+            // MEMO: この部分がないと「Reentrancy anomaly was detected.」の警告が発生してしまうので注意する。
+            .observeOn(SerialDispatchQueueScheduler(qos: .default))
+            .observeOn(MainScheduler.instance)
+            .subscribe(
+                onNext: { [weak self] (contentOffset, requestStatus) in
+                    guard let self = self else { return }
+
+                    // MEMO: リクエスト実行中の時は以降の処理を行わない
+                    if requestStatus == .requesting {
+                        return
+                    }
+
+                    // MEMO: UIScrollViewが一番下の状態に達した時にAPIリクエストを実行する
+                    // 補足: https://stackoverflow.com/questions/49782874/detecting-if-a-uiscrollview-has-the-height-to-scroll
+                    if contentOffset.y > 0 && (contentOffset.y + self.itemCollectionView.frame.size.height > self.itemCollectionView.contentSize.height) {
+                        self.viewModel.inputs.paginationFetchTrigger.onNext(())
+                    }
                 }
             )
             .disposed(by: disposeBag)
@@ -248,10 +339,6 @@ final class ItemsViewController: UIViewController {
         dataSource.apply(snapshot, animatingDifferences: false)
     }
 }
-
-// MARK: - UICollectionViewDelegate
-
-extension ItemsViewController: UICollectionViewDelegate {}
 
 // MARK: - ItemsTopBannerContainerDelegate
 

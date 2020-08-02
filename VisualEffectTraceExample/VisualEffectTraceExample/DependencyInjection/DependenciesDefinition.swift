@@ -75,6 +75,10 @@ final class DependenciesDefinition {
                 protocolName: FeaturedArticleRepository.self
             ),
             (
+                implInstance: RequestItemRepository(),
+                protocolName: ItemRepository.self
+            ),
+            (
                 implInstance: RequestSigninRepository(),
                 protocolName: SigninRepository.self
             ),
@@ -123,6 +127,10 @@ final class DependenciesDefinition {
             (
                 implInstance: RequestFeaturedArticleDataUseCase(),
                 protocolName: FeaturedArticleUseCase.self
+            ),
+            (
+                implInstance: RequestItemDataUseCase(),
+                protocolName: ItemUseCase.self
             ),
             (
                 implInstance: RequestRecentAnnouncementDataUseCase(),

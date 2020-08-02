@@ -15,7 +15,7 @@ enum ItemsScreenSectionType: CaseIterable {
     case itemsTopBanner
     case itemsEventIntroduction
     case itemsRecentAnnoucement
-//    case itemsRegularList
+    case itemsRegularList
 
     // MARK: - Properties
 
@@ -34,8 +34,8 @@ enum ItemsScreenSectionType: CaseIterable {
             return 1
         case .itemsRecentAnnoucement:
             return 2
-//        case .itemsRegularList:
-//            return 3
+        case .itemsRegularList:
+            return 3
         }
     }
 
@@ -48,8 +48,8 @@ enum ItemsScreenSectionType: CaseIterable {
             return "Event Introduction"
         case .itemsRecentAnnoucement:
             return "Recent Announcement"
-//        case .itemsRegularList:
-//            return "Regular Item List"
+        case .itemsRegularList:
+            return "Regular Item List"
         }
     }
 
@@ -62,8 +62,8 @@ enum ItemsScreenSectionType: CaseIterable {
             return "購入イベントやSALE情報を掲載しています。"
         case .itemsRecentAnnoucement:
             return "現在お知らせしている最新情報になります。"
-//        case .itemsRegularList:
-//            return "現在販売・購入実績があるアイテム一覧です。"
+        case .itemsRegularList:
+            return "現在販売・購入実績があるアイテム一覧です。"
         }
     }
     
@@ -76,8 +76,8 @@ enum ItemsScreenSectionType: CaseIterable {
             return createItemsEventIntroductionLayout()
         case .itemsRecentAnnoucement:
             return createItemsRecentAnnoucementLayout()
-//        case .itemsRegularList:
-//            // TODO: レイアウトを作成する
+        case .itemsRegularList:
+            return createItemsRegularItemLayout()
         }
     }
 
@@ -151,6 +151,35 @@ enum ItemsScreenSectionType: CaseIterable {
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(estimatedHeight))
         let group = NSCollectionLayoutGroup.vertical(layoutSize: groupSize, subitems: [item])
         group.contentInsets = .zero
+
+        // 3. Sectionのサイズ設定
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = .zero
+
+        // 4. Headerのレイアウトを決定する
+        let headerSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(69.5))
+        let header = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)
+        section.boundarySupplementaryItems = [header]
+        section.contentInsets = .zero
+
+        return section
+    }
+
+    private func createItemsRegularItemLayout() -> NSCollectionLayoutSection {
+
+        // 1. Itemのサイズ設定
+        // MEMO: 全体幅2/3の正方形を作るために左側の幅を.fractionalWidth(0.67)に決める
+        let twoThirdItemSet = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.67), heightDimension: .fractionalHeight(1.0)))
+        twoThirdItemSet.contentInsets = .zero
+        // MEMO: 右側に全体幅1/3の正方形を2つ作るために高さを.fractionalHeight(0.5)に決める
+        let oneThirdItem = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.5)))
+        oneThirdItem.contentInsets = .zero
+        // MEMO: 1列に表示するカラム数を2として設定し、Group内のアイテムの幅を1/3の正方形とするためにGroup内の幅を.fractionalWidth(0.33)に決める
+        let oneThirdItemSet = NSCollectionLayoutGroup.vertical(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.33), heightDimension: .fractionalHeight(1.0)), subitem: oneThirdItem, count: 2)
+
+        // 2. Groupのサイズ設定
+        // MEMO: leadingItem(左側へ表示するアイテム1つ)とtrailingGroup(右側へ表示するアイテム2個のグループ1個)を合わせる
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.33)), subitems: [twoThirdItemSet, oneThirdItemSet])
 
         // 3. Sectionのサイズ設定
         let section = NSCollectionLayoutSection(group: group)
