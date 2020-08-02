@@ -84,12 +84,14 @@ final class SigninViewModel: SigninViewModelInputs, SigninViewModelOutputs, Sign
                     self._requestStatus.accept(.success)
                     // MEMO: JsonAccessTokenを保存する
                     self.saveJsonWebToken(token: data.token)
-                    // MEMO: ログイン完了後に_requestStatusの値を元に戻す
+                    // MEMO: サインイン完了後に_requestStatusの値を元に戻す
                     self._requestStatus.accept(.none)
                 },
                 onError: { [weak self] error in
                     guard let self = self else { return }
                     self._requestStatus.accept(.error)
+                    // MEMO: サインイン完了後に_requestStatusの値を元に戻す
+                    self._requestStatus.accept(.none)
                 }
             )
             .disposed(by: disposeBag)
