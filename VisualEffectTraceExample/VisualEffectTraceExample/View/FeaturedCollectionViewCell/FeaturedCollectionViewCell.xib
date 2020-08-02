@@ -24,25 +24,25 @@
                         <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="※ タップすると閉じます。" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OPF-nR-DNv">
-                        <rect key="frame" x="10" y="214.5" width="220" height="13.5"/>
+                        <rect key="frame" x="10" y="210.5" width="220" height="13.5"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="11"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Caption Here." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6gI-Zp-EQp">
-                        <rect key="frame" x="10" y="12" width="220" height="20.5"/>
+                        <rect key="frame" x="10" y="16" width="220" height="20.5"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="キャッチコピーが入ります。" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z6O-gU-58F">
-                        <rect key="frame" x="10" y="40.5" width="220" height="15.5"/>
+                        <rect key="frame" x="10" y="44.5" width="220" height="15.5"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="13"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本文が入ります。" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rEr-Yx-odO">
-                        <rect key="frame" x="10" y="64" width="220" height="13.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="本文が入ります。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rEr-Yx-odO">
+                        <rect key="frame" x="10" y="68" width="220" height="13.5"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="11"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
@@ -60,9 +60,9 @@
                 <constraint firstAttribute="bottom" secondItem="mWg-cq-fkB" secondAttribute="bottom" id="EH4-SV-3qm"/>
                 <constraint firstAttribute="trailing" secondItem="wDa-A2-xK7" secondAttribute="trailing" id="HUk-R0-DMz"/>
                 <constraint firstItem="mWg-cq-fkB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="UAq-eR-pQS"/>
-                <constraint firstItem="6gI-Zp-EQp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="12" id="YMl-aU-TVY"/>
+                <constraint firstItem="6gI-Zp-EQp" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="YMl-aU-TVY"/>
                 <constraint firstAttribute="trailing" secondItem="6gI-Zp-EQp" secondAttribute="trailing" constant="10" id="aBD-dl-oHy"/>
-                <constraint firstAttribute="bottom" secondItem="OPF-nR-DNv" secondAttribute="bottom" constant="12" id="c61-Tb-qF9"/>
+                <constraint firstAttribute="bottom" secondItem="OPF-nR-DNv" secondAttribute="bottom" constant="16" id="c61-Tb-qF9"/>
                 <constraint firstItem="6gI-Zp-EQp" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="n2v-P7-LXd"/>
                 <constraint firstAttribute="trailing" secondItem="z6O-gU-58F" secondAttribute="trailing" constant="10" id="pbM-u9-TlI"/>
                 <constraint firstItem="wDa-A2-xK7" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="qfI-dh-LHL"/>
@@ -72,6 +72,12 @@
                 <constraint firstItem="mWg-cq-fkB" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ycm-uS-nfL"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="featuredCatchCopyLabel" destination="z6O-gU-58F" id="Wjf-gM-OI8"/>
+                <outlet property="featuredImageView" destination="wDa-A2-xK7" id="OJK-4a-UtI"/>
+                <outlet property="featuredStatementLabel" destination="rEr-Yx-odO" id="uh0-hc-wht"/>
+                <outlet property="featuredTitleLabel" destination="6gI-Zp-EQp" id="eQZ-VE-8eQ"/>
+            </connections>
             <point key="canvasLocation" x="131.8840579710145" y="113.83928571428571"/>
         </collectionViewCell>
     </objects>

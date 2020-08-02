@@ -52,6 +52,7 @@ extension APIRequestManager: APIRequestProtocol {
         case topBanner = "top_banner"
         case eventIntroduction = "event_introduction"
         case story = "story"
+        case featuredArticle = "featured_article"
 
         // MEMO: 認証前の画面でも利用可能なエンドポイント
 
@@ -91,12 +92,23 @@ extension APIRequestManager: APIRequestProtocol {
         )
     }
 
+    // ストーリー一覧表示用のAPIリクエスト処理の実行
     func getStories() -> Single<StoryAPIResponse> {
         let storyListsEndPoint = EndPoint.story.getBaseUrl()
         return executeAPIRequest(
             endpointUrl: storyListsEndPoint,
             httpMethod: HTTPMethod.GET,
             responseFormat: StoryAPIResponse.self
+        )
+    }
+
+    // 特集コンテンツ一覧一覧表示用のAPIリクエスト処理の実行
+    func getFeaturedArticles() -> Single<FeaturedArticleAPIResponse> {
+        let featuredArticleListsEndPoint = EndPoint.featuredArticle.getBaseUrl()
+        return executeAPIRequest(
+            endpointUrl: featuredArticleListsEndPoint,
+            httpMethod: HTTPMethod.GET,
+            responseFormat: FeaturedArticleAPIResponse.self
         )
     }
 

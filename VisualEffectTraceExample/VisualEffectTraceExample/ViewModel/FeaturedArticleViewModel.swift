@@ -1,8 +1,8 @@
 //
-//  StoryViewModel.swift
+//  FeaturedArticleViewModel.swift
 //  VisualEffectTraceExample
 //
-//  Created by 酒井文也 on 2020/07/25.
+//  Created by 酒井文也 on 2020/08/02.
 //  Copyright © 2020 酒井文也. All rights reserved.
 //
 
@@ -10,39 +10,41 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-protocol StoryViewModelInputs {
+protocol FeaturedArticleViewModelInputs {
 
     // 初回のデータ取得をViewModelへ伝える
     var initialFetchTrigger: PublishSubject<Void> { get }
 }
 
-protocol StoryViewModelOutputs {
+protocol FeaturedArticleViewModelOutputs {
 
     // JSONから取得した表示用データを格納する
-    var storyItems: Observable<Array<StoryEntity>> { get }
+    var featuredArticleItems: Observable<Array<FeaturedArticleEntity>> { get }
 
     // 取得処理の実行結果を格納する
     var requestStatus: Observable<APIRequestState> { get }
 }
 
-protocol StoryViewModelType {
-    var inputs: StoryViewModelInputs { get }
-    var outputs: StoryViewModelOutputs { get }
+protocol FeaturedArticleViewModelType {
+    var inputs: FeaturedArticleViewModelInputs { get }
+    var outputs: FeaturedArticleViewModelOutputs { get }
 }
 
-final class StoryViewModel: StoryViewModelInputs, StoryViewModelOutputs, StoryViewModelType {
+final class FeaturedArticleViewModel: FeaturedArticleViewModelInputs, FeaturedArticleViewModelOutputs, FeaturedArticleViewModelType {
 
-    var inputs: StoryViewModelInputs { return self }
-    var outputs: StoryViewModelOutputs { return self }
+    var inputs: FeaturedArticleViewModelInputs { return self }
+    var outputs: FeaturedArticleViewModelOutputs { return self }
 
     // MARK: - Properties (for TopBannerViewModelInputs)
 
     let initialFetchTrigger: PublishSubject<Void> = PublishSubject<Void>()
 
+    let pullToRefreshTrigger: PublishSubject<Void> = PublishSubject<Void>()
+
     // MARK: - Properties (for TopBannerViewModelOutputs)
 
-    var storyItems: Observable<Array<StoryEntity>> {
-        return _storyItems.asObservable()
+    var featuredArticleItems: Observable<Array<FeaturedArticleEntity>> {
+        return _featuredArticleItems.asObservable()
     }
 
     var requestStatus: Observable<APIRequestState> {
@@ -55,11 +57,11 @@ final class StoryViewModel: StoryViewModelInputs, StoryViewModelOutputs, StoryVi
 
     // MEMO: 中継地点となるBehaviorRelayの変数（Outputの変数を生成するための「つなぎ」のような役割）
     // → BehaviorRelayの変化が起こったらObservableに変換されてOutputに流れてくる
-    private let _storyItems: BehaviorRelay<Array<StoryEntity>> = BehaviorRelay<Array<StoryEntity>>(value: [])
+    private let _featuredArticleItems: BehaviorRelay<Array<FeaturedArticleEntity>> = BehaviorRelay<Array<FeaturedArticleEntity>>(value: [])
     private let _requestStatus: BehaviorRelay<APIRequestState> = BehaviorRelay<APIRequestState>(value: .none)
 
     // MEMO: このViewModelで利用するUseCase(Domain Model)
-    @Dependencies.Inject(Dependencies.Name(rawValue: "StoryUseCase")) private var storyUseCase: StoryUseCase
+    @Dependencies.Inject(Dependencies.Name(rawValue: "FeaturedArticleUseCase")) private var featuredArticleUseCase: FeaturedArticleUseCase
 
     // MARK: - Initializer
 
@@ -70,7 +72,7 @@ final class StoryViewModel: StoryViewModelInputs, StoryViewModelOutputs, StoryVi
             .subscribe(
                 onNext: { [weak self] signinPatameters in
                     guard let self = self else { return }
-                    self.executeStoryDataRequest()
+                    self.executeFeaturedArticleDataRequest()
                 }
             )
             .disposed(by: disposeBag)
@@ -78,14 +80,14 @@ final class StoryViewModel: StoryViewModelInputs, StoryViewModelOutputs, StoryVi
 
     // MARK: - Private Function
 
-    private func executeStoryDataRequest() {
+    private func executeFeaturedArticleDataRequest() {
         _requestStatus.accept(.requesting)
-        storyUseCase.execute()
+        featuredArticleUseCase.execute()
             .subscribe(
                 onSuccess: { [weak self] data in
                     guard let self = self else { return }
                     self._requestStatus.accept(.success)
-                    self._storyItems.accept(data.result)
+                    self._featuredArticleItems.accept(data.result)
                 },
                 onError: { [weak self] error in
                     guard let self = self else { return }

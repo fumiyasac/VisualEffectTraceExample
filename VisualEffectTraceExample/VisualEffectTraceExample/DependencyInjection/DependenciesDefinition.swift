@@ -71,6 +71,10 @@ final class DependenciesDefinition {
                 protocolName: EventIntroductionRepository.self
             ),
             (
+                implInstance: RequestFeaturedArticleRepository(),
+                protocolName: FeaturedArticleRepository.self
+            ),
+            (
                 implInstance: RequestSigninRepository(),
                 protocolName: SigninRepository.self
             ),
@@ -115,6 +119,10 @@ final class DependenciesDefinition {
             (
                 implInstance: RequestEventIntroductionDataUseCase(),
                 protocolName: EventIntroductionUseCase.self
+            ),
+            (
+                implInstance: RequestFeaturedArticleDataUseCase(),
+                protocolName: FeaturedArticleUseCase.self
             ),
             (
                 implInstance: RequestRecentAnnouncementDataUseCase(),
@@ -165,6 +173,10 @@ final class DependenciesDefinition {
             (
                 implInstance: EventIntroductionViewModel(),
                 protocolName: EventIntroductionViewModelType.self
+            ),
+            (
+                implInstance: FeaturedArticleViewModel(),
+                protocolName: FeaturedArticleViewModelType.self
             ),
             (
                 implInstance: ItemsViewModel(),

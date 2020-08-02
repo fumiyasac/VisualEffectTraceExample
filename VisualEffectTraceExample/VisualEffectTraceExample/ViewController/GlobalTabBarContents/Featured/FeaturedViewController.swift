@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 // UICollectionViewCompositionalLayoutでは実現が難しいかもしれない表現の例（2）
 // MEMO: Safariのタブの様な動きをUICollectionViewを利用して実施する
@@ -35,6 +37,13 @@ final class FeaturedViewController: UIViewController {
 
     // バインダー型のUICollectionViewCellの状態ハンドリング用の変数
     private var shouldExpandCell = false
+
+    private let disposeBag = DisposeBag()
+
+    private let featuredArticleItems: BehaviorRelay<Array<FeaturedArticleEntity>> = BehaviorRelay<Array<FeaturedArticleEntity>>(value: [])
+
+    // MEMO: 表示内容を取得するViewModel
+    @Dependencies.Inject(Dependencies.Name(rawValue: "FeaturedArticleViewModelType")) private var viewModel: FeaturedArticleViewModelType
 
     // MARK: - @IBOutlet
 
@@ -72,7 +81,23 @@ final class FeaturedViewController: UIViewController {
         }
     }
 
-    private func bindToRxSwift() {}
+    private func bindToRxSwift() {
+
+        // ViewModelから表示内容を取得する
+        viewModel.inputs.initialFetchTrigger.onNext(())
+
+        // RxSwiftを利用して一覧データをUICollectionViewに適用する
+        viewModel.outputs.featuredArticleItems
+            .observeOn(MainScheduler.instance)
+            .subscribe(
+                onNext: { [weak self] featuredArticleItems in
+                    guard let self = self else { return }
+                    self.featuredArticleItems.accept(featuredArticleItems)
+                    self.featuredCollectionView.reloadData()
+                }
+            )
+            .disposed(by: disposeBag)
+    }
 }
 
 // MARK: - UICollectionViewDelegate
@@ -106,13 +131,14 @@ extension FeaturedViewController: UICollectionViewDelegate {
 extension FeaturedViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return featuredArticleItems.value.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        // MEMO: Containerとして表示したいViewControllerと親要素のViewControllerを渡す
         let cell = collectionView.dequeueReusableCustomCell(with: FeaturedCollectionViewCell.self, indexPath: indexPath)
+        cell.setCell(featuredArticleItems.value[indexPath.row])
+        cell.setDecoration()
 
         // MEMO: セルの配置を一度だけ実行する
         DispatchQueue.once(token: "\(onceTokenPrefix)\(indexPath.item)") {
