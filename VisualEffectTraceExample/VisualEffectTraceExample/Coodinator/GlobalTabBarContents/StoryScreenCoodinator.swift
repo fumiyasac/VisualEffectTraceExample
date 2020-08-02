@@ -9,15 +9,7 @@
 import Foundation
 import UIKit
 
-// MARK: - Protocol
-
-protocol StoryFlow: class {
-
-    // ストーリー一覧画面から詳細画面を表示する
-    func coordinateToStoryDetail()
-}
-
-class StoryScreenCoodinator: ScreenCoordinator, StoryFlow {
+class StoryScreenCoodinator: ScreenCoordinator {
 
     // MARK: - Properties
 
@@ -37,15 +29,8 @@ class StoryScreenCoodinator: ScreenCoordinator, StoryFlow {
 
         // ストーリー表示用のViewControllerのインスタンスを取得して該当Coodinatorのプロトコルを適合させる
         let storyViewController = StoryViewController.instantiate()
-        storyViewController.coordinator = self
 
         // アイテム画面の表示を実行する
         navigationController.pushViewController(storyViewController, animated: false)
-    }
-
-    // MARK: - StoryFlow
-
-    func coordinateToStoryDetail() {
-        print("ストーリー詳細画面へ遷移する")
     }
 }

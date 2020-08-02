@@ -13,8 +13,8 @@ import UIKit
 
 protocol SettingsFlow: class {
 
-    // 設定一覧画面からアンケート画面を表示する
-    func coordinateToServay()
+    // 設定一覧画面からログアウト処理を実行する
+    func coordinateToLogin()
 }
 
 class SettingsScreenCoodinator: ScreenCoordinator, SettingsFlow {
@@ -45,7 +45,7 @@ class SettingsScreenCoodinator: ScreenCoordinator, SettingsFlow {
 
     // MARK: - SettingsFlow
 
-    func coordinateToServay() {
+    func coordinateToLogin() {
         print("アンケート画面へ遷移する")
     }
 }

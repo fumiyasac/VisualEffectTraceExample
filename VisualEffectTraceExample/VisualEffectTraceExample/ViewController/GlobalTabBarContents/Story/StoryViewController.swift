@@ -18,10 +18,6 @@ import RxCocoa
 
 final class StoryViewController: UIViewController {
 
-    // MARK: - StoryFlow
-
-    var coordinator: StoryFlow?
-
     // MARK: - Properties
 
     private let disposeBag = DisposeBag()
@@ -58,7 +54,6 @@ final class StoryViewController: UIViewController {
 
         // MEMO: UICollectionViewのDelegate/DataSourceの宣言
         // ※ RxSwiftを利用した宣言方法もあるが、この方法だと却って処理が書きにくい場合にはデータをセットするする部分だけをRxSwiftで書いて残りは従来通りの記載方法でも良いかもしれません。
-
         storyCollectionView.delegate = self
         storyCollectionView.dataSource = self
 
@@ -109,18 +104,6 @@ extension StoryViewController: UICollectionViewDataSource {
         let fixedIndex = indexPath.section * 4 + indexPath.row
         cell.setCell(storyItems.value[fixedIndex])
         return cell
-    }
-}
-
-// MARK: - UICollectionViewDelegate
-
-extension StoryViewController: UICollectionViewDelegate {
-
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let fixedIndex = indexPath.section * 4 + indexPath.row
-        let selecedStoryEntity = storyItems.value[fixedIndex]
-        
-        // TODO: 簡単な画面遷移処理だけ作成
     }
 }
 
