@@ -23,8 +23,6 @@ final class SettingsViewController: UIViewController {
 
     // MARK: - @IBOutlet
 
-    @IBOutlet private weak var settingsTableView: UITableView!
-
     // MARK: - Override
 
     override func viewDidLoad() {

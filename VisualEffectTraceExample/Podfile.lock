@@ -8,7 +8,6 @@ PODS:
   - Kingfisher (5.13.4):
     - Kingfisher/Core (= 5.13.4)
   - Kingfisher/Core (5.13.4)
-  - PanModal (1.2.7)
   - PKHUD (5.3.0)
   - Realm (4.4.1):
     - Realm/Headers (= 4.4.1)
@@ -22,7 +21,6 @@ PODS:
   - RxRelay (5.1.1):
     - RxSwift (~> 5)
   - RxSwift (5.1.1)
-  - YNDropDownMenu (3.1.0)
 
 DEPENDENCIES:
   - ActiveLabel
@@ -32,13 +30,11 @@ DEPENDENCIES:
   - Gedatsu
   - KeychainAccess
   - Kingfisher
-  - PanModal
   - PKHUD (~> 5.0)
   - RealmSwift
   - ReSwift
   - RxCocoa
   - RxSwift
-  - YNDropDownMenu
 
 SPEC REPOS:
   trunk:
@@ -49,7 +45,6 @@ SPEC REPOS:
     - Gedatsu
     - KeychainAccess
     - Kingfisher
-    - PanModal
     - PKHUD
     - Realm
     - RealmSwift
@@ -57,7 +52,6 @@ SPEC REPOS:
     - RxCocoa
     - RxRelay
     - RxSwift
-    - YNDropDownMenu
 
 SPEC CHECKSUMS:
   ActiveLabel: 5e3f4de79a1952d4604b845a0610d4776e4b82b3
@@ -67,7 +61,6 @@ SPEC CHECKSUMS:
   Gedatsu: 9b721389f5857f954451d1072287ada5ced48b83
   KeychainAccess: 3f760109aa99b05d0f231e28b22642da7153e38a
   Kingfisher: d2279a7abece3c7f25a80cd2b7f363ca5cf3f44c
-  PanModal: 3e16ead1a907fb06f4df3f13492fd00149fa4974
   PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
   Realm: 4eb04d7487bd43c0581256f40b424eafb711deff
   RealmSwift: 3eb8924ff7100df5928c7602f71d0fec51e7c9c5
@@ -75,8 +68,7 @@ SPEC CHECKSUMS:
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
-  YNDropDownMenu: 9c88e36c5f913bc614aaf0f3d0a7968f6251268b
 
-PODFILE CHECKSUM: 8fc45bb431ff67afc5a9c2c62c1fb2602490a7c8
+PODFILE CHECKSUM: 81d128995df7bd95f261a04c753bcbe8a64f3b9b
 
 COCOAPODS: 1.9.1
