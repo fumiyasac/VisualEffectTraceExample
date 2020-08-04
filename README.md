@@ -4,7 +4,14 @@ UICollectionViewを利用した複雑なレイアウトや挙動を表現と合�
 
 ### 1. このサンプルについて
 
-__【サンプル画面のデザイン】__
+#### 【実装環境】
+
+- macOS Catalina 10.15.6
+- Xcode 11.5
+- Swift 5.2
+- CocoaPods 1.9.1
+
+#### 【サンプル画面のデザイン】
 
 （1）ログイン前画面:
 
@@ -23,11 +30,11 @@ __【サンプル画面のデザイン】__
 
 ![UICollectionViewを利用して変わったレイアウトを実装する](https://github.com/fumiyasac/VisualEffectTraceExample/blob/master/images/sample_thumbnail3.jpg)
 
-__【ログイン後の表示画面に関するAPI通信処理部分のレイヤー分け】__
+#### 【ログイン後の表示画面に関するAPI通信処理部分のレイヤー分け】
 
 ![ログイン後の表示画面に関するAPI通信処理部分のレイヤー分け](https://github.com/fumiyasac/VisualEffectTraceExample/blob/master/images/architecture_layer.png)
 
-__【iOS側利用しているライブラリ一覧】__
+#### 【iOS側利用しているライブラリ一覧】
 
 利用しているライブラリは下記になります。
 
@@ -60,15 +67,35 @@ end
 
 ### 2. iOS13からの新機能を利用している部分に関する解説
 
-__【UICollectionViewCompositionalLayout & DiffableDataSource】__
+#### 【UICollectionViewCompositionalLayout & DiffableDataSource】
 
 - [UICollectionViewCompositionalLayout & DiffableDataSourceを利用したUIとCombineを利用したMVVMパターンでのAPI通信関連処理との組み合わせた実装の紹介とまとめ](https://qiita.com/fumiyasac@github/items/12165641c6569fde52ba)
 
-__【Dependency Injection Of Propery Wrappers】__
+#### 【Dependency Injection Of Propery Wrappers】
 
 - [【実装MEMO】PropertyWrappersの機能を利用したDependency Injectionのコードに触れた際の備忘録](https://medium.com/@fumiyasakai/%E5%AE%9F%E8%A3%85memo-propertywrappers%E3%81%AE%E6%A9%9F%E8%83%BD%E3%82%92%E5%88%A9%E7%94%A8%E3%81%97%E3%81%9Fdependency-injection%E3%81%AE%E3%82%B3%E3%83%BC%E3%83%89%E3%81%AB%E8%A7%A6%E3%82%8C%E3%81%9F%E9%9A%9B%E3%81%AE%E5%82%99%E5%BF%98%E9%8C%B2-b269bc914b7a)
 
 ### 3. バックエンド側のAPI実装
+
+#### 【動作構築】
+
+- Docker: Docker for Mac
+- エディタ: IntelliJ IDEA
+
+__Dockerの操作に関する参考資料:__
+
+```
+# MySQLのデータベースを作成する
+$ sh ./make_database.sh
+
+# SpringBootで利用するMySQLを起動する
+$ cd Backend/
+$ docker-compose up -d
+```
+
+https://docs.docker.jp/compose/reference/up.html
+
+#### 【API定義書】
 
 ![SwggerUIによるAPI定義](https://github.com/fumiyasac/VisualEffectTraceExample/blob/master/images/swagger_definition.png)
 
@@ -76,7 +103,7 @@ __【Dependency Injection Of Propery Wrappers】__
 
 http://localhost:8080/swagger-ui.html
 
-__【Kotlin(SpringBoot)側利用しているライブラリ一覧】__
+#### 【SpringBootで利用しているライブラリ一覧】
 
 自分が元々長く親しんでいたPHPやRubyのフレームワークでお目にかかった様な構成と近しいものにできれば良いかなという感じで、下記の様なライブラリを導入した形にしています。Model層は3層（Entity/Repository/Service）に分離した形をとっています。iOSアプリとの認証処理部分はJWT（JSON Web Token）を利用することを想定しており、またDatabase（MySQL）とのやり取りをする部分ではJPAを利用することを想定に作っています。
 
@@ -100,7 +127,7 @@ dependencies {
 }
 ```
 
-__【Kotlin(SpringBoot)に関する参考書籍】__
+#### 【Kotlin & SpringBootに関する参考書籍】
 
 Java + Springには少し馴染みがあったことや、以前はサーバーサイド側の開発経験もあったので、Kotlin + Spring + MySQLの構成でLocal環境で簡単なAPIサーバーを構築する練習を通じて、Kotlinに慣れる機会を持つ意味合いも込めて [入門!実践!サーバーサイドKotlin](https://booth.pm/ja/items/1560389) ＆ [もっと実践!サーバーサイドKotlin](https://booth.pm/ja/items/1887668) で学習しています。
 
