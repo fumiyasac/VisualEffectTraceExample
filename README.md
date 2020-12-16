@@ -6,10 +6,10 @@ UICollectionViewを利用した複雑なレイアウトや挙動を表現と合�
 
 #### 【実装環境】
 
-- macOS Catalina 10.15.6
-- Xcode 11.5
-- Swift 5.2
-- CocoaPods 1.9.1
+- macOS Big Sur 11.0.1
+- Xcode 12.3
+- Swift 5.3
+- CocoaPods 1.10.0
 
 #### 【サンプル画面のデザイン】
 
