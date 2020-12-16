@@ -1,19 +1,19 @@
 PODS:
-  - AnimatedCollectionViewLayout (1.0.1)
-  - BouncyLayout (2.2.0)
-  - FontAwesome.swift (1.9.0)
-  - Gedatsu (0.0.7)
-  - KeychainAccess (4.2.0)
-  - Kingfisher (5.13.4):
-    - Kingfisher/Core (= 5.13.4)
-  - Kingfisher/Core (5.13.4)
+  - AnimatedCollectionViewLayout (1.1.0)
+  - BouncyLayout (2.3.0)
+  - FontAwesome.swift (1.9.1)
+  - Gedatsu (1.2.0)
+  - KeychainAccess (4.2.1)
+  - Kingfisher (5.15.8):
+    - Kingfisher/Core (= 5.15.8)
+  - Kingfisher/Core (5.15.8)
   - PKHUD (5.3.0)
-  - Realm (4.4.1):
-    - Realm/Headers (= 4.4.1)
-  - Realm/Headers (4.4.1)
-  - RealmSwift (4.4.1):
-    - Realm (= 4.4.1)
-  - ReSwift (5.0.0)
+  - Realm (10.5.0):
+    - Realm/Headers (= 10.5.0)
+  - Realm/Headers (10.5.0)
+  - RealmSwift (10.5.0):
+    - Realm (= 10.5.0)
+  - ReSwift (6.0.0)
   - RxCocoa (5.1.1):
     - RxRelay (~> 5)
     - RxSwift (~> 5)
@@ -51,20 +51,20 @@ SPEC REPOS:
     - RxSwift
 
 SPEC CHECKSUMS:
-  AnimatedCollectionViewLayout: 00f0997fd26f0fd02d8b99765023b95570b5d826
-  BouncyLayout: b8be605d6c729086d0fc83f180f71e804abeaf04
-  FontAwesome.swift: a403b88cec950511745ba8f2decd1b6a07346d13
-  Gedatsu: 9b721389f5857f954451d1072287ada5ced48b83
-  KeychainAccess: 3f760109aa99b05d0f231e28b22642da7153e38a
-  Kingfisher: d2279a7abece3c7f25a80cd2b7f363ca5cf3f44c
+  AnimatedCollectionViewLayout: 0c1a38c4be115c525c887be183fc91ef65737c5d
+  BouncyLayout: 946047ef4987959bc107731c665ca4fdcdef5e17
+  FontAwesome.swift: 6b52cb7be66eacd28cbfaa0ca7ffd0de4a186a1d
+  Gedatsu: 13a21a3cbf7978f9ff671eca5715b94a4309d9a8
+  KeychainAccess: 9b07f665298d13c3a85881bd3171f6f49b8151c1
+  Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
   PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
-  Realm: 4eb04d7487bd43c0581256f40b424eafb711deff
-  RealmSwift: 3eb8924ff7100df5928c7602f71d0fec51e7c9c5
-  ReSwift: 628f1a9b3ee52e3b3ca2a644435472fd77afafe1
+  Realm: e1c22c3d83b229afb70ebc10e1771c91e9542d12
+  RealmSwift: 6fc078d9d3fd7e58c71bfdbb694e252462f112a5
+  ReSwift: 14e6f9409fe6bdc635e588208296a01f43b959c9
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
   RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
 
 PODFILE CHECKSUM: 7b5140b56fd19f082a012d542dc8e7958a0d3c3c
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.10.0
