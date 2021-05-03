@@ -72,7 +72,7 @@ class APIRequestManager {
             let task = self.session.dataTask(with: request) { data, response, error in
                 // MEMO: 通信状態等に起因するエラー発生時のエラーハンドリング
                 if let error = error {
-                    singleEvent(.error(error))
+                    singleEvent(.failure(error))
                     return
                 }
                 // MEMO: Debug用にエラー発生時のJSONを出力する
@@ -89,16 +89,16 @@ class APIRequestManager {
                             let signinCoodinator = SigninScreenCoordinator()
                             signinCoodinator.start()
                         }
-                        singleEvent(.error(APIError.error("Error: StatusCodeが403です。")))
+                        singleEvent(.failure(APIError.error("Error: StatusCodeが403です。")))
                     } else {
-                        singleEvent(.error(APIError.error("Error: StatusCodeが200~399以外です。")))
+                        singleEvent(.failure(APIError.error("Error: StatusCodeが200~399以外です。")))
                     }
                     return
                 }
 
                 // MEMO: 取得データの内容の精査及びエラーハンドリング
                 guard let data = data else {
-                    singleEvent(.error(APIError.error("Error: レスポンスが空でした。")))
+                    singleEvent(.failure(APIError.error("Error: レスポンスが空でした。")))
                     return
                 }
                 // MEMO: 取得できたレスポンスを引数で指定した型の配列に変換して受け取る
@@ -106,7 +106,7 @@ class APIRequestManager {
                     let hashableObjects = try JSONDecoder().decode(T.self, from: data)
                     singleEvent(.success(hashableObjects))
                 } catch {
-                    singleEvent(.error(APIError.error("Error: JSONからのマッピングに失敗しました。")))
+                    singleEvent(.failure(APIError.error("Error: JSONからのマッピングに失敗しました。")))
                 }
             }
             task.resume()
