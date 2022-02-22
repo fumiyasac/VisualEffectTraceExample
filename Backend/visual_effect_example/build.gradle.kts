@@ -36,6 +36,15 @@ dependencies {
 	}
 }
 
+// 参考: トラブルシューティング集
+// (1) IntelliJでkotlin not configuredが出たときの対処法
+// https://qiita.com/alashino/items/9de2dc6353324a3cd084
+// (2) tasks.testの記載を追記したらなぜか直った & UnitTestも通る様になった（理由は正直わからない...）
+// https://kotlinlang.org/docs/jvm-test-using-junit.html#add-the-code-to-test-it
+tasks.test {
+	useJUnitPlatform()
+}
+
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
