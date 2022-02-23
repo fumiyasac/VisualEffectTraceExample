@@ -6,16 +6,16 @@ UICollectionViewを利用した複雑なレイアウトや挙動を表現と合�
 
 #### 【実装環境】
 
-- macOS Big Sur 11.0.1
-- Xcode 12.3
-- Swift 5.3
+- macOS Big Sur 12.1
+- Xcode 13.2.1
+- Swift 5.5
 - CocoaPods 1.10.0
 
 #### 【サンプル画面のデザイン】
 
 （1）ログイン前画面:
 
-こちらはMVVM + Reduxを利用して画面の状態管理をしています。
+こちらはMVVM + RxSwiftを利用して画面の状態管理をしています。
 
 ![ログイン前画面](https://github.com/fumiyasac/VisualEffectTraceExample/blob/master/images/sample_thumbnail1.jpg)
 
@@ -47,7 +47,6 @@ target 'VisualEffectTraceExample' do
   # 1. アーキテクチャに関するライブラリ
   pod 'RxSwift'
   pod 'RxCocoa'
-  pod 'ReSwift'
   pod 'RealmSwift'
   pod 'KeychainAccess'
   pod 'Kingfisher'
@@ -154,7 +153,3 @@ __Coodinatorパターンを試してみる:__
 - [How to make custom transitions using flow coordinator pattern](https://medium.com/@pavlepesic/coordinator-custom-transitions-b08cce1da8fd)
 - [Coordinators Essential tutorial. Part I](https://medium.com/blacklane-engineering/coordinators-essential-tutorial-part-i-376c836e9ba7)
 
-__Redux(ReSwift)を部分的に導入してみる:__
-
-- [ReduxのSwift実装「ReSwift」を触ってみる](http://developabout0309.blogspot.com/2018/03/reduxswiftreswift.html)
-- [Using Redux with MVVM on iOS](https://medium.com/commencis/using-redux-with-mvvm-on-ios-18212454d676)
