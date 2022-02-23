@@ -13,9 +13,6 @@ import ReSwift
 import Gedatsu
 #endif
 
-// 全てのStateを一元管理で管理するStoreを定義
-let appStore = Store(reducer: appReducer, state: AppState(), middleware: [ActionLoggingMiddleware])
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

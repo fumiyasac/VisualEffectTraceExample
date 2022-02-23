@@ -110,19 +110,11 @@ final class SignupViewController: UIViewController {
         viewModel.outputs.requestStatus
             .subscribe(on: MainScheduler.instance)
             .subscribe(
-                onNext: { apiRequestStatus in
+                onNext: { [weak self] apiRequestState in
+                    guard let self = self else { return }
 
-                    // MEMO: Redux側の処理を更新することでUI表示を変化させる
-                    switch apiRequestStatus {
-                    case .none:
-                        break
-                    case .requesting:
-                        SignupScreenActionCreator.changeStateToProcessingSignup()
-                    case .success:
-                        SignupScreenActionCreator.changeStateToSignupSuccess()
-                    case .error:
-                        SignupScreenActionCreator.changeStateToSignupError()
-                    }
+                    // サインアップ処理実行時における処理状態に応じたダイアログ表示を実行する
+                    self.handleProgressViewState(apiRequestState: apiRequestState)
                 }
             )
             .disposed(by: disposeBag)

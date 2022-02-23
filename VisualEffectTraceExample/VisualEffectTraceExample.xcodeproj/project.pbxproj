@@ -33,14 +33,6 @@
 		DE2AB8BB242FC5AB00335E4F /* HandleMainScreenUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB8BA242FC5AB00335E4F /* HandleMainScreenUseCase.swift */; };
 		DE2AB8BD242FC69700335E4F /* ApplicationUserStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB8BC242FC69700335E4F /* ApplicationUserStatus.swift */; };
 		DE2AB8BF242FCA1A00335E4F /* MainScreenRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB8BE242FCA1A00335E4F /* MainScreenRepository.swift */; };
-		DE2AB8C1242FEACA00335E4F /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB8C0242FEACA00335E4F /* AppState.swift */; };
-		DE2AB8C4242FEB5700335E4F /* BaseScreenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB8C3242FEB5700335E4F /* BaseScreenState.swift */; };
-		DE2AB8C6242FEF1B00335E4F /* AppLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB8C5242FEF1B00335E4F /* AppLogger.swift */; };
-		DE2AB8C8242FEF8700335E4F /* ActionLoggingMiddleware.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB8C7242FEF8600335E4F /* ActionLoggingMiddleware.swift */; };
-		DE2AB8CA242FF01100335E4F /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB8C9242FF01100335E4F /* AppReducer.swift */; };
-		DE2AB8CC242FF07900335E4F /* BaseScreenReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB8CB242FF07900335E4F /* BaseScreenReducer.swift */; };
-		DE2AB8CE242FF0D300335E4F /* BaseScreenAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB8CD242FF0D300335E4F /* BaseScreenAction.swift */; };
-		DE2AB8D0242FF8A000335E4F /* BaseScreenActionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB8CF242FF8A000335E4F /* BaseScreenActionCreator.swift */; };
 		DE2AB8D4243070B900335E4F /* UIWindowScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE2AB8D3243070B900335E4F /* UIWindowScanner.swift */; };
 		DE4D093024D697640068C67F /* FeaturedArticleEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4D092F24D697640068C67F /* FeaturedArticleEntity.swift */; };
 		DE4D093224D6A39E0068C67F /* FeaturedArticleAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4D093124D6A39E0068C67F /* FeaturedArticleAPIResponse.swift */; };
@@ -59,10 +51,6 @@
 		DE4D3842245FB90E00680B91 /* ExpandedFileBinderCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4D3841245FB90E00680B91 /* ExpandedFileBinderCollectionViewLayout.swift */; };
 		DE4D3844245FB9A200680B91 /* IndexFileBinderCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4D3843245FB9A200680B91 /* IndexFileBinderCollectionViewLayout.swift */; };
 		DE634C3A24361150004CA920 /* CurrentApplicationUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE634C3924361150004CA920 /* CurrentApplicationUserRepository.swift */; };
-		DE634C402438CFB2004CA920 /* SigninScreenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE634C3F2438CFB2004CA920 /* SigninScreenState.swift */; };
-		DE634C422438D052004CA920 /* SigninScreenAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE634C412438D052004CA920 /* SigninScreenAction.swift */; };
-		DE634C442438D097004CA920 /* SigninScreenActionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE634C432438D097004CA920 /* SigninScreenActionCreator.swift */; };
-		DE634C462438D56B004CA920 /* SigninScreenReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE634C452438D56B004CA920 /* SigninScreenReducer.swift */; };
 		DE634C4A2438ED41004CA920 /* SigninViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE634C492438ED41004CA920 /* SigninViewModel.swift */; };
 		DE67D97F2432370900EB2D61 /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE67D97D2432370900EB2D61 /* Signup.storyboard */; };
 		DE67D9822432372500EB2D61 /* Announcement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE67D9802432372500EB2D61 /* Announcement.storyboard */; };
@@ -159,7 +147,6 @@
 		DEC01237245B2A9000C92A6F /* UniqueArrayBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC01236245B2A9000C92A6F /* UniqueArrayBuilder.swift */; };
 		DEC8A80D245A96710033610D /* TopBannerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8A80C245A96710033610D /* TopBannerEntity.swift */; };
 		DEC8A80F245A97A30033610D /* TopBannerAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEC8A80E245A97A30033610D /* TopBannerAPIResponse.swift */; };
-		DEDCC875241CD82500BFA165 /* BlockSubScriber.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDCC874241CD82500BFA165 /* BlockSubScriber.swift */; };
 		DEDCC888241DE26700BFA165 /* APIRequestProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDCC887241DE26700BFA165 /* APIRequestProtocol.swift */; };
 		DEDCC88A241DE30500BFA165 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDCC889241DE30500BFA165 /* APIRequest.swift */; };
 		DEE0B70224541E2000B285BA /* ItemsScreenCoodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEE0B70124541E2000B285BA /* ItemsScreenCoodinator.swift */; };
@@ -173,10 +160,6 @@
 		DEF5A2382443435600383473 /* RequestSignupUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5A2372443435600383473 /* RequestSignupUseCase.swift */; };
 		DEF5A23C2443438A00383473 /* SignupScreenCoodinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5A23B2443438A00383473 /* SignupScreenCoodinator.swift */; };
 		DEF5A23E244343D400383473 /* SignupScreenValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5A23D244343D400383473 /* SignupScreenValidator.swift */; };
-		DEF5A240244343F600383473 /* SignupScreenState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5A23F244343F600383473 /* SignupScreenState.swift */; };
-		DEF5A2422443440800383473 /* SignupScreenAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5A2412443440800383473 /* SignupScreenAction.swift */; };
-		DEF5A2442443442300383473 /* SignupScreenReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5A2432443442300383473 /* SignupScreenReducer.swift */; };
-		DEF5A2462443443800383473 /* SignupScreenActionCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5A2452443443800383473 /* SignupScreenActionCreator.swift */; };
 		DEFC335C2458E6A500BFE132 /* ItemsTopBannerContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFC335B2458E6A500BFE132 /* ItemsTopBannerContainerViewController.swift */; };
 		DEFC335E245915CA00BFE132 /* ItemsScreenSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFC335D245915CA00BFE132 /* ItemsScreenSectionType.swift */; };
 /* End PBXBuildFile section */
@@ -227,14 +210,6 @@
 		DE2AB8BA242FC5AB00335E4F /* HandleMainScreenUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandleMainScreenUseCase.swift; sourceTree = "<group>"; };
 		DE2AB8BC242FC69700335E4F /* ApplicationUserStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationUserStatus.swift; sourceTree = "<group>"; };
 		DE2AB8BE242FCA1A00335E4F /* MainScreenRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenRepository.swift; sourceTree = "<group>"; };
-		DE2AB8C0242FEACA00335E4F /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
-		DE2AB8C3242FEB5700335E4F /* BaseScreenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScreenState.swift; sourceTree = "<group>"; };
-		DE2AB8C5242FEF1B00335E4F /* AppLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogger.swift; sourceTree = "<group>"; };
-		DE2AB8C7242FEF8600335E4F /* ActionLoggingMiddleware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionLoggingMiddleware.swift; sourceTree = "<group>"; };
-		DE2AB8C9242FF01100335E4F /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
-		DE2AB8CB242FF07900335E4F /* BaseScreenReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScreenReducer.swift; sourceTree = "<group>"; };
-		DE2AB8CD242FF0D300335E4F /* BaseScreenAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScreenAction.swift; sourceTree = "<group>"; };
-		DE2AB8CF242FF8A000335E4F /* BaseScreenActionCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScreenActionCreator.swift; sourceTree = "<group>"; };
 		DE2AB8D3243070B900335E4F /* UIWindowScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIWindowScanner.swift; sourceTree = "<group>"; };
 		DE4D092F24D697640068C67F /* FeaturedArticleEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedArticleEntity.swift; sourceTree = "<group>"; };
 		DE4D093124D6A39E0068C67F /* FeaturedArticleAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedArticleAPIResponse.swift; sourceTree = "<group>"; };
@@ -253,10 +228,6 @@
 		DE4D3841245FB90E00680B91 /* ExpandedFileBinderCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedFileBinderCollectionViewLayout.swift; sourceTree = "<group>"; };
 		DE4D3843245FB9A200680B91 /* IndexFileBinderCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexFileBinderCollectionViewLayout.swift; sourceTree = "<group>"; };
 		DE634C3924361150004CA920 /* CurrentApplicationUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentApplicationUserRepository.swift; sourceTree = "<group>"; };
-		DE634C3F2438CFB2004CA920 /* SigninScreenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninScreenState.swift; sourceTree = "<group>"; };
-		DE634C412438D052004CA920 /* SigninScreenAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninScreenAction.swift; sourceTree = "<group>"; };
-		DE634C432438D097004CA920 /* SigninScreenActionCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninScreenActionCreator.swift; sourceTree = "<group>"; };
-		DE634C452438D56B004CA920 /* SigninScreenReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninScreenReducer.swift; sourceTree = "<group>"; };
 		DE634C492438ED41004CA920 /* SigninViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModel.swift; sourceTree = "<group>"; };
 		DE67D97E2432370900EB2D61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Signup.storyboard; sourceTree = "<group>"; };
 		DE67D9812432372500EB2D61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Announcement.storyboard; sourceTree = "<group>"; };
@@ -359,7 +330,6 @@
 		DEC01236245B2A9000C92A6F /* UniqueArrayBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UniqueArrayBuilder.swift; sourceTree = "<group>"; };
 		DEC8A80C245A96710033610D /* TopBannerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBannerEntity.swift; sourceTree = "<group>"; };
 		DEC8A80E245A97A30033610D /* TopBannerAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopBannerAPIResponse.swift; sourceTree = "<group>"; };
-		DEDCC874241CD82500BFA165 /* BlockSubScriber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockSubScriber.swift; sourceTree = "<group>"; };
 		DEDCC887241DE26700BFA165 /* APIRequestProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestProtocol.swift; sourceTree = "<group>"; };
 		DEDCC889241DE30500BFA165 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		DEE0B70124541E2000B285BA /* ItemsScreenCoodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsScreenCoodinator.swift; sourceTree = "<group>"; };
@@ -373,10 +343,6 @@
 		DEF5A2372443435600383473 /* RequestSignupUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSignupUseCase.swift; sourceTree = "<group>"; };
 		DEF5A23B2443438A00383473 /* SignupScreenCoodinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupScreenCoodinator.swift; sourceTree = "<group>"; };
 		DEF5A23D244343D400383473 /* SignupScreenValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupScreenValidator.swift; sourceTree = "<group>"; };
-		DEF5A23F244343F600383473 /* SignupScreenState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupScreenState.swift; sourceTree = "<group>"; };
-		DEF5A2412443440800383473 /* SignupScreenAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupScreenAction.swift; sourceTree = "<group>"; };
-		DEF5A2432443442300383473 /* SignupScreenReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupScreenReducer.swift; sourceTree = "<group>"; };
-		DEF5A2452443443800383473 /* SignupScreenActionCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupScreenActionCreator.swift; sourceTree = "<group>"; };
 		DEFC335B2458E6A500BFE132 /* ItemsTopBannerContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsTopBannerContainerViewController.swift; sourceTree = "<group>"; };
 		DEFC335D245915CA00BFE132 /* ItemsScreenSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsScreenSectionType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -508,56 +474,6 @@
 				DE84854424279DF800766098 /* TutorialCollectionViewCell.xib */,
 			);
 			path = TutorialCollectionViewCell;
-			sourceTree = "<group>";
-		};
-		DE2AB8A5242F2D8300335E4F /* State */ = {
-			isa = PBXGroup;
-			children = (
-				DE2AB8C0242FEACA00335E4F /* AppState.swift */,
-				DE2AB8C3242FEB5700335E4F /* BaseScreenState.swift */,
-				DE634C3F2438CFB2004CA920 /* SigninScreenState.swift */,
-				DEF5A23F244343F600383473 /* SignupScreenState.swift */,
-			);
-			path = State;
-			sourceTree = "<group>";
-		};
-		DE2AB8A6242F2DFD00335E4F /* Middleware */ = {
-			isa = PBXGroup;
-			children = (
-				DE2AB8C7242FEF8600335E4F /* ActionLoggingMiddleware.swift */,
-			);
-			path = Middleware;
-			sourceTree = "<group>";
-		};
-		DE2AB8A7242F2E0700335E4F /* Actions */ = {
-			isa = PBXGroup;
-			children = (
-				DE2AB8CD242FF0D300335E4F /* BaseScreenAction.swift */,
-				DE634C412438D052004CA920 /* SigninScreenAction.swift */,
-				DEF5A2412443440800383473 /* SignupScreenAction.swift */,
-			);
-			path = Actions;
-			sourceTree = "<group>";
-		};
-		DE2AB8A8242F2E1300335E4F /* Reducers */ = {
-			isa = PBXGroup;
-			children = (
-				DE2AB8C9242FF01100335E4F /* AppReducer.swift */,
-				DE2AB8CB242FF07900335E4F /* BaseScreenReducer.swift */,
-				DE634C452438D56B004CA920 /* SigninScreenReducer.swift */,
-				DEF5A2432443442300383473 /* SignupScreenReducer.swift */,
-			);
-			path = Reducers;
-			sourceTree = "<group>";
-		};
-		DE2AB8A9242F2E2100335E4F /* ActionCreators */ = {
-			isa = PBXGroup;
-			children = (
-				DE2AB8CF242FF8A000335E4F /* BaseScreenActionCreator.swift */,
-				DE634C432438D097004CA920 /* SigninScreenActionCreator.swift */,
-				DEF5A2452443443800383473 /* SignupScreenActionCreator.swift */,
-			);
-			path = ActionCreators;
 			sourceTree = "<group>";
 		};
 		DE2AB8AA242F36B900335E4F /* Coodinator */ = {
@@ -852,7 +768,6 @@
 				DEAA657623F3123100C5232B /* Info.plist */,
 				DE8487402425E21D00A40975 /* AppConstants.swift */,
 				DEAA656823F3122F00C5232B /* AppDelegate.swift */,
-				DE2AB8C5242FEF1B00335E4F /* AppLogger.swift */,
 				DEAA656A23F3122F00C5232B /* SceneDelegate.swift */,
 				DEAA657123F3123100C5232B /* Assets.xcassets */,
 				DE726CB9243A99580043FA4E /* Context */,
@@ -864,7 +779,6 @@
 				DEAA659F23F70CF200C5232B /* Extension */,
 				DEDCC88F242046E300BFA165 /* Infrastructure */,
 				DEAA659D23F70CD900C5232B /* Modules */,
-				DEAA659A23F70C8200C5232B /* Redux */,
 				DEAA659923F70B8200C5232B /* Storyboard */,
 				DEAA659E23F70CE400C5232B /* View */,
 				DEAA659823F70B7700C5232B /* ViewController */,
@@ -918,19 +832,6 @@
 				DEAFA58D2453E2D60095B335 /* Tutorial */,
 			);
 			path = Storyboard;
-			sourceTree = "<group>";
-		};
-		DEAA659A23F70C8200C5232B /* Redux */ = {
-			isa = PBXGroup;
-			children = (
-				DE2AB8A7242F2E0700335E4F /* Actions */,
-				DE2AB8A9242F2E2100335E4F /* ActionCreators */,
-				DE2AB8A8242F2E1300335E4F /* Reducers */,
-				DE2AB8A6242F2DFD00335E4F /* Middleware */,
-				DE2AB8A5242F2D8300335E4F /* State */,
-				DEDCC876241CF1FE00BFA165 /* BlockSubscriber */,
-			);
-			path = Redux;
 			sourceTree = "<group>";
 		};
 		DEAA659D23F70CD900C5232B /* Modules */ = {
@@ -1110,14 +1011,6 @@
 				DEA9E87824990A0B00BCC5D9 /* SettingsScreenCoodinator.swift */,
 			);
 			path = GlobalTabBarContents;
-			sourceTree = "<group>";
-		};
-		DEDCC876241CF1FE00BFA165 /* BlockSubscriber */ = {
-			isa = PBXGroup;
-			children = (
-				DEDCC874241CD82500BFA165 /* BlockSubScriber.swift */,
-			);
-			path = BlockSubscriber;
 			sourceTree = "<group>";
 		};
 		DEDCC877241DCB8400BFA165 /* UseCase */ = {
@@ -1457,7 +1350,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				DE73806724CAB125009EC51E /* MultipleScrollDirectionLayout.swift in Sources */,
-				DE634C442438D097004CA920 /* SigninScreenActionCreator.swift in Sources */,
 				DE4D093C24D6DAC80068C67F /* ItemCollectionViewCell.swift in Sources */,
 				DE6E7E86247ACAD40088B22A /* ItemsViewModel.swift in Sources */,
 				DEC01237245B2A9000C92A6F /* UniqueArrayBuilder.swift in Sources */,
@@ -1469,7 +1361,6 @@
 				DE84854524279DF800766098 /* TutorialCollectionViewCell.swift in Sources */,
 				DE4D093624D6A8E70068C67F /* RequestFeaturedArticleDataUseCase.swift in Sources */,
 				DE4D093824D6AAB60068C67F /* FeaturedArticleViewModel.swift in Sources */,
-				DE2AB8CE242FF0D300335E4F /* BaseScreenAction.swift in Sources */,
 				DE634C3A24361150004CA920 /* CurrentApplicationUserRepository.swift in Sources */,
 				DE4D093224D6A39E0068C67F /* FeaturedArticleAPIResponse.swift in Sources */,
 				DE2AB8AC242F424800335E4F /* ScreenCoodinator.swift in Sources */,
@@ -1486,17 +1377,13 @@
 				DE234E602459930600E1DC10 /* ContainerCollectionViewCell.swift in Sources */,
 				DE6E7E82247AC5B10088B22A /* RequestRecentAnnouncementDataRepository.swift in Sources */,
 				DEA2A8FC24758B42000237DA /* RecentAnnouncementCollectionViewCell.swift in Sources */,
-				DE634C462438D56B004CA920 /* SigninScreenReducer.swift in Sources */,
-				DE634C402438CFB2004CA920 /* SigninScreenState.swift in Sources */,
 				DE234E5B24592E9F00E1DC10 /* EventIntroductionCollectionViewCell.swift in Sources */,
-				DE2AB8C8242FEF8700335E4F /* ActionLoggingMiddleware.swift in Sources */,
 				DE8487412425E21D00A40975 /* AppConstants.swift in Sources */,
 				DEF5A23624433E1C00383473 /* SignupViewModel.swift in Sources */,
 				DEDCC88A241DE30500BFA165 /* APIRequest.swift in Sources */,
 				DE6E7E84247AC8A10088B22A /* RequestRecentAnnouncementDataUseCase.swift in Sources */,
 				DEC0122D245B07A800C92A6F /* EventIntroductionViewModel.swift in Sources */,
 				DE2AB8B9242F7EC200335E4F /* MainViewModel.swift in Sources */,
-				DEF5A2422443440800383473 /* SignupScreenAction.swift in Sources */,
 				DE14134823FB02A10000D27C /* APIRequestManager.swift in Sources */,
 				DEC01229245B034C00C92A6F /* EventIntroductionEntity.swift in Sources */,
 				DEF5A2382443435600383473 /* RequestSignupUseCase.swift in Sources */,
@@ -1504,23 +1391,17 @@
 				DE9D4EFD24437571003439ED /* RequestSignupRepository.swift in Sources */,
 				DE8E1D852475664900C55227 /* AnnouncementDetailAPIResponse.swift in Sources */,
 				DEE0B71324544D7100B285BA /* GlobalTabBarTransition.swift in Sources */,
-				DEF5A2442443442300383473 /* SignupScreenReducer.swift in Sources */,
 				DEA01C7F240107DC00346C1E /* AnnouncementEntity.swift in Sources */,
 				DE2AB8BD242FC69700335E4F /* ApplicationUserStatus.swift in Sources */,
-				DE2AB8D0242FF8A000335E4F /* BaseScreenActionCreator.swift in Sources */,
 				DE67D99324338F5E00EB2D61 /* FormInputTextFieldView.swift in Sources */,
 				DEAA65B123F7289A00C5232B /* UICollectionViewExtension.swift in Sources */,
 				DEAA65A923F70E6900C5232B /* UILabelDecorator.swift in Sources */,
 				DE67D984243246B300EB2D61 /* AnnouncementViewController.swift in Sources */,
 				DEAA65AF23F7288C00C5232B /* UITableViewExtension.swift in Sources */,
-				DEF5A2462443443800383473 /* SignupScreenActionCreator.swift in Sources */,
 				DE68656D24666EAC003D3522 /* FeaturedCollectionViewCell.swift in Sources */,
 				DEAA65A323F70DEC00C5232B /* CustomViewBase.swift in Sources */,
-				DE2AB8C6242FEF1B00335E4F /* AppLogger.swift in Sources */,
-				DE2AB8C4242FEB5700335E4F /* BaseScreenState.swift in Sources */,
 				DE9D4EFF24437611003439ED /* GeneralPostSuccessARIResponse.swift in Sources */,
 				DEC01233245B1D2A00C92A6F /* RequestEventIntroductionDataRepository.swift in Sources */,
-				DEF5A240244343F600383473 /* SignupScreenState.swift in Sources */,
 				DE8E965F2444D1130033375F /* AnnoucementTableHeaderView.swift in Sources */,
 				DE2AB8BB242FC5AB00335E4F /* HandleMainScreenUseCase.swift in Sources */,
 				DEA9E87924990A0B00BCC5D9 /* SettingsScreenCoodinator.swift in Sources */,
@@ -1561,13 +1442,11 @@
 				DE1A5D64244FCD1C0065A11E /* GlobalTabBarController.swift in Sources */,
 				DEAA65AB23F70E9C00C5232B /* UIColorExtension.swift in Sources */,
 				DEAA656923F3122F00C5232B /* AppDelegate.swift in Sources */,
-				DE634C422438D052004CA920 /* SigninScreenAction.swift in Sources */,
 				DE813A6824CB423C0064E13F /* StoryListCollectionViewCell.swift in Sources */,
 				DE24F13C246FCAC000609C32 /* Dependencies.swift in Sources */,
 				DE91D31524701AB700816305 /* TypeScanner.swift in Sources */,
 				DE2AB8D4243070B900335E4F /* UIWindowScanner.swift in Sources */,
 				DEC01231245B17CC00C92A6F /* RequestTopBannerDataRepository.swift in Sources */,
-				DE2AB8C1242FEACA00335E4F /* AppState.swift in Sources */,
 				DEF5A22E244171FC00383473 /* RequestSigninUseCase.swift in Sources */,
 				DE9D4F0324449A91003439ED /* AnnouncementTableViewCell.swift in Sources */,
 				DEF5A230244172F800383473 /* RequestSigninRepository.swift in Sources */,
@@ -1577,7 +1456,6 @@
 				DE84873F2425B5D400A40975 /* KeychainAccessManager.swift in Sources */,
 				DEAA656B23F3122F00C5232B /* SceneDelegate.swift in Sources */,
 				DE4D093F24D6E6060068C67F /* ItemEntity.swift in Sources */,
-				DEDCC875241CD82500BFA165 /* BlockSubScriber.swift in Sources */,
 				DE813A7124CB4F060064E13F /* RequestStoryDataUseCase.swift in Sources */,
 				DEA9E8772499082000BCC5D9 /* SettingsViewController.swift in Sources */,
 				DE8487432425E81000A40975 /* RealmAccessManager.swift in Sources */,
@@ -1595,9 +1473,7 @@
 				DE8E1D8A24756CDA00C55227 /* ItemsContainerErrorView.swift in Sources */,
 				DE8E965B2444C9E60033375F /* RequestAnnouncementDataRepository.swift in Sources */,
 				DE726CC0243AB5310043FA4E /* CompositionalValidator.swift in Sources */,
-				DE2AB8CA242FF01100335E4F /* AppReducer.swift in Sources */,
 				DE0424E52402AF50008DEF36 /* AnnouncementListAPIResponse.swift in Sources */,
-				DE2AB8CC242FF07900335E4F /* BaseScreenReducer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
