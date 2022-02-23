@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import ReSwift
 
 #if DEBUG
 import Gedatsu

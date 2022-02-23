@@ -11,7 +11,7 @@ import UIKit
 
 // MARK: - Protocol
 
-protocol SigninFlow: class {
+protocol SigninFlow: AnyObject {
 
     // 新規会員登録画面へ遷移するためのSignupScreenCoodinatorを初期化する
     func coordinateToSignup()

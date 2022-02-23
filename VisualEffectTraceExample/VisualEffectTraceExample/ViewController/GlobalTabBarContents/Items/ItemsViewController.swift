@@ -240,7 +240,7 @@ final class ItemsViewController: UIViewController {
         // 最新のお知らせ情報取得時のUICollectionViewへの反映処理
         viewModel.outputs.recentAnnouncement
             .asObservable()
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] newRecentAnnouncement in
                     guard let self = self else { return }
@@ -257,7 +257,7 @@ final class ItemsViewController: UIViewController {
         // アイテム取得時のUICollectionViewへの反映処理
         viewModel.outputs.items
             .asObservable()
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] newItems in
                     guard let self = self else { return }
@@ -283,7 +283,7 @@ final class ItemsViewController: UIViewController {
             )
             .disposed(by: disposeBag)
         viewModel.outputs.requestStatus
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] requestStatus in
                     guard let self = self else { return }
@@ -302,8 +302,8 @@ final class ItemsViewController: UIViewController {
         // → 適切な表現かは自信はありませんが、一応ページネーションを伴ってデータの取得から表示までができてはいるので許容範囲としても良さそうと判断しています...
         Observable.combineLatest(itemCollectionView.rx.contentOffset.asObservable(), viewModel.outputs.requestStatus.distinctUntilChanged())
             // MEMO: この部分がないと「Reentrancy anomaly was detected.」の警告が発生してしまうので注意する。
-            .observeOn(SerialDispatchQueueScheduler(qos: .default))
-            .observeOn(MainScheduler.instance)
+            .observe(on: SerialDispatchQueueScheduler(qos: .default))
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] (contentOffset, requestStatus) in
                     guard let self = self else { return }

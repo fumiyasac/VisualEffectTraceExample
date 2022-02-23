@@ -101,7 +101,7 @@ final class ItemsEventIntroductionContainerViewController: UIViewController {
         // データのセット時に画面の状態を変更する処理
         viewModel.outputs.eventIntroductionItems
             .asObservable()
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }
@@ -115,7 +115,7 @@ final class ItemsEventIntroductionContainerViewController: UIViewController {
 
         // データのセット時にエラーが発生した場合における処理
         viewModel.outputs.requestStatus
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .filter { requestStatus in
                 requestStatus == .error
             }
@@ -150,8 +150,8 @@ final class ItemsEventIntroductionContainerViewController: UIViewController {
         // → 適切な表現かは自信はありませんが、一応ページネーションを伴ってデータの取得から表示までができてはいるので許容範囲としても良さそうと判断しています...
         Observable.combineLatest(eventIntroductionCollectionView.rx.contentOffset.asObservable(), viewModel.outputs.requestStatus.distinctUntilChanged())
             // MEMO: この部分がないと「Reentrancy anomaly was detected.」の警告が発生してしまうので注意する。
-            .observeOn(SerialDispatchQueueScheduler(qos: .default))
-            .observeOn(MainScheduler.instance)
+            .observe(on: SerialDispatchQueueScheduler(qos: .default))
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] (contentOffset, requestStatus) in
                     guard let self = self else { return }

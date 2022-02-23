@@ -11,7 +11,7 @@ import UIKit
 
 // MARK: - Protocol
 
-protocol ItemsFlow: class {
+protocol ItemsFlow: AnyObject {
 
     // アイテム一覧画面から詳細画面を表示する
     func coordinateToItemDetail()

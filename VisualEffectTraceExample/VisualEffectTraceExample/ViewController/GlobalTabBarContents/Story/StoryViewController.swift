@@ -81,7 +81,7 @@ final class StoryViewController: UIViewController {
 
         // RxSwiftを利用して一覧データをUICollectionViewに適用する
         viewModel.outputs.storyItems
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] storyItems in
                     guard let self = self else { return }
@@ -99,7 +99,7 @@ final class StoryViewController: UIViewController {
 
         // データのセット時にエラーが発生した場合における処理
         viewModel.outputs.requestStatus
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .filter { requestStatus in
                 requestStatus == .error
             }

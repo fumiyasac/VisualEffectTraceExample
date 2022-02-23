@@ -87,7 +87,7 @@ final class StoryViewModel: StoryViewModelInputs, StoryViewModelOutputs, StoryVi
                     self._requestStatus.accept(.success)
                     self._storyItems.accept(data.result)
                 },
-                onError: { [weak self] error in
+                onFailure: { [weak self] error in
                     guard let self = self else { return }
                     self._requestStatus.accept(.error)
                 }

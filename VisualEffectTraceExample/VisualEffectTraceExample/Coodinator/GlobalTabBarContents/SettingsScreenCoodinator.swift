@@ -11,7 +11,7 @@ import UIKit
 
 // MARK: - Protocol
 
-protocol SettingsFlow: class {
+protocol SettingsFlow: AnyObject {
 
     // 設定一覧画面からログアウト処理を実行する
     func coordinateToSignin()

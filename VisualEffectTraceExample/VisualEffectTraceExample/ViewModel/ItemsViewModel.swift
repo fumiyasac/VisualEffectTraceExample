@@ -132,7 +132,7 @@ final class ItemsViewModel: ItemsViewModelInputs, ItemsViewModelOutputs, ItemsVi
                     self._requestStatus.accept(.success)
                     self._recentAnnouncement.accept(data.result)
                 },
-                onError: { [weak self] error in
+                onFailure: { [weak self] error in
                     guard let self = self else { return }
                     self._requestStatus.accept(.error)
                 }
@@ -158,7 +158,7 @@ final class ItemsViewModel: ItemsViewModelInputs, ItemsViewModelOutputs, ItemsVi
                     let result = UniqueDataArrayBuilder.fillDifferenceOfOldAndNewLists(ItemEntity.self, oldDataArray: oldResult, newDataArray: newResult)
                     self._items.accept(result)
                 },
-                onError: { [weak self] error in
+                onFailure: { [weak self] error in
                     guard let self = self else { return }
                     self._requestStatus.accept(.error)
                 }

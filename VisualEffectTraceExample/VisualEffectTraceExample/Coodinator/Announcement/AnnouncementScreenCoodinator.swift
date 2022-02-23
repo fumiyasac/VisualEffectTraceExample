@@ -11,7 +11,7 @@ import UIKit
 
 // MARK: - Protocol
 
-protocol AnnouncementFlow: class {
+protocol AnnouncementFlow: AnyObject {
 
     // お知らせ一覧画面から前の画面へ戻る
     func dismissSignin()

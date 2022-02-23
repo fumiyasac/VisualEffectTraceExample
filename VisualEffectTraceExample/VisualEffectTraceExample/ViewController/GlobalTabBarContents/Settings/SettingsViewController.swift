@@ -9,7 +9,6 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import ReSwift
 
 final class SettingsViewController: UIViewController {
 
@@ -39,7 +38,7 @@ final class SettingsViewController: UIViewController {
     private func bindToRxSwift() {
         signoutButton.rx.controlEvent(.touchUpInside)
             .asObservable()
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }

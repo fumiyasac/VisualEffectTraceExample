@@ -11,7 +11,7 @@ import UIKit
 
 // MARK: - Protocol
 
-protocol SignupFlow: class {
+protocol SignupFlow: AnyObject {
 
     // 新規会員登録画面から前の画面へ戻る
     func dismissSignup()

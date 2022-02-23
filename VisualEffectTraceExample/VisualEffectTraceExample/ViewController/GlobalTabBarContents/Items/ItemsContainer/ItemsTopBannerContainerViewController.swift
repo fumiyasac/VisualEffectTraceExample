@@ -131,7 +131,7 @@ final class ItemsTopBannerContainerViewController: UIViewController {
         // データのセット時に左右に配置しているボタン及び画面の状態を変更する処理
         viewModel.outputs.topBannerItems
             .asObservable()
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] topBanners in
                     guard let self = self else { return }
@@ -150,7 +150,7 @@ final class ItemsTopBannerContainerViewController: UIViewController {
 
         // データのセット時にエラーが発生した場合における処理
         viewModel.outputs.requestStatus
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .filter { requestStatus in
                 requestStatus == .error
             }
@@ -185,7 +185,7 @@ final class ItemsTopBannerContainerViewController: UIViewController {
         // バナーデータのタイマーに伴ったカルーセル表示処理
         topBannerCollectionView.rx.didScroll
             .asObservable()
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }
@@ -197,7 +197,7 @@ final class ItemsTopBannerContainerViewController: UIViewController {
             .disposed(by: disposeBag)
         topBannerCollectionView.rx.didEndDecelerating
             .asObservable()
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }
@@ -208,7 +208,7 @@ final class ItemsTopBannerContainerViewController: UIViewController {
             .disposed(by: disposeBag)
         topBannerCollectionView.rx.didEndScrollingAnimation
             .asObservable()
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }
@@ -236,7 +236,7 @@ final class ItemsTopBannerContainerViewController: UIViewController {
         // RxSwiftを利用して前へボタン＆次へボタン押下時の表示位置の変更をする
         topBannerNextButton.rx.controlEvent(.touchUpInside)
             .asObservable()
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }
@@ -246,7 +246,7 @@ final class ItemsTopBannerContainerViewController: UIViewController {
             .disposed(by: disposeBag)
         topBannerPrevButton.rx.controlEvent(.touchUpInside)
             .asObservable()
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }

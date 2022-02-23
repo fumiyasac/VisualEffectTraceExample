@@ -96,7 +96,7 @@ final class FeaturedViewController: UIViewController {
 
         // RxSwiftを利用して一覧データをUICollectionViewに適用する
         viewModel.outputs.featuredArticleItems
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] featuredArticleItems in
                     guard let self = self else { return }
@@ -114,7 +114,7 @@ final class FeaturedViewController: UIViewController {
 
         // データのセット時にエラーが発生した場合における処理
         viewModel.outputs.requestStatus
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .filter { requestStatus in
                 requestStatus == .error
             }

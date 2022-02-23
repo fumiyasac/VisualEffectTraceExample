@@ -56,7 +56,7 @@ final class ItemsContainerErrorView: CustomViewBase {
 
         // ボタン押下時のアクション設定
         retryRequestButton.rx.controlEvent(.touchUpInside)
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }

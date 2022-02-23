@@ -72,7 +72,7 @@ final class AnnouncementViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         viewModel.outputs.requestStatus
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] requestStatus in
                     guard let self = self else { return }
@@ -94,7 +94,7 @@ final class AnnouncementViewController: UIViewController {
 
         // UITableViewの「Pull to Refresh」に関する処理
         announcementRefrashControl.rx.controlEvent(.valueChanged)
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }
@@ -111,8 +111,8 @@ final class AnnouncementViewController: UIViewController {
             .didScroll
             .asObservable()
             // MEMO: この部分がないと「Reentrancy anomaly was detected.」の警告が発生してしまうので注意する。
-            .observeOn(SerialDispatchQueueScheduler(qos: .default))
-            .observeOn(MainScheduler.instance)
+            .observe(on: SerialDispatchQueueScheduler(qos: .default))
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }

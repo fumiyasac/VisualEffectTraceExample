@@ -132,7 +132,7 @@ final class EventIntroductionViewModel: EventIntroductionViewModelInputs, EventI
                     let result = UniqueDataArrayBuilder.fillDifferenceOfOldAndNewLists(EventIntroductionEntity.self, oldDataArray: oldResult, newDataArray: newResult)
                     self._eventIntroductionItems.accept(result)
                 },
-                onError: { [weak self] error in
+                onFailure: { [weak self] error in
                     guard let self = self else { return }
                     self._requestStatus.accept(.error)
                 }
