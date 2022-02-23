@@ -231,7 +231,7 @@ extension TutorialViewController: UICollectionViewDelegateFlowLayout {
 
     // セルのサイズを設定する
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: tutorialCollectionView.frame.width, height: tutorialCollectionView.frame.height)
+        return CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 120.0)
     }
 
     // セルの垂直方向の余白(margin)を設定する
