@@ -151,7 +151,7 @@ final class FormInputTextFieldView: CustomViewBase {
 
         // 入力データの種別(FormInputTextFieldStyle.swift参照)が変更された際のデザインに関する処理
         targetFormInputTextFieldStyle
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] targetFormInputTextFieldStyle in
                     guard let self = self else { return }
@@ -165,7 +165,7 @@ final class FormInputTextFieldView: CustomViewBase {
 
         // セキュア表示にするか否かの値が変更された際のデザインに関する処理
         shouldSecureTextField
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] result in
                     guard let self = self else { return }
@@ -178,7 +178,7 @@ final class FormInputTextFieldView: CustomViewBase {
 
         // テキストフィールドの変化を検知した際のアクション設定
         inputTextField.rx.text
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] targetText in
                     guard let self = self else { return }
@@ -193,7 +193,7 @@ final class FormInputTextFieldView: CustomViewBase {
 
         // ボタン押下時のアクション設定
         showPasswordButton.rx.controlEvent(.touchUpInside)
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }

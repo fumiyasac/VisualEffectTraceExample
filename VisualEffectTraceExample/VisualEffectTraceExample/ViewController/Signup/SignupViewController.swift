@@ -23,12 +23,6 @@ final class SignupViewController: UIViewController {
 
     private let tapGestureOfScrollView = UITapGestureRecognizer()
 
-    // MEMO: もし値の中継が必要になった場合にはBehaviorRelay<T>を別途用意する
-    private let inputUserName: BehaviorRelay<String?> = BehaviorRelay<String?>(value: nil)
-    private let inputMailAddress: BehaviorRelay<String?> = BehaviorRelay<String?>(value: nil)
-    private let inputRawPassword: BehaviorRelay<String?> = BehaviorRelay<String?>(value: nil)
-    private let shouldEnableSignupButton: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
-
     // MEMO: 適用するValidatorを用意する
     private let userNameValidator = SignupScreenValidator.UserNameValidator()
     private let mailAddressValidator = SignupScreenValidator.MailAddressValidator()
@@ -50,40 +44,6 @@ final class SignupViewController: UIViewController {
     @IBOutlet private weak var showPrivacyPolicyButton: UIButton!
     @IBOutlet private weak var signupButton: UIButton!
 
-    // MARK: - BlockSubscriber
-
-    private lazy var signupScreenSubscriber: BlockSubscriber<SignupScreenState> = BlockSubscriber { [weak self] state in
-        guard let self = self else { return }
-
-        // MEMO: UI要素への反映を実行する場合はメインスレッドで処理を実行する
-        DispatchQueue.main.async {
-
-            // ユーザーネームに対してバリデーションを実行してエラーメッセージを表示する
-            let targetUserNameValidationResult = self.userNameValidator.validate(state.userName)
-            self.displayErrorMessageForUserNameIfNeeded(
-                userNameValidationResult: targetUserNameValidationResult
-            )
-            // メールアドレスに対してバリデーションを実行してエラーメッセージを表示する
-            let targetMailAddressValidationResult = self.mailAddressValidator.validate(state.mailAddress)
-            self.displayErrorMessageForMailAddressIfNeeded(
-                mailAddressValidationResult: targetMailAddressValidationResult
-            )
-            // パスワードに対してバリデーションを実行してエラーメッセージを表示する
-            let targetRawPasswordValidationResult = self.rawPasswordValidator.validate(state.rawPassword)
-            self.displayErrorMessageForRawPasswordIfNeeded(
-                rawPasswordValidationResult: targetRawPasswordValidationResult
-            )
-            // ログインボタンの押下状態をコントロールする
-            self.handleSignupButtonState(
-                userNameValidationResult: targetUserNameValidationResult,
-                mailAddressValidationResult: targetMailAddressValidationResult,
-                rawPasswordValidationResult: targetRawPasswordValidationResult
-            )
-            // 画面全体に表示するプログレスバーの状態をコントロールする
-            self.handleProgressViewState(state: state)
-        }
-    }
-
     // MARK: - Override
 
     override func viewDidLoad() {
@@ -95,22 +55,6 @@ final class SignupViewController: UIViewController {
         setupMailAddressInputView()
         setupRawPasswordInputView()
         bindToRxSwift()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        // 購読対象のStateをBlockSubscriberを利用して決定する
-        appStore.subscribe(self.signupScreenSubscriber) { state in
-            state.select { state in state.signupScreenState }
-        }
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
-        // 購読対象のStateを解除する
-        appStore.unsubscribe(self.signupScreenSubscriber)
     }
 
     // MARK: - Private Fucntion
@@ -164,7 +108,7 @@ final class SignupViewController: UIViewController {
 
         // ViewModelからの入力＆出力値の変化に関する処理
         viewModel.outputs.requestStatus
-            .subscribeOn(MainScheduler.instance)
+            .subscribe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { apiRequestStatus in
 
@@ -184,48 +128,40 @@ final class SignupViewController: UIViewController {
             .disposed(by: disposeBag)
 
         // Viewからの入力値の変化に関する処理
-        // MEMO: 入力されたユーザーネーム/メールアドレス/パスワードを画面状態を保持するReduxへ反映させる
-        inputUserName
-            .observeOn(MainScheduler.instance)
+        // MEMO: 入力されたユーザーネーム/メールアドレス/パスワードに応じた画面状態を反映させる
+        Observable.combineLatest(viewModel.outputs.userName, viewModel.outputs.mailAddress, viewModel.outputs.rawPassword)
+            .observe(on: MainScheduler.instance)
             .subscribe(
-                onNext: { userName in
-                    guard let userName = userName else { return }
-                    SignupScreenActionCreator.inputUserName(targetText: userName)
-                }
-            )
-            .disposed(by: disposeBag)
-        inputMailAddress
-            .observeOn(MainScheduler.instance)
-            .subscribe(
-                onNext: { mailAddress in
-                    guard let mailAddress = mailAddress else { return }
-                    SignupScreenActionCreator.inputMailAddress(targetText: mailAddress)
-                }
-            )
-            .disposed(by: disposeBag)
-        inputRawPassword
-            .observeOn(MainScheduler.instance)
-            .subscribe(
-                onNext: { rawPassword in
-                    guard let rawPassword = rawPassword else { return }
-                    SignupScreenActionCreator.inputRawPassword(targetText: rawPassword)
-                }
-            )
-            .disposed(by: disposeBag)
-        shouldEnableSignupButton
-            .observeOn(MainScheduler.instance)
-            .subscribe(
-                onNext: { [weak self] result in
+                onNext: { [weak self] userName, mailAddress, rawPassword in
                     guard let self = self else { return }
-                    self.signupButton.alpha = result ? 1.0 : 0.4
-                    self.signupButton.isEnabled = result
+
+                    // ユーザーネームに対してバリデーションを実行してエラーメッセージを表示する
+                    let targetUserNameValidationResult = self.userNameValidator.validate(userName)
+                    self.displayErrorMessageForUserNameIfNeeded(
+                        userNameValidationResult: targetUserNameValidationResult
+                    )
+                    // メールアドレスに対してバリデーションを実行してエラーメッセージを表示する
+                    let targetMailAddressValidationResult = self.mailAddressValidator.validate(mailAddress)
+                    self.displayErrorMessageForMailAddressIfNeeded(
+                        mailAddressValidationResult: targetMailAddressValidationResult
+                    )
+                    // パスワードに対してバリデーションを実行してエラーメッセージを表示する
+                    let targetRawPasswordValidationResult = self.rawPasswordValidator.validate(rawPassword)
+                    self.displayErrorMessageForRawPasswordIfNeeded(
+                        rawPasswordValidationResult: targetRawPasswordValidationResult
+                    )
+                    // ログインボタンの押下状態をコントロールする
+                    self.handleSignupButtonState(
+                        userNameValidationResult: targetUserNameValidationResult,
+                        mailAddressValidationResult: targetMailAddressValidationResult,
+                        rawPasswordValidationResult: targetRawPasswordValidationResult
+                    )
                 }
             )
             .disposed(by: disposeBag)
-
         // キーボードを閉じるためのGestureRecognizerに関する処理
         tapGestureOfScrollView.rx.event
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }
@@ -238,7 +174,7 @@ final class SignupViewController: UIViewController {
         // 参考: https://qiita.com/ikemai/items/8d3efcc71ea9db340484
         // 補足: 自前での実装をしなくても良い場合にはRxCommunity/RxKeyboard等を利用するのもアイデアとしては良いと思います。
         NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] notification in
                     guard let self = self else { return }
@@ -268,7 +204,7 @@ final class SignupViewController: UIViewController {
             )
             .disposed(by: disposeBag)
         NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] notification in
                     guard let self = self else { return }
@@ -293,7 +229,7 @@ final class SignupViewController: UIViewController {
         // 配置したボタン類をRxSwiftの処理で結合する
         closeSignupScreenButton.rx.controlEvent(.touchUpInside)
             .asObservable()
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }
@@ -303,7 +239,7 @@ final class SignupViewController: UIViewController {
             .disposed(by: disposeBag)
         showTermsOfServiceButton.rx.controlEvent(.touchUpInside)
             .asObservable()
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { _ in
                     // TODO: 利用規約ページへ遷移する
@@ -313,7 +249,7 @@ final class SignupViewController: UIViewController {
             .disposed(by: disposeBag)
         showPrivacyPolicyButton.rx.controlEvent(.touchUpInside)
             .asObservable()
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { _ in
                     // TODO: プライバシーポリシーページへ遷移する
@@ -323,7 +259,7 @@ final class SignupViewController: UIViewController {
             .disposed(by: disposeBag)
         signupButton.rx.controlEvent(.touchDown)
             .asObservable()
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }
@@ -333,7 +269,7 @@ final class SignupViewController: UIViewController {
             .disposed(by: disposeBag)
         signupButton.rx.controlEvent(.touchUpInside)
             .asObservable()
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }
@@ -356,14 +292,7 @@ final class SignupViewController: UIViewController {
             self.signupButton.transform = CGAffineTransform.identity
         }, completion: { finished in
             // MEMO: ViewModelに定義したサインアップ処理を実行する
-            if let targetUserName = self.inputUserName.value, let targetMailAddress = self.inputMailAddress.value, let targetRawPassword = self.inputRawPassword.value {
-                let signupParameters = SignupViewModel.SignupPatameters(
-                    targetUserName: targetUserName,
-                    targetMailAddress: targetMailAddress,
-                    targetRawPassword: targetRawPassword
-                )
-                self.viewModel.inputs.executeSignupRequestTrigger.onNext(signupParameters)
-            }
+            self.viewModel.inputs.executeSignupRequestTrigger.onNext(())
         })
     }
 
@@ -397,40 +326,43 @@ final class SignupViewController: UIViewController {
     private func handleSignupButtonState(userNameValidationResult: ValidationResult, mailAddressValidationResult: ValidationResult, rawPasswordValidationResult: ValidationResult) {
         switch (userNameValidationResult, mailAddressValidationResult, rawPasswordValidationResult) {
         case (.valid, .valid, .valid):
-            shouldEnableSignupButton.accept(true)
+            signupButton.alpha = 1.0
+            signupButton.isEnabled = true
         default:
-            shouldEnableSignupButton.accept(false)
+            signupButton.alpha = 0.4
+            signupButton.isEnabled = false
         }
     }
 
-    private func handleProgressViewState(state: SignupScreenState) {
-        switch state {
-        case _ where state.isProcessionSignupRequest:
-            // MEMO: 読み込み中のプログレス表示をする
-            HUD.show(.labeledProgress(title: "処理中", subtitle: nil))
-        case _ where state.isSignupRequestSuccess:
-            // MEMO: 画面の状態を元に戻して、サインイン画面へ戻る
-            HUD.flash(
-                .labeledSuccess(title: "サインアップ成功", subtitle: nil),
-                delay: 1.50,
-                completion: { _ in
-                    HUD.hide()
-                    SignupScreenActionCreator.changeStateToInitial()
-                    self.coordinator?.dismissSignup()
-                }
-            )
-        case _ where state.isSignupRequestError:
-            // MEMO: 入力部分以外の画面の状態を元に戻す
-            HUD.flash(
-                .labeledError(title: "サインアップ失敗", subtitle: nil),
-                delay: 1.50,
-                completion: { _ in
-                    HUD.hide()
-                    SignupScreenActionCreator.changeStateToSignupNormal()
-                }
-            )
-        default:
-            break
+    private func handleProgressViewState(apiRequestState: APIRequestState) {
+        // MEMO: DispatchQueue.main.asyncを記載しないとクラッシュしてしまったため、その防止策として「DispatchQueue.main.async {...}」を記載している
+        DispatchQueue.main.async {
+            switch apiRequestState {
+            case .none:
+                break
+            case .requesting:
+                // MEMO: 読み込み中のプログレス表示をする
+                HUD.show(.labeledProgress(title: "処理中", subtitle: nil))
+            case .success:
+                // MEMO: 画面の状態を元に戻して、メインのタブ表示画面(GlobalTab)へ遷移する
+                HUD.flash(
+                    .labeledSuccess(title: "サインイン成功", subtitle: nil),
+                    delay: 1.50,
+                    completion: { _ in
+                        HUD.hide()
+                        self.coordinator?.dismissSignup()
+                    }
+                )
+            case .error:
+                // MEMO: 入力部分以外の画面の状態を元に戻す
+                HUD.flash(
+                    .labeledError(title: "サインイン失敗", subtitle: nil),
+                    delay: 1.50,
+                    completion: { _ in
+                        HUD.hide()
+                    }
+                )
+            }
         }
     }
 }
@@ -439,16 +371,16 @@ final class SignupViewController: UIViewController {
 
 extension SignupViewController: FormTextFieldInputViewDelegate {
 
+    // MEMO: 配置しているテキストフィールドが変化した際に実行される処理
+    // ※ 個々のテキストフィールドに対応する値をタイプを一緒に取得できる様にしているので、場合に応じて利用する形にしている
     func getInputTextByTextFieldType(_ text: String, targetFormInputTextFieldStyle: FormInputTextFieldStyle) {
-
-        // 受け取った値を中継地点となる変数へ格納しておく（ここではユーザーネーム/メールアドレス/パスワードのBehaviorRelay<String?>に値をセットする）
         switch targetFormInputTextFieldStyle {
         case .userNameTextInput:
-            inputUserName.accept(text)
+            viewModel.inputs.inputUserNameTrigger.onNext(text)
         case .mailAddressTextInput:
-            inputMailAddress.accept(text)
+            viewModel.inputs.inputMailAddressTrigger.onNext(text)
         case .securePasswordTextInput:
-            inputRawPassword.accept(text)
+            viewModel.inputs.inputRawPasswordTrigger.onNext(text)
         default:
             break
         }

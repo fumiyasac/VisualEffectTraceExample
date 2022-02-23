@@ -20,18 +20,6 @@ final class MainViewController: UIViewController {
     // MEMO: ユーザー状態に応じた画面表示を実施するためのViewModel
     @Dependencies.Inject(Dependencies.Name(rawValue: "MainViewModelType")) private var viewModel: MainViewModelType
 
-    // MARK: - BlockSubscriber
-
-    private lazy var baseScreenSubscriber: BlockSubscriber<BaseScreenState> = BlockSubscriber { [weak self] state in
-        guard let self = self else { return }
-
-        // MEMO: Reduxの処理で反映されたStateの値を経由して画面遷移処理を実施する
-        guard let targetApplicationUserStatus = state.applicationUserStatus else {
-            return
-        }
-        self.displayScreenBy(targetApplicationUserStatus)
-    }
-
     // MARK: - Override
 
     override func viewDidLoad() {
@@ -40,10 +28,9 @@ final class MainViewController: UIViewController {
         // ViewModelのOutputで定義した変数の値が反映された際に実行する処理
         viewModel.outputs.targetApplicationUserState
             .subscribe(
-                onNext: { applicationUserStatus in
-
-                    // MEMO: 画面遷移などをはじめとする画面状態の管理についてはReduxを経由してハンドリングする
-                    BaseScreenActionCreator.setCurrentApplicationUserStatus(applicationUserStatus)
+                onNext: { [weak self] applicationUserStatus in
+                    guard let self = self else { return }
+                    self.displayScreenBy(applicationUserStatus)
                 }
             )
             .disposed(by: disposeBag)
@@ -54,22 +41,6 @@ final class MainViewController: UIViewController {
 
         // ViewModelのInputで定義したデータ取得処理に関するトリガーを発火する
         viewModel.inputs.initialSettingTrigger.onNext(())
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        // 購読対象のStateをBlockSubscriberを利用して決定する
-        appStore.subscribe(self.baseScreenSubscriber) { state in
-            state.select { state in state.baseScreenState }
-        }
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
-        // 購読対象のStateを解除する
-        appStore.unsubscribe(self.baseScreenSubscriber)
     }
 
     // MARK: - Private Function

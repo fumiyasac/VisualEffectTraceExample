@@ -23,11 +23,6 @@ final class SigninViewController: UIViewController {
 
     private let tapGestureOfScrollView = UITapGestureRecognizer()
 
-    // MEMO: もし値の中継が必要になった場合にはBehaviorRelay<T>を別途用意する
-    private let inputMailAddress: BehaviorRelay<String?> = BehaviorRelay<String?>(value: nil)
-    private let inputRawPassword: BehaviorRelay<String?> = BehaviorRelay<String?>(value: nil)
-    private let shouldEnableSigninButton: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
-
     // MEMO: 適用するValidatorを用意する
     private let mailAddressValidator = SigninScreenValidator.MailAddressValidator()
     private let rawPasswordValidator = SigninScreenValidator.RawPasswordValidator()
@@ -46,34 +41,6 @@ final class SigninViewController: UIViewController {
     @IBOutlet private weak var showSignupScreenButton: UIButton!
     @IBOutlet private weak var signinButton: UIButton!
 
-    // MARK: - BlockSubscriber
-
-    private lazy var signinScreenSubscriber: BlockSubscriber<SigninScreenState> = BlockSubscriber { [weak self] state in
-        guard let self = self else { return }
-
-        // MEMO: UI要素への反映を実行する場合はメインスレッドで処理を実行する
-        DispatchQueue.main.async {
-
-            // メールアドレスに対してバリデーションを実行してエラーメッセージを表示する
-            let targetMailAddressValidationResult = self.mailAddressValidator.validate(state.mailAddress)
-            self.displayErrorMessageForMailAddressIfNeeded(
-                mailAddressValidationResult: targetMailAddressValidationResult
-            )
-            // パスワードに対してバリデーションを実行してエラーメッセージを表示する
-            let targetRawPasswordValidationResult = self.rawPasswordValidator.validate(state.rawPassword)
-            self.displayErrorMessageForRawPasswordIfNeeded(
-                rawPasswordValidationResult: targetRawPasswordValidationResult
-            )
-            // ログインボタンの押下状態をコントロールする
-            self.handleSigninButtonState(
-                mailAddressValidationResult: targetMailAddressValidationResult,
-                rawPasswordValidationResult: targetRawPasswordValidationResult
-            )
-            // 画面全体に表示するプログレスバーの状態をコントロールする
-            self.handleProgressViewState(state: state)
-        }
-    }
-
     // MARK: - Override
 
     override func viewDidLoad() {
@@ -84,22 +51,6 @@ final class SigninViewController: UIViewController {
         setupRawPasswordInputView()
         setupAnnouncementScreenButton()
         bindToRxSwift()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        // 購読対象のStateをBlockSubscriberを利用して決定する
-        appStore.subscribe(self.signinScreenSubscriber) { state in
-            state.select { state in state.signinScreenState }
-        }
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
-        // 購読対象のStateを解除する
-        appStore.unsubscribe(self.signinScreenSubscriber)
     }
 
     // MARK: - Private Fucntion
@@ -140,61 +91,49 @@ final class SigninViewController: UIViewController {
 
     private func bindToRxSwift() {
 
-        // ViewModelからの入力＆出力値の変化に関する処理
-        viewModel.outputs.requestStatus
-            .subscribeOn(MainScheduler.instance)
-            .subscribe(
-                onNext: { apiRequestStatus in
-
-                    // MEMO: Redux側の処理を更新することでUI表示を変化させる
-                    switch apiRequestStatus {
-                    case .none:
-                        break
-                    case .requesting:
-                        SigninScreenActionCreator.changeStateToProcessingSignin()
-                    case .success:
-                        SigninScreenActionCreator.changeStateToSigninSuccess()
-                    case .error:
-                        SigninScreenActionCreator.changeStateToSigninError()
-                    }
-                }
-            )
-            .disposed(by: disposeBag)
-
         // Viewからの入力値の変化に関する処理
-        // MEMO: 入力されたメールアドレス/パスワードを画面状態を保持するReduxへ反映させる
-        inputMailAddress
-            .observeOn(MainScheduler.instance)
+        // MEMO: 入力されたメールアドレス/パスワードに応じた画面状態を反映させる
+        viewModel.outputs.requestStatus
+            .subscribe(on: MainScheduler.instance)
             .subscribe(
-                onNext: { mailAddress in
-                    guard let mailAddress = mailAddress else { return }
-                    SigninScreenActionCreator.inputMailAddress(targetText: mailAddress)
-                }
-            )
-            .disposed(by: disposeBag)
-        inputRawPassword
-            .observeOn(MainScheduler.instance)
-            .subscribe(
-                onNext: { rawPassword in
-                    guard let rawPassword = rawPassword else { return }
-                    SigninScreenActionCreator.inputRawPassword(targetText: rawPassword)
-                }
-            )
-            .disposed(by: disposeBag)
-        shouldEnableSigninButton
-            .observeOn(MainScheduler.instance)
-            .subscribe(
-                onNext: { [weak self] result in
+                onNext: { [weak self] apiRequestState in
                     guard let self = self else { return }
-                    self.signinButton.alpha = result ? 1.0 : 0.4
-                    self.signinButton.isEnabled = result
+
+                    // サインイン処理実行時における処理状態に応じたダイアログ表示を実行する
+                    self.handleProgressViewState(apiRequestState: apiRequestState)
+                }
+            )
+            .disposed(by: disposeBag)
+
+        // MEMO: 入力されたメールアドレス/パスワードに応じた画面状態を反映させる
+        Observable.combineLatest(viewModel.outputs.mailAddress, viewModel.outputs.rawPassword)
+            .observe(on: MainScheduler.instance)
+            .subscribe(
+                onNext: { [weak self] mailAddress, rawPassword in
+                    guard let self = self else { return }
+
+                    // メールアドレスに対してバリデーションを実行してエラーメッセージを表示する
+                    let targetMailAddressValidationResult = self.mailAddressValidator.validate(mailAddress)
+                    self.displayErrorMessageForMailAddressIfNeeded(
+                        mailAddressValidationResult: targetMailAddressValidationResult
+                    )
+                    // パスワードに対してバリデーションを実行してエラーメッセージを表示する
+                    let targetRawPasswordValidationResult = self.rawPasswordValidator.validate(rawPassword)
+                    self.displayErrorMessageForRawPasswordIfNeeded(
+                        rawPasswordValidationResult: targetRawPasswordValidationResult
+                    )
+                    // ログインボタンの押下状態をコントロールする
+                    self.handleSigninButtonState(
+                        mailAddressValidationResult: targetMailAddressValidationResult,
+                        rawPasswordValidationResult: targetRawPasswordValidationResult
+                    )
                 }
             )
             .disposed(by: disposeBag)
 
         // キーボードを閉じるためのGestureRecognizerに関する処理
         tapGestureOfScrollView.rx.event
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }
@@ -207,7 +146,7 @@ final class SigninViewController: UIViewController {
         // 参考: https://qiita.com/ikemai/items/8d3efcc71ea9db340484
         // 補足: 自前での実装をしなくても良い場合にはRxCommunity/RxKeyboard等を利用するのもアイデアとしては良いと思います。
         NotificationCenter.default.rx.notification(UIResponder.keyboardWillShowNotification)
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] notification in
                     guard let self = self else { return }
@@ -237,7 +176,7 @@ final class SigninViewController: UIViewController {
             )
             .disposed(by: disposeBag)
         NotificationCenter.default.rx.notification(UIResponder.keyboardWillHideNotification)
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] notification in
                     guard let self = self else { return }
@@ -262,7 +201,7 @@ final class SigninViewController: UIViewController {
         // 配置したボタン類をRxSwiftの処理で結合する
         showAnnouncementScreenButton.rx.controlEvent(.touchUpInside)
             .asObservable()
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }
@@ -276,7 +215,7 @@ final class SigninViewController: UIViewController {
             .disposed(by: disposeBag)
         showSignupScreenButton.rx.controlEvent(.touchUpInside)
             .asObservable()
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }
@@ -286,7 +225,7 @@ final class SigninViewController: UIViewController {
             .disposed(by: disposeBag)
         signinButton.rx.controlEvent(.touchDown)
             .asObservable()
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }
@@ -296,7 +235,7 @@ final class SigninViewController: UIViewController {
             .disposed(by: disposeBag)
         signinButton.rx.controlEvent(.touchUpInside)
             .asObservable()
-            .observeOn(MainScheduler.instance)
+            .observe(on: MainScheduler.instance)
             .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }
@@ -317,15 +256,9 @@ final class SigninViewController: UIViewController {
     private func executeSigninButtonAnimationOfTouchUpInside() {
         UIView.animate(withDuration: 0.16, animations: {
             self.signinButton.transform = CGAffineTransform.identity
-        }, completion: { finished in
+        }, completion: { _ in
             // MEMO: ViewModelに定義したサインイン処理を実行する
-            if let targetMailAddress = self.inputMailAddress.value, let targetRawPassword = self.inputRawPassword.value {
-                let signinParameters = SigninViewModel.SigninPatameters(
-                    targetMailAddress: targetMailAddress,
-                    targetRawPassword: targetRawPassword
-                )
-                self.viewModel.inputs.executeSigninRequestTrigger.onNext(signinParameters)
-            }
+            self.viewModel.inputs.executeSigninRequestTrigger.onNext(())
         })
     }
 
@@ -350,40 +283,43 @@ final class SigninViewController: UIViewController {
     private func handleSigninButtonState(mailAddressValidationResult: ValidationResult, rawPasswordValidationResult: ValidationResult) {
         switch (mailAddressValidationResult, rawPasswordValidationResult) {
         case (.valid, .valid):
-            shouldEnableSigninButton.accept(true)
+            signinButton.alpha = 1.0
+            signinButton.isEnabled = true
         default:
-            shouldEnableSigninButton.accept(false)
+            signinButton.alpha = 0.4
+            signinButton.isEnabled = false
         }
     }
 
-    private func handleProgressViewState(state: SigninScreenState) {
-        switch state {
-        case _ where state.isProcessionSigninRequest:
-            // MEMO: 読み込み中のプログレス表示をする
-            HUD.show(.labeledProgress(title: "処理中", subtitle: nil))
-        case _ where state.isSigninRequestSuccess:
-            // MEMO: 画面の状態を元に戻して、メインのタブ表示画面(GlobalTab)へ遷移する
-            HUD.flash(
-                .labeledSuccess(title: "サインイン成功", subtitle: nil),
-                delay: 1.50,
-                completion: { _ in
-                    HUD.hide()
-                    SigninScreenActionCreator.changeStateToInitial()
-                    self.coordinator?.coordinateToGlobalTab()
-                }
-            )
-        case _ where state.isSigninRequestError:
-            // MEMO: 入力部分以外の画面の状態を元に戻す
-            HUD.flash(
-                .labeledError(title: "サインイン失敗", subtitle: nil),
-                delay: 1.50,
-                completion: { _ in
-                    HUD.hide()
-                    SigninScreenActionCreator.changeStateToSigninNormal()
-                }
-            )
-        default:
-            break
+    private func handleProgressViewState(apiRequestState: APIRequestState) {
+        // MEMO: DispatchQueue.main.asyncを記載しないとクラッシュしてしまったため、その防止策として「DispatchQueue.main.async {...}」を記載している
+        DispatchQueue.main.async {
+            switch apiRequestState {
+            case .none:
+                break
+            case .requesting:
+                // MEMO: 読み込み中のプログレス表示をする
+                HUD.show(.labeledProgress(title: "処理中", subtitle: nil))
+            case .success:
+                // MEMO: 画面の状態を元に戻して、メインのタブ表示画面(GlobalTab)へ遷移する
+                HUD.flash(
+                    .labeledSuccess(title: "サインイン成功", subtitle: nil),
+                    delay: 1.50,
+                    completion: { _ in
+                        HUD.hide()
+                        self.coordinator?.coordinateToGlobalTab()
+                    }
+                )
+            case .error:
+                // MEMO: 入力部分以外の画面の状態を元に戻す
+                HUD.flash(
+                    .labeledError(title: "サインイン失敗", subtitle: nil),
+                    delay: 1.50,
+                    completion: { _ in
+                        HUD.hide()
+                    }
+                )
+            }
         }
     }
 }
@@ -392,14 +328,14 @@ final class SigninViewController: UIViewController {
 
 extension SigninViewController: FormTextFieldInputViewDelegate {
 
+    // MEMO: 配置しているテキストフィールドが変化した際に実行される処理
+    // ※ 個々のテキストフィールドに対応する値をタイプを一緒に取得できる様にしているので、場合に応じて利用する形にしている
     func getInputTextByTextFieldType(_ text: String, targetFormInputTextFieldStyle: FormInputTextFieldStyle) {
-
-        // 受け取った値を中継地点となる変数へ格納しておく（ここではメールアドレスとパスワードのBehaviorRelay<String?>に値をセットする）
         switch targetFormInputTextFieldStyle {
         case .mailAddressTextInput:
-            inputMailAddress.accept(text)
+            viewModel.inputs.inputMailAddressTrigger.onNext(text)
         case .securePasswordTextInput:
-            inputRawPassword.accept(text)
+            viewModel.inputs.inputRawPasswordTrigger.onNext(text)
         default:
             break
         }

@@ -29,18 +29,6 @@ final class TutorialViewController: UIViewController {
     @IBOutlet private weak var nextContentsButton: UIButton!
     @IBOutlet private weak var tutorialCollectionView: UICollectionView!
 
-    // MARK: - BlockSubscriber
-
-    private lazy var baseScreenSubscriber: BlockSubscriber<BaseScreenState> = BlockSubscriber { [weak self] state in
-        guard let self = self else { return }
-
-        // MEMO: Reduxの処理で反映されたStateの値を経由して画面遷移処理を実施する
-        guard let targetApplicationUserStatus = state.applicationUserStatus else {
-            return
-        }
-        self.displayScreenBy(targetApplicationUserStatus)
-    }
-
     // MARK: - Override
 
     override func viewDidLoad() {
@@ -48,22 +36,6 @@ final class TutorialViewController: UIViewController {
 
         setupTutorialCollectionView()
         bindToRxSwift()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        // 購読対象のStateをBlockSubscriberを利用して決定する
-        appStore.subscribe(self.baseScreenSubscriber) { state in
-            state.select { state in state.baseScreenState }
-        }
-    }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
-        // 購読対象のStateを解除する
-        appStore.unsubscribe(self.baseScreenSubscriber)
     }
 
     // MARK: - Private Function
@@ -201,27 +173,11 @@ final class TutorialViewController: UIViewController {
             self.nextContentsButton.transform = CGAffineTransform.identity
         }, completion: { finished in
 
-            // MEMO: チュートリアル完了フラグの更新と該当画面への遷移を実行する
+            // MEMO: チュートリアル完了フラグの更新を実行する
             self.viewModel.inputs.completeTutorialTrigger.onNext(())
-            BaseScreenActionCreator.setCurrentApplicationUserStatus(.needToMoveSigninScreen)
-        })
-    }
-
-    private func displayScreenBy(_ applicationUserState: ApplicationUserStatus) {
-
-        // MEMO: 画面遷移処理をCoodinatorパターンで実施する形にする
-        switch applicationUserState {
-
-        // サインイン画面へ遷移する
-        case .needToMoveSigninScreen:
-
             // MEMO: TutorialFlowプロトコルに定義したTutorialScreenCoodinatorの画面遷移を実行する
-            // → ここではCoodinator側に定義したサインイン画面へ遷移する
             self.coordinator?.coordinateToSignin()
-
-        default:
-            break
-        }
+        })
     }
 }
 
