@@ -9,7 +9,6 @@ target 'VisualEffectTraceExample' do
   # 1. アーキテクチャに関するライブラリ
   pod 'RxSwift'
   pod 'RxCocoa'
-  pod 'ReSwift'
   pod 'RealmSwift'
   pod 'KeychainAccess'
   pod 'Kingfisher'

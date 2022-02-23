@@ -11,7 +11,6 @@ PODS:
   - Realm/Headers (10.7.4)
   - RealmSwift (10.7.4):
     - Realm (= 10.7.4)
-  - ReSwift (6.0.0)
   - RxCocoa (6.1.0):
     - RxRelay (= 6.1.0)
     - RxSwift (= 6.1.0)
@@ -28,7 +27,6 @@ DEPENDENCIES:
   - Kingfisher
   - PKHUD (~> 5.0)
   - RealmSwift
-  - ReSwift
   - RxCocoa
   - RxSwift
 
@@ -43,7 +41,6 @@ SPEC REPOS:
     - PKHUD
     - Realm
     - RealmSwift
-    - ReSwift
     - RxCocoa
     - RxRelay
     - RxSwift
@@ -58,11 +55,10 @@ SPEC CHECKSUMS:
   PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
   Realm: f08ce1a85649a41303ecfe1cbd914c62e9e6d710
   RealmSwift: 60ec49d165f23d040ab48811d8dd177e09baf4d3
-  ReSwift: 14e6f9409fe6bdc635e588208296a01f43b959c9
   RxCocoa: 5c51f02d562cbd94629f6c26cf0c80fe4ab8d343
   RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
   RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
 
-PODFILE CHECKSUM: 7b5140b56fd19f082a012d542dc8e7958a0d3c3c
+PODFILE CHECKSUM: bed8e46023ce330718fe4b925f741a640ea30a0c
 
 COCOAPODS: 1.10.1
