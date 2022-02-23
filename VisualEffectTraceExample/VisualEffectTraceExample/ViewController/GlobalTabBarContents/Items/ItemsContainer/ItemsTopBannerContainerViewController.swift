@@ -78,7 +78,7 @@ final class ItemsTopBannerContainerViewController: UIViewController {
 
         // UICollectionViewに付与するアニメーションに関する設定
         let layout = AnimatedCollectionViewLayout()
-        layout.animator = ParallaxAttributesAnimator()
+        layout.animator = CubeAttributesAnimator()
         layout.scrollDirection = .horizontal
         topBannerCollectionView.collectionViewLayout = layout
 
