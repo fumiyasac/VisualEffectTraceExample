@@ -23,9 +23,13 @@ target 'VisualEffectTraceExample' do
   pod 'Gedatsu', configuration: %w(Debug)
 
 #  ※ ユニットテスト時に利用する
-#  target 'VisualEffectTraceExampleTests' do
-#    inherit! :search_paths
-#  end
+  target 'VisualEffectTraceExampleTests' do
+    inherit! :search_paths
+    pod 'RxBlocking'
+    pod 'RxTest'
+    pod "SwiftyMocky"
+  end
+
 #  ※ UIテスト時に利用する
 #  target 'VisualEffectTraceExampleUITests' do
 #  end

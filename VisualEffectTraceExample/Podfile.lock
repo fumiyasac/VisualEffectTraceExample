@@ -11,12 +11,19 @@ PODS:
   - Realm/Headers (10.22.0)
   - RealmSwift (10.22.0):
     - Realm (= 10.22.0)
+  - RxBlocking (6.5.0):
+    - RxSwift (= 6.5.0)
   - RxCocoa (6.5.0):
     - RxRelay (= 6.5.0)
     - RxSwift (= 6.5.0)
   - RxRelay (6.5.0):
     - RxSwift (= 6.5.0)
   - RxSwift (6.5.0)
+  - RxTest (6.5.0):
+    - RxSwift (= 6.5.0)
+  - Sourcery (1.6.0)
+  - SwiftyMocky (4.1.0):
+    - Sourcery (= 1.6.0)
 
 DEPENDENCIES:
   - AnimatedCollectionViewLayout
@@ -27,8 +34,11 @@ DEPENDENCIES:
   - Kingfisher
   - PKHUD (~> 5.0)
   - RealmSwift
+  - RxBlocking
   - RxCocoa
   - RxSwift
+  - RxTest
+  - SwiftyMocky
 
 SPEC REPOS:
   trunk:
@@ -41,9 +51,13 @@ SPEC REPOS:
     - PKHUD
     - Realm
     - RealmSwift
+    - RxBlocking
     - RxCocoa
     - RxRelay
     - RxSwift
+    - RxTest
+    - Sourcery
+    - SwiftyMocky
 
 SPEC CHECKSUMS:
   AnimatedCollectionViewLayout: 0c1a38c4be115c525c887be183fc91ef65737c5d
@@ -55,10 +69,14 @@ SPEC CHECKSUMS:
   PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
   Realm: d9e4e5877095a6722145811f56fe89a531c9659d
   RealmSwift: e4191b4b957fcfcbed23751ec65eec98f8173ab5
+  RxBlocking: 04b5fd28bb5ea49f7d64b80db8bbfe50d9cc1c7d
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
   RxSwift: 5710a9e6b17f3c3d6e40d6e559b9fa1e813b2ef8
+  RxTest: eb2d23adefc5a5ebf5779c7792fa3edfe6ebcc17
+  Sourcery: 744f43178637c79bf23127dfe34e2103b3f28499
+  SwiftyMocky: 014739247afadb65efb5bb92ede32c22b9365762
 
-PODFILE CHECKSUM: 29b13d6d4098e1b26f790b47d270b391eb3a3302
+PODFILE CHECKSUM: 929add5b52c58e56a2eee8bfe91fb5f7182cb7f9
 
 COCOAPODS: 1.10.1

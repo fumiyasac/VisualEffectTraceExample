@@ -162,6 +162,7 @@
 		DEF5A23E244343D400383473 /* SignupScreenValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEF5A23D244343D400383473 /* SignupScreenValidator.swift */; };
 		DEFC335C2458E6A500BFE132 /* ItemsTopBannerContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFC335B2458E6A500BFE132 /* ItemsTopBannerContainerViewController.swift */; };
 		DEFC335E245915CA00BFE132 /* ItemsScreenSectionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEFC335D245915CA00BFE132 /* ItemsScreenSectionType.swift */; };
+		F38F611EF3C3D732B7147E27 /* Pods_VisualEffectTraceExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92A4C4B5D07A4C2A4A774CA6 /* Pods_VisualEffectTraceExampleTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -185,6 +186,8 @@
 		1C8C1B8206245010E05842E0 /* Pods-VisualEffectTraceExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisualEffectTraceExample.debug.xcconfig"; path = "Target Support Files/Pods-VisualEffectTraceExample/Pods-VisualEffectTraceExample.debug.xcconfig"; sourceTree = "<group>"; };
 		2C93C463F55AF4FFC433D1E5 /* Pods_VisualEffectTraceExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VisualEffectTraceExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AFA8542E8A9AD89F4086318 /* Pods-VisualEffectTraceExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisualEffectTraceExample.release.xcconfig"; path = "Target Support Files/Pods-VisualEffectTraceExample/Pods-VisualEffectTraceExample.release.xcconfig"; sourceTree = "<group>"; };
+		92A4C4B5D07A4C2A4A774CA6 /* Pods_VisualEffectTraceExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VisualEffectTraceExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CB8577D8B1E269510F43AEB4 /* Pods-VisualEffectTraceExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisualEffectTraceExampleTests.release.xcconfig"; path = "Target Support Files/Pods-VisualEffectTraceExampleTests/Pods-VisualEffectTraceExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		DE0424E42402AF50008DEF36 /* AnnouncementListAPIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementListAPIResponse.swift; sourceTree = "<group>"; };
 		DE04C9BF244C76E100684BA1 /* AnnouncementScreenTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementScreenTransition.swift; sourceTree = "<group>"; };
 		DE04C9C1244C943100684BA1 /* AnnouncementScreenTransitioningDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementScreenTransitioningDelegate.swift; sourceTree = "<group>"; };
@@ -345,6 +348,7 @@
 		DEF5A23D244343D400383473 /* SignupScreenValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupScreenValidator.swift; sourceTree = "<group>"; };
 		DEFC335B2458E6A500BFE132 /* ItemsTopBannerContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsTopBannerContainerViewController.swift; sourceTree = "<group>"; };
 		DEFC335D245915CA00BFE132 /* ItemsScreenSectionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsScreenSectionType.swift; sourceTree = "<group>"; };
+		DFCA8B5508656D499FDCF9A2 /* Pods-VisualEffectTraceExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisualEffectTraceExampleTests.debug.xcconfig"; path = "Target Support Files/Pods-VisualEffectTraceExampleTests/Pods-VisualEffectTraceExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -360,6 +364,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F38F611EF3C3D732B7147E27 /* Pods_VisualEffectTraceExampleTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,6 +382,7 @@
 			isa = PBXGroup;
 			children = (
 				2C93C463F55AF4FFC433D1E5 /* Pods_VisualEffectTraceExample.framework */,
+				92A4C4B5D07A4C2A4A774CA6 /* Pods_VisualEffectTraceExampleTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1146,6 +1152,8 @@
 			children = (
 				1C8C1B8206245010E05842E0 /* Pods-VisualEffectTraceExample.debug.xcconfig */,
 				3AFA8542E8A9AD89F4086318 /* Pods-VisualEffectTraceExample.release.xcconfig */,
+				DFCA8B5508656D499FDCF9A2 /* Pods-VisualEffectTraceExampleTests.debug.xcconfig */,
+				CB8577D8B1E269510F43AEB4 /* Pods-VisualEffectTraceExampleTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1176,9 +1184,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DEAA659223F3123100C5232B /* Build configuration list for PBXNativeTarget "VisualEffectTraceExampleTests" */;
 			buildPhases = (
+				3DDFD3B4B48BBE497B8EFDBD /* [CP] Check Pods Manifest.lock */,
 				DEAA657723F3123100C5232B /* Sources */,
 				DEAA657823F3123100C5232B /* Frameworks */,
 				DEAA657923F3123100C5232B /* Resources */,
+				5F7205FF4A2DCC1F0F9CCBC3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1318,6 +1328,45 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VisualEffectTraceExample/Pods-VisualEffectTraceExample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3DDFD3B4B48BBE497B8EFDBD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VisualEffectTraceExampleTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5F7205FF4A2DCC1F0F9CCBC3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VisualEffectTraceExampleTests/Pods-VisualEffectTraceExampleTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VisualEffectTraceExampleTests/Pods-VisualEffectTraceExampleTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VisualEffectTraceExampleTests/Pods-VisualEffectTraceExampleTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C13CF6088D8E4975EF53E1BA /* [CP] Check Pods Manifest.lock */ = {
@@ -1722,6 +1771,7 @@
 		};
 		DEAA659323F3123100C5232B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DFCA8B5508656D499FDCF9A2 /* Pods-VisualEffectTraceExampleTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1744,6 +1794,7 @@
 		};
 		DEAA659423F3123100C5232B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB8577D8B1E269510F43AEB4 /* Pods-VisualEffectTraceExampleTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
