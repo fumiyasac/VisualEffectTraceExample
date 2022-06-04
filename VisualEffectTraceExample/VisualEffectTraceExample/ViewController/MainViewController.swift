@@ -47,6 +47,12 @@ final class MainViewController: UIViewController {
 
     private func displayScreenBy(_ applicationUserState: ApplicationUserStatus) {
 
+        // MEMO: Test実行時は以降の処理を実施しないようにする
+        // → 画面遷移処理を実施する部分
+        if isTesting() {
+            return
+        }
+
         // MEMO: 画面遷移処理をCoodinatorパターンで実施する形にする
         switch applicationUserState {
 

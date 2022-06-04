@@ -23,9 +23,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #endif
 
         // MEMO: Dependency Injection用の処理を初期化する
-        let domainDependency = DependenciesDefinition()
-        if !isTesting()  {
-            domainDependency.inject()
+        if isTesting()  {
+            print("Build for Unit Testing Starting...")
+            let testingDependency = DependenciesDefinition()
+            testingDependency.inject()
+        } else {
+            print("Build for Debug/Production Starting...")
+            let productionDependency = DependenciesDefinition()
+            productionDependency.inject()
         }
 
         // MEMO: iOS15以降で適用するUINavigationController/UITabBarControllerの見た目に関する設定を適用する
@@ -93,11 +98,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {}
 }
 
-extension AppDelegate {
+// MARK: - Global Function For Testing
 
-    // MARK: - Function
-
-    func isTesting() -> Bool {
-        return NSClassFromString("XCTest") != nil
-    }
+func isTesting() -> Bool {
+    return NSClassFromString("XCTest") != nil
 }
