@@ -266,7 +266,7 @@
 		DE84854424279DF800766098 /* TutorialCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialCollectionViewCell.xib; sourceTree = "<group>"; };
 		DE84854724279E2200766098 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TutorialViewController.swift; path = VisualEffectTraceExample/ViewController/Tutorial/TutorialViewController.swift; sourceTree = SOURCE_ROOT; };
 		DE8485492427A43C00766098 /* TutorialViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TutorialViewModel.swift; path = VisualEffectTraceExample/ViewModel/TutorialViewModel.swift; sourceTree = SOURCE_ROOT; };
-		DE84854B2427A48A00766098 /* TutorialEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TutorialEntity.swift; path = VisualEffectTraceExample/View/TutorialEntity.swift; sourceTree = SOURCE_ROOT; };
+		DE84854B2427A48A00766098 /* TutorialEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TutorialEntity.swift; path = VisualEffectTraceExample/Domain/Entity/InternalJsonEntity/TutorialEntity.swift; sourceTree = SOURCE_ROOT; };
 		DE84873E2425B5D400A40975 /* KeychainAccessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainAccessManager.swift; sourceTree = "<group>"; };
 		DE8487402425E21D00A40975 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		DE8487422425E81000A40975 /* RealmAccessManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmAccessManager.swift; sourceTree = "<group>"; };
@@ -529,14 +529,6 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		DE3A9D25242636F60060FE30 /* InternalJsonEntity */ = {
-			isa = PBXGroup;
-			children = (
-				DE84854B2427A48A00766098 /* TutorialEntity.swift */,
-			);
-			path = InternalJsonEntity;
-			sourceTree = "<group>";
-		};
 		DE4D093924D6DA8E0068C67F /* ItemCollectionViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -680,6 +672,14 @@
 			path = AnnoucementTableHeaderView;
 			sourceTree = "<group>";
 		};
+		DE98D9CB284C9AD700562165 /* InternalJsonEntity */ = {
+			isa = PBXGroup;
+			children = (
+				DE84854B2427A48A00766098 /* TutorialEntity.swift */,
+			);
+			path = InternalJsonEntity;
+			sourceTree = "<group>";
+		};
 		DE9D4F0024449A60003439ED /* AnnoucementTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -722,7 +722,7 @@
 		DEA01C7D240103BA00346C1E /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				DE3A9D25242636F60060FE30 /* InternalJsonEntity */,
+				DE98D9CB284C9AD700562165 /* InternalJsonEntity */,
 				DEAA65A123F70D3D00C5232B /* RealmEntity */,
 				DEDCC88D241E2C3300BFA165 /* APIResponseEntity */,
 			);
