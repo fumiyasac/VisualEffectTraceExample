@@ -4,13 +4,13 @@ PODS:
   - FontAwesome.swift (1.9.1)
   - Gedatsu (1.2.0)
   - KeychainAccess (4.2.2)
-  - Kingfisher (7.1.2)
+  - Kingfisher (7.2.2)
   - PKHUD (5.3.0)
-  - Realm (10.22.0):
-    - Realm/Headers (= 10.22.0)
-  - Realm/Headers (10.22.0)
-  - RealmSwift (10.22.0):
-    - Realm (= 10.22.0)
+  - Realm (10.28.0):
+    - Realm/Headers (= 10.28.0)
+  - Realm/Headers (10.28.0)
+  - RealmSwift (10.28.0):
+    - Realm (= 10.28.0)
   - RxBlocking (6.5.0):
     - RxSwift (= 6.5.0)
   - RxCocoa (6.5.0):
@@ -65,10 +65,10 @@ SPEC CHECKSUMS:
   FontAwesome.swift: 6b52cb7be66eacd28cbfaa0ca7ffd0de4a186a1d
   Gedatsu: 13a21a3cbf7978f9ff671eca5715b94a4309d9a8
   KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
-  Kingfisher: 44ed6a8504763f27bab46163adfac83f5deb240c
+  Kingfisher: 184d4d1a8c36666e663caf8e08abe87898595c53
   PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
-  Realm: d9e4e5877095a6722145811f56fe89a531c9659d
-  RealmSwift: e4191b4b957fcfcbed23751ec65eec98f8173ab5
+  Realm: a0dd4e07530faaa327244ddb4ecb445c98f0537a
+  RealmSwift: 625a21f03e01e80f6b9b86bade269ebebcd7892c
   RxBlocking: 04b5fd28bb5ea49f7d64b80db8bbfe50d9cc1c7d
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
