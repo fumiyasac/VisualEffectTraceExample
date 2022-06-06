@@ -25,6 +25,11 @@ final class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // MEMO: Test実行時は以降の処理を実施しないようにする
+        if isTesting() {
+            return
+        }
+
         // ViewModelのOutputで定義した変数の値が反映された際に実行する処理
         viewModel.outputs.targetApplicationUserState
             .subscribe(
@@ -39,6 +44,11 @@ final class MainViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
+        // MEMO: Test実行時は以降の処理を実施しないようにする
+        if isTesting() {
+            return
+        }
+        
         // ViewModelのInputで定義したデータ取得処理に関するトリガーを発火する
         viewModel.inputs.initialSettingTrigger.onNext(())
     }
@@ -46,12 +56,6 @@ final class MainViewController: UIViewController {
     // MARK: - Private Function
 
     private func displayScreenBy(_ applicationUserState: ApplicationUserStatus) {
-
-        // MEMO: Test実行時は以降の処理を実施しないようにする
-        // → 画面遷移処理を実施する部分
-        if isTesting() {
-            return
-        }
 
         // MEMO: 画面遷移処理をCoodinatorパターンで実施する形にする
         switch applicationUserState {

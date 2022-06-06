@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // MEMO: Dependency Injection用の処理を初期化する
         if isTesting()  {
+            // TODO: Mock化する影響がないかを調査する
             print("Build for Unit Testing Starting...")
             let testingDependency = DependenciesDefinition()
             testingDependency.inject()
