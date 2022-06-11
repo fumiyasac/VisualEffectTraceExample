@@ -5,7 +5,9 @@ PODS:
   - Gedatsu (1.2.0)
   - KeychainAccess (4.2.2)
   - Kingfisher (7.2.2)
+  - Nimble (10.0.0)
   - PKHUD (5.3.0)
+  - Quick (5.0.1)
   - Realm (10.28.0):
     - Realm/Headers (= 10.28.0)
   - Realm/Headers (10.28.0)
@@ -32,7 +34,9 @@ DEPENDENCIES:
   - Gedatsu
   - KeychainAccess
   - Kingfisher
+  - Nimble
   - PKHUD (~> 5.0)
+  - Quick
   - RealmSwift
   - RxBlocking
   - RxCocoa
@@ -48,7 +52,9 @@ SPEC REPOS:
     - Gedatsu
     - KeychainAccess
     - Kingfisher
+    - Nimble
     - PKHUD
+    - Quick
     - Realm
     - RealmSwift
     - RxBlocking
@@ -66,7 +72,9 @@ SPEC CHECKSUMS:
   Gedatsu: 13a21a3cbf7978f9ff671eca5715b94a4309d9a8
   KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
   Kingfisher: 184d4d1a8c36666e663caf8e08abe87898595c53
+  Nimble: 5316ef81a170ce87baf72dd961f22f89a602ff84
   PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
+  Quick: 749aa754fd1e7d984f2000fe051e18a3a9809179
   Realm: a0dd4e07530faaa327244ddb4ecb445c98f0537a
   RealmSwift: 625a21f03e01e80f6b9b86bade269ebebcd7892c
   RxBlocking: 04b5fd28bb5ea49f7d64b80db8bbfe50d9cc1c7d
@@ -77,6 +85,6 @@ SPEC CHECKSUMS:
   Sourcery: 744f43178637c79bf23127dfe34e2103b3f28499
   SwiftyMocky: 014739247afadb65efb5bb92ede32c22b9365762
 
-PODFILE CHECKSUM: a32cf4b7795a84d747f8370306933d641166914f
+PODFILE CHECKSUM: e5fd4e1207dd5b2f34e40c814312ab3436585ba5
 
 COCOAPODS: 1.10.1

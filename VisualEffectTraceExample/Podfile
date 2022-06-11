@@ -27,7 +27,9 @@ target 'VisualEffectTraceExample' do
     inherit! :search_paths
     pod 'RxBlocking'
     pod 'RxTest'
-    pod "SwiftyMocky"
+    pod 'SwiftyMocky'
+    pod 'Nimble'
+    pod 'Quick'
   end
 
 #  ※ UIテスト時に利用する
