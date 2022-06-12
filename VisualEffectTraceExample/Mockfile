@@ -1,0 +1,15 @@
+sourceryCommand: null
+sourceryTemplate: null
+VisualEffectTraceExampleTests:
+  sources:
+    include:
+    - ./VisualEffectTraceExample
+  output: ./VisualEffectTraceExampleTests/Mock.generated.swift
+  targets:
+  - VisualEffectTraceExampleTests
+  testable:
+  - VisualEffectTraceExample
+  import:
+  - Foundation
+  - UIKit
+  - RxSwift

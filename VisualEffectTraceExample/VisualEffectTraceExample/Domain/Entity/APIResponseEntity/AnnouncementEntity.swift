@@ -26,6 +26,18 @@ struct AnnouncementEntity: Hashable, Decodable {
 
     // MARK: - Initializer
 
+    init(
+        id: Int,
+        title: String,
+        statement: String,
+        thumbnailUrl: String
+    ) {
+        self.id = id
+        self.title = title
+        self.statement = statement
+        self.thumbnailUrl = thumbnailUrl
+    }
+
     init(from decoder: Decoder) throws {
 
         // JSONの配列内の要素を取得する
@@ -39,6 +51,7 @@ struct AnnouncementEntity: Hashable, Decodable {
     }
 
     // MARK: - Hashable
+
     // MEMO: Hashableプロトコルに適合させるための処理
 
     func hash(into hasher: inout Hasher) {
@@ -47,5 +60,8 @@ struct AnnouncementEntity: Hashable, Decodable {
 
     static func == (lhs: AnnouncementEntity, rhs: AnnouncementEntity) -> Bool {
         return lhs.id == rhs.id
+            && lhs.title == rhs.title
+            && lhs.statement == rhs.statement
+            && lhs.thumbnailUrl == rhs.thumbnailUrl
     }
 }
