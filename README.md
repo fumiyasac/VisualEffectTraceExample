@@ -7,7 +7,7 @@ UICollectionViewを利用した複雑なレイアウトや挙動を表現と合�
 #### 【実装環境】
 
 - macOS Big Monterey 12.3
-- Xcode 13.4
+- Xcode 13.4.1
 - Swift 5.5
 - CocoaPods 1.11.3
 
