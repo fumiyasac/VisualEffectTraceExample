@@ -81,6 +81,7 @@
 		DE813A6F24CB4AEE0064E13F /* RequestStoryDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE813A6E24CB4AEE0064E13F /* RequestStoryDataRepository.swift */; };
 		DE813A7124CB4F060064E13F /* RequestStoryDataUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE813A7024CB4F060064E13F /* RequestStoryDataUseCase.swift */; };
 		DE813A7324CB4FEA0064E13F /* StoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE813A7224CB4FEA0064E13F /* StoryViewModel.swift */; };
+		DE81E6FA285F520700208602 /* TutorialDataRepositorySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE81E6F9285F520700208602 /* TutorialDataRepositorySpec.swift */; };
 		DE84854224279D7D00766098 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE84854024279D7D00766098 /* Tutorial.storyboard */; };
 		DE84854524279DF800766098 /* TutorialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE84854324279DF800766098 /* TutorialCollectionViewCell.swift */; };
 		DE84854624279DF800766098 /* TutorialCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE84854424279DF800766098 /* TutorialCollectionViewCell.xib */; };
@@ -264,6 +265,7 @@
 		DE813A6E24CB4AEE0064E13F /* RequestStoryDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestStoryDataRepository.swift; sourceTree = "<group>"; };
 		DE813A7024CB4F060064E13F /* RequestStoryDataUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestStoryDataUseCase.swift; sourceTree = "<group>"; };
 		DE813A7224CB4FEA0064E13F /* StoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewModel.swift; sourceTree = "<group>"; };
+		DE81E6F9285F520700208602 /* TutorialDataRepositorySpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialDataRepositorySpec.swift; sourceTree = "<group>"; };
 		DE84854124279D7D00766098 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Tutorial.storyboard; sourceTree = "<group>"; };
 		DE84854324279DF800766098 /* TutorialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialCollectionViewCell.swift; sourceTree = "<group>"; };
 		DE84854424279DF800766098 /* TutorialCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -1160,6 +1162,7 @@
 			isa = PBXGroup;
 			children = (
 				DEE285792856397D004CCCB9 /* RequestAnnouncementDataRepositorySpec.swift */,
+				DE81E6F9285F520700208602 /* TutorialDataRepositorySpec.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -1580,6 +1583,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE81E6FA285F520700208602 /* TutorialDataRepositorySpec.swift in Sources */,
 				DEE28578285634B2004CCCB9 /* Mock.generated.swift in Sources */,
 				DEAA658023F3123100C5232B /* VisualEffectTraceExampleTests.swift in Sources */,
 				DEE2857A2856397D004CCCB9 /* RequestAnnouncementDataRepositorySpec.swift in Sources */,

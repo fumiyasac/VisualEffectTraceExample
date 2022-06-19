@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct TutorialEntity: Decodable {
+struct TutorialEntity: Hashable, Decodable {
 
     let id: Int
     let title: String
@@ -25,7 +25,19 @@ struct TutorialEntity: Decodable {
     }
     
     // MARK: - Initializer
-    
+
+    init(
+        id: Int,
+        title: String,
+        thumbnailUrl: String,
+        catchCopy: String
+    ) {
+        self.id = id
+        self.title = title
+        self.thumbnail = thumbnailUrl
+        self.catchCopy = catchCopy
+    }
+
     init(from decoder: Decoder) throws {
 
         // JSONの配列内の要素を取得する
@@ -36,5 +48,20 @@ struct TutorialEntity: Decodable {
         self.title = try container.decode(String.self, forKey: .title)
         self.thumbnail = try container.decode(String.self, forKey: .thumbnail)
         self.catchCopy = try container.decode(String.self, forKey: .catchCopy)
+    }
+
+    // MARK: - Hashable
+
+    // MEMO: Hashableプロトコルに適合させるための処理
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+
+    static func == (lhs: TutorialEntity, rhs: TutorialEntity) -> Bool {
+        return lhs.id == rhs.id
+            && lhs.title == rhs.title
+            && lhs.thumbnail == rhs.thumbnail
+            && lhs.catchCopy == rhs.catchCopy
     }
 }
