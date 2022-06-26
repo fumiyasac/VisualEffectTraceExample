@@ -10,6 +10,7 @@ import Foundation
 
 // MARK: - Protocol
 
+//sourcery: AutoMockable
 protocol TutorialUseCase {
 
     // チュートリアル画面への表示データ配列を取得する
