@@ -19,16 +19,33 @@ final class TutorialViewModelSpec: QuickSpec {
 
     // MARK: - Override
 
+    // MEMO: ViewModelクラス内のInput&Outputの変化が検知できていることを確認する
     override func spec() {
 
         let tutorialUseCaseMock = TutorialUseCaseMock()
+        let applicationUserStatusUseCaseMock = ApplicationUserStatusUseCaseMock()
 
         // MARK: - changeIndexTriggerを実行した際のテスト
 
-        // MEMO: ViewModelクラス内のInput&Outputの変化が検知できていることを確認する
+        // MEMO: スワイプ処理等でTutorialの表示内容を変更する場合
         describe("#changeIndexTrigger") {
-            // MEMO: スワイプ処理等でTutorialの表示内容を変更する場合
-            context("changeIndexTrigger実行時かつindex値が2以下の場合") {
+            context("changeIndexTrigger実行してindex値が1まで変化させた場合") {
+                let tutorialDataList = getTutorialDataList()
+                beforeEach {
+                    tutorialUseCaseMock.given(
+                        .execute(
+                            willReturn: tutorialDataList
+                        )
+                    )
+                }
+                it("isLastIndexがfalseとなること") {
+                    let target = TutorialViewModel()
+                    target.inputs.changeIndexTrigger.onNext(1)
+                    expect(try! target.outputs.tutorialItems.toBlocking().first()).to(equal(tutorialDataList))
+                    expect(try! target.outputs.isLastIndex.toBlocking().first()).to(equal(false))
+                }
+            }
+            context("changeIndexTrigger実行してindex値が2まで変化させた場合") {
                 let tutorialDataList = getTutorialDataList()
                 beforeEach {
                     tutorialUseCaseMock.given(
@@ -45,7 +62,7 @@ final class TutorialViewModelSpec: QuickSpec {
                     expect(try! target.outputs.isLastIndex.toBlocking().first()).to(equal(false))
                 }
             }
-            context("changeIndexTrigger実行時かつindex値が3の場合") {
+            context("changeIndexTrigger実行してindex値が3まで変化させた場合") {
                 let tutorialDataList = getTutorialDataList()
                 beforeEach {
                     tutorialUseCaseMock.given(
@@ -54,7 +71,7 @@ final class TutorialViewModelSpec: QuickSpec {
                         )
                     )
                 }
-                it("isLastIndexがtrueとなること") {
+                it("executeUpdatePassTutorialStatus()がtrueとなること") {
                     let target = TutorialViewModel()
                     target.inputs.changeIndexTrigger.onNext(1)
                     target.inputs.changeIndexTrigger.onNext(2)
@@ -64,6 +81,23 @@ final class TutorialViewModelSpec: QuickSpec {
                 }
             }
         }
+
+        // MARK: - completeTutorialTriggerを実行した際のテスト
+
+        // MEMO: チュートリアル完了ボタンを押下した場合
+        // FIXME: ApplicationUserStatusUseCase以降のUnitTestを書いたらコメントイン
+//        describe("#completeTutorialTrigger") {
+//            context("チュートリアルを完了した場合") {
+//                it("チュートリアル完了ステータス更新処理が1回実行されること") {
+//                    let target = TutorialViewModel()
+//                    target.inputs.completeTutorialTrigger.onNext(())
+//                    applicationUserStatusUseCaseMock.verify(
+//                        .executeUpdatePassTutorialStatus(),
+//                        count: .once
+//                    )
+//                }
+//            }
+//        }
     }
 
     private func getTutorialDataList() -> Array<TutorialEntity> {

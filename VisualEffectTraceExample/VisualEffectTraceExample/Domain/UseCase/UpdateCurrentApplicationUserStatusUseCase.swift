@@ -10,6 +10,7 @@ import Foundation
 
 // MARK: - Protocol
 
+//sourcery: AutoMockable
 protocol ApplicationUserStatusUseCase {
 
     // ユーザーのチュートリアル完了フラグを更新する
