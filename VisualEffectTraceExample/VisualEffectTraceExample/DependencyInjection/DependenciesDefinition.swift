@@ -214,4 +214,17 @@ final class DependenciesDefinition {
             )
         }
     }
+
+    func injectIndividualMock(mockInstance: Any, protocolName: Any) {
+        let container = Dependencies.Container.default
+        container.register(
+            mockInstance,
+            for: Dependencies.Name(rawValue: TypeScanner.getName(protocolName))
+        )
+    }
+
+    func removeIndividualMock(protocolName: Any) {
+        let container = Dependencies.Container.default
+        container.remove(for: Dependencies.Name(rawValue: TypeScanner.getName(protocolName)))
+    }
 }
