@@ -21,7 +21,10 @@ final class GetTutorialDataUseCaseSpec: QuickSpec {
 
     override func spec() {
 
-        let tutorialRepositoryMock = TutorialRepositoryMock()
+        // MEMO: Testで動かす想定のDIコンテナのインスタンスを生成する
+        let testingDependency = DependenciesDefinition()
+
+        let tutorialRepository = TutorialRepositoryMock()
         let target = GetTutorialDataUseCase()
 
         describe("GetTutorialDataUseCase") {
@@ -36,13 +39,21 @@ final class GetTutorialDataUseCaseSpec: QuickSpec {
 
                     // Mockに差し替えたメソッドが返却する値を定める
                     beforeEach {
-                        tutorialRepositoryMock.given(
+                        testingDependency.injectIndividualMock(
+                            mockInstance: tutorialRepository,
+                            protocolName: TutorialRepository.self
+                        )
+                        tutorialRepository.given(
                             .getDataList(
                                 willReturn: result
                             )
                         )
                     }
-
+                    afterEach {
+                        testingDependency.removeIndividualMock(
+                            protocolName: TutorialRepository.self
+                        )
+                    }
                     it("StubのJSON値を変換したものをそのまま返却すること") {
                         expect(
                             target.execute()

@@ -22,8 +22,11 @@ final class TutorialViewModelSpec: QuickSpec {
     // MEMO: ViewModelクラス内のInput&Outputの変化が検知できていることを確認する
     override func spec() {
 
-        let tutorialUseCaseMock = TutorialUseCaseMock()
-        let applicationUserStatusUseCaseMock = ApplicationUserStatusUseCaseMock()
+        // MEMO: Testで動かす想定のDIコンテナのインスタンスを生成する
+        let testingDependency = DependenciesDefinition()
+
+        let tutorialUseCase = TutorialUseCaseMock()
+        let applicationUserStatusUseCase = ApplicationUserStatusUseCaseMock()
 
         // MARK: - changeIndexTriggerを実行した際のテスト
 
@@ -32,10 +35,19 @@ final class TutorialViewModelSpec: QuickSpec {
             context("changeIndexTrigger実行してindex値が1まで変化させた場合") {
                 let tutorialDataList = getTutorialDataList()
                 beforeEach {
-                    tutorialUseCaseMock.given(
+                    testingDependency.injectIndividualMock(
+                        mockInstance: tutorialUseCase,
+                        protocolName: TutorialUseCase.self
+                    )
+                    tutorialUseCase.given(
                         .execute(
                             willReturn: tutorialDataList
                         )
+                    )
+                }
+                afterEach {
+                    testingDependency.removeIndividualMock(
+                        protocolName: TutorialUseCase.self
                     )
                 }
                 it("isLastIndexがfalseとなること") {
@@ -48,13 +60,22 @@ final class TutorialViewModelSpec: QuickSpec {
             context("changeIndexTrigger実行してindex値が2まで変化させた場合") {
                 let tutorialDataList = getTutorialDataList()
                 beforeEach {
-                    tutorialUseCaseMock.given(
+                    testingDependency.injectIndividualMock(
+                        mockInstance: tutorialUseCase,
+                        protocolName: TutorialUseCase.self
+                    )
+                    tutorialUseCase.given(
                         .execute(
                             willReturn: tutorialDataList
                         )
                     )
                 }
-                it("isLastIndexがfalseとなること") {
+                afterEach {
+                    testingDependency.removeIndividualMock(
+                        protocolName: TutorialUseCase.self
+                    )
+                }
+                it("viewModel.outputs.isLastIndexがfalseとなること") {
                     let target = TutorialViewModel()
                     target.inputs.changeIndexTrigger.onNext(1)
                     target.inputs.changeIndexTrigger.onNext(2)
@@ -65,13 +86,22 @@ final class TutorialViewModelSpec: QuickSpec {
             context("changeIndexTrigger実行してindex値が3まで変化させた場合") {
                 let tutorialDataList = getTutorialDataList()
                 beforeEach {
-                    tutorialUseCaseMock.given(
+                    testingDependency.injectIndividualMock(
+                        mockInstance: tutorialUseCase,
+                        protocolName: TutorialUseCase.self
+                    )
+                    tutorialUseCase.given(
                         .execute(
                             willReturn: tutorialDataList
                         )
                     )
                 }
-                it("executeUpdatePassTutorialStatus()がtrueとなること") {
+                afterEach {
+                    testingDependency.removeIndividualMock(
+                        protocolName: TutorialUseCase.self
+                    )
+                }
+                it("viewModel.outputs.isLastIndexがtrueとなること") {
                     let target = TutorialViewModel()
                     target.inputs.changeIndexTrigger.onNext(1)
                     target.inputs.changeIndexTrigger.onNext(2)
@@ -85,19 +115,44 @@ final class TutorialViewModelSpec: QuickSpec {
         // MARK: - completeTutorialTriggerを実行した際のテスト
 
         // MEMO: チュートリアル完了ボタンを押下した場合
-        // FIXME: ApplicationUserStatusUseCase以降のUnitTestを書いたらコメントイン
-//        describe("#completeTutorialTrigger") {
-//            context("チュートリアルを完了した場合") {
-//                it("チュートリアル完了ステータス更新処理が1回実行されること") {
-//                    let target = TutorialViewModel()
-//                    target.inputs.completeTutorialTrigger.onNext(())
-//                    applicationUserStatusUseCaseMock.verify(
-//                        .executeUpdatePassTutorialStatus(),
-//                        count: .once
-//                    )
-//                }
-//            }
-//        }
+        describe("#completeTutorialTrigger") {
+            context("チュートリアルを完了した場合") {
+                let tutorialDataList = getTutorialDataList()
+                beforeEach {
+                    testingDependency.injectIndividualMock(
+                        mockInstance: tutorialUseCase,
+                        protocolName: TutorialUseCase.self
+                    )
+                    testingDependency.injectIndividualMock(
+                        mockInstance: applicationUserStatusUseCase,
+                        protocolName: ApplicationUserStatusUseCase.self
+                    )
+                    tutorialUseCase.given(
+                        .execute(
+                            willReturn: tutorialDataList
+                        )
+                    )
+                    applicationUserStatusUseCase.given(
+                        .executeUpdatePassTutorialStatus(
+                            willReturn: Completable.empty()
+                        )
+                    )
+                }
+                afterEach {
+                    testingDependency.removeIndividualMock(
+                        protocolName: TutorialUseCase.self
+                    )
+                    testingDependency.removeIndividualMock(
+                        protocolName: ApplicationUserStatusUseCase.self
+                    )
+                }
+                it("viewModel.outputs.tutorialFinishedがtrueとなること") {
+                    let target = TutorialViewModel()
+                    target.inputs.completeTutorialTrigger.onNext(())
+                    expect(try! target.outputs.tutorialFinished.toBlocking().first()).to(equal(true))
+                }
+            }
+        }
     }
 
     private func getTutorialDataList() -> Array<TutorialEntity> {

@@ -21,7 +21,10 @@ final class RequestAnnouncementDataRepositorySpec: QuickSpec {
 
     override func spec() {
 
-        let apiRequestManagerMock = APIRequestProtocolMock()
+        // MEMO: Testで動かす想定のDIコンテナのインスタンスを生成する
+        let testingDependency = DependenciesDefinition()
+
+        let apiRequestManager = APIRequestProtocolMock()
         let target = RequestAnnouncementDataRepository()
 
         describe("RequestAnnouncementDataRepository") {
@@ -37,10 +40,19 @@ final class RequestAnnouncementDataRepositorySpec: QuickSpec {
 
                     // Mockに差し替えたメソッドが返却する値を定める
                     beforeEach {
-                        apiRequestManagerMock.given(
+                        testingDependency.injectIndividualMock(
+                            mockInstance: apiRequestManager,
+                            protocolName: APIRequestProtocol.self
+                        )
+                        apiRequestManager.given(
                             .getAnnouncements(
                                 willReturn: Single.just(announcementListAPIResponse)
                             )
+                        )
+                    }
+                    afterEach {
+                        testingDependency.removeIndividualMock(
+                            protocolName: APIRequestProtocol.self
                         )
                     }
                     it("StubのJSON値を変換したものをそのまま返却すること") {
