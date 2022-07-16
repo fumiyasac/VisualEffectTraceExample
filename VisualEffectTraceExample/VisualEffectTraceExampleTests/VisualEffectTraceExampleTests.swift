@@ -9,6 +9,7 @@
 import XCTest
 @testable import VisualEffectTraceExample
 
+/*
 class VisualEffectTraceExampleTests: XCTestCase {
 
     override func setUp() {
@@ -32,3 +33,4 @@ class VisualEffectTraceExampleTests: XCTestCase {
     }
 
 }
+*/

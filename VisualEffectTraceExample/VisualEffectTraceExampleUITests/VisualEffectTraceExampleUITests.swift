@@ -8,6 +8,7 @@
 
 import XCTest
 
+/*
 class VisualEffectTraceExampleUITests: XCTestCase {
 
     override func setUp() {
@@ -41,3 +42,4 @@ class VisualEffectTraceExampleUITests: XCTestCase {
         }
     }
 }
+*/
