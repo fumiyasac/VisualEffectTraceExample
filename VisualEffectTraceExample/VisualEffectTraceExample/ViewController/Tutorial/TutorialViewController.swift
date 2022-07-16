@@ -80,6 +80,18 @@ final class TutorialViewController: UIViewController {
             )
             .disposed(by: disposeBag)
 
+        viewModel.outputs.tutorialFinished
+            .subscribe(
+                onNext: { [weak self] result in
+                    guard let self = self else { return }
+                    // MEMO: TutorialFlowプロトコルに定義したTutorialScreenCoodinatorの画面遷移を実行する
+                    if result {
+                        self.coordinator?.coordinateToSignin()
+                    }
+                }
+            )
+            .disposed(by: disposeBag)
+
         // 参考: RxSwiftを利用して該当のセルをタップした場合にタップ時のindexPathを返す場合の記述例
         /*
         tutorialCollectionView.rx.itemSelected
@@ -172,11 +184,8 @@ final class TutorialViewController: UIViewController {
         UIView.animate(withDuration: 0.16, animations: {
             self.nextContentsButton.transform = CGAffineTransform.identity
         }, completion: { finished in
-
             // MEMO: チュートリアル完了フラグの更新を実行する
             self.viewModel.inputs.completeTutorialTrigger.onNext(())
-            // MEMO: TutorialFlowプロトコルに定義したTutorialScreenCoodinatorの画面遷移を実行する
-            self.coordinator?.coordinateToSignin()
         })
     }
 }

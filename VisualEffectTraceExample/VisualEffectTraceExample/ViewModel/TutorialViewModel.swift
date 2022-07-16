@@ -26,6 +26,9 @@ protocol TutorialViewModelOutputs {
 
     // 最後のインデックス値に到達したかの判定結果を格納する
     var isLastIndex: Observable<Bool> { get }
+
+    // チュートリアル完了時のViewController内の処理を実施するためのOutput
+    var tutorialFinished: Observable<Bool> { get }
 }
 
 protocol TutorialViewModelType {
@@ -42,7 +45,6 @@ final class TutorialViewModel: TutorialViewModelInputs, TutorialViewModelOutputs
 
     // MEMO: ReplaySubjectはBufferSize分の過去のeventを受け取れるSubjectなので、「bufferSize: 1」を利用して1つ前まで取得できるようにする
     let changeIndexTrigger: ReplaySubject<Int> = ReplaySubject<Int>.create(bufferSize: 1)
-
     let completeTutorialTrigger: PublishSubject<Void> = PublishSubject<Void>()
 
     // MARK: - Properties (for TutorialViewModelOutputs)
@@ -55,14 +57,20 @@ final class TutorialViewModel: TutorialViewModelInputs, TutorialViewModelOutputs
         return _isLastIndex.asObservable()
     }
 
+    var tutorialFinished: Observable<Bool> {
+        return _tutorialFinished.asObservable()
+    }
+
     // MARK: - Properties
 
     private let disposeBag = DisposeBag()
 
     // MEMO: 中継地点となるBehaviorRelayの変数（Outputの変数を生成するための「つなぎ」のような役割）
     // → BehaviorRelayの変化が起こったらObservableに変換されてOutputに流れてくる
+    // → 初期値が必要な場合はBehaviorRelay / 初期値が不要な場合にはPublishRelay
     private let _tutorialItems: BehaviorRelay<Array<TutorialEntity>> = BehaviorRelay<Array<TutorialEntity>>(value: [])
     private let _isLastIndex: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
+    private let _tutorialFinished: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
 
     // MEMO: このViewModelで利用するUseCase(Domain Model)
     @Dependencies.Inject(Dependencies.Name(rawValue: "TutorialUseCase")) private var tutorialUseCase: TutorialUseCase
@@ -93,11 +101,28 @@ final class TutorialViewModel: TutorialViewModelInputs, TutorialViewModelOutputs
             )
             .disposed(by: disposeBag)
 
+        // チュートリアル処理完了時に実行が必要な処理を結びつける
         completeTutorialTrigger
             .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }
-                    self.applicationUserStatusUseCase.executeUpdatePassTutorialStatus()
+                    self._tutorialFinished.accept(true)
+                    self.updatePassTutorialStatus()
+                }
+            )
+            .disposed(by: disposeBag)
+    }
+
+    // MARK: - Private Function
+
+    private func updatePassTutorialStatus() {
+        applicationUserStatusUseCase.executeUpdatePassTutorialStatus()
+            .subscribe(
+                onCompleted: {
+                    // Do Nothing.
+                },
+                onError: { _ in
+                    // Do Nothing.
                 }
             )
             .disposed(by: disposeBag)
