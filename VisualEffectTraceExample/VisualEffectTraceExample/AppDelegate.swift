@@ -24,10 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // MEMO: Dependency Injection用の処理を初期化する
         if isTesting()  {
-            // TODO: Mock化する影響がないかを調査する
+            // 注意: Test実行時はDIコンテナへの登録処理をしない
+            // → ●●●Spec内のbeforeEachではテストコードを動作させるのに必要な責務をDIコンテナへ登録
+            // → ●●●Spec内のafterEachではテストコードを動作させるのに登録した責務を削除する
             print("Build for Unit Testing Starting...")
-            let testingDependency = DependenciesDefinition()
-            testingDependency.inject()
         } else {
             print("Build for Debug/Production Starting...")
             let productionDependency = DependenciesDefinition()
