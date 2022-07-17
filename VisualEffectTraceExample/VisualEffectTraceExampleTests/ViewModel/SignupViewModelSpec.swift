@@ -6,31 +6,137 @@
 //  Copyright © 2022 酒井文也. All rights reserved.
 //
 
+@testable import VisualEffectTraceExample
+
+import Nimble
+import Quick
+import RxBlocking
+import RxSwift
+import SwiftyMocky
 import XCTest
 
-class SignupViewModelSpec: QuickSpec {
+final class SignupViewModelSpec: QuickSpec {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+    // MARK: - Override
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+    // MEMO: ViewModelクラス内のInput&Outputの変化が検知できていることを確認する
+    override func spec() {
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
+        // MEMO: Testで動かす想定のDIコンテナのインスタンスを生成する
+        let testingDependency = DependenciesDefinition()
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+        let signupUseCase = SignupUsecaseMock()
+
+        // MARK: - inputUserNameTriggerを実行した際のテスト
+
+        // MEMO: 画面表示時の表示内容を入力する場合
+        describe("#inputUserNameTrigger") {
+            context("ユーザー名を入力した場合") {
+                let userName: String = "fumiyasac"
+                it("viewModel.outputs.userNameへ入力値が反映されること") {
+                    let target = SignupViewModel()
+                    target.inputs.inputUserNameTrigger.onNext(userName)
+                    expect(try! target.outputs.userName.toBlocking().first()).to(equal(userName))
+                }
+            }
+        }
+        describe("#inputMailAddressTrigger") {
+            context("メールアドレスを入力した場合") {
+                let mailAddress: String = "fumiya.sakai@example.com"
+                it("viewModel.outputs.mailAddressへ入力値が反映されること") {
+                    let target = SignupViewModel()
+                    target.inputs.inputMailAddressTrigger.onNext(mailAddress)
+                    expect(try! target.outputs.mailAddress.toBlocking().first()).to(equal(mailAddress))
+                }
+            }
+        }
+        describe("#inputRawPasswordTrigger") {
+            context("パスワードを入力した場合") {
+                let rawPassword: String = "testcode1234"
+                it("viewModel.outputs.rawPasswordへ入力値が反映されること") {
+                    let target = SignupViewModel()
+                    target.inputs.inputRawPasswordTrigger.onNext(rawPassword)
+                    expect(try! target.outputs.rawPassword.toBlocking().first()).to(equal(rawPassword))
+                }
+            }
+        }
+        // MEMO: サーバーへ入力内容を送信する場合
+        describe("#executeSignupRequestTrigger") {
+            context("サーバーへの登録処理が成功した場合") {
+                let userName: String = "fumiyasac"
+                let mailAddress: String = "fumiya.sakai@example.com"
+                let rawPassword: String = "testcode1234"
+                let generalPostSuccessARIResponse = GeneralPostSuccessARIResponse(result: "OK")
+                beforeEach {
+                    testingDependency.injectIndividualMock(
+                        mockInstance: signupUseCase,
+                        protocolName: SignupUsecase.self
+                    )
+                    signupUseCase.given(
+                        .execute(
+                            userName: .value(userName),
+                            mailAddress: .value(mailAddress),
+                            rawPassword: .value(rawPassword),
+                            willReturn: Single.just(generalPostSuccessARIResponse)
+                        )
+                    )
+                }
+                afterEach {
+                    testingDependency.removeIndividualMock(
+                        protocolName: SignupUsecase.self
+                    )
+                }
+                it("viewModel.outputs.requestStatusがAPIRequestState.successとなること") {
+                    let target = SignupViewModel()
+                    target.inputs.inputUserNameTrigger.onNext(userName)
+                    target.inputs.inputMailAddressTrigger.onNext(mailAddress)
+                    target.inputs.inputRawPasswordTrigger.onNext(rawPassword)
+                    target.inputs.executeSignupRequestTrigger.onNext(())
+                    expect(try! target.outputs.requestStatus.toBlocking().first()).to(equal(APIRequestState.success))
+                }
+            }
+            context("サーバーへの登録処理が失敗した場合") {
+                let userName: String = "fumiyasac"
+                let mailAddress: String = "fumiya.sakai@example.com"
+                let rawPassword: String = "testcode1234"
+                beforeEach {
+                    testingDependency.injectIndividualMock(
+                        mockInstance: signupUseCase,
+                        protocolName: SignupUsecase.self
+                    )
+                    signupUseCase.given(
+                        .execute(
+                            userName: .value(userName),
+                            mailAddress: .value(mailAddress),
+                            rawPassword: .value(rawPassword),
+                            willReturn: Single.error(CommonError.invalidResponse("送信された会員情報が不正です"))
+                        )
+                    )
+                }
+                afterEach {
+                    testingDependency.removeIndividualMock(
+                        protocolName: SignupUsecase.self
+                    )
+                }
+                it("viewModel.outputs.requestStatusがAPIRequestState.errorとなること") {
+                    let target = SignupViewModel()
+                    target.inputs.inputUserNameTrigger.onNext(userName)
+                    target.inputs.inputMailAddressTrigger.onNext(mailAddress)
+                    target.inputs.inputRawPasswordTrigger.onNext(rawPassword)
+                    target.inputs.executeSignupRequestTrigger.onNext(())
+                    expect(try! target.outputs.requestStatus.toBlocking().first()).to(equal(APIRequestState.error))
+                }
+            }
+        }
+        // MEMO: APIRequestStateを元に戻す場合
+        describe("#undoAPIRequestStateTrigger") {
+            context("APIリクエスト結果ダイアログ表示後に画面状態を元に戻す場合") {
+                it("viewModel.outputs.requestStatusがAPIRequestState.noneとなること") {
+                    let target = SignupViewModel()
+                    target.inputs.undoAPIRequestStateTrigger.onNext(())
+                    expect(try! target.outputs.requestStatus.toBlocking().first()).to(equal(APIRequestState.none))
+                }
+            }
         }
     }
-
 }
