@@ -672,6 +672,196 @@ open class AnnouncementRepositoryMock: AnnouncementRepository, Mock {
     }
 }
 
+// MARK: - ApplicationUserRepository
+
+open class ApplicationUserRepositoryMock: ApplicationUserRepository, Mock {
+    public init(sequencing sequencingPolicy: SequencingPolicy = .lastWrittenResolvedFirst, stubbing stubbingPolicy: StubbingPolicy = .wrap, file: StaticString = #file, line: UInt = #line) {
+        SwiftyMockyTestObserver.setup()
+        self.sequencingPolicy = sequencingPolicy
+        self.stubbingPolicy = stubbingPolicy
+        self.file = file
+        self.line = line
+    }
+
+    var matcher: Matcher = Matcher.default
+    var stubbingPolicy: StubbingPolicy = .wrap
+    var sequencingPolicy: SequencingPolicy = .lastWrittenResolvedFirst
+
+    private var queue = DispatchQueue(label: "com.swiftymocky.invocations", qos: .userInteractive)
+    private var invocations: [MethodType] = []
+    private var methodReturnValues: [Given] = []
+    private var methodPerformValues: [Perform] = []
+    private var file: StaticString?
+    private var line: UInt?
+
+    public typealias PropertyStub = Given
+    public typealias MethodStub = Given
+    public typealias SubscriptStub = Given
+
+    /// Convenience method - call setupMock() to extend debug information when failure occurs
+    public func setupMock(file: StaticString = #file, line: UInt = #line) {
+        self.file = file
+        self.line = line
+    }
+
+    /// Clear mock internals. You can specify what to reset (invocations aka verify, givens or performs) or leave it empty to clear all mock internals
+    public func resetMock(_ scopes: MockScope...) {
+        let scopes: [MockScope] = scopes.isEmpty ? [.invocation, .given, .perform] : scopes
+        if scopes.contains(.invocation) { invocations = [] }
+        if scopes.contains(.given) { methodReturnValues = [] }
+        if scopes.contains(.perform) { methodPerformValues = [] }
+    }
+
+
+
+
+
+    open func updatePassTutorialStatus() {
+        addInvocation(.m_updatePassTutorialStatus)
+		let perform = methodPerformValue(.m_updatePassTutorialStatus) as? () -> Void
+		perform?()
+    }
+
+    open func updateJsonAccessToken(_ token: String) {
+        addInvocation(.m_updateJsonAccessToken__token(Parameter<String>.value(`token`)))
+		let perform = methodPerformValue(.m_updateJsonAccessToken__token(Parameter<String>.value(`token`))) as? (String) -> Void
+		perform?(`token`)
+    }
+
+
+    fileprivate enum MethodType {
+        case m_updatePassTutorialStatus
+        case m_updateJsonAccessToken__token(Parameter<String>)
+
+        static func compareParameters(lhs: MethodType, rhs: MethodType, matcher: Matcher) -> Matcher.ComparisonResult {
+            switch (lhs, rhs) {
+            case (.m_updatePassTutorialStatus, .m_updatePassTutorialStatus): return .match
+
+            case (.m_updateJsonAccessToken__token(let lhsToken), .m_updateJsonAccessToken__token(let rhsToken)):
+				var results: [Matcher.ParameterComparisonResult] = []
+				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsToken, rhs: rhsToken, with: matcher), lhsToken, rhsToken, "_ token"))
+				return Matcher.ComparisonResult(results)
+            default: return .none
+            }
+        }
+
+        func intValue() -> Int {
+            switch self {
+            case .m_updatePassTutorialStatus: return 0
+            case let .m_updateJsonAccessToken__token(p0): return p0.intValue
+            }
+        }
+        func assertionName() -> String {
+            switch self {
+            case .m_updatePassTutorialStatus: return ".updatePassTutorialStatus()"
+            case .m_updateJsonAccessToken__token: return ".updateJsonAccessToken(_:)"
+            }
+        }
+    }
+
+    open class Given: StubbedMethod {
+        fileprivate var method: MethodType
+
+        private init(method: MethodType, products: [StubProduct]) {
+            self.method = method
+            super.init(products)
+        }
+
+
+    }
+
+    public struct Verify {
+        fileprivate var method: MethodType
+
+        public static func updatePassTutorialStatus() -> Verify { return Verify(method: .m_updatePassTutorialStatus)}
+        public static func updateJsonAccessToken(_ token: Parameter<String>) -> Verify { return Verify(method: .m_updateJsonAccessToken__token(`token`))}
+    }
+
+    public struct Perform {
+        fileprivate var method: MethodType
+        var performs: Any
+
+        public static func updatePassTutorialStatus(perform: @escaping () -> Void) -> Perform {
+            return Perform(method: .m_updatePassTutorialStatus, performs: perform)
+        }
+        public static func updateJsonAccessToken(_ token: Parameter<String>, perform: @escaping (String) -> Void) -> Perform {
+            return Perform(method: .m_updateJsonAccessToken__token(`token`), performs: perform)
+        }
+    }
+
+    public func given(_ method: Given) {
+        methodReturnValues.append(method)
+    }
+
+    public func perform(_ method: Perform) {
+        methodPerformValues.append(method)
+        methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
+    }
+
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+        let fullMatches = matchingCalls(method, file: file, line: line)
+        let success = count.matches(fullMatches)
+        let assertionName = method.method.assertionName()
+        let feedback: String = {
+            guard !success else { return "" }
+            return Utils.closestCallsMessage(
+                for: self.invocations.map { invocation in
+                    matcher.set(file: file, line: line)
+                    defer { matcher.clearFileAndLine() }
+                    return MethodType.compareParameters(lhs: invocation, rhs: method.method, matcher: matcher)
+                },
+                name: assertionName
+            )
+        }()
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+    }
+
+    private func addInvocation(_ call: MethodType) {
+        self.queue.sync { invocations.append(call) }
+    }
+    private func methodReturnValue(_ method: MethodType) throws -> StubProduct {
+        matcher.set(file: self.file, line: self.line)
+        defer { matcher.clearFileAndLine() }
+        let candidates = sequencingPolicy.sorted(methodReturnValues, by: { $0.method.intValue() > $1.method.intValue() })
+        let matched = candidates.first(where: { $0.isValid && MethodType.compareParameters(lhs: $0.method, rhs: method, matcher: matcher).isFullMatch })
+        guard let product = matched?.getProduct(policy: self.stubbingPolicy) else { throw MockError.notStubed }
+        return product
+    }
+    private func methodPerformValue(_ method: MethodType) -> Any? {
+        matcher.set(file: self.file, line: self.line)
+        defer { matcher.clearFileAndLine() }
+        let matched = methodPerformValues.reversed().first { MethodType.compareParameters(lhs: $0.method, rhs: method, matcher: matcher).isFullMatch }
+        return matched?.performs
+    }
+    private func matchingCalls(_ method: MethodType, file: StaticString?, line: UInt?) -> [MethodType] {
+        matcher.set(file: file ?? self.file, line: line ?? self.line)
+        defer { matcher.clearFileAndLine() }
+        return invocations.filter { MethodType.compareParameters(lhs: $0, rhs: method, matcher: matcher).isFullMatch }
+    }
+    private func matchingCalls(_ method: Verify, file: StaticString?, line: UInt?) -> Int {
+        return matchingCalls(method.method, file: file, line: line).count
+    }
+    private func givenGetterValue<T>(_ method: MethodType, _ message: String) -> T {
+        do {
+            return try methodReturnValue(method).casted()
+        } catch {
+            onFatalFailure(message)
+            Failure(message)
+        }
+    }
+    private func optionalGivenGetterValue<T>(_ method: MethodType, _ message: String) -> T? {
+        do {
+            return try methodReturnValue(method).casted()
+        } catch {
+            return nil
+        }
+    }
+    private func onFatalFailure(_ message: String) {
+        guard let file = self.file, let line = self.line else { return } // Let if fail if cannot handle gratefully
+        SwiftyMockyTestObserver.handleFatalError(message: message, file: file, line: line)
+    }
+}
+
 // MARK: - ApplicationUserStatusUseCase
 
 open class ApplicationUserStatusUseCaseMock: ApplicationUserStatusUseCase, Mock {
@@ -786,6 +976,454 @@ open class ApplicationUserStatusUseCaseMock: ApplicationUserStatusUseCase, Mock 
         }
         public static func executeUpdateToken(_ token: Parameter<String>, perform: @escaping (String) -> Void) -> Perform {
             return Perform(method: .m_executeUpdateToken__token(`token`), performs: perform)
+        }
+    }
+
+    public func given(_ method: Given) {
+        methodReturnValues.append(method)
+    }
+
+    public func perform(_ method: Perform) {
+        methodPerformValues.append(method)
+        methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
+    }
+
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+        let fullMatches = matchingCalls(method, file: file, line: line)
+        let success = count.matches(fullMatches)
+        let assertionName = method.method.assertionName()
+        let feedback: String = {
+            guard !success else { return "" }
+            return Utils.closestCallsMessage(
+                for: self.invocations.map { invocation in
+                    matcher.set(file: file, line: line)
+                    defer { matcher.clearFileAndLine() }
+                    return MethodType.compareParameters(lhs: invocation, rhs: method.method, matcher: matcher)
+                },
+                name: assertionName
+            )
+        }()
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+    }
+
+    private func addInvocation(_ call: MethodType) {
+        self.queue.sync { invocations.append(call) }
+    }
+    private func methodReturnValue(_ method: MethodType) throws -> StubProduct {
+        matcher.set(file: self.file, line: self.line)
+        defer { matcher.clearFileAndLine() }
+        let candidates = sequencingPolicy.sorted(methodReturnValues, by: { $0.method.intValue() > $1.method.intValue() })
+        let matched = candidates.first(where: { $0.isValid && MethodType.compareParameters(lhs: $0.method, rhs: method, matcher: matcher).isFullMatch })
+        guard let product = matched?.getProduct(policy: self.stubbingPolicy) else { throw MockError.notStubed }
+        return product
+    }
+    private func methodPerformValue(_ method: MethodType) -> Any? {
+        matcher.set(file: self.file, line: self.line)
+        defer { matcher.clearFileAndLine() }
+        let matched = methodPerformValues.reversed().first { MethodType.compareParameters(lhs: $0.method, rhs: method, matcher: matcher).isFullMatch }
+        return matched?.performs
+    }
+    private func matchingCalls(_ method: MethodType, file: StaticString?, line: UInt?) -> [MethodType] {
+        matcher.set(file: file ?? self.file, line: line ?? self.line)
+        defer { matcher.clearFileAndLine() }
+        return invocations.filter { MethodType.compareParameters(lhs: $0, rhs: method, matcher: matcher).isFullMatch }
+    }
+    private func matchingCalls(_ method: Verify, file: StaticString?, line: UInt?) -> Int {
+        return matchingCalls(method.method, file: file, line: line).count
+    }
+    private func givenGetterValue<T>(_ method: MethodType, _ message: String) -> T {
+        do {
+            return try methodReturnValue(method).casted()
+        } catch {
+            onFatalFailure(message)
+            Failure(message)
+        }
+    }
+    private func optionalGivenGetterValue<T>(_ method: MethodType, _ message: String) -> T? {
+        do {
+            return try methodReturnValue(method).casted()
+        } catch {
+            return nil
+        }
+    }
+    private func onFatalFailure(_ message: String) {
+        guard let file = self.file, let line = self.line else { return } // Let if fail if cannot handle gratefully
+        SwiftyMockyTestObserver.handleFatalError(message: message, file: file, line: line)
+    }
+}
+
+// MARK: - KeychainAccessProtocol
+
+open class KeychainAccessProtocolMock: KeychainAccessProtocol, Mock {
+    public init(sequencing sequencingPolicy: SequencingPolicy = .lastWrittenResolvedFirst, stubbing stubbingPolicy: StubbingPolicy = .wrap, file: StaticString = #file, line: UInt = #line) {
+        SwiftyMockyTestObserver.setup()
+        self.sequencingPolicy = sequencingPolicy
+        self.stubbingPolicy = stubbingPolicy
+        self.file = file
+        self.line = line
+    }
+
+    var matcher: Matcher = Matcher.default
+    var stubbingPolicy: StubbingPolicy = .wrap
+    var sequencingPolicy: SequencingPolicy = .lastWrittenResolvedFirst
+
+    private var queue = DispatchQueue(label: "com.swiftymocky.invocations", qos: .userInteractive)
+    private var invocations: [MethodType] = []
+    private var methodReturnValues: [Given] = []
+    private var methodPerformValues: [Perform] = []
+    private var file: StaticString?
+    private var line: UInt?
+
+    public typealias PropertyStub = Given
+    public typealias MethodStub = Given
+    public typealias SubscriptStub = Given
+
+    /// Convenience method - call setupMock() to extend debug information when failure occurs
+    public func setupMock(file: StaticString = #file, line: UInt = #line) {
+        self.file = file
+        self.line = line
+    }
+
+    /// Clear mock internals. You can specify what to reset (invocations aka verify, givens or performs) or leave it empty to clear all mock internals
+    public func resetMock(_ scopes: MockScope...) {
+        let scopes: [MockScope] = scopes.isEmpty ? [.invocation, .given, .perform] : scopes
+        if scopes.contains(.invocation) { invocations = [] }
+        if scopes.contains(.given) { methodReturnValues = [] }
+        if scopes.contains(.perform) { methodPerformValues = [] }
+    }
+
+
+
+
+
+    open func saveJsonAccessToken(_ token: String) {
+        addInvocation(.m_saveJsonAccessToken__token(Parameter<String>.value(`token`)))
+		let perform = methodPerformValue(.m_saveJsonAccessToken__token(Parameter<String>.value(`token`))) as? (String) -> Void
+		perform?(`token`)
+    }
+
+    open func deleteJsonAccessToken() {
+        addInvocation(.m_deleteJsonAccessToken)
+		let perform = methodPerformValue(.m_deleteJsonAccessToken) as? () -> Void
+		perform?()
+    }
+
+    open func existsJsonAccessToken() -> Bool {
+        addInvocation(.m_existsJsonAccessToken)
+		let perform = methodPerformValue(.m_existsJsonAccessToken) as? () -> Void
+		perform?()
+		var __value: Bool
+		do {
+		    __value = try methodReturnValue(.m_existsJsonAccessToken).casted()
+		} catch {
+			onFatalFailure("Stub return value not specified for existsJsonAccessToken(). Use given")
+			Failure("Stub return value not specified for existsJsonAccessToken(). Use given")
+		}
+		return __value
+    }
+
+
+    fileprivate enum MethodType {
+        case m_saveJsonAccessToken__token(Parameter<String>)
+        case m_deleteJsonAccessToken
+        case m_existsJsonAccessToken
+
+        static func compareParameters(lhs: MethodType, rhs: MethodType, matcher: Matcher) -> Matcher.ComparisonResult {
+            switch (lhs, rhs) {
+            case (.m_saveJsonAccessToken__token(let lhsToken), .m_saveJsonAccessToken__token(let rhsToken)):
+				var results: [Matcher.ParameterComparisonResult] = []
+				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsToken, rhs: rhsToken, with: matcher), lhsToken, rhsToken, "_ token"))
+				return Matcher.ComparisonResult(results)
+
+            case (.m_deleteJsonAccessToken, .m_deleteJsonAccessToken): return .match
+
+            case (.m_existsJsonAccessToken, .m_existsJsonAccessToken): return .match
+            default: return .none
+            }
+        }
+
+        func intValue() -> Int {
+            switch self {
+            case let .m_saveJsonAccessToken__token(p0): return p0.intValue
+            case .m_deleteJsonAccessToken: return 0
+            case .m_existsJsonAccessToken: return 0
+            }
+        }
+        func assertionName() -> String {
+            switch self {
+            case .m_saveJsonAccessToken__token: return ".saveJsonAccessToken(_:)"
+            case .m_deleteJsonAccessToken: return ".deleteJsonAccessToken()"
+            case .m_existsJsonAccessToken: return ".existsJsonAccessToken()"
+            }
+        }
+    }
+
+    open class Given: StubbedMethod {
+        fileprivate var method: MethodType
+
+        private init(method: MethodType, products: [StubProduct]) {
+            self.method = method
+            super.init(products)
+        }
+
+
+        public static func existsJsonAccessToken(willReturn: Bool...) -> MethodStub {
+            return Given(method: .m_existsJsonAccessToken, products: willReturn.map({ StubProduct.return($0 as Any) }))
+        }
+        public static func existsJsonAccessToken(willProduce: (Stubber<Bool>) -> Void) -> MethodStub {
+            let willReturn: [Bool] = []
+			let given: Given = { return Given(method: .m_existsJsonAccessToken, products: willReturn.map({ StubProduct.return($0 as Any) })) }()
+			let stubber = given.stub(for: (Bool).self)
+			willProduce(stubber)
+			return given
+        }
+    }
+
+    public struct Verify {
+        fileprivate var method: MethodType
+
+        public static func saveJsonAccessToken(_ token: Parameter<String>) -> Verify { return Verify(method: .m_saveJsonAccessToken__token(`token`))}
+        public static func deleteJsonAccessToken() -> Verify { return Verify(method: .m_deleteJsonAccessToken)}
+        public static func existsJsonAccessToken() -> Verify { return Verify(method: .m_existsJsonAccessToken)}
+    }
+
+    public struct Perform {
+        fileprivate var method: MethodType
+        var performs: Any
+
+        public static func saveJsonAccessToken(_ token: Parameter<String>, perform: @escaping (String) -> Void) -> Perform {
+            return Perform(method: .m_saveJsonAccessToken__token(`token`), performs: perform)
+        }
+        public static func deleteJsonAccessToken(perform: @escaping () -> Void) -> Perform {
+            return Perform(method: .m_deleteJsonAccessToken, performs: perform)
+        }
+        public static func existsJsonAccessToken(perform: @escaping () -> Void) -> Perform {
+            return Perform(method: .m_existsJsonAccessToken, performs: perform)
+        }
+    }
+
+    public func given(_ method: Given) {
+        methodReturnValues.append(method)
+    }
+
+    public func perform(_ method: Perform) {
+        methodPerformValues.append(method)
+        methodPerformValues.sort { $0.method.intValue() < $1.method.intValue() }
+    }
+
+    public func verify(_ method: Verify, count: Count = Count.moreOrEqual(to: 1), file: StaticString = #file, line: UInt = #line) {
+        let fullMatches = matchingCalls(method, file: file, line: line)
+        let success = count.matches(fullMatches)
+        let assertionName = method.method.assertionName()
+        let feedback: String = {
+            guard !success else { return "" }
+            return Utils.closestCallsMessage(
+                for: self.invocations.map { invocation in
+                    matcher.set(file: file, line: line)
+                    defer { matcher.clearFileAndLine() }
+                    return MethodType.compareParameters(lhs: invocation, rhs: method.method, matcher: matcher)
+                },
+                name: assertionName
+            )
+        }()
+        MockyAssert(success, "Expected: \(count) invocations of `\(assertionName)`, but was: \(fullMatches).\(feedback)", file: file, line: line)
+    }
+
+    private func addInvocation(_ call: MethodType) {
+        self.queue.sync { invocations.append(call) }
+    }
+    private func methodReturnValue(_ method: MethodType) throws -> StubProduct {
+        matcher.set(file: self.file, line: self.line)
+        defer { matcher.clearFileAndLine() }
+        let candidates = sequencingPolicy.sorted(methodReturnValues, by: { $0.method.intValue() > $1.method.intValue() })
+        let matched = candidates.first(where: { $0.isValid && MethodType.compareParameters(lhs: $0.method, rhs: method, matcher: matcher).isFullMatch })
+        guard let product = matched?.getProduct(policy: self.stubbingPolicy) else { throw MockError.notStubed }
+        return product
+    }
+    private func methodPerformValue(_ method: MethodType) -> Any? {
+        matcher.set(file: self.file, line: self.line)
+        defer { matcher.clearFileAndLine() }
+        let matched = methodPerformValues.reversed().first { MethodType.compareParameters(lhs: $0.method, rhs: method, matcher: matcher).isFullMatch }
+        return matched?.performs
+    }
+    private func matchingCalls(_ method: MethodType, file: StaticString?, line: UInt?) -> [MethodType] {
+        matcher.set(file: file ?? self.file, line: line ?? self.line)
+        defer { matcher.clearFileAndLine() }
+        return invocations.filter { MethodType.compareParameters(lhs: $0, rhs: method, matcher: matcher).isFullMatch }
+    }
+    private func matchingCalls(_ method: Verify, file: StaticString?, line: UInt?) -> Int {
+        return matchingCalls(method.method, file: file, line: line).count
+    }
+    private func givenGetterValue<T>(_ method: MethodType, _ message: String) -> T {
+        do {
+            return try methodReturnValue(method).casted()
+        } catch {
+            onFatalFailure(message)
+            Failure(message)
+        }
+    }
+    private func optionalGivenGetterValue<T>(_ method: MethodType, _ message: String) -> T? {
+        do {
+            return try methodReturnValue(method).casted()
+        } catch {
+            return nil
+        }
+    }
+    private func onFatalFailure(_ message: String) {
+        guard let file = self.file, let line = self.line else { return } // Let if fail if cannot handle gratefully
+        SwiftyMockyTestObserver.handleFatalError(message: message, file: file, line: line)
+    }
+}
+
+// MARK: - RealmAccessProtocol
+
+open class RealmAccessProtocolMock: RealmAccessProtocol, Mock {
+    public init(sequencing sequencingPolicy: SequencingPolicy = .lastWrittenResolvedFirst, stubbing stubbingPolicy: StubbingPolicy = .wrap, file: StaticString = #file, line: UInt = #line) {
+        SwiftyMockyTestObserver.setup()
+        self.sequencingPolicy = sequencingPolicy
+        self.stubbingPolicy = stubbingPolicy
+        self.file = file
+        self.line = line
+    }
+
+    var matcher: Matcher = Matcher.default
+    var stubbingPolicy: StubbingPolicy = .wrap
+    var sequencingPolicy: SequencingPolicy = .lastWrittenResolvedFirst
+
+    private var queue = DispatchQueue(label: "com.swiftymocky.invocations", qos: .userInteractive)
+    private var invocations: [MethodType] = []
+    private var methodReturnValues: [Given] = []
+    private var methodPerformValues: [Perform] = []
+    private var file: StaticString?
+    private var line: UInt?
+
+    public typealias PropertyStub = Given
+    public typealias MethodStub = Given
+    public typealias SubscriptStub = Given
+
+    /// Convenience method - call setupMock() to extend debug information when failure occurs
+    public func setupMock(file: StaticString = #file, line: UInt = #line) {
+        self.file = file
+        self.line = line
+    }
+
+    /// Clear mock internals. You can specify what to reset (invocations aka verify, givens or performs) or leave it empty to clear all mock internals
+    public func resetMock(_ scopes: MockScope...) {
+        let scopes: [MockScope] = scopes.isEmpty ? [.invocation, .given, .perform] : scopes
+        if scopes.contains(.invocation) { invocations = [] }
+        if scopes.contains(.given) { methodReturnValues = [] }
+        if scopes.contains(.perform) { methodPerformValues = [] }
+    }
+
+
+
+
+
+    open func getApplicationUser() -> ApplicationUserEntity? {
+        addInvocation(.m_getApplicationUser)
+		let perform = methodPerformValue(.m_getApplicationUser) as? () -> Void
+		perform?()
+		var __value: ApplicationUserEntity? = nil
+		do {
+		    __value = try methodReturnValue(.m_getApplicationUser).casted()
+		} catch {
+			// do nothing
+		}
+		return __value
+    }
+
+    open func saveApplicationUser(_ applicationUserEntity: ApplicationUserEntity) {
+        addInvocation(.m_saveApplicationUser__applicationUserEntity(Parameter<ApplicationUserEntity>.value(`applicationUserEntity`)))
+		let perform = methodPerformValue(.m_saveApplicationUser__applicationUserEntity(Parameter<ApplicationUserEntity>.value(`applicationUserEntity`))) as? (ApplicationUserEntity) -> Void
+		perform?(`applicationUserEntity`)
+    }
+
+    open func deleteApplicationUser(_ applicationUserEntity: ApplicationUserEntity) {
+        addInvocation(.m_deleteApplicationUser__applicationUserEntity(Parameter<ApplicationUserEntity>.value(`applicationUserEntity`)))
+		let perform = methodPerformValue(.m_deleteApplicationUser__applicationUserEntity(Parameter<ApplicationUserEntity>.value(`applicationUserEntity`))) as? (ApplicationUserEntity) -> Void
+		perform?(`applicationUserEntity`)
+    }
+
+
+    fileprivate enum MethodType {
+        case m_getApplicationUser
+        case m_saveApplicationUser__applicationUserEntity(Parameter<ApplicationUserEntity>)
+        case m_deleteApplicationUser__applicationUserEntity(Parameter<ApplicationUserEntity>)
+
+        static func compareParameters(lhs: MethodType, rhs: MethodType, matcher: Matcher) -> Matcher.ComparisonResult {
+            switch (lhs, rhs) {
+            case (.m_getApplicationUser, .m_getApplicationUser): return .match
+
+            case (.m_saveApplicationUser__applicationUserEntity(let lhsApplicationuserentity), .m_saveApplicationUser__applicationUserEntity(let rhsApplicationuserentity)):
+				var results: [Matcher.ParameterComparisonResult] = []
+				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsApplicationuserentity, rhs: rhsApplicationuserentity, with: matcher), lhsApplicationuserentity, rhsApplicationuserentity, "_ applicationUserEntity"))
+				return Matcher.ComparisonResult(results)
+
+            case (.m_deleteApplicationUser__applicationUserEntity(let lhsApplicationuserentity), .m_deleteApplicationUser__applicationUserEntity(let rhsApplicationuserentity)):
+				var results: [Matcher.ParameterComparisonResult] = []
+				results.append(Matcher.ParameterComparisonResult(Parameter.compare(lhs: lhsApplicationuserentity, rhs: rhsApplicationuserentity, with: matcher), lhsApplicationuserentity, rhsApplicationuserentity, "_ applicationUserEntity"))
+				return Matcher.ComparisonResult(results)
+            default: return .none
+            }
+        }
+
+        func intValue() -> Int {
+            switch self {
+            case .m_getApplicationUser: return 0
+            case let .m_saveApplicationUser__applicationUserEntity(p0): return p0.intValue
+            case let .m_deleteApplicationUser__applicationUserEntity(p0): return p0.intValue
+            }
+        }
+        func assertionName() -> String {
+            switch self {
+            case .m_getApplicationUser: return ".getApplicationUser()"
+            case .m_saveApplicationUser__applicationUserEntity: return ".saveApplicationUser(_:)"
+            case .m_deleteApplicationUser__applicationUserEntity: return ".deleteApplicationUser(_:)"
+            }
+        }
+    }
+
+    open class Given: StubbedMethod {
+        fileprivate var method: MethodType
+
+        private init(method: MethodType, products: [StubProduct]) {
+            self.method = method
+            super.init(products)
+        }
+
+
+        public static func getApplicationUser(willReturn: ApplicationUserEntity?...) -> MethodStub {
+            return Given(method: .m_getApplicationUser, products: willReturn.map({ StubProduct.return($0 as Any) }))
+        }
+        public static func getApplicationUser(willProduce: (Stubber<ApplicationUserEntity?>) -> Void) -> MethodStub {
+            let willReturn: [ApplicationUserEntity?] = []
+			let given: Given = { return Given(method: .m_getApplicationUser, products: willReturn.map({ StubProduct.return($0 as Any) })) }()
+			let stubber = given.stub(for: (ApplicationUserEntity?).self)
+			willProduce(stubber)
+			return given
+        }
+    }
+
+    public struct Verify {
+        fileprivate var method: MethodType
+
+        public static func getApplicationUser() -> Verify { return Verify(method: .m_getApplicationUser)}
+        public static func saveApplicationUser(_ applicationUserEntity: Parameter<ApplicationUserEntity>) -> Verify { return Verify(method: .m_saveApplicationUser__applicationUserEntity(`applicationUserEntity`))}
+        public static func deleteApplicationUser(_ applicationUserEntity: Parameter<ApplicationUserEntity>) -> Verify { return Verify(method: .m_deleteApplicationUser__applicationUserEntity(`applicationUserEntity`))}
+    }
+
+    public struct Perform {
+        fileprivate var method: MethodType
+        var performs: Any
+
+        public static func getApplicationUser(perform: @escaping () -> Void) -> Perform {
+            return Perform(method: .m_getApplicationUser, performs: perform)
+        }
+        public static func saveApplicationUser(_ applicationUserEntity: Parameter<ApplicationUserEntity>, perform: @escaping (ApplicationUserEntity) -> Void) -> Perform {
+            return Perform(method: .m_saveApplicationUser__applicationUserEntity(`applicationUserEntity`), performs: perform)
+        }
+        public static func deleteApplicationUser(_ applicationUserEntity: Parameter<ApplicationUserEntity>, perform: @escaping (ApplicationUserEntity) -> Void) -> Perform {
+            return Perform(method: .m_deleteApplicationUser__applicationUserEntity(`applicationUserEntity`), performs: perform)
         }
     }
 
