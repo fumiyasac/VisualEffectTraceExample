@@ -70,7 +70,7 @@ final class RequestAnnouncementDataRepositorySpec: QuickSpec {
     private func getDataList() -> Array<AnnouncementEntity> {
 
         // JSONファイルから表示用のデータを取得する
-        guard let path = Bundle(for: VisualEffectTraceExampleTests.self).path(forResource: "announcement_data", ofType: "json") else {
+        guard let path = Bundle(for: type(of: self)).path(forResource: "announcement_data", ofType: "json") else {
             fatalError()
         }
         guard let data = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
