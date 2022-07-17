@@ -53,6 +53,8 @@
 		DE4D3842245FB90E00680B91 /* ExpandedFileBinderCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4D3841245FB90E00680B91 /* ExpandedFileBinderCollectionViewLayout.swift */; };
 		DE4D3844245FB9A200680B91 /* IndexFileBinderCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4D3843245FB9A200680B91 /* IndexFileBinderCollectionViewLayout.swift */; };
 		DE51943F2882A8BA00D3F276 /* CommonError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE51943E2882A8B900D3F276 /* CommonError.swift */; };
+		DE5194412883BB0B00D3F276 /* MainScreenRepositorySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5194402883BB0B00D3F276 /* MainScreenRepositorySpec.swift */; };
+		DE5194432883C0BD00D3F276 /* RealmAccessProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5194422883C0BD00D3F276 /* RealmAccessProtocol.swift */; };
 		DE634C3A24361150004CA920 /* CurrentApplicationUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE634C3924361150004CA920 /* CurrentApplicationUserRepository.swift */; };
 		DE634C4A2438ED41004CA920 /* SigninViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE634C492438ED41004CA920 /* SigninViewModel.swift */; };
 		DE67D97F2432370900EB2D61 /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE67D97D2432370900EB2D61 /* Signup.storyboard */; };
@@ -240,6 +242,8 @@
 		DE4D3841245FB90E00680B91 /* ExpandedFileBinderCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedFileBinderCollectionViewLayout.swift; sourceTree = "<group>"; };
 		DE4D3843245FB9A200680B91 /* IndexFileBinderCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndexFileBinderCollectionViewLayout.swift; sourceTree = "<group>"; };
 		DE51943E2882A8B900D3F276 /* CommonError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonError.swift; sourceTree = "<group>"; };
+		DE5194402883BB0B00D3F276 /* MainScreenRepositorySpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenRepositorySpec.swift; sourceTree = "<group>"; };
+		DE5194422883C0BD00D3F276 /* RealmAccessProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmAccessProtocol.swift; sourceTree = "<group>"; };
 		DE634C3924361150004CA920 /* CurrentApplicationUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentApplicationUserRepository.swift; sourceTree = "<group>"; };
 		DE634C492438ED41004CA920 /* SigninViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModel.swift; sourceTree = "<group>"; };
 		DE67D97E2432370900EB2D61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Signup.storyboard; sourceTree = "<group>"; };
@@ -1119,6 +1123,7 @@
 			isa = PBXGroup;
 			children = (
 				DE8487422425E81000A40975 /* RealmAccessManager.swift */,
+				DE5194422883C0BD00D3F276 /* RealmAccessProtocol.swift */,
 			);
 			path = RealmManager;
 			sourceTree = "<group>";
@@ -1176,6 +1181,7 @@
 		DEE28574285630E0004CCCB9 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				DE5194402883BB0B00D3F276 /* MainScreenRepositorySpec.swift */,
 				DEE285792856397D004CCCB9 /* RequestAnnouncementDataRepositorySpec.swift */,
 				DE81E6F9285F520700208602 /* TutorialDataRepositorySpec.swift */,
 			);
@@ -1551,6 +1557,7 @@
 				DE67D995243568A000EB2D61 /* UpdateCurrentApplicationUserStatusUseCase.swift in Sources */,
 				DE67D98A24324A5900EB2D61 /* SignupViewController.swift in Sources */,
 				DE6865702466700E003D3522 /* DispatchQueueExtension.swift in Sources */,
+				DE5194432883C0BD00D3F276 /* RealmAccessProtocol.swift in Sources */,
 				DE4D093024D697640068C67F /* FeaturedArticleEntity.swift in Sources */,
 				DEE0B70424541E2F00B285BA /* StoryScreenCoodinator.swift in Sources */,
 				DE813A7324CB4FEA0064E13F /* StoryViewModel.swift in Sources */,
@@ -1601,6 +1608,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE5194412883BB0B00D3F276 /* MainScreenRepositorySpec.swift in Sources */,
 				DE81E6FA285F520700208602 /* TutorialDataRepositorySpec.swift in Sources */,
 				DE23F060287981F40070729F /* TutorialViewModelSpec.swift in Sources */,
 				DEE28578285634B2004CCCB9 /* Mock.generated.swift in Sources */,
