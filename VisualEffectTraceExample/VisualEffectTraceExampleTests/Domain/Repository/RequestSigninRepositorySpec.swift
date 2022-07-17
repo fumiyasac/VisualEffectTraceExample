@@ -6,31 +6,73 @@
 //  Copyright © 2022 酒井文也. All rights reserved.
 //
 
+@testable import VisualEffectTraceExample
+
+import Nimble
+import Quick
+import RxBlocking
+import RxSwift
+import SwiftyMocky
 import XCTest
 
-class RequestSigninRepositorySpec: QuickSpec {
+final class RequestSigninRepositorySpec: QuickSpec {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+    // MARK: - Override
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
+    override func spec() {
+        
+        // MEMO: Testで動かす想定のDIコンテナのインスタンスを生成する
+        let testingDependency = DependenciesDefinition()
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
+        let apiRequestManager = APIRequestProtocolMock()
+        let target = RequestSigninRepository()
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+        describe("RequestSigninRepository") {
+
+            // MARK: - requestSigninを実行した際のテスト
+
+            describe("#requestSignin") {
+
+                // MEMO: API通信処理成功時の想定
+                context("APIから正常にレスポンスが返却される場合") {
+                    let mailAddress: String = "fumiya.sakai@example.com"
+                    let rawPassword: String = "testcode1234"
+                    let signinSuccessResponse = SigninSuccessResponse(
+                        result: "OK",
+                        token: "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJmdW1peWFzYWMiLCJleHAiOjE2NTgxMzAyMDB9.UQnRp8gM-qhWN8lfsYIEasluc7MjHjRYjwutLALSr8rzXxaAaaG6cJ7GmDK1ERg068KdAGRoih2-CQFy9B_ibA"
+                    )
+
+                    // Mockに差し替えたメソッドが返却する値を定める
+                    beforeEach {
+                        testingDependency.injectIndividualMock(
+                            mockInstance: apiRequestManager,
+                            protocolName: APIRequestProtocol.self
+                        )
+                        apiRequestManager.given(
+                            .requestSiginin(
+                                mailAddress: .value(mailAddress),
+                                rawPassword: .value(rawPassword),
+                                willReturn: Single.just(signinSuccessResponse)
+                            )
+                        )
+                    }
+                    afterEach {
+                        testingDependency.removeIndividualMock(
+                            protocolName: APIRequestProtocol.self
+                        )
+                    }
+                    it("正常なレスポンスを返却すること") {
+                        expect(
+                            try! target.requestSignin(
+                                mailAddress: mailAddress,
+                                rawPassword: rawPassword
+                            ).toBlocking().first()
+                        ).to(
+                            equal(signinSuccessResponse)
+                        )
+                    }
+                }
+            }
         }
     }
-
 }
