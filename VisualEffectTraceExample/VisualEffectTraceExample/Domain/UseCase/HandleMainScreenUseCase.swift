@@ -10,6 +10,7 @@ import Foundation
 
 // MARK: - Protocol
 
+//sourcery: AutoMockable
 protocol MainScreenUseCase {
 
     // 起動用画面からユーザーの状態を確認して遷移先を決定する
