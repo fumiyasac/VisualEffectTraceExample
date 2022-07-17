@@ -27,7 +27,14 @@ enum Dependencies {
 
     final class Container {
 
-        private var dependencies: [(key: Dependencies.Name, value: Any)] = []
+        private var dependencies: [(key: Dependencies.Name, value: Any)] = [] {
+            didSet {
+                // MEMO: UnitTest実行時にDIコンテナへの追加＆削除処理が正しく実行されているかを確認する
+                if isTesting() {
+                    print(dependencies)
+                }
+            }
+        }
 
         static let `default` = Container()
 
