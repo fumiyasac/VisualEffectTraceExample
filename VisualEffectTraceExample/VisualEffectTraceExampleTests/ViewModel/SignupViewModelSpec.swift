@@ -40,6 +40,9 @@ final class SignupViewModelSpec: QuickSpec {
                 }
             }
         }
+
+        // MARK: - inputMailAddressTriggerを実行した際のテスト
+
         describe("#inputMailAddressTrigger") {
             context("メールアドレスを入力した場合") {
                 let mailAddress: String = "fumiya.sakai@example.com"
@@ -50,6 +53,9 @@ final class SignupViewModelSpec: QuickSpec {
                 }
             }
         }
+
+        // MARK: - inputRawPasswordTriggerを実行した際のテスト
+
         describe("#inputRawPasswordTrigger") {
             context("パスワードを入力した場合") {
                 let rawPassword: String = "testcode1234"
@@ -60,6 +66,9 @@ final class SignupViewModelSpec: QuickSpec {
                 }
             }
         }
+
+        // MARK: - executeSignupRequestTriggerを実行した際のテスト
+
         // MEMO: サーバーへ入力内容を送信する場合
         describe("#executeSignupRequestTrigger") {
             context("サーバーへの登録処理が成功した場合") {
@@ -128,6 +137,9 @@ final class SignupViewModelSpec: QuickSpec {
                 }
             }
         }
+
+        // MARK: - undoAPIRequestStateTriggerを実行した際のテスト
+
         // MEMO: APIRequestStateを元に戻す場合
         describe("#undoAPIRequestStateTrigger") {
             context("APIリクエスト結果ダイアログ表示後に画面状態を元に戻す場合") {
