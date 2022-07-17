@@ -32,7 +32,7 @@ enum APIRequestState {
     case error
 }
 
-class APIRequestManager {
+final class APIRequestManager {
     
     // MEMO: API Mock ServerへのURLに関する情報
     static let host = "http://localhost:8080/api"

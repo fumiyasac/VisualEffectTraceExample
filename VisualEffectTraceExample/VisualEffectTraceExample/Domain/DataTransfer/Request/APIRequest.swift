@@ -39,7 +39,7 @@ let _ = api.getAnnoucementDetailBy(id: 1)
 
 */
 
-// MARK: - APIRequestManagerProtocol
+// MARK: - APIRequestProtocol
 
 extension APIRequestManager: APIRequestProtocol {
 
