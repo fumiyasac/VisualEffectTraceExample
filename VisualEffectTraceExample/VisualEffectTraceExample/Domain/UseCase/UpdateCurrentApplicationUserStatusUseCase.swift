@@ -15,7 +15,7 @@ import RxSwift
 protocol ApplicationUserStatusUseCase {
 
     // ユーザーのチュートリアル完了フラグを更新する
-    func executeUpdatePassTutorialStatus() -> Completable
+    func executeUpdatePassTutorialStatus()
 
     // ユーザーがサインイン時に受け取ったJsonAccessTokenをキーチェーンへ格納する
     func executeUpdateToken(_ token: String)
@@ -29,16 +29,8 @@ final class UpdateCurrentApplicationUserStatusUseCase: ApplicationUserStatusUseC
 
     // MARK: - ApplicationUserStatusUsecase
 
-    func executeUpdatePassTutorialStatus() -> Completable {
-        return Completable.create { [weak self] completable in
-            guard let self = self else {
-                completable(.error(CommonError.notExistSelf))
-                return Disposables.create()
-            }
-            self.applicationUserRepository.updatePassTutorialStatus()
-            completable(.completed)
-            return Disposables.create()
-        }
+    func executeUpdatePassTutorialStatus() {
+        applicationUserRepository.updatePassTutorialStatus()
     }
 
     func executeUpdateToken(_ token: String) {

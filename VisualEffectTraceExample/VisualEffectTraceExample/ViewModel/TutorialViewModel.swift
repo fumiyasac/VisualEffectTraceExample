@@ -107,22 +107,7 @@ final class TutorialViewModel: TutorialViewModelInputs, TutorialViewModelOutputs
                 onNext: { [weak self] _ in
                     guard let self = self else { return }
                     self._tutorialFinished.accept(true)
-                    self.updatePassTutorialStatus()
-                }
-            )
-            .disposed(by: disposeBag)
-    }
-
-    // MARK: - Private Function
-
-    private func updatePassTutorialStatus() {
-        applicationUserStatusUseCase.executeUpdatePassTutorialStatus()
-            .subscribe(
-                onCompleted: {
-                    // Do Nothing.
-                },
-                onError: { _ in
-                    // Do Nothing.
+                    self.applicationUserStatusUseCase.executeUpdatePassTutorialStatus()
                 }
             )
             .disposed(by: disposeBag)

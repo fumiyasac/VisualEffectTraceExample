@@ -132,11 +132,6 @@ final class TutorialViewModelSpec: QuickSpec {
                             willReturn: tutorialDataList
                         )
                     )
-                    applicationUserStatusUseCase.given(
-                        .executeUpdatePassTutorialStatus(
-                            willReturn: Completable.empty()
-                        )
-                    )
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(

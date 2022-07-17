@@ -716,18 +716,10 @@ open class ApplicationUserStatusUseCaseMock: ApplicationUserStatusUseCase, Mock 
 
 
 
-    open func executeUpdatePassTutorialStatus() -> Completable {
+    open func executeUpdatePassTutorialStatus() {
         addInvocation(.m_executeUpdatePassTutorialStatus)
 		let perform = methodPerformValue(.m_executeUpdatePassTutorialStatus) as? () -> Void
 		perform?()
-		var __value: Completable
-		do {
-		    __value = try methodReturnValue(.m_executeUpdatePassTutorialStatus).casted()
-		} catch {
-			onFatalFailure("Stub return value not specified for executeUpdatePassTutorialStatus(). Use given")
-			Failure("Stub return value not specified for executeUpdatePassTutorialStatus(). Use given")
-		}
-		return __value
     }
 
     open func executeUpdateToken(_ token: String) {
@@ -776,16 +768,6 @@ open class ApplicationUserStatusUseCaseMock: ApplicationUserStatusUseCase, Mock 
         }
 
 
-        public static func executeUpdatePassTutorialStatus(willReturn: Completable...) -> MethodStub {
-            return Given(method: .m_executeUpdatePassTutorialStatus, products: willReturn.map({ StubProduct.return($0 as Any) }))
-        }
-        public static func executeUpdatePassTutorialStatus(willProduce: (Stubber<Completable>) -> Void) -> MethodStub {
-            let willReturn: [Completable] = []
-			let given: Given = { return Given(method: .m_executeUpdatePassTutorialStatus, products: willReturn.map({ StubProduct.return($0 as Any) })) }()
-			let stubber = given.stub(for: (Completable).self)
-			willProduce(stubber)
-			return given
-        }
     }
 
     public struct Verify {
