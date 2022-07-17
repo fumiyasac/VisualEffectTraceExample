@@ -10,6 +10,7 @@ import Foundation
 
 // MARK: - Protocol
 
+//sourcery: AutoMockable
 protocol ApplicationUserRepository {
 
     // ユーザーのチュートリアル完了フラグを更新する
@@ -31,9 +32,9 @@ final class CurrentApplicationUserRepository: ApplicationUserRepository {
     func updatePassTutorialStatus() {
 
         // Realm内のチュートリアル完了フラグを更新する
-        let applicationUser = executeFindOrCreateApplicationUser()
-        applicationUser.alreadyPassTutorial = true
-        realmAccessManager.save(applicationUser)
+        let applicationUserEntity = executeFindOrCreateApplicationUser()
+        applicationUserEntity.alreadyPassTutorial = true
+        realmAccessManager.saveApplicationUser(applicationUserEntity)
     }
     
     func updateJsonAccessToken(_ token: String) {
@@ -47,7 +48,7 @@ final class CurrentApplicationUserRepository: ApplicationUserRepository {
     private func executeFindOrCreateApplicationUser() -> ApplicationUserEntity {
 
         // アプリのユーザー情報を既存データ取得ないしは新規データを作成する
-        if let applicationUser = realmAccessManager.getAllObjects(ApplicationUserEntity.self)?.first {
+        if let applicationUser = realmAccessManager.getApplicationUser() {
             return applicationUser
         } else {
             return ApplicationUserEntity()
