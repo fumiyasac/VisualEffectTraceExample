@@ -307,6 +307,7 @@ final class SigninViewController: UIViewController {
                     delay: 1.50,
                     completion: { _ in
                         HUD.hide()
+                        self.viewModel.inputs.undoAPIRequestStateTrigger.onNext(())
                         self.coordinator?.coordinateToGlobalTab()
                     }
                 )
@@ -317,6 +318,7 @@ final class SigninViewController: UIViewController {
                     delay: 1.50,
                     completion: { _ in
                         HUD.hide()
+                        self.viewModel.inputs.undoAPIRequestStateTrigger.onNext(())
                     }
                 )
             }

@@ -19,6 +19,9 @@ protocol SigninViewModelInputs {
 
     // サインイン処理の実行をViewModelへ伝える
     var executeSigninRequestTrigger: PublishSubject<Void> { get }
+
+    // APIRequestStateを元に戻す処理の実行をViewModelへ伝える
+    var undoAPIRequestStateTrigger: PublishSubject<Void> { get }
 }
 
 protocol SigninViewModelOutputs {
@@ -49,6 +52,8 @@ final class SigninViewModel: SigninViewModelInputs, SigninViewModelOutputs, Sign
     let inputRawPasswordTrigger: PublishSubject<String> = PublishSubject<String>()
     
     let executeSigninRequestTrigger: PublishSubject<Void> = PublishSubject<Void>()
+
+    let undoAPIRequestStateTrigger: PublishSubject<Void> = PublishSubject<Void>()
 
     // MARK: - Properties (for SigninViewModelOutputs)
 
@@ -107,6 +112,14 @@ final class SigninViewModel: SigninViewModelInputs, SigninViewModelOutputs, Sign
                 }
             )
             .disposed(by: disposeBag)
+        undoAPIRequestStateTrigger
+            .subscribe(
+                onNext: { [weak self] in
+                    guard let self = self else { return }
+                    self._requestStatus.accept(.none)
+                }
+            )
+            .disposed(by: disposeBag)
     }
 
     // MARK: - Private Function
@@ -120,14 +133,10 @@ final class SigninViewModel: SigninViewModelInputs, SigninViewModelOutputs, Sign
                     self._requestStatus.accept(.success)
                     // MEMO: JsonAccessTokenを保存する
                     self.saveJsonWebToken(token: data.token)
-                    // MEMO: サインイン完了後に_requestStatusの値を元に戻す
-                    self._requestStatus.accept(.none)
                 },
                 onFailure: { [weak self] error in
                     guard let self = self else { return }
                     self._requestStatus.accept(.error)
-                    // MEMO: サインイン完了後に_requestStatusの値を元に戻す
-                    self._requestStatus.accept(.none)
                 }
             )
             .disposed(by: disposeBag)
