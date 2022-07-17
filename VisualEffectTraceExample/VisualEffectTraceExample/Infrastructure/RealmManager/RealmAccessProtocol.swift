@@ -7,3 +7,16 @@
 //
 
 import Foundation
+
+//sourcery: AutoMockable
+protocol RealmAccessProtocol {
+
+    // ApplicationUserEntityオブジェクトを取得する
+    func getApplicationUser() -> ApplicationUserEntity?
+
+    // 新規にApplicationUserEntityオブジェクトを追加する
+    func saveApplicationUser(_ applicationUserEntity: ApplicationUserEntity)
+
+    // 既存のApplicationUserEntityオブジェクトを削除する
+    func deleteApplicationUser(_ applicationUserEntity: ApplicationUserEntity)
+}

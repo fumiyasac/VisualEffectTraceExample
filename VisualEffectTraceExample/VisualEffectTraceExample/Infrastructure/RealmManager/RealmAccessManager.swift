@@ -9,21 +9,7 @@
 import Foundation
 import RealmSwift
 
-// ※ Mockに置き換えられるような形にしておくのがポイント
-
-protocol RealmAccessProtocol {
-
-    // 引数で与えられた型に該当するRealmオブジェクトを全件取得する
-    func getAllObjects<T: Object>(_ realmObjectType: T.Type) -> Results<T>?
-
-    // 該当するRealmオブジェクトを追加する
-    func save<T: Object>(_ realmObject: T)
-
-    // 該当するRealmオブジェクトを削除する
-    func delete<T: Object>(_ realmObject: T)
-}
-
-final class RealmAccessManager: RealmAccessProtocol {
+final class RealmAccessManager {
 
     // MARK: - Singleton Instance
 
@@ -35,11 +21,13 @@ final class RealmAccessManager: RealmAccessProtocol {
 
     // MARK: - Function
 
+    // 引数で与えられた型に該当するRealmオブジェクトを全件取得する
     func getAllObjects<T: Object>(_ realmObjectType: T.Type) -> Results<T>? {
         let realm = try! Realm(configuration: schemaConfig)
         return realm.objects(T.self)
     }
 
+    // 該当するRealmオブジェクトを追加する
     func save<T: Object>(_ realmObject: T) {
         let realm = try! Realm(configuration: schemaConfig)
         try! realm.write() {
@@ -47,6 +35,7 @@ final class RealmAccessManager: RealmAccessProtocol {
         }
     }
 
+    // 該当するRealmオブジェクトを削除する
     func delete<T: Object>(_ realmObject: T) {
         let realm = try! Realm(configuration: schemaConfig)
         try! realm.write() {
@@ -54,4 +43,3 @@ final class RealmAccessManager: RealmAccessProtocol {
         }
     }
 }
-
