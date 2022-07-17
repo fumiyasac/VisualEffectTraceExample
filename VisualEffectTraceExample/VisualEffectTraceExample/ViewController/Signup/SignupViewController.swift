@@ -342,6 +342,7 @@ final class SignupViewController: UIViewController {
                     delay: 1.50,
                     completion: { _ in
                         HUD.hide()
+                        self.viewModel.inputs.undoAPIRequestStateTrigger.onNext(())
                         self.coordinator?.dismissSignup()
                     }
                 )
@@ -352,6 +353,7 @@ final class SignupViewController: UIViewController {
                     delay: 1.50,
                     completion: { _ in
                         HUD.hide()
+                        self.viewModel.inputs.undoAPIRequestStateTrigger.onNext(())
                     }
                 )
             }

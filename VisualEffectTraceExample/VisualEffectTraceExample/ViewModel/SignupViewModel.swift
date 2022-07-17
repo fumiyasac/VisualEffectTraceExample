@@ -22,6 +22,9 @@ protocol SignupViewModelInputs {
 
     // サインアップ処理の実行をViewModelへ伝える
     var executeSignupRequestTrigger: PublishSubject<Void> { get }
+
+    // APIRequestStateを元に戻す処理の実行をViewModelへ伝える
+    var undoAPIRequestStateTrigger: PublishSubject<Void> { get }
 }
 
 protocol SignupViewModelOutputs {
@@ -57,6 +60,8 @@ final class SignupViewModel: SignupViewModelInputs, SignupViewModelOutputs, Sign
     let inputRawPasswordTrigger: PublishSubject<String> = PublishSubject<String>()
 
     let executeSignupRequestTrigger: PublishSubject<Void> = PublishSubject<Void>()
+    
+    let undoAPIRequestStateTrigger: PublishSubject<Void> = PublishSubject<Void>()
 
     // MARK: - Properties (for SignupViewModelOutputs)
 
@@ -127,6 +132,14 @@ final class SignupViewModel: SignupViewModelInputs, SignupViewModelOutputs, Sign
                 }
             )
             .disposed(by: disposeBag)
+        undoAPIRequestStateTrigger
+            .subscribe(
+                onNext: { [weak self] in
+                    guard let self = self else { return }
+                    self._requestStatus.accept(.none)
+                }
+            )
+            .disposed(by: disposeBag)
     }
 
     // MARK: - Private Function
@@ -138,14 +151,10 @@ final class SignupViewModel: SignupViewModelInputs, SignupViewModelOutputs, Sign
                 onSuccess: { [weak self] data in
                     guard let self = self else { return }
                     self._requestStatus.accept(.success)
-                    // MEMO: サインアップ完了後に_requestStatusの値を元に戻す
-                    self._requestStatus.accept(.none)
                 },
                 onFailure: { [weak self] error in
                     guard let self = self else { return }
                     self._requestStatus.accept(.error)
-                    // MEMO: サインアップ完了後に_requestStatusの値を元に戻す
-                    self._requestStatus.accept(.none)
                 }
             )
             .disposed(by: disposeBag)
