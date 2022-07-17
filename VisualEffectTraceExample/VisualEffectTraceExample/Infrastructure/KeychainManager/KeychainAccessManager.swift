@@ -9,6 +9,7 @@
 import Foundation
 import KeychainAccess
 
+//sourcery: AutoMockable
 protocol KeychainAccessProtocol {
 
     // 新しく取得したJWTの保存処理
