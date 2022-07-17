@@ -50,7 +50,7 @@ final class TutorialViewModelSpec: QuickSpec {
                         protocolName: TutorialUseCase.self
                     )
                 }
-                it("isLastIndexがfalseとなること") {
+                it("viewModel.outputs.isLastIndexがfalseとなること") {
                     let target = TutorialViewModel()
                     target.inputs.changeIndexTrigger.onNext(1)
                     expect(try! target.outputs.tutorialItems.toBlocking().first()).to(equal(tutorialDataList))
