@@ -9,7 +9,7 @@
 import Foundation
 
 // MEMO: POST結果のみのAPIレスポンス定義
-struct GeneralPostSuccessARIResponse: Decodable {
+struct GeneralPostSuccessARIResponse: Decodable, Equatable {
 
     let result: String
 
@@ -21,9 +21,21 @@ struct GeneralPostSuccessARIResponse: Decodable {
 
     // MARK: - Initializer
 
+    init(result: String) {
+        self.result = result
+    }
+
     // JSONの配列内の要素を取得する → JSONの配列内の要素にある値をDecodeして初期化する
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Keys.self)
         self.result = try container.decode(String.self, forKey: .result)
+    }
+
+    // MARK: - Equatable
+
+    // MEMO: Equatableプロトコルに適合させるための処理
+
+    static func == (lhs: GeneralPostSuccessARIResponse, rhs: GeneralPostSuccessARIResponse) -> Bool {
+        return lhs.result == rhs.result
     }
 }

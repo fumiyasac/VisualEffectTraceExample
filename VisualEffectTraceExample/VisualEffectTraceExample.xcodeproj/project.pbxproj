@@ -57,6 +57,7 @@
 		DE5194432883C0BD00D3F276 /* RealmAccessProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5194422883C0BD00D3F276 /* RealmAccessProtocol.swift */; };
 		DE5194452883C77500D3F276 /* RealmAccess.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5194442883C77500D3F276 /* RealmAccess.swift */; };
 		DE5194472883D2E000D3F276 /* MainViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5194462883D2E000D3F276 /* MainViewModelSpec.swift */; };
+		DE51944B2883D6C700D3F276 /* RequestSignupRepositorySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE51944A2883D6C700D3F276 /* RequestSignupRepositorySpec.swift */; };
 		DE634C3A24361150004CA920 /* CurrentApplicationUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE634C3924361150004CA920 /* CurrentApplicationUserRepository.swift */; };
 		DE634C4A2438ED41004CA920 /* SigninViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE634C492438ED41004CA920 /* SigninViewModel.swift */; };
 		DE67D97F2432370900EB2D61 /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE67D97D2432370900EB2D61 /* Signup.storyboard */; };
@@ -248,6 +249,7 @@
 		DE5194422883C0BD00D3F276 /* RealmAccessProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmAccessProtocol.swift; sourceTree = "<group>"; };
 		DE5194442883C77500D3F276 /* RealmAccess.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmAccess.swift; sourceTree = "<group>"; };
 		DE5194462883D2E000D3F276 /* MainViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModelSpec.swift; sourceTree = "<group>"; };
+		DE51944A2883D6C700D3F276 /* RequestSignupRepositorySpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSignupRepositorySpec.swift; sourceTree = "<group>"; };
 		DE634C3924361150004CA920 /* CurrentApplicationUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentApplicationUserRepository.swift; sourceTree = "<group>"; };
 		DE634C492438ED41004CA920 /* SigninViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModel.swift; sourceTree = "<group>"; };
 		DE67D97E2432370900EB2D61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Signup.storyboard; sourceTree = "<group>"; };
@@ -1188,6 +1190,7 @@
 			children = (
 				DE5194402883BB0B00D3F276 /* MainScreenRepositorySpec.swift */,
 				DEE285792856397D004CCCB9 /* RequestAnnouncementDataRepositorySpec.swift */,
+				DE51944A2883D6C700D3F276 /* RequestSignupRepositorySpec.swift */,
 				DE81E6F9285F520700208602 /* TutorialDataRepositorySpec.swift */,
 			);
 			path = Repository;
@@ -1618,6 +1621,7 @@
 				DE5194412883BB0B00D3F276 /* MainScreenRepositorySpec.swift in Sources */,
 				DE81E6FA285F520700208602 /* TutorialDataRepositorySpec.swift in Sources */,
 				DE23F060287981F40070729F /* TutorialViewModelSpec.swift in Sources */,
+				DE51944B2883D6C700D3F276 /* RequestSignupRepositorySpec.swift in Sources */,
 				DEE28578285634B2004CCCB9 /* Mock.generated.swift in Sources */,
 				DEAA658023F3123100C5232B /* VisualEffectTraceExampleTests.swift in Sources */,
 				DEE2857A2856397D004CCCB9 /* RequestAnnouncementDataRepositorySpec.swift in Sources */,
