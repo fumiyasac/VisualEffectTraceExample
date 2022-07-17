@@ -90,7 +90,6 @@
 		DE813A7124CB4F060064E13F /* RequestStoryDataUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE813A7024CB4F060064E13F /* RequestStoryDataUseCase.swift */; };
 		DE813A7324CB4FEA0064E13F /* StoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE813A7224CB4FEA0064E13F /* StoryViewModel.swift */; };
 		DE81E6FA285F520700208602 /* TutorialDataRepositorySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE81E6F9285F520700208602 /* TutorialDataRepositorySpec.swift */; };
-		DE81E6FC286DDB7200208602 /* GetTutorialDataUseCaseSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE81E6FB286DDB7200208602 /* GetTutorialDataUseCaseSpec.swift */; };
 		DE84854224279D7D00766098 /* Tutorial.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE84854024279D7D00766098 /* Tutorial.storyboard */; };
 		DE84854524279DF800766098 /* TutorialCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE84854324279DF800766098 /* TutorialCollectionViewCell.swift */; };
 		DE84854624279DF800766098 /* TutorialCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE84854424279DF800766098 /* TutorialCollectionViewCell.xib */; };
@@ -283,7 +282,6 @@
 		DE813A7024CB4F060064E13F /* RequestStoryDataUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestStoryDataUseCase.swift; sourceTree = "<group>"; };
 		DE813A7224CB4FEA0064E13F /* StoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewModel.swift; sourceTree = "<group>"; };
 		DE81E6F9285F520700208602 /* TutorialDataRepositorySpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialDataRepositorySpec.swift; sourceTree = "<group>"; };
-		DE81E6FB286DDB7200208602 /* GetTutorialDataUseCaseSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTutorialDataUseCaseSpec.swift; sourceTree = "<group>"; };
 		DE84854124279D7D00766098 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Tutorial.storyboard; sourceTree = "<group>"; };
 		DE84854324279DF800766098 /* TutorialCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialCollectionViewCell.swift; sourceTree = "<group>"; };
 		DE84854424279DF800766098 /* TutorialCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TutorialCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -1182,7 +1180,6 @@
 			isa = PBXGroup;
 			children = (
 				DEE28574285630E0004CCCB9 /* Repository */,
-				DEE28575285630EA004CCCB9 /* UseCase */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -1196,14 +1193,6 @@
 				DE81E6F9285F520700208602 /* TutorialDataRepositorySpec.swift */,
 			);
 			path = Repository;
-			sourceTree = "<group>";
-		};
-		DEE28575285630EA004CCCB9 /* UseCase */ = {
-			isa = PBXGroup;
-			children = (
-				DE81E6FB286DDB7200208602 /* GetTutorialDataUseCaseSpec.swift */,
-			);
-			path = UseCase;
 			sourceTree = "<group>";
 		};
 		DEE2857628563226004CCCB9 /* ViewModel */ = {
@@ -1630,7 +1619,6 @@
 				DEAA658023F3123100C5232B /* VisualEffectTraceExampleTests.swift in Sources */,
 				DEE2857A2856397D004CCCB9 /* RequestAnnouncementDataRepositorySpec.swift in Sources */,
 				DE5194472883D2E000D3F276 /* MainViewModelSpec.swift in Sources */,
-				DE81E6FC286DDB7200208602 /* GetTutorialDataUseCaseSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
