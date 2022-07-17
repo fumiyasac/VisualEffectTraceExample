@@ -28,7 +28,7 @@ final class MainScreenRepository: MainRepository {
     func searchApplicationUserData() -> ApplicationUserStatus {
 
         // Realm(ApplicationUserEntity)のデータの状態に応じてら対象の画面遷移先を決定する
-        if let applicationUser = realmAccessManager.getAllObjects(ApplicationUserEntity.self)?.first {
+        if let applicationUser = realmAccessManager.getApplicationUser() {
 
             switch applicationUser {
 
