@@ -1,0 +1,61 @@
+{
+  "result": [
+    {
+      "id": 15,
+      "eventIntroductionId": 15,
+      "thumbnailUrl": "https://visual-effect-example.s3-ap-northeast-1.amazonaws.com/event_introduction/event_introduction_sample15.jpg",
+      "title": "イベントタイトル(仮)15",
+      "caption": "イベント見出し(仮)15",
+      "statement": "イベントの本文(仮)15を表示しています。こちらの文章はサンプルアプリ用のものになります。",
+      "announcementAt": "2020-07-24T07:30:00.000+0000",
+      "createdAt": "2020-07-24T07:30:00.000+0000",
+      "updatedAt": "2020-07-24T07:30:00.000+0000"
+    },
+    {
+      "id": 14,
+      "eventIntroductionId": 14,
+      "thumbnailUrl": "https://visual-effect-example.s3-ap-northeast-1.amazonaws.com/event_introduction/event_introduction_sample14.jpg",
+      "title": "イベントタイトル(仮)14",
+      "caption": "イベント見出し(仮)14",
+      "statement": "イベントの本文(仮)14を表示しています。こちらの文章はサンプルアプリ用のものになります。",
+      "announcementAt": "2020-07-24T07:30:00.000+0000",
+      "createdAt": "2020-07-24T07:30:00.000+0000",
+      "updatedAt": "2020-07-24T07:30:00.000+0000"
+    },
+    {
+      "id": 13,
+      "eventIntroductionId": 13,
+      "thumbnailUrl": "https://visual-effect-example.s3-ap-northeast-1.amazonaws.com/event_introduction/event_introduction_sample13.jpg",
+      "title": "イベントタイトル(仮)13",
+      "caption": "イベント見出し(仮)13",
+      "statement": "イベントの本文(仮)13を表示しています。こちらの文章はサンプルアプリ用のものになります。",
+      "announcementAt": "2020-07-24T07:30:00.000+0000",
+      "createdAt": "2020-07-24T07:30:00.000+0000",
+      "updatedAt": "2020-07-24T07:30:00.000+0000"
+    },
+    {
+      "id": 12,
+      "eventIntroductionId": 12,
+      "thumbnailUrl": "https://visual-effect-example.s3-ap-northeast-1.amazonaws.com/event_introduction/event_introduction_sample12.jpg",
+      "title": "イベントタイトル(仮)12",
+      "caption": "イベント見出し(仮)12",
+      "statement": "イベントの本文(仮)12を表示しています。こちらの文章はサンプルアプリ用のものになります。",
+      "announcementAt": "2020-07-24T07:30:00.000+0000",
+      "createdAt": "2020-07-24T07:30:00.000+0000",
+      "updatedAt": "2020-07-24T07:30:00.000+0000"
+    },
+    {
+      "id": 11,
+      "eventIntroductionId": 11,
+      "thumbnailUrl": "https://visual-effect-example.s3-ap-northeast-1.amazonaws.com/event_introduction/event_introduction_sample11.jpg",
+      "title": "イベントタイトル(仮)11",
+      "caption": "イベント見出し(仮)11",
+      "statement": "イベントの本文(仮)11を表示しています。こちらの文章はサンプルアプリ用のものになります。",
+      "announcementAt": "2020-07-24T07:30:00.000+0000",
+      "createdAt": "2020-07-24T07:30:00.000+0000",
+      "updatedAt": "2020-07-24T07:30:00.000+0000"
+    }
+  ],
+  "currentPage": 1,
+  "hasNextPage": true
+}
