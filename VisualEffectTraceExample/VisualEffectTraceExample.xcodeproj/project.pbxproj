@@ -62,6 +62,7 @@
 		DE51944F2883F2A400D3F276 /* RequestSigninRepositorySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE51944E2883F2A400D3F276 /* RequestSigninRepositorySpec.swift */; };
 		DE5194512883FC0C00D3F276 /* SigninViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5194502883FC0C00D3F276 /* SigninViewModelSpec.swift */; };
 		DE519453288585A400D3F276 /* RequestRecentAnnouncementRepositorySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE519452288585A400D3F276 /* RequestRecentAnnouncementRepositorySpec.swift */; };
+		DE51945528858CFD00D3F276 /* featured_article_data.json in Resources */ = {isa = PBXBuildFile; fileRef = DE51945428858CFC00D3F276 /* featured_article_data.json */; };
 		DE634C3A24361150004CA920 /* CurrentApplicationUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE634C3924361150004CA920 /* CurrentApplicationUserRepository.swift */; };
 		DE634C4A2438ED41004CA920 /* SigninViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE634C492438ED41004CA920 /* SigninViewModel.swift */; };
 		DE67D97F2432370900EB2D61 /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE67D97D2432370900EB2D61 /* Signup.storyboard */; };
@@ -257,6 +258,7 @@
 		DE51944E2883F2A400D3F276 /* RequestSigninRepositorySpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestSigninRepositorySpec.swift; sourceTree = "<group>"; };
 		DE5194502883FC0C00D3F276 /* SigninViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModelSpec.swift; sourceTree = "<group>"; };
 		DE519452288585A400D3F276 /* RequestRecentAnnouncementRepositorySpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRecentAnnouncementRepositorySpec.swift; sourceTree = "<group>"; };
+		DE51945428858CFC00D3F276 /* featured_article_data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = featured_article_data.json; sourceTree = "<group>"; };
 		DE634C3924361150004CA920 /* CurrentApplicationUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentApplicationUserRepository.swift; sourceTree = "<group>"; };
 		DE634C492438ED41004CA920 /* SigninViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModel.swift; sourceTree = "<group>"; };
 		DE67D97E2432370900EB2D61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Signup.storyboard; sourceTree = "<group>"; };
@@ -1177,6 +1179,7 @@
 		DEE2857128563025004CCCB9 /* Stub */ = {
 			isa = PBXGroup;
 			children = (
+				DE51945428858CFC00D3F276 /* featured_article_data.json */,
 				DEE2857B285645EA004CCCB9 /* announcement_data.json */,
 			);
 			path = Stub;
@@ -1385,6 +1388,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE51945528858CFD00D3F276 /* featured_article_data.json in Resources */,
 				DEE2857C285645EA004CCCB9 /* announcement_data.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
