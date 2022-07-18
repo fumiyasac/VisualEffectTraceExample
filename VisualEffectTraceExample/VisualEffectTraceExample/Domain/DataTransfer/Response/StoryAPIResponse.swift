@@ -9,7 +9,7 @@
 import Foundation
 
 // MEMO: Story表示用のAPIレスポンス定義
-struct StoryAPIResponse: Decodable {
+struct StoryAPIResponse: Decodable, Equatable {
 
     let result: Array<StoryEntity>
 
@@ -21,9 +21,21 @@ struct StoryAPIResponse: Decodable {
 
     // MARK: - Initializer
 
+    init(result: Array<StoryEntity>) {
+        self.result = result
+    }
+
     // JSONの配列内の要素を取得する → JSONの配列内の要素にある値をDecodeして初期化する
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Keys.self)
         self.result = try container.decode(Array<StoryEntity>.self, forKey: .result)
+    }
+
+    // MARK: - Equatable
+
+    // MEMO: Equatableプロトコルに適合させるための処理
+
+    static func == (lhs: StoryAPIResponse, rhs: StoryAPIResponse) -> Bool {
+        return lhs.result == rhs.result
     }
 }
