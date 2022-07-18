@@ -75,6 +75,7 @@
 		DE519469288599D100D3F276 /* item_page1_data.json in Resources */ = {isa = PBXBuildFile; fileRef = DE519465288599D000D3F276 /* item_page1_data.json */; };
 		DE51946B28859C5700D3F276 /* RequestFeaturedArticleRepositorySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE51946A28859C5700D3F276 /* RequestFeaturedArticleRepositorySpec.swift */; };
 		DE51946D2885A6CA00D3F276 /* RequestStoryRepositorySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE51946C2885A6CA00D3F276 /* RequestStoryRepositorySpec.swift */; };
+		DE51946F2885AAFC00D3F276 /* RequestTopBannerDataRepositorySpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE51946E2885AAFC00D3F276 /* RequestTopBannerDataRepositorySpec.swift */; };
 		DE634C3A24361150004CA920 /* CurrentApplicationUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE634C3924361150004CA920 /* CurrentApplicationUserRepository.swift */; };
 		DE634C4A2438ED41004CA920 /* SigninViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE634C492438ED41004CA920 /* SigninViewModel.swift */; };
 		DE67D97F2432370900EB2D61 /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE67D97D2432370900EB2D61 /* Signup.storyboard */; };
@@ -283,6 +284,7 @@
 		DE519465288599D000D3F276 /* item_page1_data.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = item_page1_data.json; sourceTree = "<group>"; };
 		DE51946A28859C5700D3F276 /* RequestFeaturedArticleRepositorySpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFeaturedArticleRepositorySpec.swift; sourceTree = "<group>"; };
 		DE51946C2885A6CA00D3F276 /* RequestStoryRepositorySpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestStoryRepositorySpec.swift; sourceTree = "<group>"; };
+		DE51946E2885AAFC00D3F276 /* RequestTopBannerDataRepositorySpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTopBannerDataRepositorySpec.swift; sourceTree = "<group>"; };
 		DE634C3924361150004CA920 /* CurrentApplicationUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentApplicationUserRepository.swift; sourceTree = "<group>"; };
 		DE634C492438ED41004CA920 /* SigninViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModel.swift; sourceTree = "<group>"; };
 		DE67D97E2432370900EB2D61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Signup.storyboard; sourceTree = "<group>"; };
@@ -1237,6 +1239,7 @@
 				DE51944E2883F2A400D3F276 /* RequestSigninRepositorySpec.swift */,
 				DE51944A2883D6C700D3F276 /* RequestSignupRepositorySpec.swift */,
 				DE51946C2885A6CA00D3F276 /* RequestStoryRepositorySpec.swift */,
+				DE51946E2885AAFC00D3F276 /* RequestTopBannerDataRepositorySpec.swift */,
 				DE81E6F9285F520700208602 /* TutorialDataRepositorySpec.swift */,
 			);
 			path = Repository;
@@ -1683,6 +1686,7 @@
 				DEE2857A2856397D004CCCB9 /* RequestAnnouncementDataRepositorySpec.swift in Sources */,
 				DE51944F2883F2A400D3F276 /* RequestSigninRepositorySpec.swift in Sources */,
 				DE5194472883D2E000D3F276 /* MainViewModelSpec.swift in Sources */,
+				DE51946F2885AAFC00D3F276 /* RequestTopBannerDataRepositorySpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
