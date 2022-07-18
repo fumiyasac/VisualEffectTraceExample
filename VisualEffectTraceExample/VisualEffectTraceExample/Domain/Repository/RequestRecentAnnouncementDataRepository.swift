@@ -11,6 +11,7 @@ import RxSwift
 
 // MARK: - Protocol
 
+//sourcery: AutoMockable
 protocol RecentAnnouncementRepository {
 
     // 最新のお知らせを1件取得するAPIリクエストを実行する
