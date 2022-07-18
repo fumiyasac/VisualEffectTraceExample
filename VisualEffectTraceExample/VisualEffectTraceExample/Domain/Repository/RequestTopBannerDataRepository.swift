@@ -11,6 +11,7 @@ import RxSwift
 
 // MARK: - Protocol
 
+//sourcery: AutoMockable
 protocol TopBannerRepository {
 
     // トップバナー表示用のAPIリクエストを実行する
