@@ -1,0 +1,87 @@
+{
+  "result": [
+    {
+      "id": 10,
+      "title": "Item No.10",
+      "statement": "Item Example No.10",
+      "thumbnailUrl": "https://visual-effect-example.s3-ap-northeast-1.amazonaws.com/item/item_sample10.jpg",
+      "announcementAt": "2020-07-31T15:00:00.000+0000",
+      "createdAt": "2020-07-31T15:00:00.000+0000",
+      "updatedAt": "2020-07-31T15:00:00.000+0000"
+    },
+    {
+      "id": 11,
+      "title": "Item No.11",
+      "statement": "Item Example No.11",
+      "thumbnailUrl": "https://visual-effect-example.s3-ap-northeast-1.amazonaws.com/item/item_sample11.jpg",
+      "announcementAt": "2020-07-31T15:00:00.000+0000",
+      "createdAt": "2020-07-31T15:00:00.000+0000",
+      "updatedAt": "2020-07-31T15:00:00.000+0000"
+    },
+    {
+      "id": 12,
+      "title": "Item No.12",
+      "statement": "Item Example No.12",
+      "thumbnailUrl": "https://visual-effect-example.s3-ap-northeast-1.amazonaws.com/item/item_sample12.jpg",
+      "announcementAt": "2020-07-31T15:00:00.000+0000",
+      "createdAt": "2020-07-31T15:00:00.000+0000",
+      "updatedAt": "2020-07-31T15:00:00.000+0000"
+    },
+    {
+      "id": 13,
+      "title": "Item No.13",
+      "statement": "Item Example No.13",
+      "thumbnailUrl": "https://visual-effect-example.s3-ap-northeast-1.amazonaws.com/item/item_sample13.jpg",
+      "announcementAt": "2020-07-31T15:00:00.000+0000",
+      "createdAt": "2020-07-31T15:00:00.000+0000",
+      "updatedAt": "2020-07-31T15:00:00.000+0000"
+    },
+    {
+      "id": 14,
+      "title": "Item No.14",
+      "statement": "Item Example No.14",
+      "thumbnailUrl": "https://visual-effect-example.s3-ap-northeast-1.amazonaws.com/item/item_sample14.jpg",
+      "announcementAt": "2020-07-31T15:00:00.000+0000",
+      "createdAt": "2020-07-31T15:00:00.000+0000",
+      "updatedAt": "2020-07-31T15:00:00.000+0000"
+    },
+    {
+      "id": 15,
+      "title": "Item No.15",
+      "statement": "Item Example No.15",
+      "thumbnailUrl": "https://visual-effect-example.s3-ap-northeast-1.amazonaws.com/item/item_sample15.jpg",
+      "announcementAt": "2020-07-31T15:00:00.000+0000",
+      "createdAt": "2020-07-31T15:00:00.000+0000",
+      "updatedAt": "2020-07-31T15:00:00.000+0000"
+    },
+    {
+      "id": 16,
+      "title": "Item No.16",
+      "statement": "Item Example No.16",
+      "thumbnailUrl": "https://visual-effect-example.s3-ap-northeast-1.amazonaws.com/item/item_sample16.jpg",
+      "announcementAt": "2020-07-31T15:00:00.000+0000",
+      "createdAt": "2020-07-31T15:00:00.000+0000",
+      "updatedAt": "2020-07-31T15:00:00.000+0000"
+    },
+    {
+      "id": 17,
+      "title": "Item No.17",
+      "statement": "Item Example No.17",
+      "thumbnailUrl": "https://visual-effect-example.s3-ap-northeast-1.amazonaws.com/item/item_sample17.jpg",
+      "announcementAt": "2020-07-31T15:00:00.000+0000",
+      "createdAt": "2020-07-31T15:00:00.000+0000",
+      "updatedAt": "2020-07-31T15:00:00.000+0000"
+    },
+    {
+      "id": 18,
+      "title": "Item No.18",
+      "statement": "Item Example No.18",
+      "thumbnailUrl": "https://visual-effect-example.s3-ap-northeast-1.amazonaws.com/item/item_sample18.jpg",
+      "announcementAt": "2020-07-31T15:00:00.000+0000",
+      "createdAt": "2020-07-31T15:00:00.000+0000",
+      "updatedAt": "2020-07-31T15:00:00.000+0000"
+    }
+  ],
+  "currentPage": 2,
+  "hasNextPage": true
+}
