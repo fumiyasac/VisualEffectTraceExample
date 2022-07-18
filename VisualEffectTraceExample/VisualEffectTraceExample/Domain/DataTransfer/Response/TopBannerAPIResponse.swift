@@ -9,7 +9,7 @@
 import Foundation
 
 // MEMO: トップバナー表示用のAPIレスポンス定義
-struct TopBannerAPIResponse: Decodable {
+struct TopBannerAPIResponse: Decodable, Equatable {
 
     let result: Array<TopBannerEntity>
 
@@ -21,9 +21,21 @@ struct TopBannerAPIResponse: Decodable {
 
     // MARK: - Initializer
 
+    init(result: Array<TopBannerEntity>) {
+        self.result = result
+    }
+
     // JSONの配列内の要素を取得する → JSONの配列内の要素にある値をDecodeして初期化する
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: Keys.self)
         self.result = try container.decode(Array<TopBannerEntity>.self, forKey: .result)
+    }
+
+    // MARK: - Equatable
+
+    // MEMO: Equatableプロトコルに適合させるための処理
+
+    static func == (lhs: TopBannerAPIResponse, rhs: TopBannerAPIResponse) -> Bool {
+        return lhs.result == rhs.result
     }
 }
