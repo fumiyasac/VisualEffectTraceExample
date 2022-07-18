@@ -1,0 +1,44 @@
+{
+  "result": [
+    {
+      "id": 1,
+      "bannerContentsId": 1,
+      "bannerUrl": "https://visual-effect-example.s3-ap-northeast-1.amazonaws.com/top_banner/top_banner_sample1.jpg",
+      "title": "春物ファッション特集",
+      "caption": "新生活や春のライフスタイルを彩るファッション達を紹介。",
+      "announcementAt": "2020-07-24T07:30:00.000+0000",
+      "createdAt": "2020-07-24T07:30:00.000+0000",
+      "updatedAt": "2020-07-24T07:30:00.000+0000"
+    },
+    {
+      "id": 2,
+      "bannerContentsId": 2,
+      "bannerUrl": "https://visual-effect-example.s3-ap-northeast-1.amazonaws.com/top_banner/top_banner_sample2.jpg",
+      "title": "お取り寄せグルメ特集",
+      "caption": "お家でもちょっと贅沢したい時に嬉しいグルメを集めました！",
+      "announcementAt": "2020-07-24T07:30:00.000+0000",
+      "createdAt": "2020-07-24T07:30:00.000+0000",
+      "updatedAt": "2020-07-24T07:30:00.000+0000"
+    },
+    {
+      "id": 3,
+      "bannerContentsId": 3,
+      "bannerUrl": "https://visual-effect-example.s3-ap-northeast-1.amazonaws.com/top_banner/top_banner_sample3.jpg",
+      "title": "日頃の感謝を伝える母の日特集",
+      "caption": "日頃の感謝を伝える、そんな心にぐっと響くものを。",
+      "announcementAt": "2020-07-24T07:30:00.000+0000",
+      "createdAt": "2020-07-24T07:30:00.000+0000",
+      "updatedAt": "2020-04-29T15:00:08.000+0000"
+    },
+    {
+      "id": 4,
+      "bannerContentsId": 4,
+      "bannerUrl": "https://visual-effect-example.s3-ap-northeast-1.amazonaws.com/top_banner/top_banner_sample4.jpg",
+      "title": "日頃の感謝を伝える父の日特集",
+      "caption": "日頃の感謝を伝える、長く愛用してもらえる一品を。",
+      "announcementAt": "2020-07-24T07:30:00.000+0000",
+      "createdAt": "2020-07-24T07:30:00.000+0000",
+      "updatedAt": "2020-07-24T07:30:00.000+0000"
+    }
+  ]
+}
