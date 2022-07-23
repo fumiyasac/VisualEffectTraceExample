@@ -11,6 +11,7 @@ import RxSwift
 
 // MARK: - Protocol
 
+//sourcery: AutoMockable
 protocol AnnouncementUsecase {
 
     // お知らせ一覧取得処理を実行する

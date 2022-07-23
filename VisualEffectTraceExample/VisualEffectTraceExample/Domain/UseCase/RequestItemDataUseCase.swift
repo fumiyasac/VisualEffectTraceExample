@@ -11,6 +11,7 @@ import RxSwift
 
 // MARK: - Protocol
 
+//sourcery: AutoMockable
 protocol ItemUseCase {
 
     // アイテム一覧取得処理を実行する

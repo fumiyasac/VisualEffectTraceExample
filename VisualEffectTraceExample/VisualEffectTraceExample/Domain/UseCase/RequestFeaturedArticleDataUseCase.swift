@@ -11,6 +11,7 @@ import RxSwift
 
 // MARK: - Protocol
 
+//sourcery: AutoMockable
 protocol FeaturedArticleUseCase {
 
     // 特集コンテンツ一覧取得処理を実行する
