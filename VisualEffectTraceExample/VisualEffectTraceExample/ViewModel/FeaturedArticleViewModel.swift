@@ -14,6 +14,9 @@ protocol FeaturedArticleViewModelInputs {
 
     // 初回のデータ取得をViewModelへ伝える
     var initialFetchTrigger: PublishSubject<Void> { get }
+
+    // APIRequestStateを元に戻す処理の実行をViewModelへ伝える
+    var undoAPIRequestStateTrigger: PublishSubject<Void> { get }
 }
 
 protocol FeaturedArticleViewModelOutputs {
@@ -39,7 +42,7 @@ final class FeaturedArticleViewModel: FeaturedArticleViewModelInputs, FeaturedAr
 
     let initialFetchTrigger: PublishSubject<Void> = PublishSubject<Void>()
 
-    let pullToRefreshTrigger: PublishSubject<Void> = PublishSubject<Void>()
+    let undoAPIRequestStateTrigger: PublishSubject<Void> = PublishSubject<Void>()
 
     // MARK: - Properties (for TopBannerViewModelOutputs)
 

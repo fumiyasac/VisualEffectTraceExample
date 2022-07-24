@@ -14,6 +14,9 @@ protocol StoryViewModelInputs {
 
     // 初回のデータ取得をViewModelへ伝える
     var initialFetchTrigger: PublishSubject<Void> { get }
+
+    // APIRequestStateを元に戻す処理の実行をViewModelへ伝える
+    var undoAPIRequestStateTrigger: PublishSubject<Void> { get }
 }
 
 protocol StoryViewModelOutputs {
@@ -38,6 +41,8 @@ final class StoryViewModel: StoryViewModelInputs, StoryViewModelOutputs, StoryVi
     // MARK: - Properties (for TopBannerViewModelInputs)
 
     let initialFetchTrigger: PublishSubject<Void> = PublishSubject<Void>()
+
+    let undoAPIRequestStateTrigger: PublishSubject<Void> = PublishSubject<Void>()
 
     // MARK: - Properties (for TopBannerViewModelOutputs)
 
@@ -71,6 +76,14 @@ final class StoryViewModel: StoryViewModelInputs, StoryViewModelOutputs, StoryVi
                 onNext: { [weak self] signinPatameters in
                     guard let self = self else { return }
                     self.executeStoryDataRequest()
+                }
+            )
+            .disposed(by: disposeBag)
+        undoAPIRequestStateTrigger
+            .subscribe(
+                onNext: { [weak self] in
+                    guard let self = self else { return }
+                    self._requestStatus.accept(.none)
                 }
             )
             .disposed(by: disposeBag)

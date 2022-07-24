@@ -108,6 +108,12 @@ final class FeaturedViewController: UIViewController {
                     // MEMO: 表示内容の反映処理を実行する
                     self.featuredArticleItems.accept(featuredArticleItems)
                     self.featuredCollectionView.reloadData()
+                },
+                onCompleted: { [weak self] in
+                    guard let self = self else { return }
+
+                    // MEMO: 表示内容の反映完了時にrequestStatusを元に戻す
+                    self.viewModel.inputs.undoAPIRequestStateTrigger.onNext(())
                 }
             )
             .disposed(by: disposeBag)
@@ -125,6 +131,12 @@ final class FeaturedViewController: UIViewController {
                     // MEMO: データ表示用のUICollectionViewとエラー表示用のViewの表示・非表示を決定する
                     self.featuredCollectionView.isHidden = true
                     self.featuredErrorView.isHidden = false
+                },
+                onCompleted: { [weak self] in
+                    guard let self = self else { return }
+
+                    // MEMO: 表示内容の反映完了時にrequestStatusを元に戻す
+                    self.viewModel.inputs.undoAPIRequestStateTrigger.onNext(())
                 }
             )
             .disposed(by: disposeBag)
