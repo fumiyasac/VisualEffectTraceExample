@@ -79,6 +79,7 @@
 		DE5194712894F64B00D3F276 /* StoryViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5194702894F64A00D3F276 /* StoryViewModelSpec.swift */; };
 		DE519473289574ED00D3F276 /* FeaturedArticleViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE519472289574ED00D3F276 /* FeaturedArticleViewModelSpec.swift */; };
 		DE5194752895765E00D3F276 /* EventIntroductionViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5194742895765E00D3F276 /* EventIntroductionViewModelSpec.swift */; };
+		DE5194772895795900D3F276 /* AnnouncementViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5194762895795900D3F276 /* AnnouncementViewModelSpec.swift */; };
 		DE634C3A24361150004CA920 /* CurrentApplicationUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE634C3924361150004CA920 /* CurrentApplicationUserRepository.swift */; };
 		DE634C4A2438ED41004CA920 /* SigninViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE634C492438ED41004CA920 /* SigninViewModel.swift */; };
 		DE67D97F2432370900EB2D61 /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE67D97D2432370900EB2D61 /* Signup.storyboard */; };
@@ -291,6 +292,7 @@
 		DE5194702894F64A00D3F276 /* StoryViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryViewModelSpec.swift; sourceTree = "<group>"; };
 		DE519472289574ED00D3F276 /* FeaturedArticleViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedArticleViewModelSpec.swift; sourceTree = "<group>"; };
 		DE5194742895765E00D3F276 /* EventIntroductionViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventIntroductionViewModelSpec.swift; sourceTree = "<group>"; };
+		DE5194762895795900D3F276 /* AnnouncementViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementViewModelSpec.swift; sourceTree = "<group>"; };
 		DE634C3924361150004CA920 /* CurrentApplicationUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentApplicationUserRepository.swift; sourceTree = "<group>"; };
 		DE634C492438ED41004CA920 /* SigninViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModel.swift; sourceTree = "<group>"; };
 		DE67D97E2432370900EB2D61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Signup.storyboard; sourceTree = "<group>"; };
@@ -1254,6 +1256,7 @@
 		DEE2857628563226004CCCB9 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				DE5194762895795900D3F276 /* AnnouncementViewModelSpec.swift */,
 				DE23F05F287981F30070729F /* TutorialViewModelSpec.swift */,
 				DE5194462883D2E000D3F276 /* MainViewModelSpec.swift */,
 				DE5194502883FC0C00D3F276 /* SigninViewModelSpec.swift */,
@@ -1686,6 +1689,7 @@
 				DE5194752895765E00D3F276 /* EventIntroductionViewModelSpec.swift in Sources */,
 				DE51946D2885A6CA00D3F276 /* RequestStoryRepositorySpec.swift in Sources */,
 				DE5194512883FC0C00D3F276 /* SigninViewModelSpec.swift in Sources */,
+				DE5194772895795900D3F276 /* AnnouncementViewModelSpec.swift in Sources */,
 				DE81E6FA285F520700208602 /* TutorialDataRepositorySpec.swift in Sources */,
 				DE519453288585A400D3F276 /* RequestRecentAnnouncementRepositorySpec.swift in Sources */,
 				DE23F060287981F40070729F /* TutorialViewModelSpec.swift in Sources */,
