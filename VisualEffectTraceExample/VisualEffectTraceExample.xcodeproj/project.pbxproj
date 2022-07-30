@@ -1259,14 +1259,14 @@
 			isa = PBXGroup;
 			children = (
 				DE5194762895795900D3F276 /* AnnouncementViewModelSpec.swift */,
-				DE23F05F287981F30070729F /* TutorialViewModelSpec.swift */,
+				DE5194742895765E00D3F276 /* EventIntroductionViewModelSpec.swift */,
+				DE519472289574ED00D3F276 /* FeaturedArticleViewModelSpec.swift */,
+				DE51947828957A2E00D3F276 /* ItemViewModelSpec.swift */,
 				DE5194462883D2E000D3F276 /* MainViewModelSpec.swift */,
 				DE5194502883FC0C00D3F276 /* SigninViewModelSpec.swift */,
 				DE51944C2883DF4700D3F276 /* SignupViewModelSpec.swift */,
-				DE519472289574ED00D3F276 /* FeaturedArticleViewModelSpec.swift */,
 				DE5194702894F64A00D3F276 /* StoryViewModelSpec.swift */,
-				DE5194742895765E00D3F276 /* EventIntroductionViewModelSpec.swift */,
-				DE51947828957A2E00D3F276 /* ItemViewModelSpec.swift */,
+				DE23F05F287981F30070729F /* TutorialViewModelSpec.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
