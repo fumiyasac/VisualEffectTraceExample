@@ -80,6 +80,7 @@
 		DE519473289574ED00D3F276 /* FeaturedArticleViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE519472289574ED00D3F276 /* FeaturedArticleViewModelSpec.swift */; };
 		DE5194752895765E00D3F276 /* EventIntroductionViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5194742895765E00D3F276 /* EventIntroductionViewModelSpec.swift */; };
 		DE5194772895795900D3F276 /* AnnouncementViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE5194762895795900D3F276 /* AnnouncementViewModelSpec.swift */; };
+		DE51947928957A2E00D3F276 /* ItemViewModelSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE51947828957A2E00D3F276 /* ItemViewModelSpec.swift */; };
 		DE634C3A24361150004CA920 /* CurrentApplicationUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE634C3924361150004CA920 /* CurrentApplicationUserRepository.swift */; };
 		DE634C4A2438ED41004CA920 /* SigninViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE634C492438ED41004CA920 /* SigninViewModel.swift */; };
 		DE67D97F2432370900EB2D61 /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE67D97D2432370900EB2D61 /* Signup.storyboard */; };
@@ -293,6 +294,7 @@
 		DE519472289574ED00D3F276 /* FeaturedArticleViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedArticleViewModelSpec.swift; sourceTree = "<group>"; };
 		DE5194742895765E00D3F276 /* EventIntroductionViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventIntroductionViewModelSpec.swift; sourceTree = "<group>"; };
 		DE5194762895795900D3F276 /* AnnouncementViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnouncementViewModelSpec.swift; sourceTree = "<group>"; };
+		DE51947828957A2E00D3F276 /* ItemViewModelSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewModelSpec.swift; sourceTree = "<group>"; };
 		DE634C3924361150004CA920 /* CurrentApplicationUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentApplicationUserRepository.swift; sourceTree = "<group>"; };
 		DE634C492438ED41004CA920 /* SigninViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModel.swift; sourceTree = "<group>"; };
 		DE67D97E2432370900EB2D61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Signup.storyboard; sourceTree = "<group>"; };
@@ -1264,6 +1266,7 @@
 				DE519472289574ED00D3F276 /* FeaturedArticleViewModelSpec.swift */,
 				DE5194702894F64A00D3F276 /* StoryViewModelSpec.swift */,
 				DE5194742895765E00D3F276 /* EventIntroductionViewModelSpec.swift */,
+				DE51947828957A2E00D3F276 /* ItemViewModelSpec.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1700,6 +1703,7 @@
 				DE51946B28859C5700D3F276 /* RequestFeaturedArticleRepositorySpec.swift in Sources */,
 				DE5194712894F64B00D3F276 /* StoryViewModelSpec.swift in Sources */,
 				DEE2857A2856397D004CCCB9 /* RequestAnnouncementDataRepositorySpec.swift in Sources */,
+				DE51947928957A2E00D3F276 /* ItemViewModelSpec.swift in Sources */,
 				DE51944F2883F2A400D3F276 /* RequestSigninRepositorySpec.swift in Sources */,
 				DE5194472883D2E000D3F276 /* MainViewModelSpec.swift in Sources */,
 				DE51946F2885AAFC00D3F276 /* RequestTopBannerDataRepositorySpec.swift in Sources */,
