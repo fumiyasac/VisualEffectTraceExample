@@ -75,11 +75,6 @@ final class StoryViewModelSpec: QuickSpec {
                         protocolName: StoryUseCase.self
                     )
                 }
-                afterEach {
-                    testingDependency.removeIndividualMock(
-                        protocolName: StoryUseCase.self
-                    )
-                }
                 it("viewModel.outputs.storyItemsが取得データが空配列＆viewModel.outputs.requestStatusがAPIRequestState.errorとなること") {
                     let target = StoryViewModel()
                     target.inputs.initialFetchTrigger.onNext(())
