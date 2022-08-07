@@ -17,6 +17,9 @@ protocol TopBannerViewModelInputs {
 
     // PullToRefreshでのデータ更新をViewModelへ伝える
     var pullToRefreshTrigger: PublishSubject<Void> { get }
+
+    // APIRequestStateを元に戻す処理の実行をViewModelへ伝える
+    var undoAPIRequestStateTrigger: PublishSubject<Void> { get }
 }
 
 protocol TopBannerViewModelOutputs {
@@ -43,6 +46,8 @@ final class TopBannerViewModel: TopBannerViewModelInputs, TopBannerViewModelOutp
     let initialFetchTrigger: PublishSubject<Void> = PublishSubject<Void>()
 
     let pullToRefreshTrigger: PublishSubject<Void> = PublishSubject<Void>()
+
+    let undoAPIRequestStateTrigger: PublishSubject<Void> = PublishSubject<Void>()
 
     // MARK: - Properties (for TopBannerViewModelOutputs)
 
@@ -73,7 +78,7 @@ final class TopBannerViewModel: TopBannerViewModelInputs, TopBannerViewModelOutp
         // ViewModel側の処理実行トリガーと連結させる
         initialFetchTrigger
             .subscribe(
-                onNext: { [weak self] signinPatameters in
+                onNext: { [weak self] _ in
                     guard let self = self else { return }
                     self.executeTopBannerDataRequest()
                 }
@@ -81,9 +86,18 @@ final class TopBannerViewModel: TopBannerViewModelInputs, TopBannerViewModelOutp
             .disposed(by: disposeBag)
         pullToRefreshTrigger
             .subscribe(
-                onNext: { [weak self] signinPatameters in
+                onNext: { [weak self] _ in
                     guard let self = self else { return }
+                    self._topBannerItems.accept([])
                     self.executeTopBannerDataRequest()
+                }
+            )
+            .disposed(by: disposeBag)
+        undoAPIRequestStateTrigger
+            .subscribe(
+                onNext: { [weak self] in
+                    guard let self = self else { return }
+                    self._requestStatus.accept(.none)
                 }
             )
             .disposed(by: disposeBag)
