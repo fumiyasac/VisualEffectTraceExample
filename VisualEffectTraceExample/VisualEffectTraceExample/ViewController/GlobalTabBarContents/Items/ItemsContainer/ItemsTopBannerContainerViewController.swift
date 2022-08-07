@@ -37,11 +37,6 @@ final class ItemsTopBannerContainerViewController: UIViewController {
     // MEMO: トップバナー表示内容を取得するViewModel
     @Dependencies.Inject(Dependencies.Name(rawValue: "TopBannerViewModelType")) private var viewModel: TopBannerViewModelType
 
-    // MEMO: トップバナーを時限式で動かすために必要な値
-    // トップバナー表示におけるCarousel表現用のタイマー用のトリガー
-    private let carouselIntervalTrigger: Observable<Int> = Observable.interval(.milliseconds(5000), scheduler: MainScheduler.instance)
-    // 現在のスクロール実行状態
-    private let bannerScrolling: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
     // 現在選択されているインデックス値
     private let currentIndex: BehaviorRelay<Int> = BehaviorRelay<Int>(value: 0)
 
@@ -91,6 +86,9 @@ final class ItemsTopBannerContainerViewController: UIViewController {
         // PageControlのデザイン調整
         topBannerPageControl.currentPageIndicatorTintColor = UIColor.systemYellow
         topBannerPageControl.pageIndicatorTintColor = UIColor.lightGray
+
+        // PageControlのデザイン調整
+        topBannerPageControl.isUserInteractionEnabled = false
     }
     
     private func setupPreviousAndNextButtons() {
@@ -144,6 +142,12 @@ final class ItemsTopBannerContainerViewController: UIViewController {
                     let totalCount = topBanners.count
                     self.topBannerPageControl.numberOfPages = totalCount
                     self.changeArrowButtonsState(at: 0, totalCount: totalCount)
+                },
+                onCompleted: { [weak self] in
+                    guard let self = self else { return }
+
+                    // MEMO: 表示内容の反映完了時にrequestStatusを元に戻す
+                    self.viewModel.inputs.undoAPIRequestStateTrigger.onNext(())
                 }
             )
             .disposed(by: disposeBag)
@@ -161,6 +165,12 @@ final class ItemsTopBannerContainerViewController: UIViewController {
                     // MEMO: データ表示用のUICollectionViewとエラー表示用のViewの表示・非表示を決定する
                     self.topBannerCollectionView.isHidden = true
                     self.topBannerErrorView.isHidden = false
+                },
+                onCompleted: { [weak self] in
+                    guard let self = self else { return }
+
+                    // MEMO: 表示内容の反映完了時にrequestStatusを元に戻す
+                    self.viewModel.inputs.undoAPIRequestStateTrigger.onNext(())
                 }
             )
             .disposed(by: disposeBag)
@@ -179,58 +189,6 @@ final class ItemsTopBannerContainerViewController: UIViewController {
         // RxSwiftを利用してUICollectionViewDelegateを適用する
         topBannerCollectionView.rx
             .setDelegate(self)
-            .disposed(by: disposeBag)
-
-        // RxSwiftを利用してUIScrollViewDelegateに相当する処理を適用する
-        // バナーデータのタイマーに伴ったカルーセル表示処理
-        topBannerCollectionView.rx.didScroll
-            .asObservable()
-            .observe(on: MainScheduler.instance)
-            .subscribe(
-                onNext: { [weak self] _ in
-                    guard let self = self else { return }
-                    // MEMO: Scroll実行中はタイマーをリセットする → バナーのスクロール状態変数をtrue
-                    let _ = self.carouselIntervalTrigger.startWith(0)
-                    self.bannerScrolling.accept(true)
-                }
-            )
-            .disposed(by: disposeBag)
-        topBannerCollectionView.rx.didEndDecelerating
-            .asObservable()
-            .observe(on: MainScheduler.instance)
-            .subscribe(
-                onNext: { [weak self] _ in
-                    guard let self = self else { return }
-                    // MEMO: ユーザーのスライド動作終了時に発火する → バナーのスクロール状態変数をfalse
-                    self.bannerScrolling.accept(false)
-                }
-            )
-            .disposed(by: disposeBag)
-        topBannerCollectionView.rx.didEndScrollingAnimation
-            .asObservable()
-            .observe(on: MainScheduler.instance)
-            .subscribe(
-                onNext: { [weak self] _ in
-                    guard let self = self else { return }
-                    // MEMO: タイマーと連動したスクロール動作終了時に発火する → バナーのスクロール状態変数をfalse
-                    self.bannerScrolling.accept(false)
-                }
-            )
-            .disposed(by: disposeBag)
-
-        // RxSwiftを利用してバナーのスクロール状態に応じた表示コントロール処理を適用する
-        bannerScrolling
-            // MEMO: バナーのスクロール状態変数をObsevableへ変換する
-            .asObservable()
-            // MEMO: バナーのスクロール状態変数で最新のものがfalseの際に、自動カルーセル回転アニメーションの秒間設定のObservableへ変換する
-            .flatMapLatest { [unowned self] result in result ? .empty() : self.carouselIntervalTrigger }
-            // MEMO: バナーの切り替え処理を実行する
-            .subscribe(
-                onNext: { [weak self] _ in
-                    guard let self = self else { return }
-                    self.displayPreviousOrNextTopBannerCell(shouldNext: true)
-                }
-            )
             .disposed(by: disposeBag)
 
         // RxSwiftを利用して前へボタン＆次へボタン押下時の表示位置の変更をする
@@ -259,6 +217,17 @@ final class ItemsTopBannerContainerViewController: UIViewController {
         currentIndex
             .asObservable()
             .bind(to: topBannerPageControl.rx.currentPage)
+            .disposed(by: disposeBag)
+
+        // ItemsViewControllerで送信されたNotificationイベントをトリガーとしたPullToRefreshを適用する
+        NotificationCenter.default.rx.notification(Notification.Name("ItemsTopBannerPullToRefresh"), object: nil)
+            .subscribe(
+                onNext: { [weak self] _ in
+                    guard let self = self else { return }
+                    self.viewModel.inputs.pullToRefreshTrigger.onNext(())
+                    self.currentIndex.accept(0)
+                }
+            )
             .disposed(by: disposeBag)
     }
 
