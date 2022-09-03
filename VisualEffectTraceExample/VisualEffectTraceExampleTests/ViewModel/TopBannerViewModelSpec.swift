@@ -145,9 +145,26 @@ final class TopBannerViewModelSpec: QuickSpec {
 
         // MEMO: APIRequestStateを元に戻す場合
         describe("#undoAPIRequestStateTrigger") {
-            context("APIリクエスト結果ダイアログ表示後に画面状態を元に戻す場合") {
+            context("エラー画面表示からリトライ処理を実施する準備としてAPIRequestStateを.errorから.noneに変更する場合") {
+                beforeEach {
+                    testingDependency.injectIndividualMock(
+                        mockInstance: topBannerUseCase,
+                        protocolName: TopBannerUseCase.self
+                    )
+                    topBannerUseCase.given(
+                        .execute(
+                            willReturn: Single.error(CommonError.invalidResponse("データの取得に失敗しました。"))
+                        )
+                    )
+                }
+                afterEach {
+                    testingDependency.removeIndividualMock(
+                        protocolName: TopBannerUseCase.self
+                    )
+                }
                 it("viewModel.outputs.requestStatusがAPIRequestState.noneとなること") {
                     let target = TopBannerViewModel()
+                    target.inputs.initialFetchTrigger.onNext(())
                     target.inputs.undoAPIRequestStateTrigger.onNext(())
                     expect(try! target.outputs.requestStatus.toBlocking().first()).to(equal(APIRequestState.none))
                 }

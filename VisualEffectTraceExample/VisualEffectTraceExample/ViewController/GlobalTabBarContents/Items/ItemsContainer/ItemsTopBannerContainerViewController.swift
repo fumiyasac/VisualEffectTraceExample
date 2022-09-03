@@ -142,12 +142,6 @@ final class ItemsTopBannerContainerViewController: UIViewController {
                     let totalCount = topBanners.count
                     self.topBannerPageControl.numberOfPages = totalCount
                     self.changeArrowButtonsState(at: 0, totalCount: totalCount)
-                },
-                onCompleted: { [weak self] in
-                    guard let self = self else { return }
-
-                    // MEMO: 表示内容の反映完了時にrequestStatusを元に戻す
-                    self.viewModel.inputs.undoAPIRequestStateTrigger.onNext(())
                 }
             )
             .disposed(by: disposeBag)
@@ -165,12 +159,6 @@ final class ItemsTopBannerContainerViewController: UIViewController {
                     // MEMO: データ表示用のUICollectionViewとエラー表示用のViewの表示・非表示を決定する
                     self.topBannerCollectionView.isHidden = true
                     self.topBannerErrorView.isHidden = false
-                },
-                onCompleted: { [weak self] in
-                    guard let self = self else { return }
-
-                    // MEMO: 表示内容の反映完了時にrequestStatusを元に戻す
-                    self.viewModel.inputs.undoAPIRequestStateTrigger.onNext(())
                 }
             )
             .disposed(by: disposeBag)
@@ -303,6 +291,7 @@ extension ItemsTopBannerContainerViewController: ItemsContainerErrorViewDelegate
     func retryRequestButtonTapped() {
 
         // ViewModelから表示内容を取得する
+        viewModel.inputs.undoAPIRequestStateTrigger.onNext(())
         viewModel.inputs.initialFetchTrigger.onNext(())
     }
 }
