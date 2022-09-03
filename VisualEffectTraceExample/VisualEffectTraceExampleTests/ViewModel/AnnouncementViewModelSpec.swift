@@ -25,7 +25,7 @@ final class AnnouncementViewModelSpec: QuickSpec {
         // MEMO: Testで動かす想定のDIコンテナのインスタンスを生成する
         let testingDependency = DependenciesDefinition()
 
-        let announcementUseCase = AnnouncementUsecaseMock()
+        let announcementUseCase = AnnouncementUseCaseMock()
 
         // MARK: - initialFetchTriggerを実行した際のテスト
 
@@ -38,7 +38,7 @@ final class AnnouncementViewModelSpec: QuickSpec {
                 beforeEach {
                     testingDependency.injectIndividualMock(
                         mockInstance: announcementUseCase,
-                        protocolName: AnnouncementUsecase.self
+                        protocolName: AnnouncementUseCase.self
                     )
                     announcementUseCase.given(
                         .execute(
@@ -48,7 +48,7 @@ final class AnnouncementViewModelSpec: QuickSpec {
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: AnnouncementUsecase.self
+                        protocolName: AnnouncementUseCase.self
                     )
                 }
                 it("viewModel.outputs.announcementItemsが取得データと一致する＆viewModel.outputs.requestStatusがAPIRequestState.successとなること") {
@@ -62,7 +62,7 @@ final class AnnouncementViewModelSpec: QuickSpec {
                 beforeEach {
                     testingDependency.injectIndividualMock(
                         mockInstance: announcementUseCase,
-                        protocolName: AnnouncementUsecase.self
+                        protocolName: AnnouncementUseCase.self
                     )
                     announcementUseCase.given(
                         .execute(
@@ -72,7 +72,7 @@ final class AnnouncementViewModelSpec: QuickSpec {
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: AnnouncementUsecase.self
+                        protocolName: AnnouncementUseCase.self
                     )
                 }
                 it("viewModel.outputs.announcementItemsが取得データが空配列＆viewModel.outputs.requestStatusがAPIRequestState.errorとなること") {
@@ -95,7 +95,7 @@ final class AnnouncementViewModelSpec: QuickSpec {
                 beforeEach {
                     testingDependency.injectIndividualMock(
                         mockInstance: announcementUseCase,
-                        protocolName: AnnouncementUsecase.self
+                        protocolName: AnnouncementUseCase.self
                     )
                     announcementUseCase.given(
                         .execute(
@@ -105,7 +105,7 @@ final class AnnouncementViewModelSpec: QuickSpec {
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: AnnouncementUsecase.self
+                        protocolName: AnnouncementUseCase.self
                     )
                 }
                 it("viewModel.outputs.announcementItemsが取得データと一致する＆viewModel.outputs.requestStatusがAPIRequestState.successとなること") {
@@ -119,7 +119,7 @@ final class AnnouncementViewModelSpec: QuickSpec {
                 beforeEach {
                     testingDependency.injectIndividualMock(
                         mockInstance: announcementUseCase,
-                        protocolName: AnnouncementUsecase.self
+                        protocolName: AnnouncementUseCase.self
                     )
                     announcementUseCase.given(
                         .execute(
@@ -129,7 +129,7 @@ final class AnnouncementViewModelSpec: QuickSpec {
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: AnnouncementUsecase.self
+                        protocolName: AnnouncementUseCase.self
                     )
                 }
                 it("viewModel.outputs.announcementItemsが取得データが空配列＆viewModel.outputs.requestStatusがAPIRequestState.errorとなること") {
@@ -149,7 +149,7 @@ final class AnnouncementViewModelSpec: QuickSpec {
                 beforeEach {
                     testingDependency.injectIndividualMock(
                         mockInstance: announcementUseCase,
-                        protocolName: AnnouncementUsecase.self
+                        protocolName: AnnouncementUseCase.self
                     )
                     announcementUseCase.given(
                         .execute(
@@ -159,7 +159,7 @@ final class AnnouncementViewModelSpec: QuickSpec {
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: AnnouncementUsecase.self
+                        protocolName: AnnouncementUseCase.self
                     )
                 }
                 it("viewModel.outputs.requestStatusがAPIRequestState.noneとなること") {

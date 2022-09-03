@@ -118,7 +118,7 @@ final class DependenciesDefinition {
             ),
             (
                 implInstance: RequestAnnouncementDataUseCase(),
-                protocolName: AnnouncementUsecase.self
+                protocolName: AnnouncementUseCase.self
             ),
             (
                 implInstance: RequestEventIntroductionDataUseCase(),
@@ -138,11 +138,11 @@ final class DependenciesDefinition {
             ),
             (
                 implInstance: RequestSigninUseCase(),
-                protocolName: SigninUsecase.self
+                protocolName: SigninUseCase.self
             ),
             (
                 implInstance: RequestSignupUseCase(),
-                protocolName: SignupUsecase.self
+                protocolName: SignupUseCase.self
             ),
             (
                 implInstance: RequestStoryDataUseCase(),

@@ -81,7 +81,7 @@ final class SigninViewModel: SigninViewModelInputs, SigninViewModelOutputs, Sign
 
     // MEMO: このViewModelで利用するUseCase(Domain Model)
     @Dependencies.Inject(Dependencies.Name(rawValue: "ApplicationUserStatusUseCase")) private var applicationUserStatusUseCase: ApplicationUserStatusUseCase
-    @Dependencies.Inject(Dependencies.Name(rawValue: "SigninUsecase")) private var signinUsecase: SigninUsecase
+    @Dependencies.Inject(Dependencies.Name(rawValue: "SigninUseCase")) private var signinUseCase: SigninUseCase
 
     // MARK: - Initializer
 
@@ -126,7 +126,7 @@ final class SigninViewModel: SigninViewModelInputs, SigninViewModelOutputs, Sign
 
     private func executeSigninRequest(mailAddress: String, rawPassword: String) {
         _requestStatus.accept(.requesting)
-        signinUsecase.execute(mailAddress: mailAddress, rawPassword: rawPassword)
+        signinUseCase.execute(mailAddress: mailAddress, rawPassword: rawPassword)
             .subscribe(
                 onSuccess: { [weak self] data in
                     guard let self = self else { return }

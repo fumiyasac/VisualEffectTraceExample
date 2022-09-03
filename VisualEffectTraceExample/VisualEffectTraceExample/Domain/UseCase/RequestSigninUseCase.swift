@@ -12,19 +12,19 @@ import RxSwift
 // MARK: - Protocol
 
 //sourcery: AutoMockable
-protocol SigninUsecase {
+protocol SigninUseCase {
 
     // サインイン処理を実行する
     func execute(mailAddress: String, rawPassword: String) -> Single<SigninSuccessResponse>
 }
 
-final class RequestSigninUseCase: SigninUsecase {
+final class RequestSigninUseCase: SigninUseCase {
 
     // MARK: - Properties
 
     @Dependencies.Inject(Dependencies.Name(rawValue: "SigninRepository")) private var signinRepository: SigninRepository
 
-    // MARK: - SigninUsecase
+    // MARK: - SigninUseCase
 
     func execute(mailAddress: String, rawPassword: String) -> Single<SigninSuccessResponse> {
         return signinRepository.requestSignin(mailAddress: mailAddress, rawPassword: rawPassword)

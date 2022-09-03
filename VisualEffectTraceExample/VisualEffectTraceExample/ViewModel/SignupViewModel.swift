@@ -93,7 +93,7 @@ final class SignupViewModel: SignupViewModelInputs, SignupViewModelOutputs, Sign
     private let _requestStatus: BehaviorRelay<APIRequestState> = BehaviorRelay<APIRequestState>(value: .none)
 
     // MEMO: このViewModelで利用するUseCase(Domain Model)
-    @Dependencies.Inject(Dependencies.Name(rawValue: "SignupUsecase")) private var signupUseCase: SignupUsecase
+    @Dependencies.Inject(Dependencies.Name(rawValue: "SignupUseCase")) private var signupUseCase: SignupUseCase
 
     // MARK: - Initializer
 

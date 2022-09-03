@@ -12,19 +12,19 @@ import RxSwift
 // MARK: - Protocol
 
 //sourcery: AutoMockable
-protocol AnnouncementUsecase {
+protocol AnnouncementUseCase {
 
     // お知らせ一覧取得処理を実行する
     func execute() -> Single<AnnouncementListAPIResponse>
 }
 
-final class RequestAnnouncementDataUseCase: AnnouncementUsecase {
+final class RequestAnnouncementDataUseCase: AnnouncementUseCase {
 
     // MARK: - Properties
 
     @Dependencies.Inject(Dependencies.Name(rawValue: "AnnouncementRepository")) private var announcementRepository: AnnouncementRepository
 
-    // MARK: - AnnouncementUsecase
+    // MARK: - AnnouncementUseCase
 
     func execute() -> Single<AnnouncementListAPIResponse> {
         return announcementRepository.requestAnnouncementDataList()

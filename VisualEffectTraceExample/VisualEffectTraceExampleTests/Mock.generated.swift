@@ -672,9 +672,9 @@ open class AnnouncementRepositoryMock: AnnouncementRepository, Mock {
     }
 }
 
-// MARK: - AnnouncementUsecase
+// MARK: - AnnouncementUseCase
 
-open class AnnouncementUsecaseMock: AnnouncementUsecase, Mock {
+open class AnnouncementUseCaseMock: AnnouncementUseCase, Mock {
     public init(sequencing sequencingPolicy: SequencingPolicy = .lastWrittenResolvedFirst, stubbing stubbingPolicy: StubbingPolicy = .wrap, file: StaticString = #file, line: UInt = #line) {
         SwiftyMockyTestObserver.setup()
         self.sequencingPolicy = sequencingPolicy
@@ -3400,9 +3400,9 @@ open class SigninRepositoryMock: SigninRepository, Mock {
     }
 }
 
-// MARK: - SigninUsecase
+// MARK: - SigninUseCase
 
-open class SigninUsecaseMock: SigninUsecase, Mock {
+open class SigninUseCaseMock: SigninUseCase, Mock {
     public init(sequencing sequencingPolicy: SequencingPolicy = .lastWrittenResolvedFirst, stubbing stubbingPolicy: StubbingPolicy = .wrap, file: StaticString = #file, line: UInt = #line) {
         SwiftyMockyTestObserver.setup()
         self.sequencingPolicy = sequencingPolicy
@@ -3787,9 +3787,9 @@ open class SignupRepositoryMock: SignupRepository, Mock {
     }
 }
 
-// MARK: - SignupUsecase
+// MARK: - SignupUseCase
 
-open class SignupUsecaseMock: SignupUsecase, Mock {
+open class SignupUseCaseMock: SignupUseCase, Mock {
     public init(sequencing sequencingPolicy: SequencingPolicy = .lastWrittenResolvedFirst, stubbing stubbingPolicy: StubbingPolicy = .wrap, file: StaticString = #file, line: UInt = #line) {
         SwiftyMockyTestObserver.setup()
         self.sequencingPolicy = sequencingPolicy

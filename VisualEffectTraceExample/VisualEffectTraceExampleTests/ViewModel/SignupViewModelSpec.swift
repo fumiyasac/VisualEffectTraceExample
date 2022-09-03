@@ -25,7 +25,7 @@ final class SignupViewModelSpec: QuickSpec {
         // MEMO: Testで動かす想定のDIコンテナのインスタンスを生成する
         let testingDependency = DependenciesDefinition()
 
-        let signupUseCase = SignupUsecaseMock()
+        let signupUseCase = SignupUseCaseMock()
 
         // MARK: - inputUserNameTriggerを実行した際のテスト
 
@@ -79,7 +79,7 @@ final class SignupViewModelSpec: QuickSpec {
                 beforeEach {
                     testingDependency.injectIndividualMock(
                         mockInstance: signupUseCase,
-                        protocolName: SignupUsecase.self
+                        protocolName: SignupUseCase.self
                     )
                     signupUseCase.given(
                         .execute(
@@ -92,7 +92,7 @@ final class SignupViewModelSpec: QuickSpec {
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: SignupUsecase.self
+                        protocolName: SignupUseCase.self
                     )
                 }
                 it("viewModel.outputs.requestStatusがAPIRequestState.successとなること") {
@@ -111,7 +111,7 @@ final class SignupViewModelSpec: QuickSpec {
                 beforeEach {
                     testingDependency.injectIndividualMock(
                         mockInstance: signupUseCase,
-                        protocolName: SignupUsecase.self
+                        protocolName: SignupUseCase.self
                     )
                     signupUseCase.given(
                         .execute(
@@ -124,7 +124,7 @@ final class SignupViewModelSpec: QuickSpec {
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: SignupUsecase.self
+                        protocolName: SignupUseCase.self
                     )
                 }
                 it("viewModel.outputs.requestStatusがAPIRequestState.errorとなること") {

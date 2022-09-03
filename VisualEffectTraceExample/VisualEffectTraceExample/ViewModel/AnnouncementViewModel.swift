@@ -69,7 +69,7 @@ final class AnnouncementViewModel: AnnouncementViewModelInputs, AnnouncementView
     private let _requestStatus: BehaviorRelay<APIRequestState> = BehaviorRelay<APIRequestState>(value: .none)
 
     // MEMO: このViewModelで利用するUseCase(Domain Model)
-    @Dependencies.Inject(Dependencies.Name(rawValue: "AnnouncementUsecase")) private var announcementUsecase: AnnouncementUsecase
+    @Dependencies.Inject(Dependencies.Name(rawValue: "AnnouncementUseCase")) private var announcementUseCase: AnnouncementUseCase
 
     // MARK: - Initializer
 
@@ -106,7 +106,7 @@ final class AnnouncementViewModel: AnnouncementViewModelInputs, AnnouncementView
 
     private func executeAnnouncementDataRequest() {
         _requestStatus.accept(.requesting)
-        announcementUsecase.execute()
+        announcementUseCase.execute()
             .subscribe(
                 onSuccess: { [weak self] data in
                     guard let self = self else { return }
