@@ -17,6 +17,9 @@ protocol AnnouncementViewModelInputs {
 
     // PullToRefreshでのデータ更新をViewModelへ伝える
     var pullToRefreshTrigger: PublishSubject<Void> { get }
+
+    // APIRequestStateを元に戻す処理の実行をViewModelへ伝える
+    var undoAPIRequestStateTrigger: PublishSubject<Void> { get }
 }
 
 protocol AnnouncementViewModelOutputs {
@@ -43,6 +46,8 @@ final class AnnouncementViewModel: AnnouncementViewModelInputs, AnnouncementView
     let initialFetchTrigger: PublishSubject<Void> = PublishSubject<Void>()
 
     let pullToRefreshTrigger: PublishSubject<Void> = PublishSubject<Void>()
+
+    let undoAPIRequestStateTrigger: PublishSubject<Void> = PublishSubject<Void>()
 
     // MARK: - Properties (for AnnouncementViewModelOutputs)
 
@@ -84,6 +89,14 @@ final class AnnouncementViewModel: AnnouncementViewModelInputs, AnnouncementView
                 onNext: { [weak self] _ in
                     guard let self = self else { return }
                     self.executeAnnouncementDataRequest()
+                }
+            )
+            .disposed(by: disposeBag)
+        undoAPIRequestStateTrigger
+            .subscribe(
+                onNext: { [weak self] in
+                    guard let self = self else { return }
+                    self._requestStatus.accept(.none)
                 }
             )
             .disposed(by: disposeBag)

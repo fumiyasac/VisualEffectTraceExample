@@ -35,8 +35,7 @@ final class RequestAnnouncementDataRepositorySpec: QuickSpec {
 
                 // MEMO: API通信処理成功時の想定
                 context("APIから正常にデータが返却される場合") {
-                    let result = getDataList()
-                    let announcementListAPIResponse = AnnouncementListAPIResponse(result: result)
+                    let announcementListAPIResponse = getAnnouncementListAPIResponse()
 
                     // Mockに差し替えたメソッドが返却する値を定める
                     beforeEach {
@@ -67,7 +66,7 @@ final class RequestAnnouncementDataRepositorySpec: QuickSpec {
         }
     }
 
-    private func getDataList() -> Array<AnnouncementEntity> {
+    private func getAnnouncementListAPIResponse() -> AnnouncementListAPIResponse {
 
         // JSONファイルから表示用のデータを取得する
         guard let path = Bundle(for: type(of: self)).path(forResource: "announcement_data", ofType: "json") else {
@@ -76,9 +75,11 @@ final class RequestAnnouncementDataRepositorySpec: QuickSpec {
         guard let data = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
             fatalError()
         }
-        guard let announcementDataList = try? JSONDecoder().decode(Array<AnnouncementEntity>.self, from: data) else {
+        guard let result = try? JSONDecoder().decode(Array<AnnouncementEntity>.self, from: data) else {
             fatalError()
         }
-        return announcementDataList
+        // MEMO: このAPIのレスポンスだけ少し異なるので注意が必要
+        let announcementListAPIResponse = AnnouncementListAPIResponse(result: result)
+        return announcementListAPIResponse
     }
 }

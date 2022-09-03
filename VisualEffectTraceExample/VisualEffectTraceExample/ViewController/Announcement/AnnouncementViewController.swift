@@ -73,15 +73,30 @@ final class AnnouncementViewController: UIViewController {
             .disposed(by: disposeBag)
         viewModel.outputs.requestStatus
             .observe(on: MainScheduler.instance)
-            .subscribe(
+            .do(
                 onNext: { [weak self] requestStatus in
                     guard let self = self else { return }
-
                     // MEMO: RefreshControlのハンドリングを実施する
                     if requestStatus == .requesting {
                         self.announcementRefrashControl.beginRefreshing()
                     } else {
                         self.announcementRefrashControl.endRefreshing()
+                    }
+                }
+            )
+            .subscribe(
+                onNext: { [weak self] requestStatus in
+                    guard let self = self else { return }
+
+                    // MEMO: RefreshControlのハンドリングを実施する
+                    if requestStatus == .error {
+                        let title = "お知らせの取得に失敗しました"
+                        let message = "通信環境やWi-Fiの状況をご確認下さい。\n※サンプルなので実際の動作は行われません。"
+                        self.showAlertWith(title: title, message: message, completionHandler: {
+
+                            // MEMO: 表示内容の反映完了時にrequestStatusを元に戻す
+                            self.viewModel.inputs.undoAPIRequestStateTrigger.onNext(())
+                        })
                     }
                 }
             )
@@ -139,6 +154,15 @@ final class AnnouncementViewController: UIViewController {
             let topOffset = max(min(0, -announcementTableView.contentOffset.y), -headerHeight)
             announcementTableView.contentInset = UIEdgeInsets(top: topOffset, left: 0, bottom: 0, right: 0)
         }
+    }
+
+    private func showAlertWith(title: String, message: String, completionHandler: (() -> ())? = nil) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: { _ in
+            completionHandler?()
+        })
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
