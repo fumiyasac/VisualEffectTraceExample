@@ -79,6 +79,14 @@ final class FeaturedArticleViewModel: FeaturedArticleViewModelInputs, FeaturedAr
                 }
             )
             .disposed(by: disposeBag)
+        undoAPIRequestStateTrigger
+            .subscribe(
+                onNext: { [weak self] in
+                    guard let self = self else { return }
+                    self._requestStatus.accept(.none)
+                }
+            )
+            .disposed(by: disposeBag)
     }
 
     // MARK: - Private Function
