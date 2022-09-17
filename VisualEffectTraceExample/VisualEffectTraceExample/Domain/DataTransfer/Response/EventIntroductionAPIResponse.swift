@@ -9,7 +9,7 @@
 import Foundation
 
 // MEMO: イベント概要一覧表示用のAPIレスポンス定義
-struct EventIntroductionAPIResponse: Decodable {
+struct EventIntroductionAPIResponse: Decodable, Equatable {
 
     let result: Array<EventIntroductionEntity>
     let currentPage: Int
@@ -31,5 +31,13 @@ struct EventIntroductionAPIResponse: Decodable {
         self.result = try container.decode(Array<EventIntroductionEntity>.self, forKey: .result)
         self.currentPage = try container.decode(Int.self, forKey: .currentPage)
         self.hasNextPage = try container.decode(Bool.self, forKey: .hasNextPage)
+    }
+    
+    // MARK: - Equatable
+
+    // MEMO: Equatableプロトコルに適合させるための処理
+
+    static func == (lhs: EventIntroductionAPIResponse, rhs: EventIntroductionAPIResponse) -> Bool {
+        return lhs.result == rhs.result
     }
 }
