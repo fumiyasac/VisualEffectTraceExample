@@ -123,6 +123,9 @@ final class ItemsViewModel: ItemsViewModelInputs, ItemsViewModelOutputs, ItemsVi
 
     // MARK: - Private Function
 
+    // MEMO: requestStatusに関しては、.requestingとそれ以外(.successまたは.error)の場合で分ければ良い。
+    // ※この画面に関してはPullToRefreshをして更新できる形である。
+
     private func executeRecentAnnouncementDataRequest() {
         _requestStatus.accept(.requesting)
         recentAnnouncementUseCase.execute()

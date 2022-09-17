@@ -11,6 +11,7 @@ import RxSwift
 
 // MARK: - Protocol
 
+//sourcery: AutoMockable
 protocol ItemRepository {
 
     // 特集コンテンツ一覧用のAPIリクエストを実行する
