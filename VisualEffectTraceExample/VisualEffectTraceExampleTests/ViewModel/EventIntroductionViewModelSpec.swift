@@ -170,12 +170,13 @@ final class EventIntroductionViewModelSpec: QuickSpec {
                         protocolName: EventIntroductionUseCase.self
                     )
                 }
-                it("viewModel.outputs.eventIntroductionItemsが取得データが1ページ分の取得データと一致する＆viewModel.outputs.requestStatusがAPIRequestState.errorとなること") {
+                // MEMO: paginationFetchTriggerを発火させる場合はエラー画面を表示する必要がないので(ignoreError = true)としている。
+                it("viewModel.outputs.eventIntroductionItemsが取得データが1ページ分の取得データと一致する＆viewModel.outputs.requestStatusがAPIRequestState.noneとなること") {
                     let target = EventIntroductionViewModel()
                     target.inputs.initialFetchTrigger.onNext(())
                     target.inputs.paginationFetchTrigger.onNext(())
                     expect(try! target.outputs.eventIntroductionItems.toBlocking().first()).to(equal(eventIntroductionAPIResponse1.result))
-                    expect(try! target.outputs.requestStatus.toBlocking().first()).to(equal(APIRequestState.error))
+                    expect(try! target.outputs.requestStatus.toBlocking().first()).to(equal(APIRequestState.none))
                 }
             }
         }

@@ -166,6 +166,16 @@ final class ItemsEventIntroductionContainerViewController: UIViewController {
                 }
             )
             .disposed(by: disposeBag)
+
+        // ItemsViewControllerで送信されたNotificationイベントをトリガーとしたPullToRefreshを適用する
+        NotificationCenter.default.rx.notification(Notification.Name("EventIntroductionPullToRefresh"), object: nil)
+            .subscribe(
+                onNext: { [weak self] _ in
+                    guard let self = self else { return }
+                    self.viewModel.inputs.pullToRefreshTrigger.onNext(())
+                }
+            )
+            .disposed(by: disposeBag)
     }
 }
 
@@ -201,6 +211,7 @@ extension ItemsEventIntroductionContainerViewController: ItemsContainerErrorView
     func retryRequestButtonTapped() {
 
         // ViewModelから表示内容を取得する
+        viewModel.inputs.undoAPIRequestStateTrigger.onNext(())
         viewModel.inputs.initialFetchTrigger.onNext(())
     }
 }

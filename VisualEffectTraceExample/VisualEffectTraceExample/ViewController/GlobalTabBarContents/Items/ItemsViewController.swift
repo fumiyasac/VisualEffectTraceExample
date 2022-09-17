@@ -279,8 +279,10 @@ final class ItemsViewController: UIViewController {
                 onNext: { [weak self] newItems in
                     guard let self = self else { return }
                     self.viewModel.inputs.pullToRefreshTrigger.onNext(())
-                    // MEMO: PullToRefresh時にItemTopBannerViewModelのリフレッシュ処理を実行する
-                    NotificationCenter.default.post(name: Notification.Name("ItemsTopBannerPullToRefresh"), object: nil, userInfo: nil)
+                    // MEMO: PullToRefresh時にTopBannerViewModelのリフレッシュ処理を実行する
+                    NotificationCenter.default.post(name: Notification.Name("TopBannerPullToRefresh"), object: nil, userInfo: nil)
+                    // MEMO: PullToRefresh時にEventIntroductionViewModelのリフレッシュ処理を実行する
+                    NotificationCenter.default.post(name: Notification.Name("EventIntroductionPullToRefresh"), object: nil, userInfo: nil)
                 }
             )
             .disposed(by: disposeBag)

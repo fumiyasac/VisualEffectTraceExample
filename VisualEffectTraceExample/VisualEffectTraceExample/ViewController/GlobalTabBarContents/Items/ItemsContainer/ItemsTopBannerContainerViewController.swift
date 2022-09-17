@@ -208,7 +208,7 @@ final class ItemsTopBannerContainerViewController: UIViewController {
             .disposed(by: disposeBag)
 
         // ItemsViewControllerで送信されたNotificationイベントをトリガーとしたPullToRefreshを適用する
-        NotificationCenter.default.rx.notification(Notification.Name("ItemsTopBannerPullToRefresh"), object: nil)
+        NotificationCenter.default.rx.notification(Notification.Name("TopBannerPullToRefresh"), object: nil)
             .subscribe(
                 onNext: { [weak self] _ in
                     guard let self = self else { return }

@@ -98,7 +98,7 @@ final class EventIntroductionViewModel: EventIntroductionViewModelInputs, EventI
                 onNext: { [weak self] _ in
                     guard let self = self else { return }
                     if self._hasNextPage.value {
-                        self.executeEventIntroductionDataRequest(page: self._nextPage.value)
+                        self.executeEventIntroductionDataRequest(page: self._nextPage.value, ignoreError: true)
                     }
                 }
             )
@@ -127,7 +127,7 @@ final class EventIntroductionViewModel: EventIntroductionViewModelInputs, EventI
 
     // MARK: - Private Function
 
-    private func executeEventIntroductionDataRequest(page: Int) {
+    private func executeEventIntroductionDataRequest(page: Int, ignoreError: Bool = false) {
         _requestStatus.accept(.requesting)
         eventIntroductionUseCase.execute(page: page)
             .subscribe(
@@ -147,7 +147,8 @@ final class EventIntroductionViewModel: EventIntroductionViewModelInputs, EventI
                 },
                 onFailure: { [weak self] error in
                     guard let self = self else { return }
-                    self._requestStatus.accept(.error)
+                    // MEMO: paginationFetchTriggerを発火させる場合はエラー画面を表示する必要がないので(ignoreError = true)としている。
+                    self._requestStatus.accept(ignoreError ? .none : .error)
                 }
             )
             .disposed(by: disposeBag)
