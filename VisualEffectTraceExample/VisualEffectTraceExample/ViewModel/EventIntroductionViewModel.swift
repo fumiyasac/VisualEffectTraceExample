@@ -20,6 +20,9 @@ protocol EventIntroductionViewModelInputs {
 
     // PullToRefreshでのデータ更新をViewModelへ伝える
     var pullToRefreshTrigger: PublishSubject<Void> { get }
+
+    // APIRequestStateを元に戻す処理の実行をViewModelへ伝える
+    var undoAPIRequestStateTrigger: PublishSubject<Void> { get }
 }
 
 protocol EventIntroductionViewModelOutputs {
@@ -48,6 +51,8 @@ final class EventIntroductionViewModel: EventIntroductionViewModelInputs, EventI
     let paginationFetchTrigger: PublishSubject<Void> = PublishSubject<Void>()
 
     let pullToRefreshTrigger: PublishSubject<Void> = PublishSubject<Void>()
+
+    let undoAPIRequestStateTrigger: PublishSubject<Void> = PublishSubject<Void>()
 
     // MARK: - Properties (for EventIntroductionViewModelOutputs)
 
@@ -107,6 +112,14 @@ final class EventIntroductionViewModel: EventIntroductionViewModelInputs, EventI
                     self._hasNextPage.accept(true)
                     self._eventIntroductionItems.accept([])
                     self.executeEventIntroductionDataRequest(page: 1)
+                }
+            )
+            .disposed(by: disposeBag)
+        undoAPIRequestStateTrigger
+            .subscribe(
+                onNext: { [weak self] in
+                    guard let self = self else { return }
+                    self._requestStatus.accept(.none)
                 }
             )
             .disposed(by: disposeBag)
