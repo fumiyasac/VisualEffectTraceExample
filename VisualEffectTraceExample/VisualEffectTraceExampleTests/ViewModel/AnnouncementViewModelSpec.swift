@@ -58,7 +58,7 @@ final class AnnouncementViewModelSpec: QuickSpec {
                     expect(try! target.outputs.requestStatus.toBlocking().first()).to(equal(APIRequestState.success))
                 }
             }
-            context("サーバーへの登録処理が失敗した場合") {
+            context("サーバーからの取得処理が失敗した場合") {
                 beforeEach {
                     testingDependency.injectIndividualMock(
                         mockInstance: announcementUseCase,
@@ -115,7 +115,7 @@ final class AnnouncementViewModelSpec: QuickSpec {
                     expect(try! target.outputs.requestStatus.toBlocking().first()).to(equal(APIRequestState.success))
                 }
             }
-            context("サーバーへの登録処理が失敗した場合") {
+            context("サーバーからの取得処理が失敗した場合") {
                 beforeEach {
                     testingDependency.injectIndividualMock(
                         mockInstance: announcementUseCase,

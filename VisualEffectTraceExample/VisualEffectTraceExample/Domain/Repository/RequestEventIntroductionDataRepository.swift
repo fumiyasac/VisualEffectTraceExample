@@ -11,6 +11,7 @@ import RxSwift
 
 // MARK: - Protocol
 
+//sourcery: AutoMockable
 protocol EventIntroductionRepository {
 
     // イベント概要一覧用のAPIリクエストを実行する

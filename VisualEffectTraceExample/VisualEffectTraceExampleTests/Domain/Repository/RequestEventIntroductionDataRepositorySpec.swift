@@ -29,9 +29,9 @@ final class RequestEventIntroductionDataRepositorySpec: QuickSpec {
 
         describe("RequestEventIntroductionDataRepository") {
 
-            // MARK: - requestAnnouncementDataListを実行した際のテスト
+            // MARK: - requestEventIntroductionDataListを実行した際のテスト
 
-            describe("#requestAnnouncementDataList") {
+            describe("#requestEventIntroductionDataList") {
 
                 // MEMO: API通信処理成功時の想定
                 context("APIから正常にデータが返却される場合") {
