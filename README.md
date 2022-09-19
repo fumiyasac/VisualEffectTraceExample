@@ -6,9 +6,9 @@ UICollectionViewを利用した複雑なレイアウトや挙動を表現と合�
 
 #### 【実装環境】
 
-- macOS Big Monterey 12.3
-- Xcode 13.4.1
-- Swift 5.5
+- macOS Monterey 12.6
+- Xcode 14.0
+- Swift 5.7
 - CocoaPods 1.11.3
 
 #### 【サンプル画面のデザイン】
@@ -38,7 +38,7 @@ UICollectionViewを利用した複雑なレイアウトや挙動を表現と合�
 
 利用しているライブラリは下記になります。
 
-```
+```shell
 target 'VisualEffectTraceExample' do
   use_frameworks!
 
@@ -106,7 +106,7 @@ http://localhost:8080/swagger-ui.html
 
 自分が元々長く親しんでいたPHPやRubyのフレームワークでお目にかかった様な構成と近しいものにできれば良いかなという感じで、下記の様なライブラリを導入した形にしています。Model層は3層（Entity/Repository/Service）に分離した形をとっています。iOSアプリとの認証処理部分はJWT（JSON Web Token）を利用することを想定しており、またDatabase（MySQL）とのやり取りをする部分ではJPAを利用することを想定に作っています。
 
-```
+```kotlin
 dependencies {
     ...（以下自分で導入したもの）...
 
@@ -153,3 +153,196 @@ __Coodinatorパターンを試してみる:__
 - [How to make custom transitions using flow coordinator pattern](https://medium.com/@pavlepesic/coordinator-custom-transitions-b08cce1da8fd)
 - [Coordinators Essential tutorial. Part I](https://medium.com/blacklane-engineering/coordinators-essential-tutorial-part-i-376c836e9ba7)
 
+### 5. UnitTestに関する記述
+
+基本的にはRxSwiftでの処理を前提としたコードなので、`RxBlocking`と`RxTest`を利用したテストコードを前提としたものになります。DIコンテナ実装はPropertyWrapperを利用しているので下記の様なイメージで、テストコード内で利用したい責務クラスを個別に追加＆削除ができる形にしておく事がポイントになるかと思います。また、テストコードで利用するMock化したクラスについては、コマンドラインでMock自動生成処理ができる様に`SwiftyMocky`を利用しています。
+
+__コードにおける要点:__
+
+① DIコンテナ部分における追加実装
+
+```swift
+final class DependenciesDefinition {
+
+    // MARK: - Function
+
+    // MEMO: PropertyWrapperを利用したDependencyInjectionを実施する
+    func inject() {
+        // 👉 実際にアプリを動作させる際に必要な責務をDIコンテナに登録する処理が入る 
+    }
+
+    // 👉 テストに必要なMock化した責務を登録するためのメソッド
+    func injectIndividualMock(mockInstance: Any, protocolName: Any) {
+        let container = Dependencies.Container.default
+        container.register(
+            mockInstance,
+            for: Dependencies.Name(rawValue: TypeScanner.getName(protocolName))
+        )
+    }
+
+    // 👉 テストに必要なMock化した責務を削除するためのメソッド
+    func removeIndividualMock(protocolName: Any) {
+        let container = Dependencies.Container.default
+        container.remove(for: Dependencies.Name(rawValue: TypeScanner.getName(protocolName)))
+    }
+}
+```
+
+② ViewModelにおけるテストコード例
+
+```swift
+@testable import VisualEffectTraceExample
+
+import Nimble
+import Quick
+import RxBlocking
+import RxSwift
+import SwiftyMocky
+import XCTest
+
+final class FeaturedArticleViewModelSpec: QuickSpec {
+
+    // MARK: - Override
+
+    // MEMO: ViewModelクラス内のInput&Outputの変化が検知できていることを確認する
+    override func spec() {
+
+        // ----------
+        // ポイント①: テストを実行するための準備
+        // 👉 DIコンテナをインスタンス化＆このクラスに必要な責務に対してのMockをインスタンス化する
+        // ----------
+        let testingDependency = DependenciesDefinition()
+        let featuredArticleUseCase = FeaturedArticleUseCaseMock()
+
+        // MARK: - initialFetchTriggerを実行した際のテスト
+
+        // MEMO: サーバーから表示内容を取得する場合
+        describe("#initialFetchTrigger") {
+            context("サーバーからの取得処理が成功した場合") {
+                let featuredArticleAPIResponse = getFeaturedArticleAPIResponse()
+
+                // ----------
+                // ポイント②: テスト前に実行する処理
+                // 👉 Mock化した必要な責務が想定している返り値を定義する
+                // ----------
+                beforeEach {
+                    testingDependency.injectIndividualMock(
+                        mockInstance: featuredArticleUseCase,
+                        protocolName: FeaturedArticleUseCase.self
+                    )
+                    featuredArticleUseCase.given(
+                        .execute(
+                            willReturn: Single.just(featuredArticleAPIResponse)
+                        )
+                    )
+                }
+
+                // ----------
+                // ポイント③: テスト後に実行する処理
+                // 👉 Mock化した必要な責務をDIコンテナから削除する
+                // ----------
+                afterEach {
+                    testingDependency.removeIndividualMock(
+                        protocolName: FeaturedArticleUseCase.self
+                    )
+                }
+
+                it("viewModel.outputs.featuredArticleItemsが取得データと一致する＆viewModel.outputs.requestStatusがAPIRequestState.successとなること") {
+                    let target = FeaturedArticleViewModel()
+                    target.inputs.initialFetchTrigger.onNext(())
+                    expect(try! target.outputs.featuredArticleItems.toBlocking().first()).to(equal(featuredArticleAPIResponse.result))
+                    expect(try! target.outputs.requestStatus.toBlocking().first()).to(equal(APIRequestState.success))
+                }
+            }
+            context("サーバーからの取得処理が失敗した場合") {
+                beforeEach {
+                    testingDependency.injectIndividualMock(
+                        mockInstance: featuredArticleUseCase,
+                        protocolName: FeaturedArticleUseCase.self
+                    )
+                    featuredArticleUseCase.given(
+                        .execute(
+                            willReturn: Single.error(CommonError.invalidResponse("データの取得に失敗しました。"))
+                        )
+                    )
+                }
+                afterEach {
+                    testingDependency.removeIndividualMock(
+                        protocolName: FeaturedArticleUseCase.self
+                    )
+                }
+                it("viewModel.outputs.featuredArticleItemsが取得データが空配列＆viewModel.outputs.requestStatusがAPIRequestState.errorとなること") {
+                    let target = FeaturedArticleViewModel()
+                    target.inputs.initialFetchTrigger.onNext(())
+                    expect(try! target.outputs.featuredArticleItems.toBlocking().first()).to(equal([]))
+                    expect(try! target.outputs.requestStatus.toBlocking().first()).to(equal(APIRequestState.error))
+                }
+            }
+        }
+
+        // MARK: - undoAPIRequestStateTriggerを実行した際のテスト
+
+        describe("#undoAPIRequestStateTrigger") {
+            context("エラー画面表示からリトライ処理を実施する準備としてAPIRequestStateを.errorから.noneに変更する場合") {
+                beforeEach {
+                    testingDependency.injectIndividualMock(
+                        mockInstance: featuredArticleUseCase,
+                        protocolName: FeaturedArticleUseCase.self
+                    )
+                    featuredArticleUseCase.given(
+                        .execute(
+                            willReturn: Single.error(CommonError.invalidResponse("データの取得に失敗しました。"))
+                        )
+                    )
+                }
+                afterEach {
+                    testingDependency.removeIndividualMock(
+                        protocolName: FeaturedArticleUseCase.self
+                    )
+                }
+                it("viewModel.outputs.requestStatusがAPIRequestState.noneとなること") {
+                    let target = FeaturedArticleViewModel()
+                    target.inputs.initialFetchTrigger.onNext(())
+                    target.inputs.undoAPIRequestStateTrigger.onNext(())
+                    expect(try! target.outputs.requestStatus.toBlocking().first()).to(equal(APIRequestState.none))
+                }
+            }
+        }
+    }
+
+    private func getFeaturedArticleAPIResponse() -> FeaturedArticleAPIResponse {
+
+        // JSONファイルから表示用のデータを取得する
+        guard let path = Bundle(for: type(of: self)).path(forResource: "featured_article_data", ofType: "json") else {
+            fatalError()
+        }
+        guard let data = try? Data(contentsOf: URL(fileURLWithPath: path)) else {
+            fatalError()
+        }
+        guard let featuredArticleAPIResponse = try? JSONDecoder().decode(FeaturedArticleAPIResponse.self, from: data) else {
+            fatalError()
+        }
+        return featuredArticleAPIResponse
+    }
+}
+```
+
+__DIコンテナ部分その他実装参考:__
+
+PropertyWrapperを利用したコードによるDI:
+
+- [SwiftのProperty Wrapperを利用してDIする](https://qiita.com/imk2o/items/9708a39de1b7d3b2a5f8)
+- [Dependency Injection in Swift using latest Swift features](https://www.avanderlee.com/swift/dependency-injection/)
+
+その他RxSwiftを利用した自作のDIコンテナ実装例:
+
+- [自前でDIコンテナを作ってみる試みとRxSwiftを利用した構成への適用を試してみる](https://qiita.com/fumiyasac@github/items/8d6b77c3547b8b7839ad)
+- [既存プロジェクトで使っていたDIをお引っ越し＆DIYすることになった](https://www.slideshare.net/fumiyasakai37/didiy)
+
+__利用しているライブラリ:__
+
+- [Quick](https://github.com/Quick/Quick)
+- [Nimble](https://github.com/Quick/Nimble)
+- [RxTest](https://github.com/ReactiveX/RxSwift/tree/main/RxTest)
+- [RxBlocking](https://github.com/ReactiveX/RxSwift/tree/main/RxBlocking)
+- [SwiftyMocky](https://github.com/MakeAWishFoundation/SwiftyMocky)
