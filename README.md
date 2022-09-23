@@ -34,6 +34,39 @@ UICollectionViewを利用した複雑なレイアウトや挙動を表現と合�
 
 ![ログイン後の表示画面に関するAPI通信処理部分のレイヤー分け](https://github.com/fumiyasac/VisualEffectTraceExample/blob/master/images/architecture_layer.png)
 
+#### 【Rosettaを利用している場合のCocoaPodsのインストール】
+
+ターミナル(iTerm)を開いて「ロゼッタを使って開く」をチェックし、その後に下記コマンドを実行する。
+
+```shell
+$ sudo gem install ffi
+$ sudo arch -x86_64 gem install ffi
+$ arch -x86_64 pod instal
+```
+
+- [M1チップ搭載MacでCocoaPods導入時のTips](https://qiita.com/MachonglishproK/items/c0434a75f8eae556764b)
+
+#### 【ruby-versionの固定】
+
+このプロジェクトでは、rubyのバージョンを`2.6.0`に固定した上で実行する様にしています。
+下記にrbenvコマンドを利用した場合の例を載せておきます。
+
+```shell
+# まずはrbenvをインストールする。
+$ brew install rbenv
+# 利用したいバージョンのRubyがあるかを確認する。
+$ rbenv versions
+
+# ① Intel Macの場合は下記コマンドでインストールできます。
+$ rbenv install 2.6.0
+# ② M1 or M2 Macの場合は下記コマンドでインストールできます。
+$ RUBY_CFLAGS="-w" rbenv install 2.6.0
+
+# Xcodeプロジェクト内部でRubyバージョンを2.6.0で固定する。
+$ cd VisualEffectTraceExample
+$ rbenv local 2.6.0
+```
+
 #### 【iOS側利用しているライブラリ一覧】
 
 利用しているライブラリは下記になります。
