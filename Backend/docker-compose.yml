@@ -10,6 +10,9 @@ version: '3'
 services: 
   db:
     image: mysql:5.7 
+    # M1またはM2のMacの場合にはplatform指定`linux/amd64`を追加すること。
+    # ※IntelMacの場合はなくても良い。
+    platform: linux/amd64
     container_name: visual_effect_sample_container
     environment:
       MYSQL_ROOT_PASSWORD: root
