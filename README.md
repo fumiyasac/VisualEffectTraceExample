@@ -7,7 +7,7 @@ UICollectionViewを利用した複雑なレイアウトや挙動を表現と合�
 #### 【実装環境】
 
 - macOS Monterey 12.6
-- Xcode 14.0
+- Xcode 14.0.1
 - Swift 5.7
 - CocoaPods 1.11.3
 
@@ -30,9 +30,11 @@ UICollectionViewを利用した複雑なレイアウトや挙動を表現と合�
 
 ![UICollectionViewを利用して変わったレイアウトを実装する](https://github.com/fumiyasac/VisualEffectTraceExample/blob/master/images/sample_thumbnail3.jpg)
 
-#### 【ログイン後の表示画面に関するAPI通信処理部分のレイヤー分け】
+#### 【ログイン後の表示画面に関するAPI通信処理部分のレイヤー分けのイメージ図】
 
-![ログイン後の表示画面に関するAPI通信処理部分のレイヤー分け](https://github.com/fumiyasac/VisualEffectTraceExample/blob/master/images/architecture_layer.png)
+![ログイン後の表示画面に関するAPI通信処理部分のレイヤー分けのイメージ図](https://github.com/fumiyasac/VisualEffectTraceExample/blob/master/images/architecture_layer.png)
+
+※ 上記は __「ViewController ⇄ ViewModel ⇄ UseCase ⇄ Repository ⇄ APIRequest(Infrastructure)」__ の事例ではありますが、今回のサンプル実装ではUseCase層が必要なさそうな形であったので、このレイヤーを除外し、ViewModelで直接Repository層の処理を呼び出す形としています。
 
 #### 【iOS側利用しているライブラリ一覧】
 
