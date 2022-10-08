@@ -106,64 +106,6 @@ final class DependenciesDefinition {
             )
         }
 
-        // MEMO: UseCase層の登録
-        let useCases: Array<(implInstance: Any, protocolName: Any)>  = [
-            (
-                implInstance: GetTutorialDataUseCase(),
-                protocolName: TutorialUseCase.self
-            ),
-            (
-                implInstance: HandleMainScreenUseCase(),
-                protocolName: MainScreenUseCase.self
-            ),
-            (
-                implInstance: RequestAnnouncementDataUseCase(),
-                protocolName: AnnouncementUseCase.self
-            ),
-            (
-                implInstance: RequestEventIntroductionDataUseCase(),
-                protocolName: EventIntroductionUseCase.self
-            ),
-            (
-                implInstance: RequestFeaturedArticleDataUseCase(),
-                protocolName: FeaturedArticleUseCase.self
-            ),
-            (
-                implInstance: RequestItemDataUseCase(),
-                protocolName: ItemUseCase.self
-            ),
-            (
-                implInstance: RequestRecentAnnouncementDataUseCase(),
-                protocolName: RecentAnnouncementUseCase.self
-            ),
-            (
-                implInstance: RequestSigninUseCase(),
-                protocolName: SigninUseCase.self
-            ),
-            (
-                implInstance: RequestSignupUseCase(),
-                protocolName: SignupUseCase.self
-            ),
-            (
-                implInstance: RequestStoryDataUseCase(),
-                protocolName: StoryUseCase.self
-            ),
-            (
-                implInstance: RequestTopBannerDataUseCase(),
-                protocolName: TopBannerUseCase.self
-            ),
-            (
-                implInstance: UpdateCurrentApplicationUserStatusUseCase(),
-                protocolName: ApplicationUserStatusUseCase.self
-            )
-        ]
-        let _ = useCases.map{ useCase in
-            container.register(
-                useCase.implInstance,
-                for: Dependencies.Name(rawValue: TypeScanner.getName(useCase.protocolName))
-            )
-        }
-
         // MEMO: ViewModel層の登録
         let viewModels: Array<(implInstance: Any, protocolName: Any)> = [
             (
