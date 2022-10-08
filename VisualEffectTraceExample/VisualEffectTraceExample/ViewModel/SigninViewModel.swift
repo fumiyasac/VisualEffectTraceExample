@@ -79,9 +79,9 @@ final class SigninViewModel: SigninViewModelInputs, SigninViewModelOutputs, Sign
     private let _rawPassword: BehaviorRelay<String> = BehaviorRelay<String>(value: "")
     private let _requestStatus: BehaviorRelay<APIRequestState> = BehaviorRelay<APIRequestState>(value: .none)
 
-    // MEMO: このViewModelで利用するUseCase(Domain Model)
-    @Dependencies.Inject(Dependencies.Name(rawValue: "ApplicationUserStatusUseCase")) private var applicationUserStatusUseCase: ApplicationUserStatusUseCase
-    @Dependencies.Inject(Dependencies.Name(rawValue: "SigninUseCase")) private var signinUseCase: SigninUseCase
+    // MEMO: このViewModelで利用するRepository
+    @Dependencies.Inject(Dependencies.Name(rawValue: "ApplicationUserRepository")) private var applicationUserRepository: ApplicationUserRepository
+    @Dependencies.Inject(Dependencies.Name(rawValue: "SigninRepository")) private var signinRepository: SigninRepository
 
     // MARK: - Initializer
 
@@ -126,7 +126,7 @@ final class SigninViewModel: SigninViewModelInputs, SigninViewModelOutputs, Sign
 
     private func executeSigninRequest(mailAddress: String, rawPassword: String) {
         _requestStatus.accept(.requesting)
-        signinUseCase.execute(mailAddress: mailAddress, rawPassword: rawPassword)
+        signinRepository.requestSignin(mailAddress: mailAddress, rawPassword: rawPassword)
             .subscribe(
                 onSuccess: { [weak self] data in
                     guard let self = self else { return }
@@ -143,6 +143,6 @@ final class SigninViewModel: SigninViewModelInputs, SigninViewModelOutputs, Sign
     }
 
     private func saveJsonWebToken(token: String) {
-        applicationUserStatusUseCase.executeUpdateToken(token)
+        applicationUserRepository.updateJsonAccessToken(token)
     }
 }

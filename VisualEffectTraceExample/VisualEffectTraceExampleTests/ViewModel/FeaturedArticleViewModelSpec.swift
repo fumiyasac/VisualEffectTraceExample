@@ -25,7 +25,7 @@ final class FeaturedArticleViewModelSpec: QuickSpec {
         // MEMO: Testで動かす想定のDIコンテナのインスタンスを生成する
         let testingDependency = DependenciesDefinition()
 
-        let featuredArticleUseCase = FeaturedArticleUseCaseMock()
+        let featuredArticleRepository = FeaturedArticleRepositoryMock()
 
         // MARK: - initialFetchTriggerを実行した際のテスト
 
@@ -37,18 +37,18 @@ final class FeaturedArticleViewModelSpec: QuickSpec {
                 // Mockに差し替えたメソッドが返却する値を定める
                 beforeEach {
                     testingDependency.injectIndividualMock(
-                        mockInstance: featuredArticleUseCase,
-                        protocolName: FeaturedArticleUseCase.self
+                        mockInstance: featuredArticleRepository,
+                        protocolName: FeaturedArticleRepository.self
                     )
-                    featuredArticleUseCase.given(
-                        .execute(
+                    featuredArticleRepository.given(
+                        .requestFeaturedArticleDataList(
                             willReturn: Single.just(featuredArticleAPIResponse)
                         )
                     )
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: FeaturedArticleUseCase.self
+                        protocolName: FeaturedArticleRepository.self
                     )
                 }
                 it("viewModel.outputs.featuredArticleItemsが取得データと一致する＆viewModel.outputs.requestStatusがAPIRequestState.successとなること") {
@@ -61,18 +61,18 @@ final class FeaturedArticleViewModelSpec: QuickSpec {
             context("サーバーからの取得処理が失敗した場合") {
                 beforeEach {
                     testingDependency.injectIndividualMock(
-                        mockInstance: featuredArticleUseCase,
-                        protocolName: FeaturedArticleUseCase.self
+                        mockInstance: featuredArticleRepository,
+                        protocolName: FeaturedArticleRepository.self
                     )
-                    featuredArticleUseCase.given(
-                        .execute(
+                    featuredArticleRepository.given(
+                        .requestFeaturedArticleDataList(
                             willReturn: Single.error(CommonError.invalidResponse("データの取得に失敗しました。"))
                         )
                     )
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: FeaturedArticleUseCase.self
+                        protocolName: FeaturedArticleRepository.self
                     )
                 }
                 it("viewModel.outputs.featuredArticleItemsが取得データが空配列＆viewModel.outputs.requestStatusがAPIRequestState.errorとなること") {
@@ -91,18 +91,18 @@ final class FeaturedArticleViewModelSpec: QuickSpec {
             context("エラー画面表示からリトライ処理を実施する準備としてAPIRequestStateを.errorから.noneに変更する場合") {
                 beforeEach {
                     testingDependency.injectIndividualMock(
-                        mockInstance: featuredArticleUseCase,
-                        protocolName: FeaturedArticleUseCase.self
+                        mockInstance: featuredArticleRepository,
+                        protocolName: FeaturedArticleRepository.self
                     )
-                    featuredArticleUseCase.given(
-                        .execute(
+                    featuredArticleRepository.given(
+                        .requestFeaturedArticleDataList(
                             willReturn: Single.error(CommonError.invalidResponse("データの取得に失敗しました。"))
                         )
                     )
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: FeaturedArticleUseCase.self
+                        protocolName: FeaturedArticleRepository.self
                     )
                 }
                 it("viewModel.outputs.requestStatusがAPIRequestState.noneとなること") {

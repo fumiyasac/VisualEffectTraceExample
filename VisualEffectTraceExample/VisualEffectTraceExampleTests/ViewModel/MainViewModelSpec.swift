@@ -25,7 +25,7 @@ final class MainViewModelSpec: QuickSpec {
         // MEMO: Testで動かす想定のDIコンテナのインスタンスを生成する
         let testingDependency = DependenciesDefinition()
 
-        let mainScreenUseCase = MainScreenUseCaseMock()
+        let mainRepository = MainRepositoryMock()
 
         // MARK: - initialSettingTriggerを実行した際のテスト
         
@@ -35,18 +35,18 @@ final class MainViewModelSpec: QuickSpec {
                 let applicationUserStatus = ApplicationUserStatus.needToMoveGlobalTabBarScreen
                 beforeEach {
                     testingDependency.injectIndividualMock(
-                        mockInstance: mainScreenUseCase,
-                        protocolName: MainScreenUseCase.self
+                        mockInstance: mainRepository,
+                        protocolName: MainRepository.self
                     )
-                    mainScreenUseCase.given(
-                        .execute(
+                    mainRepository.given(
+                        .searchApplicationUserData(
                             willReturn: applicationUserStatus
                         )
                     )
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: MainScreenUseCase.self
+                        protocolName: MainRepository.self
                     )
                 }
                 it("targetApplicationUserStateがApplicationUserStatus.needToMoveGlobalTabBarScreenとなること") {

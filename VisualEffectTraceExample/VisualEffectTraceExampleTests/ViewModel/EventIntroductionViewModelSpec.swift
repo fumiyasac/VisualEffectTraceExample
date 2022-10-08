@@ -24,7 +24,7 @@ final class EventIntroductionViewModelSpec: QuickSpec {
         // MEMO: Testで動かす想定のDIコンテナのインスタンスを生成する
         let testingDependency = DependenciesDefinition()
 
-        let eventIntroductionUseCase = EventIntroductionUseCaseMock()
+        let eventIntroductionRepository = EventIntroductionRepositoryMock()
         
         // MARK: - initialFetchTriggerを実行した際のテスト
 
@@ -36,11 +36,11 @@ final class EventIntroductionViewModelSpec: QuickSpec {
                 // Mockに差し替えたメソッドが返却する値を定める
                 beforeEach {
                     testingDependency.injectIndividualMock(
-                        mockInstance: eventIntroductionUseCase,
-                        protocolName: EventIntroductionUseCase.self
+                        mockInstance: eventIntroductionRepository,
+                        protocolName: EventIntroductionRepository.self
                     )
-                    eventIntroductionUseCase.given(
-                        .execute(
+                    eventIntroductionRepository.given(
+                        .requestEventIntroductionDataList(
                             page: .value(1),
                             willReturn: Single.just(eventIntroductionAPIResponse1)
                         )
@@ -48,7 +48,7 @@ final class EventIntroductionViewModelSpec: QuickSpec {
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: EventIntroductionUseCase.self
+                        protocolName: EventIntroductionRepository.self
                     )
                 }
                 it("viewModel.outputs.eventIntroductionItemsが1ページ分の取得データと一致する＆viewModel.outputs.requestStatusがAPIRequestState.successとなること") {
@@ -61,11 +61,11 @@ final class EventIntroductionViewModelSpec: QuickSpec {
             context("サーバーからの取得処理が失敗した場合") {
                 beforeEach {
                     testingDependency.injectIndividualMock(
-                        mockInstance: eventIntroductionUseCase,
-                        protocolName: EventIntroductionUseCase.self
+                        mockInstance: eventIntroductionRepository,
+                        protocolName: EventIntroductionRepository.self
                     )
-                    eventIntroductionUseCase.given(
-                        .execute(
+                    eventIntroductionRepository.given(
+                        .requestEventIntroductionDataList(
                             page: .value(1),
                             willReturn: Single.error(CommonError.invalidResponse("データの取得に失敗しました。"))
                         )
@@ -73,7 +73,7 @@ final class EventIntroductionViewModelSpec: QuickSpec {
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: EventIntroductionUseCase.self
+                        protocolName: EventIntroductionRepository.self
                     )
                 }
                 it("viewModel.outputs.eventIntroductionItemsが取得データが空配列＆viewModel.outputs.requestStatusがAPIRequestState.errorとなること") {
@@ -98,29 +98,29 @@ final class EventIntroductionViewModelSpec: QuickSpec {
                 // Mockに差し替えたメソッドが返却する値を定める
                 beforeEach {
                     testingDependency.injectIndividualMock(
-                        mockInstance: eventIntroductionUseCase,
-                        protocolName: EventIntroductionUseCase.self
+                        mockInstance: eventIntroductionRepository,
+                        protocolName: EventIntroductionRepository.self
                     )
-                    eventIntroductionUseCase.given(
-                        .execute(
+                    eventIntroductionRepository.given(
+                        .requestEventIntroductionDataList(
                             page: .value(1),
                             willReturn: Single.just(eventIntroductionAPIResponse1)
                         )
                     )
-                    eventIntroductionUseCase.given(
-                        .execute(
+                    eventIntroductionRepository.given(
+                        .requestEventIntroductionDataList(
                             page: .value(2),
                             willReturn: Single.just(eventIntroductionAPIResponse2)
                         )
                     )
-                    eventIntroductionUseCase.given(
-                        .execute(
+                    eventIntroductionRepository.given(
+                        .requestEventIntroductionDataList(
                             page: .value(3),
                             willReturn: Single.just(eventIntroductionAPIResponse3)
                         )
                     )
-                    eventIntroductionUseCase.given(
-                        .execute(
+                    eventIntroductionRepository.given(
+                        .requestEventIntroductionDataList(
                             page: .value(4),
                             willReturn: Single.just(eventIntroductionAPIResponse4)
                         )
@@ -128,7 +128,7 @@ final class EventIntroductionViewModelSpec: QuickSpec {
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: EventIntroductionUseCase.self
+                        protocolName: EventIntroductionRepository.self
                     )
                 }
                 it("viewModel.outputs.eventIntroductionItemsが1ページ分〜4ページ分が取得データと一致する＆viewModel.outputs.requestStatusがAPIRequestState.successとなること") {
@@ -149,17 +149,17 @@ final class EventIntroductionViewModelSpec: QuickSpec {
                 let eventIntroductionAPIResponse1 = getEventIntroductionAPIResponse(page: 1)
                 beforeEach {
                     testingDependency.injectIndividualMock(
-                        mockInstance: eventIntroductionUseCase,
-                        protocolName: EventIntroductionUseCase.self
+                        mockInstance: eventIntroductionRepository,
+                        protocolName: EventIntroductionRepository.self
                     )
-                    eventIntroductionUseCase.given(
-                        .execute(
+                    eventIntroductionRepository.given(
+                        .requestEventIntroductionDataList(
                             page: .value(1),
                             willReturn: Single.just(eventIntroductionAPIResponse1)
                         )
                     )
-                    eventIntroductionUseCase.given(
-                        .execute(
+                    eventIntroductionRepository.given(
+                        .requestEventIntroductionDataList(
                             page: .value(2),
                             willReturn: Single.error(CommonError.invalidResponse("データの取得に失敗しました。"))
                         )
@@ -167,7 +167,7 @@ final class EventIntroductionViewModelSpec: QuickSpec {
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: EventIntroductionUseCase.self
+                        protocolName: EventIntroductionRepository.self
                     )
                 }
                 // MEMO: paginationFetchTriggerを発火させる場合はエラー画面を表示する必要がないので(ignoreError = true)としている。
@@ -194,29 +194,29 @@ final class EventIntroductionViewModelSpec: QuickSpec {
                 // Mockに差し替えたメソッドが返却する値を定める
                 beforeEach {
                     testingDependency.injectIndividualMock(
-                        mockInstance: eventIntroductionUseCase,
-                        protocolName: EventIntroductionUseCase.self
+                        mockInstance: eventIntroductionRepository,
+                        protocolName: EventIntroductionRepository.self
                     )
-                    eventIntroductionUseCase.given(
-                        .execute(
+                    eventIntroductionRepository.given(
+                        .requestEventIntroductionDataList(
                             page: .value(1),
                             willReturn: Single.just(eventIntroductionAPIResponse1)
                         )
                     )
-                    eventIntroductionUseCase.given(
-                        .execute(
+                    eventIntroductionRepository.given(
+                        .requestEventIntroductionDataList(
                             page: .value(2),
                             willReturn: Single.just(eventIntroductionAPIResponse2)
                         )
                     )
-                    eventIntroductionUseCase.given(
-                        .execute(
+                    eventIntroductionRepository.given(
+                        .requestEventIntroductionDataList(
                             page: .value(3),
                             willReturn: Single.just(eventIntroductionAPIResponse3)
                         )
                     )
-                    eventIntroductionUseCase.given(
-                        .execute(
+                    eventIntroductionRepository.given(
+                        .requestEventIntroductionDataList(
                             page: .value(4),
                             willReturn: Single.just(eventIntroductionAPIResponse4)
                         )
@@ -224,7 +224,7 @@ final class EventIntroductionViewModelSpec: QuickSpec {
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: EventIntroductionUseCase.self
+                        protocolName: EventIntroductionRepository.self
                     )
                 }
                 it("viewModel.outputs.eventIntroductionItemsが1ページ分の取得データと一致する＆viewModel.outputs.requestStatusがAPIRequestState.successとなること") {
@@ -247,11 +247,11 @@ final class EventIntroductionViewModelSpec: QuickSpec {
             context("エラー画面表示からリトライ処理を実施する準備としてAPIRequestStateを.errorから.noneに変更する場合") {
                 beforeEach {
                     testingDependency.injectIndividualMock(
-                        mockInstance: eventIntroductionUseCase,
-                        protocolName: EventIntroductionUseCase.self
+                        mockInstance: eventIntroductionRepository,
+                        protocolName: EventIntroductionRepository.self
                     )
-                    eventIntroductionUseCase.given(
-                        .execute(
+                    eventIntroductionRepository.given(
+                        .requestEventIntroductionDataList(
                             page: .value(1),
                             willReturn: Single.error(CommonError.invalidResponse("データの取得に失敗しました。"))
                         )
@@ -259,7 +259,7 @@ final class EventIntroductionViewModelSpec: QuickSpec {
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: EventIntroductionUseCase.self
+                        protocolName: EventIntroductionRepository.self
                     )
                 }
                 it("viewModel.outputs.requestStatusがAPIRequestState.noneとなること") {

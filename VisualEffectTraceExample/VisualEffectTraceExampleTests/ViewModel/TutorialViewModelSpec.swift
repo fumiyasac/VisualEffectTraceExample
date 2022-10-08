@@ -25,8 +25,8 @@ final class TutorialViewModelSpec: QuickSpec {
         // MEMO: Testで動かす想定のDIコンテナのインスタンスを生成する
         let testingDependency = DependenciesDefinition()
 
-        let tutorialUseCase = TutorialUseCaseMock()
-        let applicationUserStatusUseCase = ApplicationUserStatusUseCaseMock()
+        let tutorialRepository = TutorialRepositoryMock()
+        let applicationUserRepository = ApplicationUserRepositoryMock()
 
         // MARK: - changeIndexTriggerを実行した際のテスト
 
@@ -36,18 +36,18 @@ final class TutorialViewModelSpec: QuickSpec {
                 let tutorialDataList = getTutorialDataList()
                 beforeEach {
                     testingDependency.injectIndividualMock(
-                        mockInstance: tutorialUseCase,
-                        protocolName: TutorialUseCase.self
+                        mockInstance: tutorialRepository,
+                        protocolName: TutorialRepository.self
                     )
-                    tutorialUseCase.given(
-                        .execute(
+                    tutorialRepository.given(
+                        .getDataList(
                             willReturn: tutorialDataList
                         )
                     )
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: TutorialUseCase.self
+                        protocolName: TutorialRepository.self
                     )
                 }
                 it("viewModel.outputs.isLastIndexがfalseとなること") {
@@ -61,18 +61,18 @@ final class TutorialViewModelSpec: QuickSpec {
                 let tutorialDataList = getTutorialDataList()
                 beforeEach {
                     testingDependency.injectIndividualMock(
-                        mockInstance: tutorialUseCase,
-                        protocolName: TutorialUseCase.self
+                        mockInstance: tutorialRepository,
+                        protocolName: TutorialRepository.self
                     )
-                    tutorialUseCase.given(
-                        .execute(
+                    tutorialRepository.given(
+                        .getDataList(
                             willReturn: tutorialDataList
                         )
                     )
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: TutorialUseCase.self
+                        protocolName: TutorialRepository.self
                     )
                 }
                 it("viewModel.outputs.isLastIndexがfalseとなること") {
@@ -87,18 +87,18 @@ final class TutorialViewModelSpec: QuickSpec {
                 let tutorialDataList = getTutorialDataList()
                 beforeEach {
                     testingDependency.injectIndividualMock(
-                        mockInstance: tutorialUseCase,
-                        protocolName: TutorialUseCase.self
+                        mockInstance: tutorialRepository,
+                        protocolName: TutorialRepository.self
                     )
-                    tutorialUseCase.given(
-                        .execute(
+                    tutorialRepository.given(
+                        .getDataList(
                             willReturn: tutorialDataList
                         )
                     )
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: TutorialUseCase.self
+                        protocolName: TutorialRepository.self
                     )
                 }
                 it("viewModel.outputs.isLastIndexがtrueとなること") {
@@ -120,25 +120,25 @@ final class TutorialViewModelSpec: QuickSpec {
                 let tutorialDataList = getTutorialDataList()
                 beforeEach {
                     testingDependency.injectIndividualMock(
-                        mockInstance: tutorialUseCase,
-                        protocolName: TutorialUseCase.self
+                        mockInstance: tutorialRepository,
+                        protocolName: TutorialRepository.self
                     )
                     testingDependency.injectIndividualMock(
-                        mockInstance: applicationUserStatusUseCase,
-                        protocolName: ApplicationUserStatusUseCase.self
+                        mockInstance: applicationUserRepository,
+                        protocolName: ApplicationUserRepository.self
                     )
-                    tutorialUseCase.given(
-                        .execute(
+                    tutorialRepository.given(
+                        .getDataList(
                             willReturn: tutorialDataList
                         )
                     )
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: TutorialUseCase.self
+                        protocolName: TutorialRepository.self
                     )
                     testingDependency.removeIndividualMock(
-                        protocolName: ApplicationUserStatusUseCase.self
+                        protocolName: ApplicationUserRepository.self
                     )
                 }
                 it("viewModel.outputs.tutorialFinishedがtrueとなること") {

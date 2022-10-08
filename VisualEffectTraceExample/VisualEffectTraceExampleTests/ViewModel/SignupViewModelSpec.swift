@@ -25,7 +25,7 @@ final class SignupViewModelSpec: QuickSpec {
         // MEMO: Testで動かす想定のDIコンテナのインスタンスを生成する
         let testingDependency = DependenciesDefinition()
 
-        let signupUseCase = SignupUseCaseMock()
+        let signupRepository = SignupRepositoryMock()
 
         // MARK: - inputUserNameTriggerを実行した際のテスト
 
@@ -78,11 +78,11 @@ final class SignupViewModelSpec: QuickSpec {
                 let generalPostSuccessARIResponse = GeneralPostSuccessARIResponse(result: "OK")
                 beforeEach {
                     testingDependency.injectIndividualMock(
-                        mockInstance: signupUseCase,
-                        protocolName: SignupUseCase.self
+                        mockInstance: signupRepository,
+                        protocolName: SignupRepository.self
                     )
-                    signupUseCase.given(
-                        .execute(
+                    signupRepository.given(
+                        .requestSignup(
                             userName: .value(userName),
                             mailAddress: .value(mailAddress),
                             rawPassword: .value(rawPassword),
@@ -92,7 +92,7 @@ final class SignupViewModelSpec: QuickSpec {
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: SignupUseCase.self
+                        protocolName: SignupRepository.self
                     )
                 }
                 it("viewModel.outputs.requestStatusがAPIRequestState.successとなること") {
@@ -110,11 +110,11 @@ final class SignupViewModelSpec: QuickSpec {
                 let rawPassword: String = "testcode1234"
                 beforeEach {
                     testingDependency.injectIndividualMock(
-                        mockInstance: signupUseCase,
-                        protocolName: SignupUseCase.self
+                        mockInstance: signupRepository,
+                        protocolName: SignupRepository.self
                     )
-                    signupUseCase.given(
-                        .execute(
+                    signupRepository.given(
+                        .requestSignup(
                             userName: .value(userName),
                             mailAddress: .value(mailAddress),
                             rawPassword: .value(rawPassword),
@@ -124,7 +124,7 @@ final class SignupViewModelSpec: QuickSpec {
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: SignupUseCase.self
+                        protocolName: SignupRepository.self
                     )
                 }
                 it("viewModel.outputs.requestStatusがAPIRequestState.errorとなること") {

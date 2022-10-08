@@ -92,8 +92,8 @@ final class SignupViewModel: SignupViewModelInputs, SignupViewModelOutputs, Sign
     private let _rawPassword: BehaviorRelay<String> = BehaviorRelay<String>(value: "")
     private let _requestStatus: BehaviorRelay<APIRequestState> = BehaviorRelay<APIRequestState>(value: .none)
 
-    // MEMO: このViewModelで利用するUseCase(Domain Model)
-    @Dependencies.Inject(Dependencies.Name(rawValue: "SignupUseCase")) private var signupUseCase: SignupUseCase
+    // MEMO: このViewModelで利用するRepository
+    @Dependencies.Inject(Dependencies.Name(rawValue: "SignupRepository")) private var signupRepository: SignupRepository
 
     // MARK: - Initializer
 
@@ -146,7 +146,7 @@ final class SignupViewModel: SignupViewModelInputs, SignupViewModelOutputs, Sign
 
     private func executeSignupRequest(userName: String, mailAddress: String, rawPassword: String) {
         _requestStatus.accept(.requesting)
-        signupUseCase.execute(userName: userName, mailAddress: mailAddress, rawPassword: rawPassword)
+        signupRepository.requestSignup(userName: userName, mailAddress: mailAddress, rawPassword: rawPassword)
             .subscribe(
                 onSuccess: { [weak self] data in
                     guard let self = self else { return }

@@ -78,9 +78,9 @@ final class ItemsViewModel: ItemsViewModelInputs, ItemsViewModelOutputs, ItemsVi
     private let _nextPage: BehaviorRelay<Int> = BehaviorRelay<Int>(value: 1)
     private let _hasNextPage: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: true)
 
-    // MEMO: このViewModelで利用するUseCase(Domain Model)
-    @Dependencies.Inject(Dependencies.Name(rawValue: "RecentAnnouncementUseCase")) private var recentAnnouncementUseCase: RecentAnnouncementUseCase
-    @Dependencies.Inject(Dependencies.Name(rawValue: "ItemUseCase")) private var itemUseCase: ItemUseCase
+    // MEMO: このViewModelで利用するRepository
+    @Dependencies.Inject(Dependencies.Name(rawValue: "RecentAnnouncementRepository")) private var recentAnnouncementRepository: RecentAnnouncementRepository
+    @Dependencies.Inject(Dependencies.Name(rawValue: "ItemRepository")) private var itemRepository: ItemRepository
 
     // MARK: - Initializer
 
@@ -128,7 +128,7 @@ final class ItemsViewModel: ItemsViewModelInputs, ItemsViewModelOutputs, ItemsVi
 
     private func executeRecentAnnouncementDataRequest() {
         _requestStatus.accept(.requesting)
-        recentAnnouncementUseCase.execute()
+        recentAnnouncementRepository.requestRecentAnnouncementData()
             .subscribe(
                 onSuccess: { [weak self] data in
                     guard let self = self else { return }
@@ -145,7 +145,7 @@ final class ItemsViewModel: ItemsViewModelInputs, ItemsViewModelOutputs, ItemsVi
 
     private func executeItemDataRequest(page: Int) {
         _requestStatus.accept(.requesting)
-        itemUseCase.execute(page: page)
+        itemRepository.requestItemDataList(page: page)
             .subscribe(
                 onSuccess: { [weak self] data in
                     guard let self = self else { return }

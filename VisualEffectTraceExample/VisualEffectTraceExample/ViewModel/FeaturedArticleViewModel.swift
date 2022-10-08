@@ -63,8 +63,8 @@ final class FeaturedArticleViewModel: FeaturedArticleViewModelInputs, FeaturedAr
     private let _featuredArticleItems: BehaviorRelay<Array<FeaturedArticleEntity>> = BehaviorRelay<Array<FeaturedArticleEntity>>(value: [])
     private let _requestStatus: BehaviorRelay<APIRequestState> = BehaviorRelay<APIRequestState>(value: .none)
 
-    // MEMO: このViewModelで利用するUseCase(Domain Model)
-    @Dependencies.Inject(Dependencies.Name(rawValue: "FeaturedArticleUseCase")) private var featuredArticleUseCase: FeaturedArticleUseCase
+    // MEMO: このViewModelで利用するRepository
+    @Dependencies.Inject(Dependencies.Name(rawValue: "FeaturedArticleRepository")) private var featuredArticleRepository: FeaturedArticleRepository
 
     // MARK: - Initializer
 
@@ -93,7 +93,7 @@ final class FeaturedArticleViewModel: FeaturedArticleViewModelInputs, FeaturedAr
 
     private func executeFeaturedArticleDataRequest() {
         _requestStatus.accept(.requesting)
-        featuredArticleUseCase.execute()
+        featuredArticleRepository.requestFeaturedArticleDataList()
             .subscribe(
                 onSuccess: { [weak self] data in
                     guard let self = self else { return }

@@ -24,8 +24,8 @@ final class ItemsViewModelSpec: QuickSpec {
         // MEMO: Testで動かす想定のDIコンテナのインスタンスを生成する
         let testingDependency = DependenciesDefinition()
         
-        let itemUseCase = ItemUseCaseMock()
-        let recentAnnouncementUseCase = RecentAnnouncementUseCaseMock()
+        let itemRepository = ItemRepositoryMock()
+        let recentAnnouncementRepository = RecentAnnouncementRepositoryMock()
         
         // MARK: - initialFetchTriggerを実行した際のテスト
         
@@ -38,31 +38,31 @@ final class ItemsViewModelSpec: QuickSpec {
                 // Mockに差し替えたメソッドが返却する値を定める
                 beforeEach {
                     testingDependency.injectIndividualMock(
-                        mockInstance: itemUseCase,
-                        protocolName: ItemUseCase.self
+                        mockInstance: itemRepository,
+                        protocolName: ItemRepository.self
                     )
                     testingDependency.injectIndividualMock(
-                        mockInstance: recentAnnouncementUseCase,
-                        protocolName: RecentAnnouncementUseCase.self
+                        mockInstance: recentAnnouncementRepository,
+                        protocolName: RecentAnnouncementRepository.self
                     )
-                    itemUseCase.given(
-                        .execute(
+                    itemRepository.given(
+                        .requestItemDataList(
                             page: .value(1),
                             willReturn: Single.just(itemAPIResponse1)
                         )
                     )
-                    recentAnnouncementUseCase.given(
-                        .execute(
+                    recentAnnouncementRepository.given(
+                        .requestRecentAnnouncementData(
                             willReturn: Single.just(announcementDetailAPIResponse)
                         )
                     )
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: ItemUseCase.self
+                        protocolName: ItemRepository.self
                     )
                     testingDependency.removeIndividualMock(
-                        protocolName: RecentAnnouncementUseCase.self
+                        protocolName: RecentAnnouncementRepository.self
                     )
                 }
                 it("viewModel.outputs.itemsが1ページ分の取得データと一致する＆viewModel.outputs.recentAnnouncementが1件分の取得データと一致する") {
@@ -88,49 +88,49 @@ final class ItemsViewModelSpec: QuickSpec {
                 // Mockに差し替えたメソッドが返却する値を定める
                 beforeEach {
                     testingDependency.injectIndividualMock(
-                        mockInstance: itemUseCase,
-                        protocolName: ItemUseCase.self
+                        mockInstance: itemRepository,
+                        protocolName: ItemRepository.self
                     )
                     testingDependency.injectIndividualMock(
-                        mockInstance: recentAnnouncementUseCase,
-                        protocolName: RecentAnnouncementUseCase.self
+                        mockInstance: recentAnnouncementRepository,
+                        protocolName: RecentAnnouncementRepository.self
                     )
-                    itemUseCase.given(
-                        .execute(
+                    itemRepository.given(
+                        .requestItemDataList(
                             page: .value(1),
                             willReturn: Single.just(itemAPIResponse1)
                         )
                     )
-                    itemUseCase.given(
-                        .execute(
+                    itemRepository.given(
+                        .requestItemDataList(
                             page: .value(2),
                             willReturn: Single.just(itemAPIResponse2)
                         )
                     )
-                    itemUseCase.given(
-                        .execute(
+                    itemRepository.given(
+                        .requestItemDataList(
                             page: .value(3),
                             willReturn: Single.just(itemAPIResponse3)
                         )
                     )
-                    itemUseCase.given(
-                        .execute(
+                    itemRepository.given(
+                        .requestItemDataList(
                             page: .value(4),
                             willReturn: Single.just(itemAPIResponse4)
                         )
                     )
-                    recentAnnouncementUseCase.given(
-                        .execute(
+                    recentAnnouncementRepository.given(
+                        .requestRecentAnnouncementData(
                             willReturn: Single.just(announcementDetailAPIResponse)
                         )
                     )
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: ItemUseCase.self
+                        protocolName: ItemRepository.self
                     )
                     testingDependency.removeIndividualMock(
-                        protocolName: RecentAnnouncementUseCase.self
+                        protocolName: RecentAnnouncementRepository.self
                     )
                 }
                 it("viewModel.outputs.itemsが1ページ分〜4ページ分の取得データと一致する＆viewModel.outputs.recentAnnouncementが1件分の取得データと一致する") {
@@ -152,37 +152,37 @@ final class ItemsViewModelSpec: QuickSpec {
                 let announcementDetailAPIResponse = AnnouncementDetailAPIResponse(result: getRecentData())
                 beforeEach {
                     testingDependency.injectIndividualMock(
-                        mockInstance: itemUseCase,
-                        protocolName: ItemUseCase.self
+                        mockInstance: itemRepository,
+                        protocolName: ItemRepository.self
                     )
                     testingDependency.injectIndividualMock(
-                        mockInstance: recentAnnouncementUseCase,
-                        protocolName: RecentAnnouncementUseCase.self
+                        mockInstance: recentAnnouncementRepository,
+                        protocolName: RecentAnnouncementRepository.self
                     )
-                    itemUseCase.given(
-                        .execute(
+                    itemRepository.given(
+                        .requestItemDataList(
                             page: .value(1),
                             willReturn: Single.just(itemAPIResponse1)
                         )
                     )
-                    itemUseCase.given(
-                        .execute(
+                    itemRepository.given(
+                        .requestItemDataList(
                             page: .value(2),
                             willReturn: Single.error(CommonError.invalidResponse("データの取得に失敗しました。"))
                         )
                     )
-                    recentAnnouncementUseCase.given(
-                        .execute(
+                    recentAnnouncementRepository.given(
+                        .requestRecentAnnouncementData(
                             willReturn: Single.just(announcementDetailAPIResponse)
                         )
                     )
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: ItemUseCase.self
+                        protocolName: ItemRepository.self
                     )
                     testingDependency.removeIndividualMock(
-                        protocolName: RecentAnnouncementUseCase.self
+                        protocolName: RecentAnnouncementRepository.self
                     )
                 }
                 it("viewModel.outputs.itemsが1ページ分の取得データと一致する＆viewModel.outputs.recentAnnouncementが1件分の取得データと一致する") {
@@ -209,49 +209,49 @@ final class ItemsViewModelSpec: QuickSpec {
                 // Mockに差し替えたメソッドが返却する値を定める
                 beforeEach {
                     testingDependency.injectIndividualMock(
-                        mockInstance: itemUseCase,
-                        protocolName: ItemUseCase.self
+                        mockInstance: itemRepository,
+                        protocolName: ItemRepository.self
                     )
                     testingDependency.injectIndividualMock(
-                        mockInstance: recentAnnouncementUseCase,
-                        protocolName: RecentAnnouncementUseCase.self
+                        mockInstance: recentAnnouncementRepository,
+                        protocolName: RecentAnnouncementRepository.self
                     )
-                    itemUseCase.given(
-                        .execute(
+                    itemRepository.given(
+                        .requestItemDataList(
                             page: .value(1),
                             willReturn: Single.just(itemAPIResponse1)
                         )
                     )
-                    itemUseCase.given(
-                        .execute(
+                    itemRepository.given(
+                        .requestItemDataList(
                             page: .value(2),
                             willReturn: Single.just(itemAPIResponse2)
                         )
                     )
-                    itemUseCase.given(
-                        .execute(
+                    itemRepository.given(
+                        .requestItemDataList(
                             page: .value(3),
                             willReturn: Single.just(itemAPIResponse3)
                         )
                     )
-                    itemUseCase.given(
-                        .execute(
+                    itemRepository.given(
+                        .requestItemDataList(
                             page: .value(4),
                             willReturn: Single.just(itemAPIResponse4)
                         )
                     )
-                    recentAnnouncementUseCase.given(
-                        .execute(
+                    recentAnnouncementRepository.given(
+                        .requestRecentAnnouncementData(
                             willReturn: Single.just(announcementDetailAPIResponse)
                         )
                     )
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: ItemUseCase.self
+                        protocolName: ItemRepository.self
                     )
                     testingDependency.removeIndividualMock(
-                        protocolName: RecentAnnouncementUseCase.self
+                        protocolName: RecentAnnouncementRepository.self
                     )
                 }
                 it("viewModel.outputs.itemsが1ページ分の取得データと一致する＆viewModel.outputs.recentAnnouncementが1件分の取得データと一致する") {

@@ -25,8 +25,8 @@ final class SigninViewModelSpec: QuickSpec {
         // MEMO: Testで動かす想定のDIコンテナのインスタンスを生成する
         let testingDependency = DependenciesDefinition()
 
-        let signinUseCase = SigninUseCaseMock()
-        let applicationUserStatusUseCase = ApplicationUserStatusUseCaseMock()
+        let signinRepository = SigninRepositoryMock()
+        let applicationUserRepository = ApplicationUserRepositoryMock()
 
         // MARK: - inputMailAddressTriggerを実行した際のテスト
 
@@ -67,15 +67,15 @@ final class SigninViewModelSpec: QuickSpec {
                 )
                 beforeEach {
                     testingDependency.injectIndividualMock(
-                        mockInstance: applicationUserStatusUseCase,
-                        protocolName: ApplicationUserStatusUseCase.self
+                        mockInstance: applicationUserRepository,
+                        protocolName: ApplicationUserRepository.self
                     )
                     testingDependency.injectIndividualMock(
-                        mockInstance: signinUseCase,
-                        protocolName: SigninUseCase.self
+                        mockInstance: signinRepository,
+                        protocolName: SigninRepository.self
                     )
-                    signinUseCase.given(
-                        .execute(
+                    signinRepository.given(
+                        .requestSignin(
                             mailAddress: .value(mailAddress),
                             rawPassword: .value(rawPassword),
                             willReturn: Single.just(signinSuccessResponse)
@@ -84,10 +84,10 @@ final class SigninViewModelSpec: QuickSpec {
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: ApplicationUserStatusUseCase.self
+                        protocolName: ApplicationUserRepository.self
                     )
                     testingDependency.removeIndividualMock(
-                        protocolName: SigninUseCase.self
+                        protocolName: SigninRepository.self
                     )
                 }
                 it("viewModel.outputs.requestStatusがAPIRequestState.successとなること") {
@@ -103,15 +103,15 @@ final class SigninViewModelSpec: QuickSpec {
                 let rawPassword: String = "testcode1234"
                 beforeEach {
                     testingDependency.injectIndividualMock(
-                        mockInstance: applicationUserStatusUseCase,
-                        protocolName: ApplicationUserStatusUseCase.self
+                        mockInstance: applicationUserRepository,
+                        protocolName: ApplicationUserRepository.self
                     )
                     testingDependency.injectIndividualMock(
-                        mockInstance: signinUseCase,
-                        protocolName: SigninUseCase.self
+                        mockInstance: signinRepository,
+                        protocolName: SigninRepository.self
                     )
-                    signinUseCase.given(
-                        .execute(
+                    signinRepository.given(
+                        .requestSignin(
                             mailAddress: .value(mailAddress),
                             rawPassword: .value(rawPassword),
                             willReturn: Single.error(CommonError.invalidResponse("入力したパスワードまたはメールアドレスに誤りがあります。"))
@@ -120,10 +120,10 @@ final class SigninViewModelSpec: QuickSpec {
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: ApplicationUserStatusUseCase.self
+                        protocolName: ApplicationUserRepository.self
                     )
                     testingDependency.removeIndividualMock(
-                        protocolName: SigninUseCase.self
+                        protocolName: SigninRepository.self
                     )
                 }
                 it("viewModel.outputs.requestStatusがAPIRequestState.errorとなること") {

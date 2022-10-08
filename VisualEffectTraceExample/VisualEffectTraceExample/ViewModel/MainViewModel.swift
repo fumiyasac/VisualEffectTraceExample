@@ -50,8 +50,8 @@ final class MainViewModel: MainViewModelInputs, MainViewModelOutputs, MainViewMo
     // → BehaviorRelayの変化が起こったらObservableに変換されてOutputに流れてくる
     private let _targetApplicationUserState: BehaviorRelay<ApplicationUserStatus?> = BehaviorRelay<ApplicationUserStatus?>(value: nil)
 
-    // MEMO: このViewModelで利用するUseCase(Domain Model)
-    @Dependencies.Inject(Dependencies.Name(rawValue: "MainScreenUseCase")) private var mainScreenUseCase: MainScreenUseCase
+    // MEMO: このViewModelで利用するRepository
+    @Dependencies.Inject(Dependencies.Name(rawValue: "MainRepository")) private var mainRepository: MainRepository
 
     // MARK: - Initializer
 
@@ -71,7 +71,7 @@ final class MainViewModel: MainViewModelInputs, MainViewModelOutputs, MainViewMo
     // MARK: - Private Function
 
     private func getApplicationUserStatus() {
-        let applicationUserStatus = mainScreenUseCase.execute()
+        let applicationUserStatus = mainRepository.searchApplicationUserData()
         _targetApplicationUserState.accept(applicationUserStatus)
     }
 }

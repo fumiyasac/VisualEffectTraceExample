@@ -25,7 +25,7 @@ final class AnnouncementViewModelSpec: QuickSpec {
         // MEMO: Testで動かす想定のDIコンテナのインスタンスを生成する
         let testingDependency = DependenciesDefinition()
 
-        let announcementUseCase = AnnouncementUseCaseMock()
+        let announcementRepository = AnnouncementRepositoryMock()
 
         // MARK: - initialFetchTriggerを実行した際のテスト
 
@@ -37,18 +37,18 @@ final class AnnouncementViewModelSpec: QuickSpec {
                 // Mockに差し替えたメソッドが返却する値を定める
                 beforeEach {
                     testingDependency.injectIndividualMock(
-                        mockInstance: announcementUseCase,
-                        protocolName: AnnouncementUseCase.self
+                        mockInstance: announcementRepository,
+                        protocolName: AnnouncementRepository.self
                     )
-                    announcementUseCase.given(
-                        .execute(
+                    announcementRepository.given(
+                        .requestAnnouncementDataList(
                             willReturn: Single.just(announcementListAPIResponse)
                         )
                     )
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: AnnouncementUseCase.self
+                        protocolName: AnnouncementRepository.self
                     )
                 }
                 it("viewModel.outputs.announcementItemsが取得データと一致する＆viewModel.outputs.requestStatusがAPIRequestState.successとなること") {
@@ -61,18 +61,18 @@ final class AnnouncementViewModelSpec: QuickSpec {
             context("サーバーからの取得処理が失敗した場合") {
                 beforeEach {
                     testingDependency.injectIndividualMock(
-                        mockInstance: announcementUseCase,
-                        protocolName: AnnouncementUseCase.self
+                        mockInstance: announcementRepository,
+                        protocolName: AnnouncementRepository.self
                     )
-                    announcementUseCase.given(
-                        .execute(
+                    announcementRepository.given(
+                        .requestAnnouncementDataList(
                             willReturn: Single.error(CommonError.invalidResponse("データの取得に失敗しました。"))
                         )
                     )
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: AnnouncementUseCase.self
+                        protocolName: AnnouncementRepository.self
                     )
                 }
                 it("viewModel.outputs.announcementItemsが取得データが空配列＆viewModel.outputs.requestStatusがAPIRequestState.errorとなること") {
@@ -94,18 +94,18 @@ final class AnnouncementViewModelSpec: QuickSpec {
                 // Mockに差し替えたメソッドが返却する値を定める
                 beforeEach {
                     testingDependency.injectIndividualMock(
-                        mockInstance: announcementUseCase,
-                        protocolName: AnnouncementUseCase.self
+                        mockInstance: announcementRepository,
+                        protocolName: AnnouncementRepository.self
                     )
-                    announcementUseCase.given(
-                        .execute(
+                    announcementRepository.given(
+                        .requestAnnouncementDataList(
                             willReturn: Single.just(announcementListAPIResponse)
                         )
                     )
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: AnnouncementUseCase.self
+                        protocolName: AnnouncementRepository.self
                     )
                 }
                 it("viewModel.outputs.announcementItemsが取得データと一致する＆viewModel.outputs.requestStatusがAPIRequestState.successとなること") {
@@ -118,18 +118,18 @@ final class AnnouncementViewModelSpec: QuickSpec {
             context("サーバーからの取得処理が失敗した場合") {
                 beforeEach {
                     testingDependency.injectIndividualMock(
-                        mockInstance: announcementUseCase,
-                        protocolName: AnnouncementUseCase.self
+                        mockInstance: announcementRepository,
+                        protocolName: AnnouncementRepository.self
                     )
-                    announcementUseCase.given(
-                        .execute(
+                    announcementRepository.given(
+                        .requestAnnouncementDataList(
                             willReturn: Single.error(CommonError.invalidResponse("データの取得に失敗しました。"))
                         )
                     )
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: AnnouncementUseCase.self
+                        protocolName: AnnouncementRepository.self
                     )
                 }
                 it("viewModel.outputs.announcementItemsが取得データが空配列＆viewModel.outputs.requestStatusがAPIRequestState.errorとなること") {
@@ -148,18 +148,18 @@ final class AnnouncementViewModelSpec: QuickSpec {
             context("エラー画面表示からリトライ処理を実施する準備としてAPIRequestStateを.errorから.noneに変更する場合") {
                 beforeEach {
                     testingDependency.injectIndividualMock(
-                        mockInstance: announcementUseCase,
-                        protocolName: AnnouncementUseCase.self
+                        mockInstance: announcementRepository,
+                        protocolName: AnnouncementRepository.self
                     )
-                    announcementUseCase.given(
-                        .execute(
+                    announcementRepository.given(
+                        .requestAnnouncementDataList(
                             willReturn: Single.error(CommonError.invalidResponse("データの取得に失敗しました。"))
                         )
                     )
                 }
                 afterEach {
                     testingDependency.removeIndividualMock(
-                        protocolName: AnnouncementUseCase.self
+                        protocolName: AnnouncementRepository.self
                     )
                 }
                 it("viewModel.outputs.requestStatusがAPIRequestState.noneとなること") {

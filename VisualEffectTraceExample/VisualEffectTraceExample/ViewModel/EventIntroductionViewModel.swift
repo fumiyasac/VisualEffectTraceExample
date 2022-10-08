@@ -77,8 +77,8 @@ final class EventIntroductionViewModel: EventIntroductionViewModelInputs, EventI
     private let _nextPage: BehaviorRelay<Int> = BehaviorRelay<Int>(value: 1)
     private let _hasNextPage: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: true)
 
-    // MEMO: このViewModelで利用するUseCase(Domain Model)
-    @Dependencies.Inject(Dependencies.Name(rawValue: "EventIntroductionUseCase")) private var eventIntroductionUseCase: EventIntroductionUseCase
+    // MEMO: このViewModelで利用するRepository
+    @Dependencies.Inject(Dependencies.Name(rawValue: "EventIntroductionRepository")) private var eventIntroductionRepository: EventIntroductionRepository
 
     // MARK: - Initializer
 
@@ -129,7 +129,7 @@ final class EventIntroductionViewModel: EventIntroductionViewModelInputs, EventI
 
     private func executeEventIntroductionDataRequest(page: Int, ignoreError: Bool = false) {
         _requestStatus.accept(.requesting)
-        eventIntroductionUseCase.execute(page: page)
+        eventIntroductionRepository.requestEventIntroductionDataList(page: page)
             .subscribe(
                 onSuccess: { [weak self] data in
                     guard let self = self else { return }

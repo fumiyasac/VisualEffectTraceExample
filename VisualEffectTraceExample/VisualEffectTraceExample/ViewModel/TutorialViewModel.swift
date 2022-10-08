@@ -72,16 +72,16 @@ final class TutorialViewModel: TutorialViewModelInputs, TutorialViewModelOutputs
     private let _isLastIndex: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
     private let _tutorialFinished: BehaviorRelay<Bool> = BehaviorRelay<Bool>(value: false)
 
-    // MEMO: このViewModelで利用するUseCase(Domain Model)
-    @Dependencies.Inject(Dependencies.Name(rawValue: "TutorialUseCase")) private var tutorialUseCase: TutorialUseCase
-    @Dependencies.Inject(Dependencies.Name(rawValue: "ApplicationUserStatusUseCase")) private var applicationUserStatusUseCase: ApplicationUserStatusUseCase
+    // MEMO: このViewModelで利用するRepository
+    @Dependencies.Inject(Dependencies.Name(rawValue: "TutorialRepository")) private var tutorialRepository: TutorialRepository
+    @Dependencies.Inject(Dependencies.Name(rawValue: "ApplicationUserRepository")) private var applicationUserRepository: ApplicationUserRepository
 
     // MARK: - Initializer
 
     init() {
 
-        // チュートリアルで表示するためのデータをUseCase層経由で取得する
-        let tutorialDataList = self.tutorialUseCase.execute()
+        // チュートリアルで表示するためのデータをRepository層経由で取得する
+        let tutorialDataList = self.tutorialRepository.getDataList()
 
         // JSONファイルから取得したModelオブジェクトを中継地点となるBehaviorRelayに格納する
         _tutorialItems.accept(tutorialDataList)
@@ -107,7 +107,7 @@ final class TutorialViewModel: TutorialViewModelInputs, TutorialViewModelOutputs
                 onNext: { [weak self] _ in
                     guard let self = self else { return }
                     self._tutorialFinished.accept(true)
-                    self.applicationUserStatusUseCase.executeUpdatePassTutorialStatus()
+                    self.applicationUserRepository.updatePassTutorialStatus()
                 }
             )
             .disposed(by: disposeBag)

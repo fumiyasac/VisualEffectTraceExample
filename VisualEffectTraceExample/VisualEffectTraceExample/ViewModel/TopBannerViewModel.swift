@@ -68,8 +68,8 @@ final class TopBannerViewModel: TopBannerViewModelInputs, TopBannerViewModelOutp
     private let _topBannerItems: BehaviorRelay<Array<TopBannerEntity>> = BehaviorRelay<Array<TopBannerEntity>>(value: [])
     private let _requestStatus: BehaviorRelay<APIRequestState> = BehaviorRelay<APIRequestState>(value: .none)
 
-    // MEMO: このViewModelで利用するUseCase(Domain Model)
-    @Dependencies.Inject(Dependencies.Name(rawValue: "TopBannerUseCase")) private var topBannerUseCase: TopBannerUseCase
+    // MEMO: このViewModelで利用するRepository
+    @Dependencies.Inject(Dependencies.Name(rawValue: "TopBannerRepository")) private var topBannerRepository: TopBannerRepository
 
     // MARK: - Initializer
 
@@ -107,7 +107,7 @@ final class TopBannerViewModel: TopBannerViewModelInputs, TopBannerViewModelOutp
 
     private func executeTopBannerDataRequest() {
         _requestStatus.accept(.requesting)
-        topBannerUseCase.execute()
+        topBannerRepository.requestTopBannerDataList()
             .subscribe(
                 onSuccess: { [weak self] data in
                     guard let self = self else { return }

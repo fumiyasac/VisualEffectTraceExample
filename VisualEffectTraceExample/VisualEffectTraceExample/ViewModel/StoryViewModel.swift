@@ -63,8 +63,8 @@ final class StoryViewModel: StoryViewModelInputs, StoryViewModelOutputs, StoryVi
     private let _storyItems: BehaviorRelay<Array<StoryEntity>> = BehaviorRelay<Array<StoryEntity>>(value: [])
     private let _requestStatus: BehaviorRelay<APIRequestState> = BehaviorRelay<APIRequestState>(value: .none)
 
-    // MEMO: このViewModelで利用するUseCase(Domain Model)
-    @Dependencies.Inject(Dependencies.Name(rawValue: "StoryUseCase")) private var storyUseCase: StoryUseCase
+    // MEMO: このViewModelで利用するRepository
+    @Dependencies.Inject(Dependencies.Name(rawValue: "StoryRepository")) private var storyRepository: StoryRepository
 
     // MARK: - Initializer
 
@@ -93,7 +93,7 @@ final class StoryViewModel: StoryViewModelInputs, StoryViewModelOutputs, StoryVi
 
     private func executeStoryDataRequest() {
         _requestStatus.accept(.requesting)
-        storyUseCase.execute()
+        storyRepository.requestStoryDataList()
             .subscribe(
                 onSuccess: { [weak self] data in
                     guard let self = self else { return }
