@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		32261D2038CC9301525E928D /* Pods_VisualEffectTraceExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4E329E45DC4ADB841AD1DC7 /* Pods_VisualEffectTraceExample.framework */; };
 		9E068C89C9EB11E4239285A9 /* Pods_VisualEffectTraceExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4509BDE940B905F04F695137 /* Pods_VisualEffectTraceExampleTests.framework */; };
+		B4BAF6D826E6C0EADC5870B1 /* Pods_VisualEffectTraceExample_VisualEffectTraceExampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 75CF207290A0C3923CE62D8B /* Pods_VisualEffectTraceExample_VisualEffectTraceExampleUITests.framework */; };
 		DE0424E52402AF50008DEF36 /* AnnouncementListAPIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE0424E42402AF50008DEF36 /* AnnouncementListAPIResponse.swift */; };
 		DE04C9C0244C76E100684BA1 /* AnnouncementScreenTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE04C9BF244C76E100684BA1 /* AnnouncementScreenTransition.swift */; };
 		DE04C9C2244C943100684BA1 /* AnnouncementScreenTransitioningDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE04C9C1244C943100684BA1 /* AnnouncementScreenTransitioningDelegate.swift */; };
@@ -209,7 +210,10 @@
 
 /* Begin PBXFileReference section */
 		124D8D4896FEAEF648862CAF /* Pods-VisualEffectTraceExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisualEffectTraceExample.debug.xcconfig"; path = "Target Support Files/Pods-VisualEffectTraceExample/Pods-VisualEffectTraceExample.debug.xcconfig"; sourceTree = "<group>"; };
+		2C8949C2AEF8EE07FECD1CFD /* Pods-VisualEffectTraceExample-VisualEffectTraceExampleUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisualEffectTraceExample-VisualEffectTraceExampleUITests.debug.xcconfig"; path = "Target Support Files/Pods-VisualEffectTraceExample-VisualEffectTraceExampleUITests/Pods-VisualEffectTraceExample-VisualEffectTraceExampleUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		42FA7F2C573797AF489CFA72 /* Pods-VisualEffectTraceExample-VisualEffectTraceExampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisualEffectTraceExample-VisualEffectTraceExampleUITests.release.xcconfig"; path = "Target Support Files/Pods-VisualEffectTraceExample-VisualEffectTraceExampleUITests/Pods-VisualEffectTraceExample-VisualEffectTraceExampleUITests.release.xcconfig"; sourceTree = "<group>"; };
 		4509BDE940B905F04F695137 /* Pods_VisualEffectTraceExampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VisualEffectTraceExampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		75CF207290A0C3923CE62D8B /* Pods_VisualEffectTraceExample_VisualEffectTraceExampleUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VisualEffectTraceExample_VisualEffectTraceExampleUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		79D4B01741D17027C1306C6C /* Pods-VisualEffectTraceExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisualEffectTraceExampleTests.debug.xcconfig"; path = "Target Support Files/Pods-VisualEffectTraceExampleTests/Pods-VisualEffectTraceExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A7FADAFF1E98E4C941C29882 /* Pods-VisualEffectTraceExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisualEffectTraceExampleTests.release.xcconfig"; path = "Target Support Files/Pods-VisualEffectTraceExampleTests/Pods-VisualEffectTraceExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		C104011784263D868D98E644 /* Pods-VisualEffectTraceExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VisualEffectTraceExample.release.xcconfig"; path = "Target Support Files/Pods-VisualEffectTraceExample/Pods-VisualEffectTraceExample.release.xcconfig"; sourceTree = "<group>"; };
@@ -422,6 +426,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4BAF6D826E6C0EADC5870B1 /* Pods_VisualEffectTraceExample_VisualEffectTraceExampleUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +438,7 @@
 			children = (
 				C4E329E45DC4ADB841AD1DC7 /* Pods_VisualEffectTraceExample.framework */,
 				4509BDE940B905F04F695137 /* Pods_VisualEffectTraceExampleTests.framework */,
+				75CF207290A0C3923CE62D8B /* Pods_VisualEffectTraceExample_VisualEffectTraceExampleUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1261,6 +1267,8 @@
 				C104011784263D868D98E644 /* Pods-VisualEffectTraceExample.release.xcconfig */,
 				79D4B01741D17027C1306C6C /* Pods-VisualEffectTraceExampleTests.debug.xcconfig */,
 				A7FADAFF1E98E4C941C29882 /* Pods-VisualEffectTraceExampleTests.release.xcconfig */,
+				2C8949C2AEF8EE07FECD1CFD /* Pods-VisualEffectTraceExample-VisualEffectTraceExampleUITests.debug.xcconfig */,
+				42FA7F2C573797AF489CFA72 /* Pods-VisualEffectTraceExample-VisualEffectTraceExampleUITests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1311,9 +1319,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DEAA659523F3123100C5232B /* Build configuration list for PBXNativeTarget "VisualEffectTraceExampleUITests" */;
 			buildPhases = (
+				1B1A075BC9475FD066ED1833 /* [CP] Check Pods Manifest.lock */,
 				DEAA658223F3123100C5232B /* Sources */,
 				DEAA658323F3123100C5232B /* Frameworks */,
 				DEAA658423F3123100C5232B /* Resources */,
+				2239283D235262D8529F93D8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1432,6 +1442,45 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1B1A075BC9475FD066ED1833 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VisualEffectTraceExample-VisualEffectTraceExampleUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2239283D235262D8529F93D8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VisualEffectTraceExample-VisualEffectTraceExampleUITests/Pods-VisualEffectTraceExample-VisualEffectTraceExampleUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VisualEffectTraceExample-VisualEffectTraceExampleUITests/Pods-VisualEffectTraceExample-VisualEffectTraceExampleUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VisualEffectTraceExample-VisualEffectTraceExampleUITests/Pods-VisualEffectTraceExample-VisualEffectTraceExampleUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		23A9D44114B2DB9CA875DBC9 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1949,6 +1998,7 @@
 		};
 		DEAA659623F3123100C5232B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C8949C2AEF8EE07FECD1CFD /* Pods-VisualEffectTraceExample-VisualEffectTraceExampleUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1969,6 +2019,7 @@
 		};
 		DEAA659723F3123100C5232B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 42FA7F2C573797AF489CFA72 /* Pods-VisualEffectTraceExample-VisualEffectTraceExampleUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

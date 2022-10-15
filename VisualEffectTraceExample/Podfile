@@ -22,7 +22,7 @@ target 'VisualEffectTraceExample' do
   # 3. UIデバッグ用のライブラリ
   pod 'Gedatsu', configuration: %w(Debug)
 
-#  ※ ユニットテスト時に利用する
+  # ※ ユニットテスト時に利用する
   target 'VisualEffectTraceExampleTests' do
     inherit! :search_paths
     pod 'RxBlocking'
@@ -32,9 +32,10 @@ target 'VisualEffectTraceExample' do
     pod 'Quick'
   end
 
-#  ※ UIテスト時に利用する
-#  target 'VisualEffectTraceExampleUITests' do
-#  end
+  # ※ UIテスト時に利用する
+  target 'VisualEffectTraceExampleUITests' do
+    # Do Nothing.
+  end
 end
 
 #  ※ Team IDを追加する対応（Xcode14から必要になった処理）
