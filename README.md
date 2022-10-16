@@ -161,7 +161,7 @@ Xdode14以降ではインストールをする際にTeamIDの設定が必要に�
 
 - [Xcode 14 needs selected Development Team for Pod Bundles](https://stackoverflow.com/questions/72561696/xcode-14-needs-selected-development-team-for-pod-bundles)
 
-![自分のTeamIDはここ!](https://github.com/fumiyasac/VisualEffectTraceExample/blob/master/images/swagger_definition.png)
+![自分のTeamIDはここ!](https://github.com/fumiyasac/VisualEffectTraceExample/blob/master/images/apple_developer_certificate.png)
 
 ### 5. UnitTestに関する記述
 
