@@ -38,12 +38,14 @@ target 'VisualEffectTraceExample' do
   end
 end
 
-#  ※ Team IDを追加する対応（Xcode14から必要になった処理）
+# ※ Team IDを追加する対応
+# # Xdode14以降ではインストールをする際にTeamIDの設定が必要になります（実機へインストール際に失敗する）。
+# # (参考) https://stackoverflow.com/questions/72561696/xcode-14-needs-selected-development-team-for-pod-bundles
 # post_install do |installer|
 #   installer.generated_projects.each do |project|
 #     project.targets.each do |target|
 #       target.build_configurations.each do |config|
-#         config.build_settings["DEVELOPMENT_TEAM"] = "S5BF5553KY"
+#         config.build_settings["DEVELOPMENT_TEAM"] = "自分のTeamIDを入力する"
 #       end
 #     end
 #   end

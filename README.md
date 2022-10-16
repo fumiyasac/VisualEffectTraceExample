@@ -155,6 +155,14 @@ __Coodinatorパターンを試してみる:__
 - [How to make custom transitions using flow coordinator pattern](https://medium.com/@pavlepesic/coordinator-custom-transitions-b08cce1da8fd)
 - [Coordinators Essential tutorial. Part I](https://medium.com/blacklane-engineering/coordinators-essential-tutorial-part-i-376c836e9ba7)
 
+__Xcode14以降でのCocoaPodsでの注意点:__
+
+Xdode14以降ではインストールをする際にTeamIDの設定が必要になります。この部分を設定しなくともSimulatorでのBuildはできますが実機へインストール際に失敗します。
+
+- [Xcode 14 needs selected Development Team for Pod Bundles](https://stackoverflow.com/questions/72561696/xcode-14-needs-selected-development-team-for-pod-bundles)
+
+![自分のTeamIDはここ!](https://github.com/fumiyasac/VisualEffectTraceExample/blob/master/images/swagger_definition.png)
+
 ### 5. UnitTestに関する記述
 
 基本的にはRxSwiftでの処理を前提としたコードなので、`RxBlocking`と`RxTest`を利用したテストコードを前提としたものになります。DIコンテナ実装はPropertyWrapperを利用しているので下記の様なイメージで、テストコード内で利用したい責務クラスを個別に追加＆削除ができる形にしておく事がポイントになるかと思います。また、テストコードで利用するMock化したクラスについては、コマンドラインでMock自動生成処理ができる様に`SwiftyMocky`を利用しています。
