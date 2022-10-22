@@ -22,6 +22,9 @@ protocol SigninViewModelInputs {
 
     // APIRequestStateを元に戻す処理の実行をViewModelへ伝える
     var undoAPIRequestStateTrigger: PublishSubject<Void> { get }
+
+    // 入力情報を再度リセットにする処理の実行をViewModelへ伝える
+    var clearInputFieldTrigger: PublishSubject<Void> { get }
 }
 
 protocol SigninViewModelOutputs {
@@ -54,6 +57,8 @@ final class SigninViewModel: SigninViewModelInputs, SigninViewModelOutputs, Sign
     let executeSigninRequestTrigger: PublishSubject<Void> = PublishSubject<Void>()
 
     let undoAPIRequestStateTrigger: PublishSubject<Void> = PublishSubject<Void>()
+
+    let clearInputFieldTrigger: PublishSubject<Void> = PublishSubject<Void>()
 
     // MARK: - Properties (for SigninViewModelOutputs)
 
@@ -117,6 +122,15 @@ final class SigninViewModel: SigninViewModelInputs, SigninViewModelOutputs, Sign
                 onNext: { [weak self] in
                     guard let self = self else { return }
                     self._requestStatus.accept(.none)
+                }
+            )
+            .disposed(by: disposeBag)
+        clearInputFieldTrigger
+            .subscribe(
+                onNext: { [weak self] in
+                    guard let self = self else { return }
+                    self._mailAddress.accept("")
+                    self._rawPassword.accept("")
                 }
             )
             .disposed(by: disposeBag)
