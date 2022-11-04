@@ -73,6 +73,11 @@ enum Dependencies {
         func remove(for key: Dependencies.Name = .default) {
             dependencies.removeAll(where: { $0.key == key })
         }
+
+        // MEMO: 依存関係があるものを全て削除する
+        func reset() {
+            dependencies.removeAll()
+        }
     }
 
     // MARK: - @propatyWrapper (for Struct for Dependency Injection)

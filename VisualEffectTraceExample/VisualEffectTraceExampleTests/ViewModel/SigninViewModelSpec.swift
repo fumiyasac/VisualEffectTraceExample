@@ -148,5 +148,23 @@ final class SigninViewModelSpec: QuickSpec {
                 }
             }
         }
+
+        // MARK: - clearInputFieldTriggerを実行した際のテスト
+
+        // MEMO: 送信完了した後にTextField値を元に戻す場合
+        describe("#clearInputFieldTrigger") {
+            context("APIリクエスト結果ダイアログ表示後にTextFieldで入力した変数をクリアする場合") {
+                let mailAddress: String = "fumiya.sakai@example.com"
+                let rawPassword: String = "testcode1234"
+                it("viewModel.outputs.mailAddress及びviewModel.outputs.rawPasswordが空となること") {
+                    let target = SigninViewModel()
+                    target.inputs.inputMailAddressTrigger.onNext(mailAddress)
+                    target.inputs.inputRawPasswordTrigger.onNext(rawPassword)
+                    target.inputs.clearInputFieldTrigger.onNext(())
+                    expect(try! target.outputs.mailAddress.toBlocking().first()).to(equal(""))
+                    expect(try! target.outputs.rawPassword.toBlocking().first()).to(equal(""))
+                }
+            }
+        }
     }
 }

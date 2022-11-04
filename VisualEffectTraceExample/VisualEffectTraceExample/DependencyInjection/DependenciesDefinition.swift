@@ -157,6 +157,11 @@ final class DependenciesDefinition {
         }
     }
 
+    func reset() {
+        let container = Dependencies.Container.default
+        container.reset()
+    }
+
     func injectIndividualMock(mockInstance: Any, protocolName: Any) {
         let container = Dependencies.Container.default
         container.register(

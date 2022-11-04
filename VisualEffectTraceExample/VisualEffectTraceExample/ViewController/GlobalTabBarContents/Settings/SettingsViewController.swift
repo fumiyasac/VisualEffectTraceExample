@@ -47,6 +47,16 @@ final class SettingsViewController: UIViewController {
                     // → 厳密にいえばこの処理もきちんとRepository/UseCaseを利用した方が良い
                     self.keychainAccessManager.deleteJsonAccessToken()
                     self.coordinator?.coordinateToSignin()
+
+                    // MEMO: Dependency Injection用の処理を初期化する
+                    if isTesting()  {
+                        print("Build for Unit Testing Starting...")
+                    } else {
+                        print("Build for Debug/Production Starting...")
+                        let productionDependency = DependenciesDefinition()
+                        productionDependency.reset()
+                        productionDependency.inject()
+                    }
                 }
             )
             .disposed(by: disposeBag)
