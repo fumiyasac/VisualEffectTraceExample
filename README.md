@@ -382,7 +382,7 @@ $ source ~/.zshrc
 ```shell
 $ sudo gem install ffi
 $ sudo arch -x86_64 gem install ffi
-$ arch -x86_64 pod instal
+$ arch -x86_64 pod install
 ```
 
 - [M1チップ搭載MacでCocoaPods導入時のTips](https://qiita.com/MachonglishproK/items/c0434a75f8eae556764b)
