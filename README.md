@@ -2,6 +2,10 @@
 
 UICollectionViewを利用した複雑なレイアウトや挙動を表現と合わせて、Server Side Kotlinでバックエンド側のAPI実装（ユーザー登録・ログイン及び表示データ取得処理）と繋ぎ合わせる処理をレイヤーに分割したアーキテクチャを用いて実現しているサンプルになります。
 
+### 0. 解説記事
+
+- [PropertyWrapperを利用したDIコンテナの利用とRxSwift+MVVMでの処理とユニットテストに関する事例](https://qiita.com/fumiyasac@github/items/549e10af41ce91cdfbd1)
+
 ### 1. このサンプルについて
 
 #### 【実装環境】
