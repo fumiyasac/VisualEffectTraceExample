@@ -37,9 +37,6 @@ import javax.servlet.http.HttpServletResponse
 // 補足5: JWTを利用したSpringアプリのAPI認証
 // https://qiita.com/nyasba/items/f9b1b6be5540743f8bac
 
-// 補足6: JWTを利用したSpringアプリのAPI認証
-// https://qiita.com/nyasba/items/f9b1b6be5540743f8bac
-
 // 悩ましい部分: 自分で実装しておいて何だが、これはもうちょっと良い方法があるのでは...???
 // MEMO: AuthenticationManagerクラス・ApplicationUserServiceは呼び出し元で初期化する形としている点に注意
 
