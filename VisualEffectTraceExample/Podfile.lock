@@ -4,15 +4,15 @@ PODS:
   - FontAwesome.swift (1.9.1)
   - Gedatsu (1.2.0)
   - KeychainAccess (4.2.2)
-  - Kingfisher (7.2.2)
-  - Nimble (10.0.0)
+  - Kingfisher (7.8.1)
+  - Nimble (12.0.1)
   - PKHUD (5.3.0)
-  - Quick (5.0.1)
-  - Realm (10.28.0):
-    - Realm/Headers (= 10.28.0)
-  - Realm/Headers (10.28.0)
-  - RealmSwift (10.28.0):
-    - Realm (= 10.28.0)
+  - Quick (6.1.0)
+  - Realm (10.40.2):
+    - Realm/Headers (= 10.40.2)
+  - Realm/Headers (10.40.2)
+  - RealmSwift (10.40.2):
+    - Realm (= 10.40.2)
   - RxBlocking (6.5.0):
     - RxSwift (= 6.5.0)
   - RxCocoa (6.5.0):
@@ -36,7 +36,7 @@ DEPENDENCIES:
   - Kingfisher
   - Nimble
   - PKHUD (~> 5.0)
-  - Quick
+  - Quick (~> 6.0)
   - RealmSwift
   - RxBlocking
   - RxCocoa
@@ -71,12 +71,12 @@ SPEC CHECKSUMS:
   FontAwesome.swift: 6b52cb7be66eacd28cbfaa0ca7ffd0de4a186a1d
   Gedatsu: 13a21a3cbf7978f9ff671eca5715b94a4309d9a8
   KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
-  Kingfisher: 184d4d1a8c36666e663caf8e08abe87898595c53
-  Nimble: 5316ef81a170ce87baf72dd961f22f89a602ff84
+  Kingfisher: 63f677311d36a3473f6b978584f8a3845d023dc5
+  Nimble: b279b3ca9e094508778aab5c76417be158d3ad04
   PKHUD: 98f3e4bc904b9c916f1c5bb6d765365b5357291b
-  Quick: 749aa754fd1e7d984f2000fe051e18a3a9809179
-  Realm: a0dd4e07530faaa327244ddb4ecb445c98f0537a
-  RealmSwift: 625a21f03e01e80f6b9b86bade269ebebcd7892c
+  Quick: 6676ffb409bf04abba2ff23902af2407bfc6ac90
+  Realm: 731e86d9388287b18e36b0beb2493fc4845ce8a2
+  RealmSwift: c2a1059ba52e1e08467b1253b1d4ab354ef3177b
   RxBlocking: 04b5fd28bb5ea49f7d64b80db8bbfe50d9cc1c7d
   RxCocoa: 94f817b71c07517321eb4f9ad299112ca8af743b
   RxRelay: 1de1523e604c72b6c68feadedd1af3b1b4d0ecbd
@@ -85,6 +85,6 @@ SPEC CHECKSUMS:
   Sourcery: 744f43178637c79bf23127dfe34e2103b3f28499
   SwiftyMocky: 014739247afadb65efb5bb92ede32c22b9365762
 
-PODFILE CHECKSUM: ce79ea186a805fecea4f0340fa1a7e22f2942d52
+PODFILE CHECKSUM: bb3e7795f22790e67fa6438a113e16ede1f8d4c0
 
 COCOAPODS: 1.11.3
