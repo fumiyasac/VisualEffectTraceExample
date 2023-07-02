@@ -38,6 +38,8 @@ target 'VisualEffectTraceExample' do
   end
 end
 
+# Xcode14.3では下記の設定が必要だった
+# 参考: https://qiita.com/Todate/items/a97e359e934a174e1068
 post_install do |installer|
   installer.generated_projects.each do |project|
     project.targets.each do |target|
